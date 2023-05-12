@@ -1,0 +1,242 @@
+[gd_scene load_steps=17 format=3 uid="uid://mtp04omckg7j"]
+
+[ext_resource type="Script" path="res://code/TitleScreen.gd" id="1_3it2e"]
+[ext_resource type="Texture2D" uid="uid://oe1tua2ag8ur" path="res://assets/UI/metalPanel.png" id="2_fs4o5"]
+[ext_resource type="FontFile" uid="uid://dhv685ihmqhuj" path="res://assets/Font/Kenney Future.ttf" id="3_6oa80"]
+[ext_resource type="Theme" uid="uid://b8un5nek13bhs" path="res://new_theme.tres" id="4_vttam"]
+[ext_resource type="Texture2D" uid="uid://28ewty2cjfl1" path="res://assets/UI/arrowLeft.png" id="5_ccpeh"]
+[ext_resource type="Texture2D" uid="uid://bn7xqa687ffam" path="res://assets/UI/arrowRight.png" id="6_00lql"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iteoc"]
+texture = ExtResource("2_fs4o5")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Gradient" id="Gradient_jdvb5"]
+offsets = PackedFloat32Array(0, 0.0928144)
+colors = PackedColorArray(0, 0, 0, 0, 0.32549, 0.32549, 0.32549, 1)
+
+[sub_resource type="Animation" id="Animation_w0k0w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_airmh"]
+resource_name = "offscreen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-600, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_5abng"]
+resource_name = "onscreen"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfuex"]
+_data = {
+"RESET": SubResource("Animation_w0k0w"),
+"offscreen": SubResource("Animation_airmh"),
+"onscreen": SubResource("Animation_5abng")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2sq4s"]
+animation = &"offscreen"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1c4f3"]
+animation = &"onscreen"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_rudjg"]
+xfade_time = 0.4
+input_0/name = "onscreen"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "offscreen"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5ngks"]
+graph_offset = Vector2(-196.861, 73.3266)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_1c4f3")
+nodes/Animation/position = Vector2(-80, 160)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_2sq4s")
+"nodes/Animation 2/position" = Vector2(-100, 280)
+nodes/Transition/node = SubResource("AnimationNodeTransition_rudjg")
+nodes/Transition/position = Vector2(120, 160)
+node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Animation", &"Transition", 1, &"Animation 2"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 575.0
+offset_bottom = 575.0
+script = ExtResource("1_3it2e")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_iteoc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 50.0
+offset_right = 160.0
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.32549, 0.32549, 0.32549, 1)
+theme_override_fonts/normal_font = ExtResource("3_6oa80")
+theme_override_font_sizes/normal_font_size = 60
+text = "ALIGNMENT"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Line2D" type="Line2D" parent="Panel/RichTextLabel"]
+position = Vector2(-32.5, -49)
+points = PackedVector2Array(550, 83, 0, 83)
+width = 5.0
+gradient = SubResource("Gradient_jdvb5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -54.0
+offset_right = 137.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -18.0
+offset_right = 75.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_6oa80")
+bbcode_enabled = true
+text = "[center]Level Select[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Left" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_vttam")
+icon = ExtResource("5_ccpeh")
+
+[node name="Level" type="RichTextLabel" parent="Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_6oa80")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]1[/center]"
+autowrap_mode = 0
+tab_size = 0
+
+[node name="Right" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_vttam")
+icon = ExtResource("6_00lql")
+
+[node name="Start" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = 92.0
+offset_right = 46.5
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_vttam")
+theme_override_fonts/font = ExtResource("3_6oa80")
+text = "Start"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "onscreen"
+libraries = {
+"": SubResource("AnimationLibrary_jfuex")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+tree_root = SubResource("AnimationNodeBlendTree_5ngks")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Transition/current_state = "onscreen"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 0

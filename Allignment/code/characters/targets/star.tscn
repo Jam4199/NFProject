@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://csfi7ex28yyc8"]
+
+[ext_resource type="PackedScene" uid="uid://c23m84k8o6gbm" path="res://code/characters/targets/Target.tscn" id="1_3nwv6"]
+[ext_resource type="Texture2D" uid="uid://djgbriy7ljrr5" path="res://assets/shapes/star_64.png" id="2_3vbyl"]
+
+[sub_resource type="Animation" id="Animation_hegy5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xu0ft"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ptl5g"]
+_data = {
+"RESET": SubResource("Animation_hegy5"),
+"default": SubResource("Animation_xu0ft")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wv50b"]
+radius = 18.0
+
+[node name="DrunkStar" instance=ExtResource("1_3nwv6")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3vbyl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_ptl5g")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_wv50b")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b46fwu01xp0lt"]
+
+[ext_resource type="PackedScene" uid="uid://oaho3gaicnu" path="res://code/Bullets/Bullet.tscn" id="1_ff2rc"]
+[ext_resource type="Texture2D" uid="uid://bgg4ddsxw5aom" path="res://assets/shapes/circle_64.png" id="2_33bdl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sdpew"]
+radius = 2.0
+
+[node name="SmallRound" instance=ExtResource("1_ff2rc")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.0621338, 0.0621338)
+texture = ExtResource("2_33bdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_sdpew")

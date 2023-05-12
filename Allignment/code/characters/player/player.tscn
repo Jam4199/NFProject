@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvtnb7pmkssui"]
+
+[ext_resource type="Script" path="res://code/characters/player/player.gd" id="1_ku5m6"]
+[ext_resource type="Texture2D" uid="uid://cbl2fo7hxr3s1" path="res://assets/shapes/Triangle 2.png" id="1_kwr4d"]
+[ext_resource type="Texture2D" uid="uid://btoplwihje47e" path="res://assets/shapes/circle_gradient_hard_64.png" id="3_cv47h"]
+[ext_resource type="Script" path="res://code/characters/player/Unexister.gd" id="4_gp2m0"]
+[ext_resource type="Texture2D" uid="uid://dvjt14mkijaga" path="res://assets/shapes/circle_outline_eighth_64.png" id="4_pvgdx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acl8e"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6342a"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01w2u"]
+size = Vector2(1220, 20)
+
+[node name="Player" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_ku5m6")
+
+[node name="Pointer" type="Line2D" parent="."]
+position = Vector2(-2, 0)
+points = PackedVector2Array(0, 0, 800, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0313726, 0.380392, 0.968627, 1)
+position = Vector2(3, 0)
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_kwr4d")
+
+[node name="HitSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.0731506, 0.0731506)
+texture = ExtResource("3_cv47h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_acl8e")
+
+[node name="RamTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Unexister" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 6
+monitoring = false
+monitorable = false
+script = ExtResource("4_gp2m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Unexister"]
+shape = SubResource("CircleShape2D_6342a")
+
+[node name="BorderCheck" type="Node2D" parent="."]
+visible = false
+top_level = true
+
+[node name="+y" type="RayCast2D" parent="BorderCheck"]
+unique_name_in_owner = true
+exclude_parent = false
+target_position = Vector2(0, 18)
+metadata/_edit_lock_ = true
+
+[node name="-y" type="RayCast2D" parent="BorderCheck"]
+unique_name_in_owner = true
+exclude_parent = false
+target_position = Vector2(0, -18)
+metadata/_edit_lock_ = true
+
+[node name="+x" type="RayCast2D" parent="BorderCheck"]
+unique_name_in_owner = true
+exclude_parent = false
+target_position = Vector2(18, 0)
+hit_from_inside = true
+metadata/_edit_lock_ = true
+
+[node name="-x" type="RayCast2D" parent="BorderCheck"]
+unique_name_in_owner = true
+exclude_parent = false
+target_position = Vector2(-18, 0)
+hit_from_inside = true
+metadata/_edit_lock_ = true
+
+[node name="THEBEAM" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 6
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="THEBEAM"]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_01w2u")
+
+[node name="CooldownMeter" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.356863)
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 300.0
+value = 30.0
+fill_mode = 4
+texture_progress = ExtResource("4_pvgdx")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr3ctblmjl4t"]
+
+[ext_resource type="Script" path="res://code/Weapons/arc_cannon.gd" id="1_m5jt3"]
+
+[node name="Arc_Cannon" type="Node2D"]
+script = ExtResource("1_m5jt3")

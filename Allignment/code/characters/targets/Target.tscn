@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c23m84k8o6gbm"]
+
+[ext_resource type="Script" path="res://code/characters/targets/Enemy.gd" id="1_q6vm0"]
+[ext_resource type="Script" path="res://code/characters/targets/Weapons.gd" id="2_6hdce"]
+
+[node name="Target" type="Area2D"]
+collision_layer = 4
+monitoring = false
+monitorable = false
+script = ExtResource("1_q6vm0")
+
+[node name="WeaponControl" type="Node2D" parent="."]
+script = ExtResource("2_6hdce")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="FreezeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
