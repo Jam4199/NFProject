@@ -10,6 +10,7 @@ var SPEED = 200.0
 @onready var meter : TextureProgressBar = get_node("CooldownMeter")
 @onready var bordercheck = get_node("BorderCheck")
 @onready var unexister = get_node("Unexister")
+@onready var unexistparts : CPUParticles2D = get_node("UnexistParts")
 @onready var ramtimer : Timer = get_node("RamTimer")
 
 @onready var left : RayCast2D = get_node("%-x")
@@ -42,6 +43,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
 	meter.global_position = global_position - Vector2(32,32)
 	
 	if dead:
@@ -52,6 +54,8 @@ func _physics_process(delta: float) -> void:
 		meter.value = cooldown * 100
 		if cooldown <= 0:
 			pointer.visible = true
+			if ammo <= 0:
+				pointer.default_color = Color(0,0,255)
 	
 	if ramming:
 		var ram_velocity = Vector2(cos(global_rotation),sin(global_rotation)) * 600 * delta
@@ -103,13 +107,18 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_shoot"):
 		fire_weapon()
 
-
+var oof_this_turn := false
 
 func player_oof(bullet : Bullet):
 	if dead:
 		return
+	if oof_this_turn:
+		return
+	oof_this_turn = true
 	bullet.despawn()
 	emit_signal("oof")
+	await get_tree().create_timer(0.5,false).timeout
+	oof_this_turn = false
 	
 
 func fire_freeze():
@@ -171,7 +180,10 @@ func enemy_rammed(roadkill : Enemy):
 func kaboom():
 	enter_cooldown(2)
 	unexister.set_deferred("monitoring", true)
-	await get_tree().create_timer(5,false).timeout
+	unexistparts.emitting = true
+	await get_tree().create_timer(4,false).timeout
+	unexistparts.emitting = false
+	await get_tree().create_timer(1,false).timeout
 	unexister.set_deferred("monitoring", false)
 
 func slowo():

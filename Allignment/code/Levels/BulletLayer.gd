@@ -39,14 +39,14 @@ func spin_degrees(bullet : Bullet, delta : float):
 	var distance = bullet.origin.distance_to(bullet.global_position)
 	var start_angle = rad_to_deg(bullet.origin.angle_to(bullet.global_position))
 	var new_angle = deg_to_rad((bullet.spin_speed * delta) + start_angle)
-	bullet.global_position = bullet.origin_point + (Vector2(cos(new_angle),sin(new_angle)) * distance)
+	bullet.global_position = bullet.origin + (Vector2(cos(new_angle),sin(new_angle)) * distance)
 
 func spin_length(bullet : Bullet, delta : float):
 	var radius = bullet.origin.distance_to(bullet.global_position)
 	var current_radian = bullet.origin.angle_to(bullet.global_position)
 	var new_radian = ((bullet.spin_speed *delta) / radius) + current_radian
-	bullet.global_position = bullet.origin_point + (Vector2(cos(new_radian),sin(new_radian)) * radius)
+	bullet.global_position = bullet.origin + (Vector2(cos(new_radian),sin(new_radian)) * radius)
 
 func despawn(bullet : Bullet):
-	
+	owner.create_particle(owner.BulletDeathParticle,bullet.global_position)
 	bullet.queue_free()

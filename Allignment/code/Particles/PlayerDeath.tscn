@@ -35,25 +35,26 @@ _data = {
 
 [node name="PlayerDeath" type="CPUParticles2D"]
 emitting = false
-amount = 50
+amount = 80
+lifetime = 1.5
 one_shot = true
 explosiveness = 0.5
-lifetime_randomness = 0.2
+lifetime_randomness = 0.1
 draw_order = 1
 texture = ExtResource("1_m3gey")
 emission_shape = 1
 emission_sphere_radius = 5.0
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 100.0
+initial_velocity_min = 80.0
+initial_velocity_max = 200.0
 angular_velocity_min = -10.0
 angular_velocity_max = 10.0
 linear_accel_min = -50.0
 linear_accel_max = -50.0
 angle_max = 360.0
-scale_amount_min = 0.04
-scale_amount_max = 0.04
+scale_amount_min = 0.06
+scale_amount_max = 0.06
 scale_amount_curve = SubResource("Curve_8pm7x")
 color_ramp = SubResource("Gradient_bv885")
 

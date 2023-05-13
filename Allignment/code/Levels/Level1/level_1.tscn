@@ -25,6 +25,11 @@ point_count = 5
 
 [node name="level_1" instance=ExtResource("1_gwm4n")]
 script = ExtResource("2_mo6f6")
+s_rank = 70000.0
+a_ramk = 67000.0
+b_rank = 43500.0
+c_rank = 40000.0
+d_rank = 36000.0
 
 [node name="SpinnyOne" type="Node2D" parent="EnemyLayer" index="0"]
 unique_name_in_owner = true
@@ -106,7 +111,7 @@ script = ExtResource("9_6liev")
 [node name="Cannon" parent="EnemyLayer/LeftL/Path2D/PathFollow2D/Heart/WeaponControl" index="0" instance=ExtResource("10_sgcjn")]
 bullet_scene = ExtResource("5_tenyv")
 bullet_stack = 4
-stack_speed_gap = 20.0
+stack_speed_gap = 40.0
 speed = 300.0
 acceleration = 20.0
 min_speed = 280.0
@@ -117,6 +122,7 @@ color = Color(1, 0.572549, 0.662745, 1)
 bullet_count = 5
 arc_gap_degrees = 20.0
 bullet_scene = ExtResource("5_tenyv")
+stack_speed_gap = 40.0
 speed = 300.0
 acceleration = 20.0
 min_speed = 280.0

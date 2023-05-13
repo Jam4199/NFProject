@@ -16,7 +16,7 @@ signal bullet_made(new_bullet : Bullet)
 
 @export var spin : bool = false
 @export var origin : Vector2
-@export var spin_type : int = 0 # 0 = degrees/sec, 1 = arc length
+@export_enum("DEGREES","LENGTH") var spin_type : int = 0 # 0 = degrees/sec, 1 = arc length
 @export var spin_speed: float = 0
 	
 @export var color : Color = Color8(255,255,255,255)
@@ -29,6 +29,8 @@ func fire():
 func create_bullet(new_bullet_scene : PackedScene = bullet_scene) -> Bullet:
 	var new_bullet : Bullet = new_bullet_scene.instantiate()
 	emit_signal("bullet_made",new_bullet)
+	
+	
 	return new_bullet
 
 func fire_bullet():
@@ -44,5 +46,6 @@ func apply_mods(new_bullet : Bullet):
 	new_bullet.spin_type = spin_type
 	new_bullet.spin_speed = spin_speed
 	new_bullet.modulate = color
+	new_bullet.origin = new_bullet.global_position
 	
 	return

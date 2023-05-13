@@ -6,7 +6,7 @@ var rng := RandomNumberGenerator.new()
 func movement(delta : float):
 	
 	var pointy : PathFollow2D = get_parent()
-	pointy.progress_ratio += 0.25 * delta
+	pointy.progress += 200 * delta
 	self.look_at(owner.player.global_position)
 
 func activate():
@@ -19,13 +19,12 @@ func weapon_cycle():
 	weaponcontrol.rotation = 0
 	weaponcontrol.rotation_degrees += rng.randf_range(-5,+5)
 	fire_weapon(weapon_count)
-	await get_tree().create_timer(1.5,false).timeout
+	await get_tree().create_timer(1,false).timeout
 	weapon_count += 1
 	if weapon_count >= weaponcontrol.weapons.size():
 		weapon_count = 0
 	weapon_cycle()
 
 func enrage():
-	weaponcontrol.weapons[0].bullet_count += 2
-	weaponcontrol.weapons[0].rebuild()
+	weaponcontrol.weapons[0].bullet_stack += 1
 	return

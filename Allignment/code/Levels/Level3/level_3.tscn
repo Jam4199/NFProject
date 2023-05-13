@@ -1,0 +1,153 @@
+[gd_scene load_steps=16 format=3 uid="uid://dxor28s4ygkkx"]
+
+[ext_resource type="PackedScene" uid="uid://bfgfxx1slhm4o" path="res://code/Levels/level.tscn" id="1_74pc0"]
+[ext_resource type="Script" path="res://code/Levels/Level3/level_3.gd" id="2_egfw5"]
+[ext_resource type="PackedScene" uid="uid://csfi7ex28yyc8" path="res://code/characters/targets/star.tscn" id="2_m6gx8"]
+[ext_resource type="PackedScene" uid="uid://df0altrj7m2dy" path="res://code/Weapons/circle_cannon.tscn" id="4_ajvjb"]
+[ext_resource type="Script" path="res://code/Levels/Level3/triangle.gd" id="4_nmxoj"]
+[ext_resource type="PackedScene" uid="uid://b46fwu01xp0lt" path="res://code/Bullets/small_round.tscn" id="5_724ry"]
+[ext_resource type="PackedScene" uid="uid://dr3ctblmjl4t" path="res://code/Weapons/arc_cannon.tscn" id="6_qey2y"]
+[ext_resource type="PackedScene" uid="uid://dcu3ssopsft1" path="res://code/characters/targets/Heart.tscn" id="7_e5ufu"]
+[ext_resource type="Script" path="res://code/Levels/Level3/bottomright.gd" id="8_ve7ik"]
+[ext_resource type="Script" path="res://code/Levels/Level3/rectystar.gd" id="9_bmo0l"]
+[ext_resource type="PackedScene" uid="uid://dv0766djpl0yb" path="res://code/characters/targets/Square.tscn" id="11_fy1qm"]
+[ext_resource type="Script" path="res://code/Levels/Level3/Squarebro.gd" id="12_ol106"]
+
+[sub_resource type="Curve2D" id="Curve2D_8h2w6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 150, -150, 0, 0, 0, 0, -200, 200, 0, 0, 0, 0, -200, -150, 0, 0, 0, 0, 150, -150)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_hmrvy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 225, 240, 0, 0, 0, 0, -125, -135, 0, 0, 0, 0, 225, 240)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_wesf0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, -35, 0, 0, 0, 0, -200, -35, 0, 0, 0, 0, -200, 85, 0, 0, 0, 0, 200, 85, 0, 0, 0, 0, 200, -35)
+}
+point_count = 5
+
+[node name="level_3" instance=ExtResource("1_74pc0")]
+script = ExtResource("2_egfw5")
+s_rank = 116000.0
+a_ramk = 110000.0
+b_rank = 72500.0
+c_rank = 66000.0
+d_rank = 60000.0
+
+[node name="triangle" type="Path2D" parent="EnemyLayer" index="0"]
+unique_name_in_owner = true
+position = Vector2(400, -400)
+curve = SubResource("Curve2D_8h2w6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyLayer/triangle" index="0"]
+position = Vector2(150, -150)
+rotation = 2.35619
+
+[node name="DrunkStar" parent="EnemyLayer/triangle/PathFollow2D" index="0" instance=ExtResource("2_m6gx8")]
+script = ExtResource("4_nmxoj")
+
+[node name="circle_cannon2" parent="EnemyLayer/triangle/PathFollow2D/DrunkStar/WeaponControl" index="0" instance=ExtResource("4_ajvjb")]
+rotation = -2.35619
+radius = 2.0
+points = 6
+point_direction = 1
+bullet_scene = ExtResource("5_724ry")
+bullet_stack = 2
+stack_speed_gap = 50.0
+acceleration = 20.0
+min_speed = 50.0
+max_speed = 100
+color = Color(1, 1, 0, 1)
+
+[node name="bottomright" type="Path2D" parent="EnemyLayer" index="1"]
+unique_name_in_owner = true
+position = Vector2(400, 200)
+curve = SubResource("Curve2D_hmrvy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyLayer/bottomright" index="0"]
+position = Vector2(225, 240)
+rotation = -2.32173
+
+[node name="Heart" parent="EnemyLayer/bottomright/PathFollow2D" index="0" instance=ExtResource("7_e5ufu")]
+script = ExtResource("8_ve7ik")
+
+[node name="circle_cannon" parent="EnemyLayer/bottomright/PathFollow2D/Heart/WeaponControl" index="0" instance=ExtResource("4_ajvjb")]
+radius = 5.0
+bullet_scene = ExtResource("5_724ry")
+acceleration = 50.0
+max_speed = 150
+color = Color(1, 0.572549, 0.662745, 1)
+
+[node name="recty" type="Path2D" parent="EnemyLayer" index="2"]
+unique_name_in_owner = true
+position = Vector2(-700, 0)
+curve = SubResource("Curve2D_wesf0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyLayer/recty" index="0"]
+position = Vector2(200, -35)
+rotation = 3.14159
+
+[node name="Heart" parent="EnemyLayer/recty/PathFollow2D" index="0" instance=ExtResource("7_e5ufu")]
+script = ExtResource("8_ve7ik")
+
+[node name="circle_cannon" parent="EnemyLayer/recty/PathFollow2D/Heart/WeaponControl" index="0" instance=ExtResource("4_ajvjb")]
+bullet_scene = ExtResource("5_724ry")
+speed = 200.0
+min_speed = 200.0
+max_speed = 200
+color = Color(1, 0.572549, 0.662745, 1)
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="EnemyLayer/recty" index="1"]
+position = Vector2(0, -35)
+rotation = 3.14159
+progress = 200.0
+
+[node name="DrunkStar" parent="EnemyLayer/recty/PathFollow2D2" index="0" instance=ExtResource("2_m6gx8")]
+script = ExtResource("9_bmo0l")
+
+[node name="circle_cannon" parent="EnemyLayer/recty/PathFollow2D2/DrunkStar/WeaponControl" index="0" instance=ExtResource("4_ajvjb")]
+radius = 2.0
+points = 24
+point_direction = 1
+bullet_scene = ExtResource("5_724ry")
+speed = 50.0
+acceleration = 20.0
+max_speed = 300
+color = Color(1, 1, 0, 1)
+
+[node name="Arc_Cannon" parent="EnemyLayer/recty/PathFollow2D2/DrunkStar/WeaponControl" index="1" instance=ExtResource("6_qey2y")]
+bullet_count = 9
+bullet_scene = ExtResource("5_724ry")
+stack_speed_gap = 40.0
+acceleration = 20.0
+max_speed = 300
+color = Color(1, 1, 0, 1)
+
+[node name="Circle" type="Node2D" parent="EnemyLayer" index="3"]
+unique_name_in_owner = true
+position = Vector2(120, 420)
+
+[node name="Quad" parent="EnemyLayer/Circle" index="0" instance=ExtResource("11_fy1qm")]
+position = Vector2(100, 0)
+script = ExtResource("12_ol106")
+
+[node name="WeaponControl" parent="EnemyLayer/Circle/Quad" index="2"]
+rotation = 3.92699
+
+[node name="Arc_Cannon" parent="EnemyLayer/Circle/Quad/WeaponControl" index="0" instance=ExtResource("6_qey2y")]
+bullet_count = 12
+point_direction = 1
+bullet_scene = ExtResource("5_724ry")
+max_speed = 150
+color = Color(0.101961, 0.8, 0.337255, 1)
+
+[editable path="EnemyLayer/triangle/PathFollow2D/DrunkStar"]
+[editable path="EnemyLayer/bottomright/PathFollow2D/Heart"]
+[editable path="EnemyLayer/recty/PathFollow2D/Heart"]
+[editable path="EnemyLayer/recty/PathFollow2D2/DrunkStar"]
+[editable path="EnemyLayer/Circle/Quad"]

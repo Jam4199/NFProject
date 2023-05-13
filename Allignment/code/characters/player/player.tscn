@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvtnb7pmkssui"]
+[gd_scene load_steps=11 format=3 uid="uid://cvtnb7pmkssui"]
 
 [ext_resource type="Script" path="res://code/characters/player/player.gd" id="1_ku5m6"]
 [ext_resource type="Texture2D" uid="uid://cbl2fo7hxr3s1" path="res://assets/shapes/Triangle 2.png" id="1_kwr4d"]
@@ -6,11 +6,19 @@
 [ext_resource type="Script" path="res://code/characters/player/Unexister.gd" id="4_gp2m0"]
 [ext_resource type="Texture2D" uid="uid://dvjt14mkijaga" path="res://assets/shapes/circle_outline_eighth_64.png" id="4_pvgdx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_acl8e"]
-radius = 2.0
+[sub_resource type="Curve" id="Curve_8pm7x"]
+_data = [Vector2(0, 0.172727), 0.0, 4.10795, 0, 0, Vector2(0.246888, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.31597, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_bv885"]
+offsets = PackedFloat32Array(0, 0.620843, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6342a"]
 radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acl8e"]
+radius = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01w2u"]
 size = Vector2(1220, 20)
@@ -20,6 +28,41 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_ku5m6")
+
+[node name="UnexistParts" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+lifetime_randomness = 0.2
+local_coords = true
+draw_order = 1
+texture = ExtResource("1_kwr4d")
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+linear_accel_min = -50.0
+linear_accel_max = -50.0
+angle_max = 360.0
+scale_amount_min = 0.04
+scale_amount_max = 0.04
+scale_amount_curve = SubResource("Curve_8pm7x")
+color_ramp = SubResource("Gradient_bv885")
+
+[node name="Unexister" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 6
+monitoring = false
+monitorable = false
+script = ExtResource("4_gp2m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Unexister"]
+shape = SubResource("CircleShape2D_6342a")
 
 [node name="Pointer" type="Line2D" parent="."]
 position = Vector2(-2, 0)
@@ -44,17 +87,6 @@ shape = SubResource("CircleShape2D_acl8e")
 
 [node name="RamTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="Unexister" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 6
-monitoring = false
-monitorable = false
-script = ExtResource("4_gp2m0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Unexister"]
-shape = SubResource("CircleShape2D_6342a")
 
 [node name="BorderCheck" type="Node2D" parent="."]
 visible = false

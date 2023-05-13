@@ -1,8 +1,20 @@
 extends Node2D
 class_name Level
 
+@export_group("Scores")
+@export var s_rank : float = 0
+@export var a_ramk : float = 0
+@export var b_rank : float = 0
+@export var c_rank : float = 0
+@export var d_rank : float = 0
+
+
+
+
+
 const EnemyDeathParticle = preload("res://code/Particles/EnemyDeath.tscn")
 const PlayerDeathParticle = preload("res://code/Particles/PlayerDeath.tscn")
+const BulletDeathParticle = preload("res://code/Particles/BulletDeath.tscn")
 
 const KillBeam = preload("res://code/BOOLET.tscn")
 const FreezeBeam = preload("res://code/FUREEZ.tscn")
@@ -23,6 +35,7 @@ var remaining_enemies : int
 @onready var wavetimertext = get_node("%TimeText")
 @onready var wavetimer = get_node("%Timer")
 @onready var enemycounter = get_node("%EnemyCounter")
+@onready var scorecounter = get_node("%ScoreCounter")
 
 @onready var endscore = get_node("%EndScore")
 @onready var enemyscore = get_node("%EnemyScore")
@@ -30,12 +43,13 @@ var remaining_enemies : int
 @onready var ammoscore = get_node("%AmmoMultiplier")
 @onready var lifescore = get_node("%LifeMultiplier")
 @onready var finalscore = get_node("%FinalScore")
+@onready var finalrank = get_node("%FinalRank")
 @onready var returner : Button = get_node("%Return")
 
 var targetkills : int = 0
 var bulletkills : int = 0
 
-
+var current_score: float = 0
 
 signal game_over
 var game_over_queued := false
@@ -72,10 +86,14 @@ func weapon_fired(victims : Array):
 	for victim in victims:
 		if victim is Bullet:
 			bulletkills += 1
+			current_score += 100
+			update_score()
 			victim.despawn()
 			
 		elif victim is Enemy:
 			if victim.dead:
+				continue
+			if victim.shielded:
 				continue
 			var new_particle = EnemyDeathParticle.instantiate()
 			particlelayer.add_child(new_particle)
@@ -88,6 +106,8 @@ func weapon_fired(victims : Array):
 
 func rammed(roadkill : Enemy):
 	if roadkill.dead:
+		return
+	if roadkill.shielded:
 		return
 	var new_particle = EnemyDeathParticle.instantiate()
 	particlelayer.add_child(new_particle)
@@ -118,6 +138,7 @@ func player_oof():
 	lives -= 1
 	get_node("%LifeCounter").text = str(lives)
 	if lives == 0:
+		create_particle(PlayerDeathParticle,player.global_position)
 		player.die()
 		
 		await get_tree().create_timer(3,false).timeout
@@ -130,12 +151,17 @@ func bullet_made(new_bullet : Bullet):
 
 func target_killed(target : Enemy):
 	targetkills += 1
+	current_score += 10000
+	update_score()
 	create_particle(EnemyDeathParticle, target.global_position)
 	target.die()
 	remaining_enemies -= 1
 	update_enemycounter()
 	if remaining_enemies == 0:
 		victory()
+
+func update_score():
+	scorecounter.text = str(current_score)
 
 func update_enemycounter():
 	enemycounter.text = str(remaining_enemies)
@@ -156,8 +182,9 @@ func show_endcard():
 	bulletscore.text = "[right]" + str(bulletkills * 100) + "[/right]"
 	ammoscore.text = "[right]" + str(100 + (ammo * 20)) + "%[/right]"
 	lifescore.text = "[right]" + str(100 + (lives * 20)) + "%[/right]"
-	finalscore.text = "[right]" + str(((targetkills * 10000) + (bulletkills * 100)) * (1 + (ammo * 0.2)) * (1 + (lives * 0.2))) + "[/right]"
-	
+	var final : float = ((targetkills * 10000) + (bulletkills * 100)) * (1 + (ammo * 0.2)) * (1 + (lives * 0.2))
+	finalscore.text = "[right]" + str(final) + "[/right]"
+	finalrank.text = "[right]" + check_rank(final) +"[/right]"
 	
 	
 	var endcard :Tween = create_tween()
@@ -165,6 +192,19 @@ func show_endcard():
 	await get_tree().create_timer(2,false).timeout
 	returner.visible = true
 	
+
+func check_rank(final : float) -> String:
+	if final >= s_rank:
+		return "SSS"
+	if final >= a_ramk:
+		return "SS"
+	if final >= b_rank:
+		return "S"
+	if final >= c_rank:
+		return "A"
+	if final >= d_rank:
+		return "B"
+	return "C"
 
 func exit_level():
 	emit_signal("game_over")

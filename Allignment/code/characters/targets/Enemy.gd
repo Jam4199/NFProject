@@ -6,6 +6,7 @@ var player : Area2D
 
 var enabled : bool = false
 var dead : bool = false
+var shielded : bool = true
 @onready var notifier : VisibleOnScreenNotifier2D = get_node("VisibleOnScreenNotifier2D")
 @onready var freezetimer : Timer = get_node("%FreezeTimer")
 @onready var weaponcontrol : WeaponControl = get_node("WeaponControl")
@@ -33,6 +34,7 @@ func entered():
 	set_deferred("monitorable", true)
 	enabled = true
 	print("enable")
+	shield_drain()
 	activate()
 
 func die():
@@ -41,6 +43,12 @@ func die():
 	enabled = false
 	set_deferred("monitorable", false)
 	return
+
+func shield_drain():
+	await get_tree().create_timer(15,false).timeout
+	shielded = false
+	get_node("Shield").visible = false
+
 
 
 func freeze():

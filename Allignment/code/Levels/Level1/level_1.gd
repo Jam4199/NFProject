@@ -19,8 +19,8 @@ func start():
 	leftrighty.parallel().tween_property(righty, "position", Vector2(40,-40) ,2)
 	leftrighty.parallel().tween_property(lefty, "position", Vector2(-40,40) ,2)
 	
-	wavetimertext.text = "Speed UP"
-	wavetimer.start(10)
+	wavetimertext.text = "DANGER! :"
+	wavetimer.start(30)
 	
 	await wavetimer.timeout
 	for enemy in get_tree().get_nodes_in_group("Enemies"):

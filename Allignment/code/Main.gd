@@ -7,7 +7,10 @@ extends Node
 var current_level : Level
 
 var level_list : Array = [
-	"res://code/Levels/Level1/level_1.tscn"
+	"res://code/Levels/Level1/level_1.tscn",
+	"res://code/Levels/Level2/level_2.tscn",
+	"res://code/Levels/Level3/level_3.tscn",
+	"res://code/Levels/Level4/level_4.tscn"
 ]
 
 

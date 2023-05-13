@@ -1,23 +1,24 @@
 extends Enemy
 
 var weapon_count : int = 0
-var rng := RandomNumberGenerator.new()
 
 func movement(delta : float):
 	
-	var pointy : PathFollow2D = get_parent()
-	pointy.progress_ratio += 0.25 * delta
-	self.look_at(owner.player.global_position)
+	var current_degree = rad_to_deg(position.normalized().angle())
+	var new_radian = deg_to_rad(current_degree + (30 * delta))
+	var new_position = Vector2(cos(new_radian),sin(new_radian)) * position.distance_to(Vector2(0,0))
+	position = new_position
+	return
 
 func activate():
-	await get_tree().create_timer(2,false).timeout
+	await get_tree().create_timer(2.0,false).timeout
 	weapon_cycle()
+	return
 
 func weapon_cycle():
 	if dead:
 		return
-	weaponcontrol.rotation = 0
-	weaponcontrol.rotation_degrees += rng.randf_range(-5,+5)
+		
 	fire_weapon(weapon_count)
 	await get_tree().create_timer(1.5,false).timeout
 	weapon_count += 1
