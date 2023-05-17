@@ -8,6 +8,7 @@ extends Control
 
 var level_select : int = 1
 var away : bool = false
+var enabled : bool = true
 signal start_game(level : int)
 
 func _ready() -> void:
@@ -33,6 +34,7 @@ func level_right():
 	update_text()
 
 func start_level():
+	
 	if away:
 		return
 	emit_signal("start_game", level_select)

@@ -54,6 +54,7 @@ var current_score: float = 0
 signal game_over
 var game_over_queued := false
 var game_won := false
+signal retry_level
 
 func add_target(new_target : Area2D):
 	targets.append(new_target)
@@ -209,6 +210,8 @@ func check_rank(final : float) -> String:
 func exit_level():
 	emit_signal("game_over")
 
+func retry():
+	emit_signal("retry_level")
 
 func start():
 	return

@@ -75,11 +75,13 @@ stack_speed_gap = 100.0
 acceleration = 100.0
 min_speed = 0.0
 max_speed = 200
+color = Color(1, 1, 0, 1)
 
 [node name="Multi_Cannon" parent="EnemyLayer/og/PathFollow2D/DrunkStar/WeaponControl" index="2" instance=ExtResource("6_hqeh2")]
 cannons = 3
 cannon_gap = 15.0
 bullet_scene = ExtResource("4_30s3f")
+color = Color(1, 1, 0, 1)
 
 [node name="copy" type="Path2D" parent="EnemyLayer" index="1"]
 unique_name_in_owner = true
@@ -119,11 +121,13 @@ stack_speed_gap = 100.0
 acceleration = 100.0
 min_speed = 0.0
 max_speed = 200
+color = Color(1, 1, 0, 1)
 
 [node name="Multi_Cannon" parent="EnemyLayer/copy/PathFollow2D/DrunkStar/WeaponControl" index="2" instance=ExtResource("6_hqeh2")]
 cannons = 3
 cannon_gap = 15.0
 bullet_scene = ExtResource("4_30s3f")
+color = Color(1, 1, 0, 1)
 
 [node name="vert" type="Path2D" parent="EnemyLayer" index="2"]
 unique_name_in_owner = true

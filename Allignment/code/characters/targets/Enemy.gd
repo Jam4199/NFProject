@@ -10,8 +10,11 @@ var shielded : bool = true
 @onready var notifier : VisibleOnScreenNotifier2D = get_node("VisibleOnScreenNotifier2D")
 @onready var freezetimer : Timer = get_node("%FreezeTimer")
 @onready var weaponcontrol : WeaponControl = get_node("WeaponControl")
+@onready var shootparts : CPUParticles2D = get_node("ShootParts2")
 
 func _ready() -> void:
+	if has_node("Sprite2D"):
+		shootparts.modulate = get_node("Sprite2D").modulate
 	if owner != null:
 		weaponcontrol.connect("bullet_made", Callable(owner, "bullet_made"))
 	notifier.connect("screen_entered", Callable(self,"entered"))
@@ -28,7 +31,10 @@ func _physics_process(delta: float) -> void:
 	movement(delta)
 
 func fire_weapon(slot : int = 0):
+	shootparts.emitting = true
+	await get_tree().create_timer(0.3).timeout
 	weaponcontrol.fire_weapon(slot)
+	shootparts.emitting = false
 
 func entered():
 	set_deferred("monitorable", true)
@@ -45,7 +51,9 @@ func die():
 	return
 
 func shield_drain():
-	await get_tree().create_timer(15,false).timeout
+	await get_tree().create_timer(10,false).timeout
+	get_node("%ShieldBlinker").play("default")
+	await get_tree().create_timer(5,false).timeout
 	shielded = false
 	get_node("Shield").visible = false
 

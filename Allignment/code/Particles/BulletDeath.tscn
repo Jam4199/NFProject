@@ -20,7 +20,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -35,9 +35,7 @@ _data = {
 
 [node name="BulletDeath" type="CPUParticles2D"]
 emitting = false
-amount = 5
-lifetime = 0.5
-one_shot = true
+amount = 10
 explosiveness = 1.0
 lifetime_randomness = 0.2
 draw_order = 1
@@ -46,15 +44,15 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 15.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
 angular_velocity_min = -10.0
 angular_velocity_max = 10.0
-linear_accel_min = -50.0
-linear_accel_max = -50.0
+linear_accel_min = -10.0
+linear_accel_max = -10.0
 angle_max = 360.0
-scale_amount_min = 0.02
-scale_amount_max = 0.02
+scale_amount_min = 0.06
+scale_amount_max = 0.06
 scale_amount_curve = SubResource("Curve_8pm7x")
 color_ramp = SubResource("Gradient_bv885")
 

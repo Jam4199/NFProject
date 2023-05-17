@@ -6,6 +6,7 @@ class_name Bullet
 var fired : bool = false
 var queue_despawn : bool = false
 
+var lifetime : float = 10
 var speed : float = 100 #pixel/s
 var curve : float = 0   #degrees/sec
 var acceleration : float = 0 #speed/s
@@ -20,9 +21,9 @@ var spin_cap : float = 30
 var spin_rising : float = 0
 
 func _ready():
-	get_node("VisibleOnScreenNotifier2D").connect("screen_exited", Callable(self,"despawn"))
-	#if get_node("VisibleOnScreenNotifier2D").is_on_screen() == false:
-	#	despawn()
+	
+	pass
+
 
 func despawn():
 	set_deferred("monitorable", false)

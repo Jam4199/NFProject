@@ -7,7 +7,7 @@ var speedmult : float = 1
 func movement(delta : float):
 	
 	var pointy : PathFollow2D = get_parent()
-	pointy.progress += 200 * (1/speedmult) * delta
+	pointy.progress += 120 * (1/speedmult) * delta
 	self.look_at(owner.player.global_position)
 
 func activate():
@@ -29,7 +29,7 @@ func weapon_cycle():
 	
 	
 	fire_weapon(weapon_count)
-	await get_tree().create_timer(0.5 * speedmult,false).timeout
+	await get_tree().create_timer(0.8 * speedmult,false).timeout
 	weapon_count += 1
 	if weapon_count >= weaponcontrol.weapons.size():
 		weapon_count = 0

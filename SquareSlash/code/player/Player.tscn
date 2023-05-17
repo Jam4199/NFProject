@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://stkmpkr1bomm"]
+
+[ext_resource type="Texture2D" uid="uid://dq0goq32w386c" path="res://assets/shapes/square_64.png" id="1_mlmdc"]
+[ext_resource type="Texture2D" uid="uid://cef7k00py5735" path="res://assets/shapes/square_outline_quarter_64.png" id="2_b28wx"]
+[ext_resource type="Script" path="res://code/components/HitboxComponent.gd" id="3_rwggc"]
+[ext_resource type="Script" path="res://code/components/HealthComponent.gd" id="4_i1owk"]
+[ext_resource type="Script" path="res://code/components/MovementControl.gd" id="5_570af"]
+[ext_resource type="Script" path="res://code/components/PlayerControl.gd" id="6_gtav4"]
+[ext_resource type="Script" path="res://code/player/MovementPrecollision.gd" id="6_n6cqv"]
+[ext_resource type="Script" path="res://code/player/WeaponControl.gd" id="7_otx7o"]
+[ext_resource type="Script" path="res://code/player/UpgradeSystem.gd" id="9_np0vd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evrsm"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn3fg"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqcf2"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cya5k"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqdhk"]
+size = Vector2(60, 60)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="SpriteGroup" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteGroup"]
+self_modulate = Color(0.431373, 0.823529, 0.913725, 1)
+texture = ExtResource("1_mlmdc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpriteGroup"]
+self_modulate = Color(0.054902, 0.372549, 0.901961, 1)
+texture = ExtResource("2_b28wx")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+script = ExtResource("3_rwggc")
+
+[node name="LargeShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_evrsm")
+
+[node name="MidShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_qn3fg")
+
+[node name="SmallShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_fqcf2")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_i1owk")
+
+[node name="MovementControl" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("5_570af")
+base_movement_speed = 200.0
+character = NodePath("..")
+
+[node name="MovementPrecollision" type="Node2D" parent="." node_paths=PackedStringArray("playercontrol")]
+visible = false
+script = ExtResource("6_n6cqv")
+playercontrol = NodePath("../PlayerControl")
+
+[node name="+x" type="ShapeCast2D" parent="MovementPrecollision"]
+shape = SubResource("RectangleShape2D_cya5k")
+target_position = Vector2(4, 0)
+
+[node name="-x" type="ShapeCast2D" parent="MovementPrecollision"]
+shape = SubResource("RectangleShape2D_cya5k")
+target_position = Vector2(-4, 0)
+
+[node name="+y" type="ShapeCast2D" parent="MovementPrecollision"]
+shape = SubResource("RectangleShape2D_cya5k")
+target_position = Vector2(0, 4)
+
+[node name="-y" type="ShapeCast2D" parent="MovementPrecollision"]
+shape = SubResource("RectangleShape2D_cya5k")
+target_position = Vector2(0, -4)
+
+[node name="PlayerControl" type="Node2D" parent="." node_paths=PackedStringArray("movementcontrol", "weaponcontrol")]
+script = ExtResource("6_gtav4")
+movementcontrol = NodePath("../MovementControl")
+weaponcontrol = NodePath("../WeaponControl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_gqdhk")
+
+[node name="WeaponControl" type="Node2D" parent="."]
+script = ExtResource("7_otx7o")
+
+[node name="UpgradeSystem" type="Node2D" parent="."]
+script = ExtResource("9_np0vd")

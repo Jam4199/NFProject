@@ -19,7 +19,7 @@ func activate():
 func weapon_cycle():
 	if dead:
 		return
-	look_at(player.global_position)
+	weaponcontrol.look_at(owner.player.global_position)
 	fire_weapon(weapon_count)
 	rotation = 0
 	weapon_count += 1

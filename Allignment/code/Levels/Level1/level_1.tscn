@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6tajuw2aqt8u"]
+[gd_scene load_steps=16 format=3 uid="uid://6tajuw2aqt8u"]
 
 [ext_resource type="PackedScene" uid="uid://bfgfxx1slhm4o" path="res://code/Levels/level.tscn" id="1_gwm4n"]
 [ext_resource type="Script" path="res://code/Levels/Level1/level_1.gd" id="2_mo6f6"]
@@ -7,9 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://df0altrj7m2dy" path="res://code/Weapons/circle_cannon.tscn" id="4_q2c48"]
 [ext_resource type="PackedScene" uid="uid://b46fwu01xp0lt" path="res://code/Bullets/small_round.tscn" id="5_tenyv"]
 [ext_resource type="PackedScene" uid="uid://dr3ctblmjl4t" path="res://code/Weapons/arc_cannon.tscn" id="7_ue5gg"]
+[ext_resource type="Texture2D" uid="uid://dvjt14mkijaga" path="res://assets/shapes/circle_outline_eighth_64.png" id="8_5oyot"]
 [ext_resource type="PackedScene" uid="uid://dcu3ssopsft1" path="res://code/characters/targets/Heart.tscn" id="8_k52vr"]
 [ext_resource type="Script" path="res://code/Levels/Level1/LeftRight.gd" id="9_6liev"]
 [ext_resource type="PackedScene" uid="uid://dehy6hawgn4yq" path="res://code/Weapons/cannon.tscn" id="10_sgcjn"]
+
+[sub_resource type="Curve" id="Curve_8pm7x"]
+_data = [Vector2(0, 0.172727), 0.0, 4.10795, 0, 0, Vector2(0.246888, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.31597, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_bv885"]
+offsets = PackedFloat32Array(0, 0.620843, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Curve2D" id="Curve2D_pn0ha"]
 _data = {
@@ -59,6 +68,29 @@ acceleration = 20.0
 max_speed = 300
 color = Color(1, 1, 0, 1)
 
+[node name="ShootParts" parent="EnemyLayer/SpinnyOne/DrunkStar" index="6"]
+emitting = false
+amount = 10
+lifetime = 0.5
+explosiveness = 1.0
+lifetime_randomness = 0.2
+local_coords = true
+draw_order = 1
+texture = ExtResource("8_5oyot")
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+linear_accel_min = -10.0
+linear_accel_max = -10.0
+radial_accel_min = -250.0
+radial_accel_max = -250.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8pm7x")
+color_ramp = SubResource("Gradient_bv885")
+
 [node name="RightL" type="Node2D" parent="EnemyLayer" index="1"]
 unique_name_in_owner = true
 position = Vector2(440, -40)
@@ -92,6 +124,29 @@ acceleration = 20.0
 min_speed = 280.0
 max_speed = 340
 color = Color(1, 0.572549, 0.662745, 1)
+
+[node name="ShootParts" parent="EnemyLayer/RightL/Path2D/PathFollow2D/Heart" index="6"]
+emitting = false
+amount = 10
+lifetime = 0.5
+explosiveness = 1.0
+lifetime_randomness = 0.2
+local_coords = true
+draw_order = 1
+texture = ExtResource("8_5oyot")
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+linear_accel_min = -10.0
+linear_accel_max = -10.0
+radial_accel_min = -250.0
+radial_accel_max = -250.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8pm7x")
+color_ramp = SubResource("Gradient_bv885")
 
 [node name="LeftL" type="Node2D" parent="EnemyLayer" index="2"]
 unique_name_in_owner = true
@@ -128,6 +183,29 @@ acceleration = 20.0
 min_speed = 280.0
 max_speed = 340
 color = Color(1, 0.572549, 0.662745, 1)
+
+[node name="ShootParts" parent="EnemyLayer/LeftL/Path2D/PathFollow2D/Heart" index="6"]
+emitting = false
+amount = 10
+lifetime = 0.5
+explosiveness = 1.0
+lifetime_randomness = 0.2
+local_coords = true
+draw_order = 1
+texture = ExtResource("8_5oyot")
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+linear_accel_min = -10.0
+linear_accel_max = -10.0
+radial_accel_min = -250.0
+radial_accel_max = -250.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8pm7x")
+color_ramp = SubResource("Gradient_bv885")
 
 [editable path="EnemyLayer/SpinnyOne/DrunkStar"]
 [editable path="EnemyLayer/RightL/Path2D/PathFollow2D/Heart"]

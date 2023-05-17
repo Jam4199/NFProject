@@ -36,10 +36,13 @@ func _physics_process(delta: float) -> void:
 
 
 func spin_degrees(bullet : Bullet, delta : float):
+	if bullet.spin_rising > bullet.spin_cap:
+		return
 	var distance = bullet.origin.distance_to(bullet.global_position)
 	var start_angle = rad_to_deg(bullet.origin.angle_to(bullet.global_position))
 	var new_angle = deg_to_rad((bullet.spin_speed * delta) + start_angle)
 	bullet.global_position = bullet.origin + (Vector2(cos(new_angle),sin(new_angle)) * distance)
+	bullet.spin_rising += (abs(bullet.spin_speed) * delta)
 
 func spin_length(bullet : Bullet, delta : float):
 	var radius = bullet.origin.distance_to(bullet.global_position)

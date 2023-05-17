@@ -181,13 +181,17 @@ func kaboom():
 	enter_cooldown(2)
 	unexister.set_deferred("monitoring", true)
 	unexistparts.emitting = true
+	get_node("Shield").visible = true
+	get_node("%ShieldBlinker").play("default")
 	await get_tree().create_timer(4,false).timeout
 	unexistparts.emitting = false
 	await get_tree().create_timer(1,false).timeout
+	get_node("Shield").visible = false
 	unexister.set_deferred("monitoring", false)
 
 func slowo():
 	SPEED *= 0.999
 	if SPEED < 100:
 		SPEED = 50
+	
 	

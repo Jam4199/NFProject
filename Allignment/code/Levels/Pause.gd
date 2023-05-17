@@ -3,6 +3,7 @@ extends Control
 func _ready() -> void:
 	get_node("%Unpause").connect("pressed", Callable(self,"unpause_game"))
 	get_node("%PauseReturn").connect("pressed", Callable(self, "quit_level"))
+	get_node("%Retry").connect("pressed", Callable(self,"retry"))
 
 func _process(delta: float) -> void:
 	
@@ -24,3 +25,8 @@ func unpause_game():
 func quit_level():
 	get_tree().paused = false
 	owner.emit_signal("game_over")
+
+func retry():
+	get_tree().paused = false
+	owner.emit_signal("retry_level")
+
