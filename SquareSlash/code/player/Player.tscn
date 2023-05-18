@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://stkmpkr1bomm"]
+[gd_scene load_steps=20 format=3 uid="uid://c1bwdc3aesej2"]
 
 [ext_resource type="Texture2D" uid="uid://dq0goq32w386c" path="res://assets/shapes/square_64.png" id="1_mlmdc"]
 [ext_resource type="Texture2D" uid="uid://cef7k00py5735" path="res://assets/shapes/square_outline_quarter_64.png" id="2_b28wx"]
@@ -7,8 +7,13 @@
 [ext_resource type="Script" path="res://code/components/MovementControl.gd" id="5_570af"]
 [ext_resource type="Script" path="res://code/components/PlayerControl.gd" id="6_gtav4"]
 [ext_resource type="Script" path="res://code/player/MovementPrecollision.gd" id="6_n6cqv"]
-[ext_resource type="Script" path="res://code/player/WeaponControl.gd" id="7_otx7o"]
+[ext_resource type="Script" path="res://code/player/Weapons/WeaponControl.gd" id="8_a0kb0"]
 [ext_resource type="Script" path="res://code/player/UpgradeSystem.gd" id="9_np0vd"]
+[ext_resource type="Script" path="res://code/player/Weapons/idle.gd" id="9_xnm8r"]
+[ext_resource type="Script" path="res://code/player/Weapons/melee.gd" id="10_gq50y"]
+[ext_resource type="Script" path="res://code/player/Weapons/ranged.gd" id="11_1n7lf"]
+[ext_resource type="Script" path="res://code/player/Weapons/Sord.gd" id="12_1mgqx"]
+[ext_resource type="Script" path="res://code/player/Weapons/Gan.gd" id="13_kknli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evrsm"]
 size = Vector2(64, 64)
@@ -90,7 +95,24 @@ visible = false
 shape = SubResource("RectangleShape2D_gqdhk")
 
 [node name="WeaponControl" type="Node2D" parent="."]
-script = ExtResource("7_otx7o")
+script = ExtResource("8_a0kb0")
+
+[node name="States" type="Node2D" parent="WeaponControl"]
+
+[node name="idle" type="Node2D" parent="WeaponControl/States"]
+script = ExtResource("9_xnm8r")
+
+[node name="melee" type="Node2D" parent="WeaponControl/States"]
+script = ExtResource("10_gq50y")
+
+[node name="ranged" type="Node2D" parent="WeaponControl/States"]
+script = ExtResource("11_1n7lf")
+
+[node name="Sord" type="Node2D" parent="WeaponControl"]
+script = ExtResource("12_1mgqx")
+
+[node name="Gan" type="Node2D" parent="WeaponControl"]
+script = ExtResource("13_kknli")
 
 [node name="UpgradeSystem" type="Node2D" parent="."]
 script = ExtResource("9_np0vd")
