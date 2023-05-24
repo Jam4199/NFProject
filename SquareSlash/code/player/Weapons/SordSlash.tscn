@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi7ki16m5wf26"]
+
+[ext_resource type="Script" path="res://code/player/Weapons/SordSlash.gd" id="1_q2u47"]
+[ext_resource type="Texture2D" uid="uid://ddxvpqtwlhpl8" path="res://assets/shapes/dingbats-481.png" id="2_mcg7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aaex"]
+size = Vector2(95, 100)
+
+[node name="SordSlash" type="Area2D"]
+monitoring = false
+monitorable = false
+script = ExtResource("1_q2u47")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_mcg7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5aaex")
