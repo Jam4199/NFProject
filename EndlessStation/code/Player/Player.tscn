@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://bspu2cge3ttpm"]
+
+[ext_resource type="PackedScene" uid="uid://byomfkiwp83ug" path="res://code/Components/CardinalCheck/CardinalCheck.tscn" id="1_5wy0r"]
+[ext_resource type="Script" path="res://code/Player/PlayerHitBox.gd" id="1_ogdtm"]
+[ext_resource type="Texture2D" uid="uid://c4mqrs4tqy1f2" path="res://assets/Default/station_C.png" id="1_ujd8q"]
+[ext_resource type="Script" path="res://code/Components/MovementControl.gd" id="3_sohby"]
+[ext_resource type="Script" path="res://code/Components/playercontrol.gd" id="4_ye15j"]
+[ext_resource type="Script" path="res://code/Components/weaponcontroller.gd" id="5_4up3m"]
+[ext_resource type="Script" path="res://code/Player/Weapons/Guns.gd" id="7_wokyo"]
+[ext_resource type="PackedScene" uid="uid://drkk64yf5vb2o" path="res://code/Fusion/GunParts/MainBeam.tscn" id="8_m66m5"]
+[ext_resource type="Script" path="res://code/Player/UpgradeManager.gd" id="9_prvsf"]
+[ext_resource type="Script" path="res://code/Components/HealthComponent.gd" id="10_hgwpq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2arcp"]
+radius = 15.0
+
+[node name="Player" type="Area2D"]
+
+[node name="Attachments" type="Node2D" parent="."]
+
+[node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("manager", "damage_reciever")]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_ogdtm")
+manager = NodePath("../UpgradeManager")
+damage_reciever = NodePath("../Attachments")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+shape = SubResource("CircleShape2D_2arcp")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("1_ujd8q")
+
+[node name="CardinalCheck" parent="." node_paths=PackedStringArray("exception") instance=ExtResource("1_5wy0r")]
+distance = 20.0
+exception = NodePath("..")
+
+[node name="MovementControl" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("3_sohby")
+base_movement_speed = 300.0
+character = NodePath("..")
+
+[node name="PlayerControl" type="Node2D" parent="." node_paths=PackedStringArray("movementcontrol", "guns", "weaponcontrol", "bordercheck")]
+script = ExtResource("4_ye15j")
+movementcontrol = NodePath("../MovementControl")
+guns = NodePath("../Guns")
+weaponcontrol = NodePath("../WeaponControl")
+bordercheck = NodePath("../CardinalCheck")
+
+[node name="Guns" type="Node2D" parent="."]
+script = ExtResource("7_wokyo")
+
+[node name="MainWeapon" parent="Guns" instance=ExtResource("8_m66m5")]
+position = Vector2(15, -3)
+
+[node name="MainWeapon2" parent="Guns" instance=ExtResource("8_m66m5")]
+position = Vector2(-15, -3)
+
+[node name="WeaponControl" type="Node2D" parent="."]
+script = ExtResource("5_4up3m")
+
+[node name="UpgradeManager" type="Node2D" parent="." node_paths=PackedStringArray("attachments", "health_component", "guns")]
+script = ExtResource("9_prvsf")
+attachments = NodePath("../Attachments")
+health_component = NodePath("../HealthComponent")
+guns = NodePath("../Guns")
+
+[node name="Resources" type="Node2D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("10_hgwpq")

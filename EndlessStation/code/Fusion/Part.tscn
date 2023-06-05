@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh23bjnnvpin3"]
+
+[ext_resource type="Script" path="res://code/Fusion/Part.gd" id="1_3nhw8"]
+[ext_resource type="Texture2D" uid="uid://dme8ud7qospqx" path="res://assets/Default/ship_H.png" id="1_pnia1"]
+[ext_resource type="Script" path="res://code/Fusion/PartResource.gd" id="3_a5bva"]
+
+[node name="Part" type="Area2D" node_paths=PackedStringArray("shape", "sprite")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_3nhw8")
+shape = NodePath("CollisionPolygon2D")
+sprite = NodePath("Spritegroup")
+
+[node name="Spritegroup" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Spritegroup"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pnia1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -11, 11, 7, 6, 5, 0, 11, -6, 5, -11, 7)
+
+[node name="PartResource" type="Node2D" parent="."]
+script = ExtResource("3_a5bva")
