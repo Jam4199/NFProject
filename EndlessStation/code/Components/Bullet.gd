@@ -1,5 +1,4 @@
-extends Area2D
-
+extends Hurtbox
 class_name Bullet
 
 @export var key : String
@@ -17,7 +16,9 @@ var current_curve : float = 0
 
 @export var despawn_trigger : Node2D 
 
-
+func hit():
+	super()
+	despawn()
 
 func despawn():
 	if despawn_trigger !=null:

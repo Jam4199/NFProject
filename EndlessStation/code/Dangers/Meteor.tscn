@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw1ujcukf64yb"]
+[gd_scene load_steps=7 format=3 uid="uid://dw1ujcukf64yb"]
 
 [ext_resource type="Texture2D" uid="uid://cidmasg528phq" path="res://assets/Default/meteor_large.png" id="1_qgdql"]
 [ext_resource type="Script" path="res://code/Components/HitboxComponent.gd" id="2_ddpht"]
 [ext_resource type="Script" path="res://code/Components/HealthComponent.gd" id="3_7eqti"]
 [ext_resource type="Script" path="res://code/Components/Death.gd" id="4_qg2cf"]
+[ext_resource type="Script" path="res://code/Components/Hurtbox.gd" id="5_ybjjg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uo225"]
 radius = 20.025
@@ -28,3 +29,12 @@ max_health = 100.0
 
 [node name="Death" type="Node2D" parent="."]
 script = ExtResource("4_qg2cf")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_ybjjg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_uo225")
