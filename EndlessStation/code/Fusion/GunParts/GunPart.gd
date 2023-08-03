@@ -48,6 +48,7 @@ func fire_bullet():
 	new_bullet.accel_cap = accel_cap
 	new_bullet.curve_deg = curve_deg
 	new_bullet.curve_cap = curve_cap
+	new_bullet.damage = damage
 	
 	new_bullet.fired = true
 	

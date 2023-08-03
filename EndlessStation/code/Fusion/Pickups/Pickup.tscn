@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnaqin2nf2i10"]
+
+[ext_resource type="Script" path="res://code/Fusion/Part.gd" id="1_p8h3s"]
+[ext_resource type="Texture2D" uid="uid://cgrgd8bqy06tf" path="res://assets/stuff/dingbats-30.png" id="2_p2bji"]
+[ext_resource type="Script" path="res://code/Fusion/PartResource.gd" id="3_tnwg2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1iypq"]
+radius = 4.47214
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_p8h3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_p2bji")
+
+[node name="PartResource" type="Node2D" parent="."]
+script = ExtResource("3_tnwg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1iypq")

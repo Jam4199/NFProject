@@ -14,27 +14,31 @@ radius = 20.025
 [node name="MeteorLarge" type="Sprite2D" parent="."]
 texture = ExtResource("1_qgdql")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 script = ExtResource("2_ddpht")
+health = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_uo225")
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("death")]
 script = ExtResource("3_7eqti")
 max_health = 100.0
+death = NodePath("../Death")
 
-[node name="Death" type="Node2D" parent="."]
+[node name="Death" type="Node2D" parent="." node_paths=PackedStringArray("death_target")]
 script = ExtResource("4_qg2cf")
+death_target = NodePath("..")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("5_ybjjg")
+damage = 20.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_uo225")

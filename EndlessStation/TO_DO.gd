@@ -3,10 +3,10 @@ TO_DO
 
 seperate main weapon and alt weapon
 connecting new parts properly
+meteors
 
 
 connection queue (untested)
-meteors
 enemies that fight back
 pickup spawns from enemies
 enemies
