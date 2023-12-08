@@ -11,6 +11,12 @@ script = ExtResource("1_e5d1n")
 
 [node name="StatManager" type="Node2D" parent="."]
 script = ExtResource("2_23t8j")
+base_max_health = null
+base_attack = null
+base_defense = null
+base_evasion = null
+base_attack_speed = null
+red = null
 
 [node name="StanceManager" type="Node2D" parent="."]
 script = ExtResource("2_qtv2c")
