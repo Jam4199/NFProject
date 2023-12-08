@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="FortShoot"
+run/main_scene="res://Code/World/world.tscn"
+config/features=PackedStringArray("4.1", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+BulletManager="*res://Code/Autoloads/BulletManager.gd"
+Globals="*res://Code/Autoloads/Globals.gd"
+VFXManager="*res://Code/Autoloads/VFXManager.gd"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=700
+window/size/resizable=false
+
+[layer_names]
+
+2d_physics/layer_1="WorldBorder"
+2d_physics/layer_2="WorldObjects"
+2d_physics/layer_5="PlayerAttacks"
+2d_physics/layer_6="EnemyAttacks"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -1,0 +1,48 @@
+Affinities
+
+Increases effect from allies, or reduces damage from enemies
+
+Idol
+Fan
+
+Elements:
+	Red		Chaotic(explosives,fire,friendly fire)
+	Yellow	Violent(punches,kicks, wild swings)
+	White	Precise(guns,skilled weaponry,strategic)
+	Pink	Sensual(asmr,fanservice,yabai)
+	Blue	Calming(cute,relaxing,seiso)
+	Black	Corruption(fear,suffering,cooking,very yabai)
+
+Combat
+
+Autobattle
+characters fight with their ai depending on their stance
+
+Unit
+
+Character2d:
+	Collision(border)
+	Hitbox:
+		Collision
+	StatManager:
+		ControlEffects
+		StatusEffects
+	StanceManager:
+		Stance:
+			Actions
+			Passives
+			AI
+	SpriteManager:
+		Sprite:
+			things
+		AnimPlayer:
+
+Control Effects:
+	Contains their own AI for override
+	taunt, fear, confuse
+
+AI:
+	updates movement target position
+	commands face direction
+	command use of actions
+

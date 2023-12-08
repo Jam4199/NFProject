@@ -1,0 +1,235 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi4xe3mmgm5vb"]
+
+[ext_resource type="PackedScene" uid="uid://cbrx34haw6o38" path="res://Stuff/Units/BaseUnit.tscn" id="1_y2gaa"]
+[ext_resource type="Script" path="res://Stuff/Units/Swordsman/SwordAttack.gd" id="2_ayxpt"]
+[ext_resource type="Script" path="res://Stuff/Units/Stance.gd" id="2_cq0ub"]
+[ext_resource type="Script" path="res://Stuff/Combat/Damage.gd" id="2_fjei6"]
+
+[sub_resource type="Animation" id="Animation_s7w7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.967721]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Character:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Character:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5alra"]
+resource_name = "attack"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6, -9), Vector2(-10, -28), Vector2(30, 12), Vector2(6, -9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.967721, -1.92752, 0.0, -0.967721]
+}
+
+[sub_resource type="Animation" id="Animation_a4wqa"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, -20), Vector2(-10, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Character:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/Weapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.967721, -3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/Weapon:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, -9), Vector2(-25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b2rks"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.967721]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4jap"]
+_data = {
+"RESET": SubResource("Animation_s7w7r"),
+"attack": SubResource("Animation_5alra"),
+"death": SubResource("Animation_a4wqa"),
+"idle": SubResource("Animation_b2rks")
+}
+
+[sub_resource type="Resource" id="Resource_wk8io"]
+script = ExtResource("2_fjei6")
+damage_value = 10.0
+Element = 0
+tracking = 10.0
+penetration = 0.0
+effects = Array[PackedScene]([])
+
+[node name="Swordsman" instance=ExtResource("1_y2gaa")]
+
+[node name="Character" type="Node2D" parent="SpriteController/Sprite" index="0"]
+position = Vector2(0, 10)
+
+[node name="Body" type="Polygon2D" parent="SpriteController/Sprite/Character" index="0"]
+color = Color(0.118302, 0.439475, 1, 1)
+polygon = PackedVector2Array(-10, -40, 10, -40, 10, 0, -10, 0)
+
+[node name="Head" type="Node2D" parent="SpriteController/Sprite/Character" index="1"]
+
+[node name="Face" type="Polygon2D" parent="SpriteController/Sprite/Character/Head" index="0"]
+color = Color(0.690196, 0.576471, 0.439216, 1)
+polygon = PackedVector2Array(16, -61, 16, -37, -9, -37, -9, -61)
+
+[node name="Helmet" type="Polygon2D" parent="SpriteController/Sprite/Character/Head" index="1"]
+color = Color(0.337255, 0.541176, 0.388235, 1)
+polygon = PackedVector2Array(-4, -32, -20, -36, -26, -54, -17, -74, 15, -74, 22, -57, -4.00001, -57)
+
+[node name="Weapon" type="Node2D" parent="SpriteController/Sprite" index="1"]
+position = Vector2(6, -9)
+rotation = -0.967721
+metadata/_edit_group_ = true
+
+[node name="Blade" type="Polygon2D" parent="SpriteController/Sprite/Weapon" index="0"]
+position = Vector2(2, 0)
+color = Color(0.701961, 0.701961, 0.701961, 1)
+polygon = PackedVector2Array(2, -3, 2, 3, 50, 3, 65, 0, 50, -3)
+
+[node name="Handle" type="Polygon2D" parent="SpriteController/Sprite/Weapon" index="1"]
+position = Vector2(2, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -1, 0, -6, 4, -6, 4, 6, 0, 6, 0, 1, -5, 1, -5, -1)
+
+[node name="AnimationPlayer" parent="SpriteController" index="1"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_i4jap")
+}
+
+[node name="UnitController" parent="." index="2"]
+follow_gap = 60.0
+
+[node name="Attack" type="Node" parent="StanceController" index="0" node_paths=PackedStringArray("basic_attack")]
+script = ExtResource("2_cq0ub")
+basic_attack = NodePath("../../Actions/SwordAttack")
+
+[node name="SwordAttack" type="Node" parent="Actions" index="0"]
+script = ExtResource("2_ayxpt")
+action_range = 80.0
+lock_time = 0.3
+sample_damage = SubResource("Resource_wk8io")

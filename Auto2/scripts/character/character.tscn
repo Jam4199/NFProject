@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxkkb68a0jcpv"]
+
+[ext_resource type="Script" path="res://scripts/character/Character.gd" id="1_e5d1n"]
+[ext_resource type="Script" path="res://scripts/character/StatManager.gd" id="2_23t8j"]
+[ext_resource type="Script" path="res://scripts/character/StanceManager.gd" id="2_qtv2c"]
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_e5d1n")
+
+[node name="SpriteManager" type="Node2D" parent="."]
+
+[node name="StatManager" type="Node2D" parent="."]
+script = ExtResource("2_23t8j")
+
+[node name="StanceManager" type="Node2D" parent="."]
+script = ExtResource("2_qtv2c")
+
+[node name="Hitbox" type="Area2D" parent="."]

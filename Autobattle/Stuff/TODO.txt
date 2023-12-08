@@ -1,0 +1,7 @@
+
+
+"Field" functions and variables(kinda done)
+
+"Action" class(kinda done)
+
+Taunt system(barely done, check Unit Class)

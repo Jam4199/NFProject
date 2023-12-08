@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://778vtai6vtqc"]
+
+[ext_resource type="Script" path="res://test_scenes/A/TestA.gd" id="1_asb5g"]
+[ext_resource type="PackedScene" uid="uid://ve1w7rpgb03a" path="res://Stuff/Field/Field.tscn" id="1_po4gm"]
+[ext_resource type="Script" path="res://Stuff/Combat/Team.gd" id="2_d4g5a"]
+[ext_resource type="PackedScene" uid="uid://bi4xe3mmgm5vb" path="res://Stuff/Units/Swordsman/swordsman.tscn" id="3_h3lix"]
+[ext_resource type="PackedScene" uid="uid://o7y7pw6emx8r" path="res://Stuff/Units/VoltMage/VoltMage.tscn" id="5_cwv74"]
+
+[node name="TestA" type="Node2D"]
+script = ExtResource("1_asb5g")
+
+[node name="Field" parent="." instance=ExtResource("1_po4gm")]
+
+[node name="LeftTeam" type="Node" parent="."]
+script = ExtResource("2_d4g5a")
+
+[node name="Units" type="Node2D" parent="LeftTeam"]
+visible = false
+
+[node name="Swordsman" parent="LeftTeam/Units" instance=ExtResource("3_h3lix")]
+default_position = 7
+
+[node name="Swordsman2" parent="LeftTeam/Units" instance=ExtResource("3_h3lix")]
+default_position = 4
+
+[node name="Swordsman3" parent="LeftTeam/Units" instance=ExtResource("3_h3lix")]
+default_position = 1
+
+[node name="VoltMage" parent="LeftTeam/Units" instance=ExtResource("5_cwv74")]
+
+[node name="RightTeam" type="Node" parent="."]
+script = ExtResource("2_d4g5a")
+
+[node name="Units" type="Node2D" parent="RightTeam"]
+visible = false
+
+[node name="Swordsman" parent="RightTeam/Units" instance=ExtResource("3_h3lix")]
+default_position = 7
+
+[node name="Swordsman2" parent="RightTeam/Units" instance=ExtResource("3_h3lix")]
+default_position = 4
+
+[node name="Swordsman3" parent="RightTeam/Units" instance=ExtResource("3_h3lix")]
+default_position = 1
+
+[node name="VoltMage" parent="RightTeam/Units" instance=ExtResource("5_cwv74")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

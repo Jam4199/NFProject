@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds2t48ydchs8t"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_ixtqk"]
+target_nodepath = NodePath("../Shapes/Left2/LeftTarget")
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("Center/Left1")
+joint_two_bone_idx = 2
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_m3ft3"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_ixtqk")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shapes" type="Node2D" parent="."]
+
+[node name="Center" type="Polygon2D" parent="Shapes"]
+polygon = PackedVector2Array(-70, -15, -67, 10, 63, 11, 66, -13)
+
+[node name="Left1" type="Polygon2D" parent="Shapes"]
+position = Vector2(-64, 5.96046e-08)
+rotation = 0.375708
+scale = Vector2(0.99999, 0.99999)
+polygon = PackedVector2Array(-7, -18, 9, -5, -11, 72, -27, 67)
+
+[node name="Left2" type="Polygon2D" parent="Shapes"]
+position = Vector2(-108.998, 65.0237)
+rotation = 0.375708
+scale = Vector2(0.999973, 0.999973)
+polygon = PackedVector2Array(-8.83539, -9.73175, 16.4565, -12.9474, 21.2367, 4.43539, -7.40214, 12.4259)
+
+[node name="LeftTarget" type="Marker2D" parent="Shapes/Left2"]
+top_level = true
+position = Vector2(116, 71)
+rotation = 0.150851
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_m3ft3")
+
+[node name="Center" type="Bone2D" parent="Skeleton2D"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Center"]
+remote_path = NodePath("../../../Shapes/Center")
+
+[node name="Left1" type="Bone2D" parent="Skeleton2D/Center"]
+position = Vector2(-64, 5.96046e-08)
+rotation = 0.375708
+scale = Vector2(0.99999, 0.99999)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Skeleton2D/Center/Left1"]
+remote_path = NodePath("../../../../Shapes/Left1")
+
+[node name="Left2" type="Bone2D" parent="Skeleton2D/Center/Left1"]
+position = Vector2(-18, 77)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Skeleton2D/Center/Left1/Left2"]
+remote_path = NodePath("../../../../../Shapes/Left2")
+
+[node name="Right1" type="Bone2D" parent="Skeleton2D/Center"]
+
+[node name="Right3" type="Bone2D" parent="Skeleton2D/Center/Right1"]
+position = Vector2(59, 0)
+
+[node name="Right2" type="Bone2D" parent="Skeleton2D/Center/Right1/Right3"]
+position = Vector2(24, 76)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpww00us6db6h"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_ftiiw"]
+[ext_resource type="Texture2D" uid="uid://brvwgdide65gc" path="res://icon.svg" id="2_booof"]
+[ext_resource type="Script" path="res://InputController.gd" id="3_6t83h"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("controller")]
+script = ExtResource("1_ftiiw")
+controller = NodePath("InputController")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_booof")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(64, -59.6, 64, 59, 59.6, 64, -59, 64, -64, 59.6, -64, -59.6, -59, -63.9, 59, -64)
+
+[node name="InputController" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("3_6t83h")
+body = NodePath("..")
