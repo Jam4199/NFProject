@@ -6,12 +6,11 @@ Idol
 Fan
 
 Elements:
-	Red		Chaotic(explosives,fire,friendly fire)
-	Yellow	Violent(punches,kicks, wild swings)
-	White	Precise(guns,skilled weaponry,strategic)
-	Pink	Sensual(asmr,fanservice,yabai)
-	Blue	Calming(cute,relaxing,seiso)
-	Black	Corruption(fear,suffering,cooking,very yabai)
+	Red		Chaotic
+	Yellow	Cute
+	Blue	Cool
+	Pink	Passion
+	Black	Corruption
 
 Combat
 

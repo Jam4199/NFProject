@@ -6,14 +6,20 @@ class_name StatManager
 @export var base_defense : float = 10
 @export var base_evasion : float = 10
 @export var base_attack_speed : float = 1
+@export var base_move_speed : float = 10
 
 @export_group("Affinities")
 @export var red : float = 1
 
 var max_health : float
+var current_health : float
 var attack : float
 var defense : float
 var attack_speed : float
+var move_speed : float
+var pressure : float
+
+var alive : bool = true 
 
 var base_stats : Dictionary = {}
 
@@ -33,6 +39,7 @@ func update_base_stats():
 	base_stats["defense"] = base_defense
 	base_stats["evasion"] = base_evasion
 	base_stats["attack_speed"] = base_attack_speed
+	base_stats["move_speed"] = base_move_speed
 
 func get_stat(stat : String):
 	var value = base_stats[stat]
@@ -82,7 +89,7 @@ func recieve_damage(damage : Damage):
 	var damage_value : float = damage.damage_value
 	
 	# defense
-	damage_value -= (damage_value * ((get_defense() * ((100 - damage.penetration )/ 100))/ (get_defense() + 10)))
+	damage_value -= (damage_value * ((get_stat("defense") * ((100 - damage.penetration )/ 100))/ (get_stat("defense") + 10)))
 	emit_signal("damage_taken", damage_value)
 	#wip elemental ressistance
 	#wip evasion use x = y / (y+50), evasion lowers max damage, but pressure can build up and push it back up. non pressure evasion is still counted as min damage. tracking counters evasion
@@ -104,7 +111,7 @@ func set_health(new_value : float):
 	current_health = new_value
 
 func exit_combat():
-	current_health = get_max_health()
+	current_health = get_stat("max_health")
 	#purge status effects
 
 func health_zeroed():
@@ -112,6 +119,6 @@ func health_zeroed():
 	emit_signal("unit_died")
 
 func deploy():
-	current_health = get_max_health()
+	current_health = get_stat("max_health")
 	alive = true
 	#reactivate passives
