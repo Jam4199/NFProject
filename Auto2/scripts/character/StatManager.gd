@@ -94,9 +94,7 @@ func recieve_damage(damage : Damage):
 	#wip elemental ressistance
 	#wip evasion use x = y / (y+50), evasion lowers max damage, but pressure can build up and push it back up. non pressure evasion is still counted as min damage. tracking counters evasion
 	#wip evasion pressure use x = pressure/pressure+evasion
-	print(str(damage_value))
 	set_health(current_health - damage_value)
-	print(str(current_health))
 
 func set_health(new_value : float):
 	if new_value == current_health:
