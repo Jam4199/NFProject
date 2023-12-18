@@ -14,7 +14,10 @@ class_name Character
 @export_range(1,9) var default_position : int = 5 #numkeys with 1/4/7 in front
 
 var move_target_position : Vector2 #define with controller
+var moving : bool = true #define with controller
+var acting : bool = false #define with action
 var action_lock_time : float = 0
+var move_lock_time : float = 0
 var total_lock_time : float =  0
 var walk_anim_lock_time : float = 0
 
@@ -62,12 +65,13 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	if action_lock_time <= 0 and not stats.check_locked():
+	if not stats.check_locked():
 		if stats.is_controlled():
 			stats.alternate_control()
 		else:
 			stancemanager.control()
-		velocity += get_movement_velocity(delta)
+		if moving and not move_lock_time > 0:
+			velocity += get_movement_velocity(delta)
 	
 	move_and_slide()
 
@@ -83,10 +87,13 @@ func get_movement_velocity(delta : float) -> Vector2:
 	return movement_velocity
 
 func timers(delta : float):
-	if action_lock_time > 0:
-		action_lock_time -= delta
 	if total_lock_time > 0:
 		total_lock_time -= delta
+		return
+	if action_lock_time > 0:
+		action_lock_time -= delta
+	if move_lock_time > 0:
+		move_lock_time -= delta
 	return
 
 func recieve_damage(damage):
@@ -101,10 +108,20 @@ func recieve_damage(damage):
 func is_alive() -> bool:
 	return stats.alive
 
+func can_act() -> bool:
+	if action_lock_time > 0:
+		return false
+	
+	return true
+
+
 func died():
 	play_animation("death")
 	return
 
+func change_facing(new_facing):
+	face = new_facing
+	#tell sprite to change direction
 
 func play_animation(anim : String):
 	#print("bop")

@@ -21,6 +21,8 @@ var passives : Array = []
 
 
 func _ready() -> void:
+	
+	
 	for node in get_node("Actions").get_children():
 		if node is Node2D:
 			actions.append(node)
