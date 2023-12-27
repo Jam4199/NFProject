@@ -1,0 +1,15 @@
+wrath = single damage, more damage
+greed = high speed
+lust = 
+gluttony
+envy
+pride
+sloth
+
+patience
+charity
+chastity
+temperance
+kindness
+humility
+diligence
