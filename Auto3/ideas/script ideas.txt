@@ -1,0 +1,20 @@
+characters == character2d
+
+character:
+	sprite
+	statemachine
+	actions
+	controller
+	hitbox
+	
+
+character has:
+	movement
+	stats
+	calls statemachine and controller
+
+statemachine:
+	idle
+	interrupted
+	repositioning(position)
+	acting(action)
