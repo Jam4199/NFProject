@@ -1,0 +1,50 @@
+MGGJ WE FUCKING DOING THIS MATE
+
+gameplay loop
+
+topdown shooter with survivorlike elements
+
+progression
+
+meta: 
+	roguelike with character unlocks
+	failed runs can pass buffs depending on achievements done
+run:	
+	obtainable weapons
+	weapon parts for upgrades
+	unused parts can be exchanged?
+	
+weapons
+	autopistols	+reload, +rof, -damage, -accuracy
+	handcannon	+reload, +damage, -rof, -magazine
+	smg		+rof, +magazine, -accuracy, -damage
+	assault rifle	balanced
+	shotgun		-rof, -accuracy, multishot
+	sniper		-rof, -magazine, -reload +accuracy, +damage, +pierce
+	launcher	-rof, -reload, -magazine, +damage, aoe
+	MG		+rof, +magazine,  -accuracy, -reload
+
+weapon stats/upgrades
+	GUN
+	rof
+	reload speed
+	magazine
+	accuracy
+	multishot
+	
+	BOOLET
+	damage
+	pierce
+	homing
+	aoe
+	~~speed~~
+	HITSCAN 	
+
+	EXTRA
+	extrashot
+	ramping buff
+	last bullet
+	
+	
+	
+	
