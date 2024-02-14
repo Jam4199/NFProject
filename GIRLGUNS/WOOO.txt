@@ -13,7 +13,7 @@ run:
 	obtainable weapons
 	weapon parts for upgrades
 	unused parts can be exchanged?
-	
+	summon allies 
 weapons
 	autopistols	+reload, +rof, -damage, -accuracy
 	handcannon	+reload, +damage, -rof, -magazine
@@ -27,7 +27,7 @@ weapons
 weapon stats/upgrades
 	GUN
 	rof
-	reload speed
+	reload time
 	magazine
 	accuracy
 	multishot
