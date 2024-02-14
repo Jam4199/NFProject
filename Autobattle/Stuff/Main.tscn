@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl4bp0x3tdbyr"]
-
-[ext_resource type="PackedScene" uid="uid://ve1w7rpgb03a" path="res://Stuff/Field/Field.tscn" id="1_tqj38"]
-
-[node name="Main" type="Node2D"]
-
-[node name="Field" parent="." instance=ExtResource("1_tqj38")]
-position = Vector2(599, 333)

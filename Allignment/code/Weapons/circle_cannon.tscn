@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://df0altrj7m2dy"]
-
-[ext_resource type="Script" path="res://code/Weapons/circle_cannon.gd" id="1_h3uqx"]
-
-[node name="circle_cannon" type="Node2D"]
-script = ExtResource("1_h3uqx")
