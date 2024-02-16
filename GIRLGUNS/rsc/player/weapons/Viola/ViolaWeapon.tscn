@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhls42sx0oc8n"]
+
+[ext_resource type="Script" path="res://rsc/player/weapons/Viola/ViolaWeapon.gd" id="1_7feva"]
+
+[node name="ViolaWeapon" type="Node2D"]
+script = ExtResource("1_7feva")
+ui_name = "Glacier Spike"
+base_magazine_size = 8
+base_rof = 1.0
+base_spread = 0.0

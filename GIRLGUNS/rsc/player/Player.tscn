@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dghnadkcpohv5"]
+
+[ext_resource type="Script" path="res://rsc/player/WeaponManager.gd" id="1_3alu6"]
+
+[node name="Player" type="CharacterBody2D"]
+visible = false
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource("1_3alu6")

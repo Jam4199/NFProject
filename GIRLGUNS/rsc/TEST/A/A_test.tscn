@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnp16pyk0fbu1"]
+
+[ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="1_swd12"]
+[ext_resource type="Script" path="res://rsc/TEST/A/A_test.gd" id="2_58kku"]
+[ext_resource type="Script" path="res://rsc/TEST/A/TestShooter.gd" id="2_tkw2x"]
+[ext_resource type="PackedScene" uid="uid://gii0ualdo55s" path="res://rsc/player/weapons/Aster/AsterWeapon.tscn" id="3_2320c"]
+[ext_resource type="PackedScene" uid="uid://bhls42sx0oc8n" path="res://rsc/player/weapons/Viola/ViolaWeapon.tscn" id="5_8i7of"]
+
+[node name="World" instance=ExtResource("1_swd12")]
+script = ExtResource("2_58kku")
+
+[node name="TestShooter" type="Node2D" parent="PlayerLayer" index="0" node_paths=PackedStringArray("test_weapon")]
+position = Vector2(136, 109)
+script = ExtResource("2_tkw2x")
+test_weapon = NodePath("AsterWeapon")
+
+[node name="AsterWeapon" parent="PlayerLayer/TestShooter" index="0" instance=ExtResource("3_2320c")]
+base_spread = 5.0
+
+[node name="TestShooter2" type="Node2D" parent="PlayerLayer" index="1" node_paths=PackedStringArray("test_weapon")]
+position = Vector2(136, 196)
+script = ExtResource("2_tkw2x")
+test_weapon = NodePath("ViolaWeapon")
+
+[node name="ViolaWeapon" parent="PlayerLayer/TestShooter2" index="0" instance=ExtResource("5_8i7of")]

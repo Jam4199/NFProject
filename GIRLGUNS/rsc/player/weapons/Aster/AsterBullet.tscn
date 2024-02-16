@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl0lmlslsjcy8"]
+
+[ext_resource type="Script" path="res://rsc/player/weapons/Bullet.gd" id="1_2q2tn"]
+[ext_resource type="Texture2D" uid="uid://dgaqjhve3tfmp" path="res://assets/basic_shapes/Srar.png" id="2_ewsno"]
+
+[sub_resource type="Curve" id="Curve_tasxc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_j0xyy"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_ky4fh"]
+resource_name = "base"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_nvhvy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4m8so"]
+_data = {
+"RESET": SubResource("Animation_nvhvy"),
+"base": SubResource("Animation_ky4fh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t1hl"]
+radius = 14.0357
+
+[node name="AsterBullet" type="Area2D"]
+monitoring = false
+script = ExtResource("1_2q2tn")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 0.4
+texture = ExtResource("2_ewsno")
+emission_shape = 1
+emission_sphere_radius = 12.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_tasxc")
+color_ramp = SubResource("Gradient_j0xyy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ewsno")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4m8so")
+}
+autoplay = "base"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_0t1hl")

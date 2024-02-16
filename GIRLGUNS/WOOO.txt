@@ -38,13 +38,14 @@ weapon stats/upgrades
 	homing
 	aoe
 	~~speed~~
-	HITSCAN 	
+	HITSCAN 
 
 	EXTRA
 	extrashot
 	ramping buff
 	last bullet
-	
-	
-	
-	
+
+0
+
+Character
+	ONLY ONE INSTANCE PER RUN
