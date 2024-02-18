@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnp16pyk0fbu1"]
+[gd_scene load_steps=8 format=3 uid="uid://dnp16pyk0fbu1"]
 
 [ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="1_swd12"]
 [ext_resource type="Script" path="res://rsc/TEST/A/A_test.gd" id="2_58kku"]
 [ext_resource type="Script" path="res://rsc/TEST/A/TestShooter.gd" id="2_tkw2x"]
 [ext_resource type="PackedScene" uid="uid://gii0ualdo55s" path="res://rsc/player/weapons/Aster/AsterWeapon.tscn" id="3_2320c"]
 [ext_resource type="PackedScene" uid="uid://bhls42sx0oc8n" path="res://rsc/player/weapons/Viola/ViolaWeapon.tscn" id="5_8i7of"]
+[ext_resource type="PackedScene" uid="uid://dghnadkcpohv5" path="res://rsc/player/Player.tscn" id="5_x8ppp"]
+[ext_resource type="PackedScene" uid="uid://btmbkn12yyf18" path="res://rsc/TEST/A/TestEnemy.tscn" id="6_kqyx8"]
 
 [node name="World" instance=ExtResource("1_swd12")]
 script = ExtResource("2_58kku")
@@ -15,7 +17,8 @@ script = ExtResource("2_tkw2x")
 test_weapon = NodePath("AsterWeapon")
 
 [node name="AsterWeapon" parent="PlayerLayer/TestShooter" index="0" instance=ExtResource("3_2320c")]
-base_spread = 5.0
+
+[node name="Player" parent="PlayerLayer/TestShooter" index="1" instance=ExtResource("5_x8ppp")]
 
 [node name="TestShooter2" type="Node2D" parent="PlayerLayer" index="1" node_paths=PackedStringArray("test_weapon")]
 position = Vector2(136, 196)
@@ -23,3 +26,23 @@ script = ExtResource("2_tkw2x")
 test_weapon = NodePath("ViolaWeapon")
 
 [node name="ViolaWeapon" parent="PlayerLayer/TestShooter2" index="0" instance=ExtResource("5_8i7of")]
+
+[node name="Player" parent="PlayerLayer/TestShooter2" index="1" instance=ExtResource("5_x8ppp")]
+
+[node name="TestEnemy" parent="EnemyLayerLarge" index="0" instance=ExtResource("6_kqyx8")]
+position = Vector2(497, 79)
+
+[node name="TestEnemy2" parent="EnemyLayerLarge" index="1" instance=ExtResource("6_kqyx8")]
+position = Vector2(530, 202)
+
+[node name="TestEnemy3" parent="EnemyLayerLarge" index="2" instance=ExtResource("6_kqyx8")]
+position = Vector2(425, 207)
+
+[node name="TestEnemy4" parent="EnemyLayerLarge" index="3" instance=ExtResource("6_kqyx8")]
+position = Vector2(627, 202)
+
+[node name="TestEnemy5" parent="EnemyLayerLarge" index="4" instance=ExtResource("6_kqyx8")]
+position = Vector2(732, 213)
+
+[node name="TestEnemy6" parent="EnemyLayerLarge" index="5" instance=ExtResource("6_kqyx8")]
+position = Vector2(832, 207)

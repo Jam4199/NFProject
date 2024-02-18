@@ -7,11 +7,11 @@ script = ExtResource("1_o3sur")
 ui_name = "Twin Sparkles"
 base_magazine_size = 30
 base_rof = 6.0
-base_spread = 4.0
+base_spread = 3.0
 base_shots = 2
 
 [node name="A" type="Marker2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(8, 8)
 
 [node name="B" type="Marker2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(8, -8)

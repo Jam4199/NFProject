@@ -8,6 +8,9 @@ class_name Bullet
 @export var base_aoe_size : float = 20
 @export var max_distance : float = 2000
 
+@export_group("visuals")
+@export var nodes : Array[Node2D]
+@export var particles : Array[CPUParticles2D]
 @export_group("Effects")
 @export var hit_effect : PackedScene
 @export var end_effect : PackedScene
@@ -39,7 +42,9 @@ func hit(object : Node2D):
 	if object in pierced:
 		return
 	
-	hurt(object)
+	if object.has_method("take_damage"):
+		hurt(object)
+	
 	pierce -= 1
 	if pierce <= 0:
 		bullet_end()
@@ -55,6 +60,12 @@ func hurt(object):
 func bullet_end():
 	if end_effect != null:
 		create_effect(end_effect)
+	set_deferred("monitorable",false)
+	for node in nodes:
+		node.visible = false
+	for particle in particles:
+		particle.emitting = false
+	await get_tree().create_timer(2,false,true).timeout
 	queue_free()
 	return
 	

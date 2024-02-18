@@ -35,17 +35,24 @@ weapon stats/upgrades
 	BOOLET
 	damage
 	pierce
-	homing
 	aoe
 	~~speed~~
-	HITSCAN 
+	HITSCAN 	
 
 	EXTRA
 	extrashot
 	ramping buff
 	last bullet
-
-0
+	
 
 Character
 	ONLY ONE INSTANCE PER RUN
+
+INPUT
+MAIN
+>Controller *pause
+	>UI
+		>Menus
+	>WORLD
+		>Player
+	

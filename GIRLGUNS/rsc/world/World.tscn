@@ -11,8 +11,16 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 0, 1200, 0, 1200, 600, 0, 600)
 
 [node name="PlayerLayer" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="EnemyLayer" type="Node2D" parent="."]
+[node name="EnemyLayerLarge" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemyLayerMid" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemyLayerSmall" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="BulletLayer" type="Node2D" parent="."]
 unique_name_in_owner = true

@@ -16,7 +16,10 @@ func change_weapon(slot : int):
 		return
 	equipped_slot = slot
 
-
+func attack(input : bool):
+	if weapons[equipped_slot] == null:
+		return
+	weapons[equipped_slot].player_shoot = input
 
 
 
