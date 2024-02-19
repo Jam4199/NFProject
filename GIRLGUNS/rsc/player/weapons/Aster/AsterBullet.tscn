@@ -60,6 +60,9 @@ script = ExtResource("1_2q2tn")
 nodes = [NodePath("Sprite2D")]
 particles = [NodePath("CPUParticles2D")]
 hit_effect = ExtResource("2_4ntxg")
+kb_active = true
+kb_distance = 20.0
+kb_threshold = 10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 lifetime = 0.4

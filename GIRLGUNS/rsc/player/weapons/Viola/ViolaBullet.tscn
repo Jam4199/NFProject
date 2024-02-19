@@ -27,6 +27,9 @@ base_speed = 1800.0
 base_pierce = 5
 nodes = [NodePath("Node2D"), NodePath("Point")]
 particles = [NodePath("Flakes")]
+kb_active = true
+kb_distance = 50.0
+kb_threshold = 60.0
 
 [node name="Flakes" type="CPUParticles2D" parent="."]
 amount = 24

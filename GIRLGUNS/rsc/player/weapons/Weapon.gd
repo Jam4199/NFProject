@@ -65,6 +65,12 @@ func update_stats():
 	burst_gap = base_burst_gap
 	return
 
+func reset(reload : bool = true):
+	update_stats()
+	if reload:
+		ammo = magazine_size
+	else:
+		ammo = 0
 
 func is_shooting()->bool:
 	if ammo <= 0:

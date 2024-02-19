@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://yhks3k8s3ina"]
+
+[ext_resource type="PackedScene" uid="uid://dghnadkcpohv5" path="res://rsc/player/Player.tscn" id="1_wrmlv"]
+[ext_resource type="PackedScene" uid="uid://gii0ualdo55s" path="res://rsc/player/weapons/Aster/AsterWeapon.tscn" id="2_t1py0"]
+[ext_resource type="PackedScene" uid="uid://bhls42sx0oc8n" path="res://rsc/player/weapons/Viola/ViolaWeapon.tscn" id="3_h4ay2"]
+
+[node name="Player" instance=ExtResource("1_wrmlv")]
+
+[node name="AsterWeapon" parent="WeaponManager" index="0" instance=ExtResource("2_t1py0")]
+
+[node name="Polygon2D" type="Polygon2D" parent="WeaponManager/AsterWeapon" index="2"]
+polygon = PackedVector2Array(-43, -5, 102, -6, 102, 0, -45, 2)
+
+[node name="ViolaWeapon" parent="WeaponManager" index="1" instance=ExtResource("3_h4ay2")]

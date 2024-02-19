@@ -8,12 +8,17 @@ class_name Bullet
 @export var base_aoe_size : float = 20
 @export var max_distance : float = 2000
 
-@export_group("visuals")
+@export_group("Visuals")
 @export var nodes : Array[Node2D]
 @export var particles : Array[CPUParticles2D]
 @export_group("Effects")
 @export var hit_effect : PackedScene
 @export var end_effect : PackedScene
+@export_group("Knockback")
+@export var kb_active : bool = false
+@export_enum("Away","Direction") var kb_direction : int = 1
+@export var kb_distance : float = 100
+@export_range(0,100) var kb_threshold : float = 30
 
 var damage : float = base_damage
 var speed : float = base_speed #distance per second
@@ -45,6 +50,9 @@ func hit(object : Node2D):
 	if object.has_method("take_damage"):
 		hurt(object)
 	
+	if object.has_method("take_knockback") and kb_active:
+		knockback(object)
+	
 	pierce -= 1
 	if pierce <= 0:
 		bullet_end()
@@ -55,6 +63,16 @@ func hit(object : Node2D):
 
 func hurt(object):
 	object.take_damage(damage)
+	return
+
+func knockback(object):
+	var kb_vector : Vector2
+	match kb_direction:
+		0:
+			kb_vector = Vector2.from_angle(Globals.player.global_position.angle_to_point(object.global_position))
+		1:
+			kb_vector = Vector2.from_angle(global_rotation)
+	object.take_knockback(kb_vector,kb_distance,kb_threshold)
 	return
 
 func bullet_end():

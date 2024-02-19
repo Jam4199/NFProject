@@ -6,7 +6,7 @@ var current_spawn : bool = false
 
 func shoot()->Bullet:
 	var spawn_position : Vector2 = spawns[int(current_spawn)].global_position
-	var new_bullet = create_bullet(ASTERBULLET,spawn_position,rotation_degrees)
-	new_bullet.rotation_degrees += (Globals.rng.randf_range(-spread,spread))
+	var new_bullet = create_bullet(ASTERBULLET,spawn_position,global_rotation_degrees)
+	new_bullet.global_rotation_degrees += (Globals.rng.randf_range(-spread,spread))
 	current_spawn = not current_spawn
 	return new_bullet

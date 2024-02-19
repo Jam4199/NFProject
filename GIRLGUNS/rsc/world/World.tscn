@@ -5,6 +5,8 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_fatut")
 
+[node name="PlayerBorder" type="StaticBody2D" parent="."]
+
 [node name="Background" type="Polygon2D" parent="."]
 visible = false
 color = Color(0, 0, 0, 1)

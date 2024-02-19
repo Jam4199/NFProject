@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://cainwt6r0d5jf"]
+
+[ext_resource type="Script" path="res://rsc/enemy/Enemy.gd" id="1_7h1cm"]
+
+[sub_resource type="Animation" id="Animation_6baxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xqdud"]
+resource_name = "red_blink"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0.0784314, 0.196078, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1q33"]
+_data = {
+"RESET": SubResource("Animation_6baxp"),
+"red_blink": SubResource("Animation_xqdud")
+}
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7h1cm")
+
+[node name="Flash" type="Node2D" parent="."]
+
+[node name="Color" type="Node2D" parent="Flash"]
+
+[node name="Sprite" type="Node2D" parent="Flash/Color"]
+unique_name_in_owner = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h1q33")
+}
