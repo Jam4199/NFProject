@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://clqscnae4oub1"]
+[gd_scene load_steps=9 format=3 uid="uid://clqscnae4oub1"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_mn4nl"]
 [ext_resource type="Script" path="res://rsc/TEST/B/b_testeneny1/b_test_enemy.gd" id="2_7uvyc"]
 [ext_resource type="Script" path="res://rsc/TEST/B/b_testeneny1/Chase.gd" id="2_yw7x5"]
+[ext_resource type="Script" path="res://rsc/TEST/B/b_testeneny1/Attack.gd" id="4_n65u8"]
+[ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="5_phyy8"]
+[ext_resource type="Script" path="res://rsc/TEST/B/b_testeneny1/Attacking.gd" id="6_6fv2n"]
+[ext_resource type="PackedScene" uid="uid://brcbd7207vxwk" path="res://rsc/enemy/Hurtbox.tscn" id="7_c6rd4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0dwv"]
 radius = 29.0
@@ -10,9 +14,24 @@ radius = 29.0
 [node name="B_test_enemy" instance=ExtResource("1_mn4nl")]
 script = ExtResource("2_7uvyc")
 base_max_hp = 1e+06
+base_speed = 200.0
 
 [node name="Chase" type="Node2D" parent="States" index="0"]
 script = ExtResource("2_yw7x5")
+
+[node name="Attack" type="Node2D" parent="States" index="1"]
+script = ExtResource("4_n65u8")
+
+[node name="AttackWarning" parent="States/Attack" index="0" instance=ExtResource("5_phyy8")]
+visible = false
+warning_time = 0.5
+warning_length = 300.0
+warning_width = 20.0
+
+[node name="Attacking" type="Node2D" parent="States" index="2"]
+script = ExtResource("6_6fv2n")
+
+[node name="Hurtbox" parent="States/Attacking" index="0" instance=ExtResource("7_c6rd4")]
 
 [node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
 position = Vector2(-9, 0)

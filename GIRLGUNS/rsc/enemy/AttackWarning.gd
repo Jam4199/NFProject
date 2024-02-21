@@ -13,7 +13,7 @@ var current_time : float = 0
 
 func _ready() -> void:
 	visible = false
-	start() #use for testing
+	#start() #use for testing
 	return
 
 func _physics_process(delta: float) -> void:
@@ -36,4 +36,4 @@ func start():
 func end():
 	visible = false
 	active = false
-	start() #use for testing
+	#start() #use for testing

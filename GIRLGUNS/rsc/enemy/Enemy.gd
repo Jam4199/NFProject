@@ -38,11 +38,11 @@ func _ready():
 	for node in get_node("States").get_children():
 		states[node.name] = node
 		node.unit = self
-		node.connect("state_change",Callable(self,"change_state"))
 		if current_state == null:
 			current_state = node
 	if current_state != null:
-		current_state.enter_state()
+		current_state.state_enter()
+		current_state.connect("state_change",Callable(self,"change_state"))
 	
 
 	area_entered.connect(Callable(self,"bullet_entered"))
@@ -54,9 +54,13 @@ func state_input(state_input : String):
 
 func change_state(next_state : String):
 	if states.has(next_state):
-		current_state.leave_state()
+		if not states[next_state].state_allow():
+			return
+		current_state.state_exit()
+		current_state.disconnect("state_change",Callable(self,"change_state"))
 		current_state = states[next_state]
-		current_state.enter_state()
+		current_state.state_enter()
+		current_state.connect("state_change",Callable(self,"change_state"))
 	else:
 		print("next state not found")
 
