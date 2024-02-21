@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clqscnae4oub1"]
+
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_mn4nl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0dwv"]
+radius = 29.0
+
+[node name="B_test_enemy" instance=ExtResource("1_mn4nl")]
+
+[node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+position = Vector2(-9, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(9, -1, 23, -12, 29, -2, 33, -15, 7, -24, -23, -2, 7, 21, 29, 17, 28, 4, 21, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_f0dwv")

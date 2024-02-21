@@ -7,12 +7,19 @@ class_name Enemy
 @export var base_max_hp : float = 1000
 @export var base_speed : float = 100
 @export var base_attack : float = 100
-@export_enum("Large","Mid","Small") var world_layer : int = 0
 @export var base_knockback_return : float = 40
+
+@export_group("Stuff")
+@export var starting_state : EnemyState
+@export_enum("Large","Mid","Small") var world_layer : int = 0
+
+var states : Dictionary = {}
+var current_state : EnemyState
+
 
 var max_hp : float
 var current_hp : float
-var speed : float
+var speed : float = base_speed
 var attack : float
 var knockback_return : float
 var kb_resist : float
@@ -22,11 +29,36 @@ var bullet_phase : bool = false
 var damage_immune : bool = false
 var knockback_immune : bool = false
 
+
+
 func _ready():
+
+	if starting_state != null:
+		current_state = starting_state
+	for node in get_node("States").get_children():
+		states[node.name] = node
+		node.unit = self
+		node.connect("state_change",Callable(self,"change_state"))
+		if current_state == null:
+			current_state = node
+	if current_state != null:
+		current_state.enter_state()
+	
+
 	area_entered.connect(Callable(self,"bullet_entered"))
 	monitorable = false
 	monitoring = false
 
+func state_input(state_input : String):
+	current_state.state_input(state_input)
+
+func change_state(next_state : String):
+	if states.has(next_state):
+		current_state.leave_state()
+		current_state = states[next_state]
+		current_state.enter_state()
+	else:
+		print("next state not found")
 
 func _physics_process(delta):
 	if kb_queue!= []:
@@ -35,6 +67,9 @@ func _physics_process(delta):
 		kb_resist -= knockback_return * delta
 		if kb_resist < 0:
 			kb_resist = 0
+	
+	if current_state != null:
+		current_state.state_process(delta)
 
 func spawn():
 	update_stats()

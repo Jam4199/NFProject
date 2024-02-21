@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdtweiqlvy2hc"]
+
+[ext_resource type="Script" path="res://rsc/enemy/AttackWarning.gd" id="1_a1738"]
+
+[node name="AttackWarning" type="Node2D"]
+script = ExtResource("1_a1738")
+warning_time = 5.0
+warning_length = 1000.0
+warning_width = 600.0
+
+[node name="Wide" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 200.0
+default_color = Color(1, 0, 0, 0.188235)
+
+[node name="Narrow" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 80.0
+default_color = Color(1, 0, 0, 0.447059)
