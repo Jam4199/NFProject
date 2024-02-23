@@ -87,6 +87,7 @@ weapon_right={
 2d_physics/layer_1="PlayerBody"
 2d_physics/layer_2="Playerbullets"
 2d_physics/layer_3="Enemybullets"
+2d_physics/layer_4="EnemyBody"
 
 [rendering]
 

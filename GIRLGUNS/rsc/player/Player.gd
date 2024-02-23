@@ -1,13 +1,18 @@
 extends CharacterBody2D
 class_name Player
 
+@export var max_hp : float = 1000
 @export var speed : float = 300
 @export var dash_time : float = 0.1
-@export var dash_speed_mult : float = 2
+@export var dash_speed_mult : float = 2.5
 @export var dash_invul : float = 0.5
 @export var dash_cooldown : float = 0.3
 
+
+
 @onready var weapon_manager : WeaponManager = get_node("WeaponManager")
+@onready var hitbox : Area2D = get_node("Hitbox")
+@onready var camera : Camera2D = get_node("Camera2D")
 
 var movement_input : bool = false
 var attack_input : bool = false
@@ -16,7 +21,13 @@ var attack_command : bool = false
 var dashing : bool = false
 var dash_timer : float = 0
 var dash_cooldown_timer : float = 0
+var dash_invul_timer : float = 0
 
+var current_hp : float = max_hp
+
+func _ready() -> void:
+	hitbox.connect("area_entered",Callable(self,"recieve_bullet"))
+	current_hp = max_hp
 
 func _physics_process(delta: float) -> void:
 	timers(delta)
@@ -24,19 +35,20 @@ func _physics_process(delta: float) -> void:
 	weapon_change()
 	aim()
 	attack()
-	
+
 
 func timers(delta : float):
 	if dash_timer > 0:
-		print(str(dash_time))
 		dash_timer -= delta
 		if dash_timer <= 0:
 			dashing = false
 	if dash_cooldown_timer > 0:
 		dash_cooldown_timer -= delta
-	
+	if dash_invul_timer > 0:
+		dash_invul_timer -= delta
 	return
 
+#movement and attacking
 func movement():
 	
 	if movement_input:
@@ -44,7 +56,6 @@ func movement():
 		velocity = direction * speed
 	
 	if Input.is_action_just_pressed("dash"):
-		print("detected")
 		dash_input()
 	if dashing:
 		velocity *= dash_speed_mult
@@ -57,16 +68,16 @@ func movement():
 
 func dash_input():
 	if dashing:
-		print("already_dashing")
+		
 		return
 	if dash_cooldown_timer > 0:
-		print("dash_cooldown")
+		
 		return
 	
 	dashing = true
 	dash_timer = dash_time
 	dash_cooldown_timer = dash_time + dash_cooldown
-	print("dash start")
+	dash_invul_timer = dash_invul
 	return
 
 
@@ -103,3 +114,25 @@ func attack():
 	attack_command = false
 	return
 
+#stat control
+
+func spawn():
+	current_hp = max_hp
+
+#taking hits
+func take_damage(damage : float):
+	current_hp -= damage
+
+	if current_hp <= 0:
+		death()
+	return
+
+func recieve_bullet(hurtbox : HurtBox):
+	if dash_invul_timer > 0:
+		print("dodged")
+		return
+	hurtbox.hit(self)
+	return
+
+func death():
+	return

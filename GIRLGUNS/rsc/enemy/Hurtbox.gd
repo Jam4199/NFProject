@@ -29,4 +29,4 @@ func hit(player : Player):
 	return
 
 func deactivate():
-	set_deferred("monitorable",true)
+	set_deferred("monitorable",false)

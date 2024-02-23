@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dveca15hir6te"]
+
+[ext_resource type="Script" path="res://rsc/player/weapons/Bullet.gd" id="1_ajm55"]
+[ext_resource type="Texture2D" uid="uid://bbofylms4pn4j" path="res://assets/basic_shapes/dingbats-481.png" id="2_5ow4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qn8pe"]
+radius = 12.0
+
+[sub_resource type="Curve" id="Curve_c6mol"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8ph0a"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="OpheliaBullet" type="Area2D" node_paths=PackedStringArray("nodes", "particles")]
+modulate = Color(0.0784314, 0.482353, 1, 1)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_ajm55")
+base_speed = 1200.0
+nodes = [NodePath("Sprite2D")]
+particles = [NodePath("trails")]
+kb_active = true
+kb_distance = 30.0
+kb_buildup = 5.0
+kb_threshold = 60.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_5ow4f")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qn8pe")
+
+[node name="trails" type="CPUParticles2D" parent="."]
+lifetime = 0.2
+lifetime_randomness = 0.1
+texture = ExtResource("2_5ow4f")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 40.0
+angular_velocity_max = 120.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.08
+scale_amount_max = 0.08
+scale_amount_curve = SubResource("Curve_c6mol")
+color_ramp = SubResource("Gradient_8ph0a")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://boanex4ohgerd"]
+
+[ext_resource type="Script" path="res://rsc/Main.gd" id="1_flmsl"]
+[ext_resource type="Script" path="res://rsc/Records.gd" id="2_ro86v"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_flmsl")
+
+[node name="Records" type="Node" parent="."]
+script = ExtResource("2_ro86v")
+
+[node name="World" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TitleScreen" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Title" type="Control" parent="TitleScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TitleScreen/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

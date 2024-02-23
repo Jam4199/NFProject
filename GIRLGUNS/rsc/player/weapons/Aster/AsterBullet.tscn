@@ -53,6 +53,7 @@ _data = {
 radius = 8.0
 
 [node name="AsterBullet" type="Area2D" node_paths=PackedStringArray("nodes", "particles")]
+modulate = Color(0.929412, 0.690196, 0.847059, 1)
 collision_layer = 2
 collision_mask = 0
 monitoring = false
@@ -86,4 +87,5 @@ libraries = {
 autoplay = "base"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_0t1hl")

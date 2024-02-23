@@ -99,7 +99,7 @@ func bullet_entered(bullet : Bullet):
 	bullet.hit(self)
 	return
 
-func take_knockback(direction : Vector2, distance : float, threshold : float):
+func take_knockback(direction : Vector2, distance : float, threshold : float,buildup : float):
 	if knockback_immune:
 		return
 	if threshold > kb_resist:
@@ -112,7 +112,7 @@ func take_knockback(direction : Vector2, distance : float, threshold : float):
 		var kb_mod : float = 1 - ((kb_resist - threshold) / threshold)
 		distance *= kb_mod
 		kb_queue.append(direction * (distance * kb_mod))
-		kb_resist += (threshold * kb_mod)
+		kb_resist += (buildup * kb_mod)
 	
 	return
 

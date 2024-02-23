@@ -1,15 +1,18 @@
 extends Node2D
 class_name World
 
-@onready var bullet_layer = get_node("%BulletLayer")
-@onready var effect_layer = get_node("%EffectLayer")
-@onready var enemy_layer_large = get_node("%EnemyLayerLarge")
-@onready var enemy_layer_mid = get_node("%EnemyLayerMid")
-@onready var enemy_layer_small = get_node("%EnemyLayerSmall")
+@onready var player_layer : Node2D = get_node("%PlayerLayer")
+@onready var bullet_layer : Node2D = get_node("%BulletLayer")
+@onready var effect_layer : Node2D = get_node("%EffectLayer")
+@onready var enemy_layer_large : Node2D = get_node("%EnemyLayerLarge")
+@onready var enemy_layer_mid : Node2D = get_node("%EnemyLayerMid")
+@onready var enemy_layer_small : Node2D = get_node("%EnemyLayerSmall")
+@onready var world_camera : Camera2D = get_node("WorldCamera")
 
 var player_control : bool = false
 
 func _ready() -> void:
+	
 	return
 
 func add_bullet(new_bullet : Bullet):
@@ -33,9 +36,11 @@ func add_enemy(new_enemy : Enemy):
 	return
 
 func _physics_process(delta: float) -> void:
-	if player_control and Globals.player != null:
-		player_input()
+
 	return
 
-func player_input():
-	return
+func spawn_player():
+	player_layer.add_child(Globals.player)
+	Globals.player.global_position = get_node("%PlayerSpawnPoint").global_position
+	
+

@@ -55,7 +55,6 @@ signal last_shot_fired(bullet_shot : Bullet)
 
 func update_stats():
 	magazine_size = base_magazine_size
-	print(str(magazine_size))
 	rof = base_rof
 	reload_time = base_reload_time
 	spread = base_spread
@@ -129,7 +128,6 @@ func shoot_command(delta : float):
 	if shot_counter >= 1:
 		shot_counter *= shots
 	while shot_counter >= 1 and shot_cap > 0:
-		print(str(shot_counter))
 		if ammo <= 0:
 			break 
 		shot_counter -= 1

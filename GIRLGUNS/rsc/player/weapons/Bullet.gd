@@ -18,6 +18,7 @@ class_name Bullet
 @export var kb_active : bool = false
 @export_enum("Away","Direction") var kb_direction : int = 1
 @export var kb_distance : float = 100
+@export var kb_buildup : float = 10
 @export_range(0,100) var kb_threshold : float = 30
 
 var damage : float = base_damage
@@ -72,7 +73,7 @@ func knockback(object):
 			kb_vector = Vector2.from_angle(Globals.player.global_position.angle_to_point(object.global_position))
 		1:
 			kb_vector = Vector2.from_angle(global_rotation)
-	object.take_knockback(kb_vector,kb_distance,kb_threshold)
+	object.take_knockback(kb_vector,kb_distance,kb_threshold,kb_buildup)
 	return
 
 func bullet_end():

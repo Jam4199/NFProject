@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnp16pyk0fbu1"]
+[gd_scene load_steps=9 format=3 uid="uid://dnp16pyk0fbu1"]
 
 [ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="1_swd12"]
 [ext_resource type="Script" path="res://rsc/TEST/A/A_test.gd" id="2_58kku"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhls42sx0oc8n" path="res://rsc/player/weapons/Viola/ViolaWeapon.tscn" id="5_8i7of"]
 [ext_resource type="PackedScene" uid="uid://dghnadkcpohv5" path="res://rsc/player/Player.tscn" id="5_x8ppp"]
 [ext_resource type="PackedScene" uid="uid://c4dtwpndyacfv" path="res://rsc/TEST/A/TestEnemy.tscn" id="6_kqyx8"]
+[ext_resource type="PackedScene" uid="uid://ckmu4we1kxexc" path="res://rsc/player/weapons/Ophelia/OpheliaWeapon.tscn" id="7_cmqpn"]
 
 [node name="World" instance=ExtResource("1_swd12")]
 script = ExtResource("2_58kku")
@@ -28,6 +29,15 @@ test_weapon = NodePath("ViolaWeapon")
 [node name="ViolaWeapon" parent="PlayerLayer/TestShooter2" index="0" instance=ExtResource("5_8i7of")]
 
 [node name="Player" parent="PlayerLayer/TestShooter2" index="1" instance=ExtResource("5_x8ppp")]
+
+[node name="TestShooter3" type="Node2D" parent="PlayerLayer" index="2" node_paths=PackedStringArray("test_weapon")]
+position = Vector2(143, 387)
+script = ExtResource("2_tkw2x")
+test_weapon = NodePath("OpheliaWeapon")
+
+[node name="OpheliaWeapon" parent="PlayerLayer/TestShooter3" index="0" instance=ExtResource("7_cmqpn")]
+
+[node name="Player" parent="PlayerLayer/TestShooter3" index="1" instance=ExtResource("5_x8ppp")]
 
 [node name="TestEnemy" parent="EnemyLayerMid" index="0" instance=ExtResource("6_kqyx8")]
 position = Vector2(305, 78)

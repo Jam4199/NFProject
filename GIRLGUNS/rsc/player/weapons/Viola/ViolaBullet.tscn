@@ -16,9 +16,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhvdo"]
-size = Vector2(24, 12)
+size = Vector2(36, 18)
 
 [node name="ViolaBullet" type="Area2D" node_paths=PackedStringArray("nodes", "particles")]
+modulate = Color(0.415686, 0.32549, 1, 1)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ttfkv")
@@ -47,15 +48,6 @@ scale_amount_max = 0.02
 scale_amount_curve = SubResource("Curve_s0shf")
 color_initial_ramp = SubResource("Gradient_t24hv")
 
-[node name="Node2D" type="Node2D" parent="."]
-scale = Vector2(0.5, 0.25)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-rotation = 0.785398
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_rpclk")
-metadata/_edit_lock_ = true
-
 [node name="Point" type="CPUParticles2D" parent="."]
 position = Vector2(12, 0)
 amount = 4
@@ -73,6 +65,14 @@ scale_amount_min = 0.01
 scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_23cug")
 
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(0.8, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+rotation = 0.785398
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rpclk")
+metadata/_edit_lock_ = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_uhvdo")
