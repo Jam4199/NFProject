@@ -10,4 +10,4 @@ base_rof = 0.8
 base_spread = 1.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(15, 0)

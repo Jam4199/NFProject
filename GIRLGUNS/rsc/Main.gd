@@ -28,10 +28,10 @@ func player_to_world():
 	if Globals.player == null or Globals.world == null:
 		return
 	Globals.world.spawn_player()
-	
 
 func new_game_start():
 	var placeholder_scene = null #placeholder
 	create_new_player()
 	create_new_world(placeholder_scene)
 	player_to_world()
+

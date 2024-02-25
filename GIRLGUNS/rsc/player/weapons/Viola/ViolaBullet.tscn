@@ -1,16 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bibrxtqhcm72b"]
+[gd_scene load_steps=10 format=3 uid="uid://bibrxtqhcm72b"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Bullet.gd" id="1_ttfkv"]
+[ext_resource type="PackedScene" uid="uid://rmvymcc3qjr3" path="res://rsc/player/weapons/ViolaHit.tscn" id="2_c3vdk"]
 [ext_resource type="Texture2D" uid="uid://bvn5flxg7jgj2" path="res://assets/basic_shapes/dingbats-461.png" id="2_hf040"]
 [ext_resource type="Texture2D" uid="uid://btgv0n20fbxpo" path="res://assets/basic_shapes/square_64.png" id="2_rpclk"]
 [ext_resource type="Texture2D" uid="uid://4k6bied210xe" path="res://assets/basic_shapes/lightrays_7.png" id="4_e5cju"]
 
 [sub_resource type="Curve" id="Curve_s0shf"]
-_data = [Vector2(0.0645161, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.0645161, 1), 0.0, 0.0, 0, 0, Vector2(0.572581, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_t24hv"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.770833, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_23cug"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -28,13 +30,15 @@ base_speed = 1800.0
 base_pierce = 5
 nodes = [NodePath("Node2D"), NodePath("Point")]
 particles = [NodePath("Flakes")]
+hit_effect = ExtResource("2_c3vdk")
 kb_active = true
 kb_distance = 50.0
 kb_threshold = 60.0
 
 [node name="Flakes" type="CPUParticles2D" parent="."]
-amount = 24
-lifetime = 0.8
+amount = 60
+lifetime = 2.0
+randomness = 1.0
 texture = ExtResource("2_hf040")
 emission_shape = 1
 emission_sphere_radius = 8.0
@@ -43,6 +47,8 @@ gravity = Vector2(0, 0)
 initial_velocity_max = 40.0
 angular_velocity_min = -240.0
 angular_velocity_max = 240.0
+linear_accel_min = -20.0
+linear_accel_max = -20.0
 scale_amount_min = 0.02
 scale_amount_max = 0.02
 scale_amount_curve = SubResource("Curve_s0shf")
@@ -75,4 +81,5 @@ texture = ExtResource("2_rpclk")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_uhvdo")

@@ -1,0 +1,22 @@
+todo
+
+crucial 
+world background scrolling
+character angle views
+
+
+contents
+enemy types
+encounters
+
+
+
+juice
+hit effects
+bullet fade effects
+camera shake and pause
+weapon portraits
+
+over scope
+difficulty options 
+upgrade gacha

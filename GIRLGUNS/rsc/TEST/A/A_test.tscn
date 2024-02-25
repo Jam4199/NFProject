@@ -12,6 +12,9 @@
 [node name="World" instance=ExtResource("1_swd12")]
 script = ExtResource("2_58kku")
 
+[node name="WorldCamera" parent="." index="0"]
+enabled = false
+
 [node name="TestShooter" type="Node2D" parent="PlayerLayer" index="0" node_paths=PackedStringArray("test_weapon")]
 position = Vector2(136, 109)
 script = ExtResource("2_tkw2x")

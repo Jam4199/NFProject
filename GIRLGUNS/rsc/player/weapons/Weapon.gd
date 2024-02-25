@@ -2,6 +2,7 @@ extends Node2D
 class_name Weapon
 
 @export var ui_name : String = "Weapon"
+@export var icon : Texture = null #40x40?
 @export_group("Base Stats")
 @export var base_magazine_size : int = 10
 @export var base_rof : float = 2 #fire per second
