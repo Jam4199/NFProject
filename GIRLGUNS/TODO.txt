@@ -3,20 +3,53 @@ todo
 crucial 
 world background scrolling
 character angle views
+sound effects and music
+bullet lifetime
 
+
+
+changes
+enemy pierce stat
+knockback not instant(done)
+multishot changes
 
 contents
+weapon types
 enemy types
 encounters
+bosses
 
 
 
 juice
+dash effects
+bullet fire and circle
 hit effects
 bullet fade effects
 camera shake and pause
 weapon portraits
+weapon panel anim
+dialogue
 
 over scope
+prologue tutorial 
 difficulty options 
 upgrade gacha
+support attacks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

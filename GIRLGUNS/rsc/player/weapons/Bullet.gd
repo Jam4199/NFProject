@@ -28,6 +28,9 @@ var aoe : bool = base_aoe
 var aoe_size : float = base_aoe_size
 var total_distance : float = 0
 
+
+signal bullet_hit(hit_count : int)
+var hit_count : int = 0
 var pierced : Array = []
 
 func _ready() -> void:
@@ -44,9 +47,12 @@ func move(delta : float):
 		bullet_end()
 	return
 
-func hit(object : Node2D): 
+func hit(object : Node2D):
 	if object in pierced:
 		return
+	
+	emit_signal("bullet_hit",hit_count)
+	
 	
 	if object.has_method("take_damage"):
 		hurt(object)
@@ -54,6 +60,7 @@ func hit(object : Node2D):
 	if object.has_method("take_knockback") and kb_active:
 		knockback(object)
 	
+	hit_count += 1
 	pierce -= 1
 	if pierce <= 0:
 		bullet_end()

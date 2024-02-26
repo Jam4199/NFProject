@@ -8,11 +8,12 @@
 [node name="Player" instance=ExtResource("1_wrmlv")]
 max_hp = 100.0
 
-[node name="Polygon2D" type="Polygon2D" parent="WeaponManager" index="0"]
-polygon = PackedVector2Array(-43, -5, 102, -6, 102, 0, -45, 2)
+[node name="AsterWeapon" parent="WeaponManager" index="0" instance=ExtResource("2_t1py0")]
 
-[node name="AsterWeapon" parent="WeaponManager" index="1" instance=ExtResource("2_t1py0")]
+[node name="ViolaWeapon" parent="WeaponManager" index="1" instance=ExtResource("3_h4ay2")]
 
-[node name="ViolaWeapon" parent="WeaponManager" index="2" instance=ExtResource("3_h4ay2")]
+[node name="OpheliaWeapon" parent="WeaponManager" index="2" instance=ExtResource("4_6qywh")]
 
-[node name="OpheliaWeapon" parent="WeaponManager" index="3" instance=ExtResource("4_6qywh")]
+[node name="Line2D" type="Line2D" parent="WeaponManager" index="3"]
+points = PackedVector2Array(40, 0, -20, 0)
+width = 5.0

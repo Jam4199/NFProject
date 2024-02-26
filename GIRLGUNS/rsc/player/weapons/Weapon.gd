@@ -166,7 +166,8 @@ func create_bullet(bullet_scene : PackedScene, new_position : Vector2, new_rotat
 	Globals.add_bullet(new_bullet) #add child to world
 	modify_bullet(new_bullet)
 	new_bullet.global_position = new_position
-	new_bullet.rotation_degrees = new_rotation_degrees
+	new_bullet.global_rotation_degrees = new_rotation_degrees
+	new_bullet.connect("bullet_hit",Callable(self,"bullet_hit"))
 	return new_bullet
 
 func modify_bullet(bullet : Bullet):
@@ -181,7 +182,8 @@ func modify_bullet(bullet : Bullet):
 	if bullet.aoe:
 		bullet.aoe_size = bullet.base_aoe_size + aoe_add 
 
-
+func bullet_hit(hit_count : int):
+	return
 
 
 

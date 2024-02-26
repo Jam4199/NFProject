@@ -23,7 +23,7 @@ var speed : float = base_speed
 var attack : float
 var knockback_return : float
 var kb_resist : float
-var kb_queue : Array[Vector2] = []
+var kb_queue : Array[Array] = []
 
 var bullet_phase : bool = false
 var damage_immune : bool = false
@@ -66,7 +66,7 @@ func change_state(next_state : String):
 
 func _physics_process(delta):
 	if kb_queue!= []:
-		apply_knockback()
+		apply_knockback(delta)
 	if kb_resist > 0:
 		kb_resist -= knockback_return * delta
 		if kb_resist < 0:
@@ -100,10 +100,11 @@ func bullet_entered(bullet : Bullet):
 	return
 
 func take_knockback(direction : Vector2, distance : float, threshold : float,buildup : float):
+
 	if knockback_immune:
 		return
 	if threshold > kb_resist:
-		kb_queue.append(direction * distance)
+		kb_queue.append([direction,distance,0])
 		kb_resist += threshold
 		return
 	elif threshold * 2 < kb_resist:
@@ -111,15 +112,21 @@ func take_knockback(direction : Vector2, distance : float, threshold : float,bui
 	else:
 		var kb_mod : float = 1 - ((kb_resist - threshold) / threshold)
 		distance *= kb_mod
-		kb_queue.append(direction * (distance * kb_mod))
+		kb_queue.append([direction,(distance * kb_mod),0])
 		kb_resist += (buildup * kb_mod)
 	
 	return
 
-func apply_knockback():
-	for kb in kb_queue:
-		global_position += kb
-	kb_queue = []
+#kb array = [direction,distance,travelled] time all set to 0.2
+func apply_knockback(delta):
+	for kb in range(kb_queue.size() - 1  ,0,-1):
+		var push_distance = kb_queue[kb][1] * (delta / (0.2))
+		if kb_queue[kb][2] + push_distance > kb_queue[kb][1]:
+			push_distance = (kb_queue[kb][1]) -  (kb_queue[kb][2]) + (0.01)
+		global_position += (kb_queue[kb][0] * push_distance)
+		kb_queue[kb][2] += push_distance 
+		if kb_queue[kb][2] > kb_queue[kb][1]:
+			kb_queue.remove_at(kb)
 	return
 
 func take_damage(damage : float):

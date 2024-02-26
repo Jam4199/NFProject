@@ -81,7 +81,6 @@ func dash_input():
 	if dash_count <= 0:
 		
 		return
-	print("dash count = " + str(dash_count))
 	dashing = true
 	dash_count -= 1
 	dash_timer = dash_time

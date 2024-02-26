@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnp16pyk0fbu1"]
+[gd_scene load_steps=10 format=3 uid="uid://dnp16pyk0fbu1"]
 
 [ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="1_swd12"]
 [ext_resource type="Script" path="res://rsc/TEST/A/A_test.gd" id="2_58kku"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dghnadkcpohv5" path="res://rsc/player/Player.tscn" id="5_x8ppp"]
 [ext_resource type="PackedScene" uid="uid://c4dtwpndyacfv" path="res://rsc/TEST/A/TestEnemy.tscn" id="6_kqyx8"]
 [ext_resource type="PackedScene" uid="uid://ckmu4we1kxexc" path="res://rsc/player/weapons/Ophelia/OpheliaWeapon.tscn" id="7_cmqpn"]
+[ext_resource type="PackedScene" uid="uid://deud6bnvr4ic5" path="res://rsc/player/weapons/Lyris/LyrisWeapon.tscn" id="8_ll85c"]
 
 [node name="World" instance=ExtResource("1_swd12")]
 script = ExtResource("2_58kku")
@@ -42,29 +43,47 @@ test_weapon = NodePath("OpheliaWeapon")
 
 [node name="Player" parent="PlayerLayer/TestShooter3" index="1" instance=ExtResource("5_x8ppp")]
 
-[node name="TestEnemy" parent="EnemyLayerMid" index="0" instance=ExtResource("6_kqyx8")]
-position = Vector2(305, 78)
+[node name="TestShooter4" type="Node2D" parent="PlayerLayer" index="3" node_paths=PackedStringArray("test_weapon")]
+position = Vector2(143, 493)
+script = ExtResource("2_tkw2x")
+test_weapon = NodePath("LyrisWeapon")
 
-[node name="TestEnemy2" parent="EnemyLayerMid" index="1" instance=ExtResource("6_kqyx8")]
+[node name="LyrisWeapon" parent="PlayerLayer/TestShooter4" index="0" instance=ExtResource("8_ll85c")]
+
+[node name="Player" parent="PlayerLayer/TestShooter4" index="1" instance=ExtResource("5_x8ppp")]
+
+[node name="TestEnemy2" parent="EnemyLayerMid" index="0" instance=ExtResource("6_kqyx8")]
 position = Vector2(298, 211)
 
-[node name="TestEnemy3" parent="EnemyLayerMid" index="2" instance=ExtResource("6_kqyx8")]
+[node name="TestEnemy3" parent="EnemyLayerMid" index="1" instance=ExtResource("6_kqyx8")]
 position = Vector2(397, 211)
 
-[node name="TestEnemy4" parent="EnemyLayerMid" index="3" instance=ExtResource("6_kqyx8")]
+[node name="TestEnemy4" parent="EnemyLayerMid" index="2" instance=ExtResource("6_kqyx8")]
 position = Vector2(496, 210)
 
-[node name="TestEnemy5" parent="EnemyLayerMid" index="4" instance=ExtResource("6_kqyx8")]
+[node name="TestEnemy5" parent="EnemyLayerMid" index="3" instance=ExtResource("6_kqyx8")]
 position = Vector2(588, 214)
 
-[node name="TestEnemy6" parent="EnemyLayerMid" index="5" instance=ExtResource("6_kqyx8")]
+[node name="TestEnemy6" parent="EnemyLayerMid" index="4" instance=ExtResource("6_kqyx8")]
 position = Vector2(687, 211)
 
-[node name="TestEnemy7" parent="EnemyLayerMid" index="6" instance=ExtResource("6_kqyx8")]
+[node name="TestEnemy7" parent="EnemyLayerMid" index="5" instance=ExtResource("6_kqyx8")]
 position = Vector2(776, 212)
 
-[node name="TestEnemy8" parent="EnemyLayerMid" index="7" instance=ExtResource("6_kqyx8")]
-position = Vector2(381, 80)
-
-[node name="TestEnemy9" parent="EnemyLayerMid" index="8" instance=ExtResource("6_kqyx8")]
+[node name="TestEnemy9" parent="EnemyLayerMid" index="6" instance=ExtResource("6_kqyx8")]
 position = Vector2(466, 109)
+
+[node name="TestEnemy10" parent="EnemyLayerMid" index="7" instance=ExtResource("6_kqyx8")]
+position = Vector2(302, 512)
+
+[node name="TestEnemy11" parent="EnemyLayerMid" index="8" instance=ExtResource("6_kqyx8")]
+position = Vector2(443, 553)
+
+[node name="TestEnemy12" parent="EnemyLayerMid" index="9" instance=ExtResource("6_kqyx8")]
+position = Vector2(584, 490)
+
+[node name="TestEnemy13" parent="EnemyLayerMid" index="10" instance=ExtResource("6_kqyx8")]
+position = Vector2(411, 425)
+
+[node name="TestEnemy14" parent="EnemyLayerMid" index="11" instance=ExtResource("6_kqyx8")]
+position = Vector2(500, 329)
