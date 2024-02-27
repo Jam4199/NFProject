@@ -1,6 +1,5 @@
 extends Bullet
 
-
 func _ready() -> void:
 	super()
 	monitorable = false

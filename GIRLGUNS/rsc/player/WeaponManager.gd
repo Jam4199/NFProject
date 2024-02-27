@@ -47,6 +47,19 @@ func weapon_left():
 			return
 	change_weapon(new_slot)
 
+func add_weapon(weapon_scene : PackedScene) -> Weapon:
+	var new_slot : int = 0
+	for wep in weapons:
+		if wep == null:
+			break
+		new_slot += 1
+	if new_slot >= 3:
+		print("weapons full")
+		return null
+	var new_weapon : Weapon = weapon_scene.instantiate()
+	add_child(new_weapon)
+	weapons[new_slot] = new_weapon
+	return new_weapon
 
 func weapon_right():
 	var new_slot : int = equipped_slot + 1

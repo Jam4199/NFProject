@@ -4,7 +4,7 @@ crucial
 world background scrolling
 character angle views
 sound effects and music
-bullet lifetime
+bullet lifetime(test)
 
 
 
@@ -12,6 +12,7 @@ changes
 enemy pierce stat
 knockback not instant(done)
 multishot changes
+
 
 contents
 weapon types

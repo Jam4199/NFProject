@@ -119,7 +119,7 @@ func take_knockback(direction : Vector2, distance : float, threshold : float,bui
 
 #kb array = [direction,distance,travelled] time all set to 0.2
 func apply_knockback(delta):
-	for kb in range(kb_queue.size() - 1  ,0,-1):
+	for kb in range(kb_queue.size() - 1  ,-1,-1):
 		var push_distance = kb_queue[kb][1] * (delta / (0.2))
 		if kb_queue[kb][2] + push_distance > kb_queue[kb][1]:
 			push_distance = (kb_queue[kb][1]) -  (kb_queue[kb][2]) + (0.01)

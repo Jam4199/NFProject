@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7i32th4np6c"]
+
+[ext_resource type="Script" path="res://rsc/world/encounters/Encounter.gd" id="1_4clp7"]
+[ext_resource type="Script" path="res://rsc/world/encounters/EncounterWave.gd" id="2_wi841"]
+
+[node name="Encounter" type="Node2D"]
+script = ExtResource("1_4clp7")
+
+[node name="EncounterWave" type="Node2D" parent="."]
+script = ExtResource("2_wi841")

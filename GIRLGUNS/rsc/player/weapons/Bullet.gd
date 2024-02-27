@@ -7,6 +7,7 @@ class_name Bullet
 @export var base_aoe : bool = false
 @export var base_aoe_size : float = 20
 @export var max_distance : float = 2000
+@export var lifetime : float = 3
 
 @export_group("Visuals")
 @export var nodes : Array[Node2D]
@@ -27,6 +28,8 @@ var pierce : int = base_pierce
 var aoe : bool = base_aoe
 var aoe_size : float = base_aoe_size
 var total_distance : float = 0
+var total_time : float = 0
+var dying : bool = false
 
 
 signal bullet_hit(hit_count : int)
@@ -37,14 +40,19 @@ func _ready() -> void:
 	monitoring = false
 
 func _physics_process(delta: float) -> void:
+	if dying:
+		return
 	call_deferred("move", delta)
+	total_time += delta
 	return
 
 func move(delta : float):
 	global_position += (Vector2.from_angle(global_rotation) * (speed * delta))
 	total_distance += speed * delta
-	if total_distance >= max_distance:
+	if total_distance >= max_distance or total_time >= lifetime:
 		bullet_end()
+		return
+
 	return
 
 func hit(object : Node2D):
@@ -84,6 +92,7 @@ func knockback(object):
 	return
 
 func bullet_end():
+	dying = true
 	if end_effect != null:
 		create_effect(end_effect)
 	set_deferred("monitorable",false)
