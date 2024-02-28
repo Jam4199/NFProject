@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dghnadkcpohv5" path="res://rsc/player/Player.tscn" id="1_wrmlv"]
 [ext_resource type="PackedScene" uid="uid://gii0ualdo55s" path="res://rsc/player/weapons/Aster/AsterWeapon.tscn" id="2_t1py0"]
 [ext_resource type="PackedScene" uid="uid://bhls42sx0oc8n" path="res://rsc/player/weapons/Viola/ViolaWeapon.tscn" id="3_h4ay2"]
-[ext_resource type="PackedScene" uid="uid://ckmu4we1kxexc" path="res://rsc/player/weapons/Ophelia/OpheliaWeapon.tscn" id="4_6qywh"]
+[ext_resource type="PackedScene" uid="uid://deud6bnvr4ic5" path="res://rsc/player/weapons/Lyris/LyrisWeapon.tscn" id="4_57vkk"]
 
 [node name="Player" instance=ExtResource("1_wrmlv")]
 max_hp = 100.0
@@ -12,7 +12,7 @@ max_hp = 100.0
 
 [node name="ViolaWeapon" parent="WeaponManager" index="1" instance=ExtResource("3_h4ay2")]
 
-[node name="OpheliaWeapon" parent="WeaponManager" index="2" instance=ExtResource("4_6qywh")]
+[node name="LyrisWeapon" parent="WeaponManager" index="2" instance=ExtResource("4_57vkk")]
 
 [node name="Line2D" type="Line2D" parent="WeaponManager" index="3"]
 points = PackedVector2Array(40, 0, -20, 0)

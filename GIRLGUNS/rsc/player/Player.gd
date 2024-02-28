@@ -31,6 +31,7 @@ func _ready() -> void:
 	current_hp = max_hp
 
 func _physics_process(delta: float) -> void:
+	
 	timers(delta)
 	movement()
 	weapon_change()

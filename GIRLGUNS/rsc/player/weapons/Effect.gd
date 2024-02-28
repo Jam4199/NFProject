@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Effect
 
 @onready var timer : Timer = get_node("Timer")

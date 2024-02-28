@@ -13,4 +13,5 @@ visible = false
 polygon = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
 
 [node name="Sprite" type="Sprite2D" parent="Flash/Color/Sprite" index="0"]
+use_parent_material = true
 texture = ExtResource("2_b7nlv")

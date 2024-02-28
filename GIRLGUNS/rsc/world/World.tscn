@@ -12,9 +12,11 @@ script = ExtResource("2_3ynwg")
 [node name="PlayerBorder" type="StaticBody2D" parent="."]
 
 [node name="Background" type="Polygon2D" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 0, 1200, 0, 1200, 600, 0, 600)
+polygon = PackedVector2Array(-1200, -600, 1200, -600, 1200, 600, -1200, 600)
+
+[node name="BackEffectLayer" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="PlayerLayer" type="Node2D" parent="."]
 unique_name_in_owner = true

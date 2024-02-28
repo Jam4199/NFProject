@@ -60,7 +60,6 @@ rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_8ft03")
 
 [node name="Background" parent="." index="3"]
-visible = true
 color = Color(0, 0, 0, 0.286275)
 
 [node name="Player" parent="PlayerLayer" index="0" instance=ExtResource("3_j5jrn")]

@@ -41,6 +41,7 @@ script = ExtResource("6_6fv2n")
 shape = SubResource("CircleShape2D_v67h0")
 
 [node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+use_parent_material = true
 position = Vector2(-9, 0)
 polygon = PackedVector2Array(9, -1, 23, -12, 29, -2, 33, -15, 7, -24, -23, -2, 7, 21, 29, 17, 28, 4, 21, 10)
 

@@ -85,10 +85,11 @@ func update_stats():
 	max_hp = base_max_hp
 	if current_hp > max_hp:
 		current_hp = max_hp
-	knockback_return = base_knockback_return
-	
 	speed = base_speed
 	attack = base_attack
+	
+	knockback_return = base_knockback_return
+	
 
 func bullet_entered(bullet : Bullet):
 	if not bullet is Bullet:

@@ -10,10 +10,10 @@ func add_bullet(new_bullet : Bullet):
 		return
 	world.add_bullet(new_bullet)
 
-func add_effect(new_effect : Node2D):
+func add_effect(new_effect : Node2D,front : bool = true):
 	if world == null:
 		return
-	world.add_effect(new_effect)
+	world.add_effect(new_effect , front)
 
 func add_enemy(new_enemy : Enemy):
 	if world == null:

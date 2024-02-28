@@ -59,6 +59,7 @@ func add_weapon(weapon_scene : PackedScene) -> Weapon:
 	var new_weapon : Weapon = weapon_scene.instantiate()
 	add_child(new_weapon)
 	weapons[new_slot] = new_weapon
+	change_weapon(new_slot)
 	return new_weapon
 
 func weapon_right():
