@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c68r2fe1r4px7"]
+
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_jsxyx"]
+
+[sub_resource type="Animation" id="Animation_6extj"]
+resource_name = "Base"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ul3x"]
+_data = {
+"Base": SubResource("Animation_6extj")
+}
+
+[node name="Crusher" instance=ExtResource("1_jsxyx")]
+
+[node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+use_parent_material = true
+polygon = PackedVector2Array(0, 0, 14, -8, 18, -3, 23, -13, 29, -4, 34, -16, 7, -24, -38, 0, 7, 24, 34, 16, 29, 4, 23, 13, 18, 3, 14, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_3ul3x")
+}

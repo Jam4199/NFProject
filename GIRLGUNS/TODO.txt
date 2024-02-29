@@ -5,7 +5,8 @@ world background scrolling
 character angle views
 sound effects and music
 bullet lifetime(test)
-
+pickups
+enemy bullets
 
 
 changes

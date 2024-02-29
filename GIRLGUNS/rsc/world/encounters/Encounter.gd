@@ -29,6 +29,7 @@ func spawn_wave(wave : EncounterWave):
 		wave.enemy_spawns[n].global_position = wave.spawn_pos[n]
 		wave.enemy_spawns[n].global_rotation = wave.spawn_rot[n]
 		wave.enemy_spawns[n].process_mode = PROCESS_MODE_INHERIT
+		wave.enemy_spawns[n].spawn()
 	wave.custom_post_spawn()
 	return
 

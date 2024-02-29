@@ -4,6 +4,7 @@
 
 [node name="LyrisWeapon" type="Node2D"]
 script = ExtResource("1_8kmax")
+ui_name = "Lyris Wrath"
 base_magazine_size = 1
 base_rof = 1.0
 base_reload_time = 4.0

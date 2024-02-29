@@ -14,7 +14,12 @@ script = ExtResource("2_naqxq")
 [node name="WorldC" parent="World" index="0" instance=ExtResource("2_he7aj")]
 script = ExtResource("4_006ya")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="World/WorldC" index="0"]
+[node name="Timer" type="Timer" parent="World/WorldC" index="0"]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="World/WorldC" index="1"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="World/WorldC/ParallaxBackground" index="0"]
 motion_scale = Vector2(0.05, 0.05)
@@ -42,8 +47,12 @@ texture = ExtResource("5_afom2")
 centered = false
 region_rect = Rect2(0, 0, 1200, 600)
 
-[node name="Background" parent="World/WorldC" index="3"]
+[node name="Background" parent="World/WorldC" index="4"]
 color = Color(0, 0, 0, 0.509804)
+
+[node name="Spawn" type="Marker2D" parent="World/WorldC/EnemyLayerMid" index="0"]
+unique_name_in_owner = true
+position = Vector2(543, 297)
 
 [node name="UI" parent="UI" index="0" instance=ExtResource("3_q77v2")]
 

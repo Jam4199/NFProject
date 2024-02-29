@@ -4,7 +4,8 @@ var follow_point : Node2D
 
 func _physics_process(delta: float) -> void:
 	if follow_point != null:
-		camera_follow(delta)
+		call_deferred("camera_follow",delta)
+		
 
 func follow_player():
 	if Globals.player == null:

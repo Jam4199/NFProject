@@ -1,23 +1,23 @@
 extends EnemyState
 
-var turn_speed_degrees : float = 90
-var target_angle_degrees : float = 0.5
-var move_speed_mult : float = 0.1
+var turn_speed_degrees : float = 270
+var target_angle_degrees : float = 0.1
+var move_speed_mult : float = 1
 
 func state_process(delta : float):
 	if Globals.player == null:
 		return
 	
 	var angle_diff = angle_difference(unit.global_rotation,unit.global_position.angle_to_point(Globals.player.global_position))
+	move(delta)
+	turn(delta,angle_diff)
 	if abs(angle_diff) < deg_to_rad(target_angle_degrees) :
 		emit_signal("state_change","Straight")
 		return
-	turn(delta,angle_diff)
-	move(delta)
 	return
 
 func turn(delta : float, angle_diff : float):
-	if abs(angle_diff) < turn_speed_degrees * delta:
+	if abs(angle_diff) < deg_to_rad(turn_speed_degrees) * delta:
 		unit.look_at(Globals.player.global_position)
 		return
 	if angle_diff > 0:

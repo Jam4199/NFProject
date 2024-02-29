@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://cej375spoxas4"]
 
-[ext_resource type="StyleBox" uid="uid://dx3xi457o1lm" path="res://rsc/UI/weaponbox.tres" id="1_f4u6l"]
-[ext_resource type="Script" path="res://weaponpanel.gd" id="2_4h0w4"]
-[ext_resource type="Texture2D" uid="uid://dgaqjhve3tfmp" path="res://assets/basic_shapes/Srar.png" id="2_aiswo"]
-[ext_resource type="StyleBox" uid="uid://bgkdjgyff20e1" path="res://rsc/UI/smth.tres" id="2_bs7je"]
+[ext_resource type="StyleBox" uid="uid://dx3xi457o1lm" path="res://rsc/UI/weaponbox.tres" id="1_2bg62"]
+[ext_resource type="Script" path="res://rsc/UI/weaponpanels.gd" id="2_bm6uu"]
+[ext_resource type="StyleBox" uid="uid://bgkdjgyff20e1" path="res://rsc/UI/smth.tres" id="3_ot2lu"]
+[ext_resource type="Texture2D" uid="uid://dgaqjhve3tfmp" path="res://assets/basic_shapes/Srar.png" id="4_veqoq"]
 
 [node name="WeaponPanel" type="Panel"]
 custom_minimum_size = Vector2(150, 50)
 offset_right = 150.0
 offset_bottom = 50.0
-theme_override_styles/panel = ExtResource("1_f4u6l")
-script = ExtResource("2_4h0w4")
+theme_override_styles/panel = ExtResource("1_2bg62")
+script = ExtResource("2_bm6uu")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -22,7 +22,7 @@ offset_bottom = 45.0
 [node name="Portrait" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_styles/panel = ExtResource("2_bs7je")
+theme_override_styles/panel = ExtResource("3_ot2lu")
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Portrait"]
 unique_name_in_owner = true
@@ -30,7 +30,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_aiswo")
+texture = ExtResource("4_veqoq")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]

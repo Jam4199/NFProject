@@ -49,8 +49,8 @@ func _ready():
 	monitorable = false
 	monitoring = false
 
-func state_input(state_input : String):
-	current_state.state_input(state_input)
+func state_input(input : String):
+	current_state.state_input(input)
 
 func change_state(next_state : String):
 	if states.has(next_state):

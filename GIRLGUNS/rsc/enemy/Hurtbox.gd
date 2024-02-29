@@ -13,6 +13,7 @@ var already_hit : bool = false
 
 
 func _ready() -> void:
+	monitoring = false
 	return
 
 func activate():
