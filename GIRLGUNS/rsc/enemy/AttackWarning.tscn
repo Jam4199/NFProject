@@ -11,9 +11,9 @@ warning_width = 600.0
 [node name="Wide" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 1000, 0)
 width = 200.0
-default_color = Color(1, 0, 0, 0.188235)
+default_color = Color(1, 0, 0, 0.117647)
 
 [node name="Narrow" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 1000, 0)
 width = 80.0
-default_color = Color(1, 0, 0, 0.447059)
+default_color = Color(1, 0, 0, 0.156863)

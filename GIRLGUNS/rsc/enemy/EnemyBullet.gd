@@ -1,8 +1,10 @@
 extends HurtBox
+class_name EnemyBullet
 
 @export var base_speed : float = 600
 @export var max_distance : float = 2000
 @export var lifetime : float = 3
+@export_enum("Large","Mid","Small") var world_layer : int = 0
 @export_group("Visuals")
 @export var nodes : Array[Node2D]
 @export var particles : Array[CPUParticles2D]
@@ -40,7 +42,6 @@ func bullet_end():
 	queue_free()
 	return
 
-func hit(body):
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
-		bullet_end()
+func hit(player : Player):
+	super(player)
+	bullet_end()

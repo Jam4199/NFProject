@@ -19,3 +19,8 @@ func add_enemy(new_enemy : Enemy):
 	if world == null:
 		return
 	world.add_enemy(new_enemy)
+
+func add_enemy_bullet(new_bullet : EnemyBullet):
+	if world == null:
+		return
+	world.add_enemy_bullet(new_bullet)

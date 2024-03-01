@@ -1,22 +1,153 @@
-[gd_scene load_steps=4 format=3 uid="uid://c68r2fe1r4px7"]
+[gd_scene load_steps=12 format=3 uid="uid://c68r2fe1r4px7"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_jsxyx"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Crusher/crushchase.gd" id="2_yt040"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Crusher/crushcharge.gd" id="3_n4kvv"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Crusher/crushrush.gd" id="4_dw4up"]
+[ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="4_m58qe"]
+[ext_resource type="PackedScene" uid="uid://brcbd7207vxwk" path="res://rsc/enemy/Hurtbox.tscn" id="6_l6pen"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4ppr"]
+radius = 30.0
 
 [sub_resource type="Animation" id="Animation_6extj"]
 resource_name = "Base"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/UpperJaw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash/Color/Sprite/LowerJaw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_oef8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/UpperJaw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash/Color/Sprite/LowerJaw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ul3x"]
 _data = {
-"Base": SubResource("Animation_6extj")
+"Base": SubResource("Animation_6extj"),
+"RESET": SubResource("Animation_oef8x")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_636bp"]
+radius = 31.0
+height = 84.0
+
 [node name="Crusher" instance=ExtResource("1_jsxyx")]
+base_speed = 250.0
+metadata/_edit_vertical_guides_ = [-374.0]
+
+[node name="crushchase" type="Node2D" parent="States" index="0"]
+script = ExtResource("2_yt040")
+
+[node name="crushcharge" type="Node2D" parent="States" index="1"]
+script = ExtResource("3_n4kvv")
+
+[node name="AttackWarning" parent="States/crushcharge" index="0" instance=ExtResource("4_m58qe")]
+visible = false
+warning_time = 1.0
+warning_length = 400.0
+warning_width = 40.0
+
+[node name="crushrush" type="Node2D" parent="States" index="2"]
+script = ExtResource("4_dw4up")
+
+[node name="Hurtbox" parent="States/crushrush" index="0" instance=ExtResource("6_l6pen")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/crushrush/Hurtbox" index="0"]
+position = Vector2(12, 0)
+shape = SubResource("CircleShape2D_e4ppr")
 
 [node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+visible = false
 use_parent_material = true
 polygon = PackedVector2Array(0, 0, 14, -8, 18, -3, 23, -13, 29, -4, 34, -16, 7, -24, -38, 0, 7, 24, 34, 16, 29, 4, 23, 13, 18, 3, 14, 8)
+
+[node name="UpperJaw" type="Polygon2D" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(14, -8, 18, 0, 23, -13, 29, 0, 34, -16, 7, -24, -23, -8, -12, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="Flash/Color/Sprite/UpperJaw" index="0"]
+points = PackedVector2Array(0, 0, 14, -8, 18, 0, 23, -13, 29, 0, 34, -16, 7, -24)
+width = 2.0
+joint_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="LowerJaw" type="Polygon2D" parent="Flash/Color/Sprite" index="2"]
+scale = Vector2(1, -1)
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(14, -8, 18, 0, 23, -13, 29, 0, 34, -16, 7, -24, -23, -8, -12, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Line2D2" type="Line2D" parent="Flash/Color/Sprite/LowerJaw" index="0"]
+points = PackedVector2Array(0, 0, 14, -8, 18, 0, 23, -13, 29, 0, 34, -16, 7, -24)
+width = 2.0
+joint_mode = 2
+end_cap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="tail" type="Polygon2D" parent="Flash/Color/Sprite" index="3"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, 0, 5, 23, -38, 0, 5, -23)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_3ul3x")
 }
+autoplay = "Base"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_636bp")
+
+[node name="Hurtbox2" parent="." index="5" instance=ExtResource("6_l6pen")]
+constant_hit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2" index="0"]
+position = Vector2(12, 0)
+shape = SubResource("CircleShape2D_e4ppr")

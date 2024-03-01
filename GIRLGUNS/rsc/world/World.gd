@@ -45,6 +45,16 @@ func add_enemy(new_enemy : Enemy):
 			enemy_layer_small.add_child(new_enemy)
 	return
 
+func add_enemy_bullet(new_bullet : EnemyBullet):
+	match new_bullet.world_layer:
+		0:
+			enemy_layer_large.add_child(new_bullet)
+		1:
+			enemy_layer_mid.add_child(new_bullet)
+		2: 
+			enemy_layer_small.add_child(new_bullet)
+	return
+
 func _physics_process(delta: float) -> void:
 
 	return
