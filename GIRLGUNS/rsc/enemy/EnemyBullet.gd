@@ -12,7 +12,7 @@ class_name EnemyBullet
 var speed : float = base_speed
 var dying : bool = false
 var total_time : float = 0
-var total_distance
+var total_distance : float = 0
 
 func _physics_process(delta: float) -> void:
 	speed = base_speed

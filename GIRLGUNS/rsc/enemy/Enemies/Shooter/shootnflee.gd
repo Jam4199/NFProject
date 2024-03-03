@@ -1,12 +1,55 @@
 extends EnemyState
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var wep : EnemyWeapon
+var target_distance : float = 300
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+func enemy_ready():
+	wep = get_node("%ShooterWep")
+
+func state_process(delta : float):
+	if wep.cooldown_timer <= 0:
+		wep.shoot()
+	unit.look_at(Globals.player.global_position)
+	unit.global_position += Vector2.from_angle(unit.global_rotation + PI) * unit.speed * delta
+	if global_position.distance_to(Globals.player.global_position) >= target_distance:
+		emit_signal("state_change","shootnhover")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

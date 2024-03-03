@@ -4,7 +4,10 @@ class_name EnemyWeapon
 @export var bullet_scene : PackedScene
 @export var cooldown_time : float = 1
 
-var cooldown_timer : float = 0
+var cooldown_timer : float = cooldown_time
+
+func _ready() -> void:
+	cooldown_timer = cooldown_time
 
 func _physics_process(delta: float) -> void:
 	if cooldown_timer > 0:

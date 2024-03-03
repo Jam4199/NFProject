@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx47m4uxehfn"]
+[gd_scene load_steps=4 format=3 uid="uid://putb5xp0edb7"]
 
-[ext_resource type="Script" path="res://rsc/enemy/EnemyBullet.gd" id="1_nsju8"]
-[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_7y030"]
+[ext_resource type="Script" path="res://rsc/enemy/EnemyBullet.gd" id="1_ida1x"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_hnve1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2abge"]
 radius = 6.0
 
-[node name="Shootball" type="Area2D" node_paths=PackedStringArray("nodes")]
+[node name="Destroyerball" type="Area2D" node_paths=PackedStringArray("nodes")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_nsju8")
+script = ExtResource("1_ida1x")
 base_speed = 200.0
 max_distance = 3000.0
 lifetime = 100.0
@@ -17,13 +17,13 @@ world_layer = 2
 nodes = [NodePath("Border")]
 
 [node name="Border" type="Sprite2D" parent="."]
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("2_7y030")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hnve1")
 
 [node name="Center" type="Sprite2D" parent="Border"]
 self_modulate = Color(0.686275, 0, 0.701961, 1)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_7y030")
+texture = ExtResource("2_hnve1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2abge")

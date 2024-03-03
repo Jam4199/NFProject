@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7ylfabu3ikhb"]
+[gd_scene load_steps=11 format=3 uid="uid://b7ylfabu3ikhb"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_laxtt"]
 [ext_resource type="Script" path="res://rsc/enemy/EnemyWeapon.gd" id="2_04xwg"]
@@ -6,6 +6,21 @@
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Shooter/shootnchase.gd" id="4_opq4m"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Shooter/shootnhover.gd" id="5_wund6"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Shooter/shootnflee.gd" id="6_0fp81"]
+
+[sub_resource type="Animation" id="Animation_2lltn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/Spikes:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_3qh1j"]
 resource_name = "base"
@@ -24,28 +39,17 @@ tracks/0/keys = {
 "values": [0.0, 0.20944, -0.20944, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_2lltn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Flash/Color/Sprite/Spikes:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0tds5"]
 _data = {
 "RESET": SubResource("Animation_2lltn"),
 "base": SubResource("Animation_3qh1j")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1r63j"]
+
 [node name="Shooter" instance=ExtResource("1_laxtt")]
+base_max_hp = 500.0
+base_speed = 300.0
 
 [node name="ShooterWep" type="Node2D" parent="." index="0"]
 unique_name_in_owner = true
@@ -60,6 +64,9 @@ script = ExtResource("5_wund6")
 
 [node name="shootnflee" type="Node2D" parent="States" index="2"]
 script = ExtResource("6_0fp81")
+
+[node name="Sprite" parent="Flash/Color" index="0"]
+scale = Vector2(0.6, 0.6)
 
 [node name="Spikes" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
 color = Color(0.686275, 0, 0.701961, 1)
@@ -97,3 +104,6 @@ libraries = {
 "": SubResource("AnimationLibrary_0tds5")
 }
 autoplay = "base"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_1r63j")

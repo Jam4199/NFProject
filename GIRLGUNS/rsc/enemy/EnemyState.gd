@@ -14,7 +14,10 @@ func state_enter():
 func state_exit():
 	return
 
-func state_input(state_input : String):
+func enemy_ready():
+	return
+
+func state_input(input : String):
 	return
 
 func state_process(delta : float):

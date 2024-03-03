@@ -36,14 +36,17 @@ func _ready():
 	if starting_state != null:
 		current_state = starting_state
 	for node in get_node("States").get_children():
+		if not node is EnemyState:
+			continue
 		states[node.name] = node
 		node.unit = self
+		node.enemy_ready()
 		if current_state == null:
 			current_state = node
 	if current_state != null:
 		current_state.state_enter()
 		current_state.connect("state_change",Callable(self,"change_state"))
-	
+		
 
 	area_entered.connect(Callable(self,"bullet_entered"))
 	monitorable = false

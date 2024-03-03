@@ -142,6 +142,7 @@ libraries = {
 autoplay = "Base"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_636bp")
 
@@ -149,5 +150,6 @@ shape = SubResource("CapsuleShape2D_636bp")
 constant_hit = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2" index="0"]
+visible = false
 position = Vector2(12, 0)
 shape = SubResource("CircleShape2D_e4ppr")

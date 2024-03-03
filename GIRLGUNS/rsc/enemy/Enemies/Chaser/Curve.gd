@@ -9,6 +9,7 @@ func state_process(delta : float):
 		return
 	
 	var angle_diff = angle_difference(unit.global_rotation,unit.global_position.angle_to_point(Globals.player.global_position))
+	
 	move(delta)
 	turn(delta,angle_diff)
 	if abs(angle_diff) < deg_to_rad(target_angle_degrees) :
