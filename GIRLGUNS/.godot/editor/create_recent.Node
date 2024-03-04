@@ -1,3 +1,5 @@
+EnemyState
+EnemyWeapon
 CPUParticles2D
 AnimationPlayer
 Line2D
@@ -6,10 +8,7 @@ CollisionShape2D
 EnemyBullet
 CollisionPolygon2D
 AttackWarning
-EnemyState
 Polygon2D
-EnemyWeapon
 WeaponManager
 Node2D
 Enemy
-Node

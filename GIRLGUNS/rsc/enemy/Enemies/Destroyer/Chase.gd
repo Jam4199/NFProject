@@ -3,9 +3,11 @@ extends EnemyState
 var turn_speed_degrees : float = 180
 var subwep_cd_range : float = 1
 var bullet_spread : float = 10
-var phase_time : float = 12 #12
+var phase_time : float = 8 #8
 var phase_timer : float = 0
 
+var enrage_phase_time : float = 6
+var enrage_speed_boost : float = 100
 
 enum {FORWARD,SPREAD,FOCUS}
 var current_pattern : int
@@ -16,7 +18,7 @@ var anim : AnimationPlayer
 
 func enemy_ready():
 	var wepname : String = "SubWep"
-	for n in range(0,6):
+	for n in range(0,9):
 		subweps.append(get_node("%" + wepname + str(n)))
 	mainwep = get_node("%MainWep")
 	anim = get_node("%SpriteAnim")
@@ -72,4 +74,7 @@ func turn(delta : float, angle_diff : float):
 		unit.global_rotation_degrees -= turn_speed_degrees * delta
 
 
+func enrage():
+	phase_time = enrage_phase_time
+	unit.speed += enrage_speed_boost
 

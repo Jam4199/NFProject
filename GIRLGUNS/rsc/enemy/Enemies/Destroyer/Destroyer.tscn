@@ -1,15 +1,73 @@
-[gd_scene load_steps=16 format=3 uid="uid://5wrh07poqui3"]
+[gd_scene load_steps=19 format=3 uid="uid://5wrh07poqui3"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_dq2o5"]
 [ext_resource type="Script" path="res://rsc/enemy/EnemyState.gd" id="2_hjgx8"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Destroyer.gd" id="2_j4bl3"]
 [ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_p76rv"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Chase.gd" id="2_qved4"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Barrage.gd" id="3_don0q"]
 [ext_resource type="Script" path="res://rsc/enemy/EnemyWeapon.gd" id="3_vqoha"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/BEEM.gd" id="4_b6xrm"]
 [ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="5_8strb"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Enrage.gd" id="6_f55ym"]
 [ext_resource type="PackedScene" uid="uid://putb5xp0edb7" path="res://rsc/enemy/Enemies/Destroyer/Destroyerball.tscn" id="8_gdcyy"]
 [ext_resource type="PackedScene" uid="uid://bx5f16kc7qy8w" path="res://rsc/enemy/Enemies/Destroyer/BEEM.tscn" id="10_wfbu5"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/SpreadWep.gd" id="12_vsyto"]
+
+[sub_resource type="Animation" id="Animation_qh5bv"]
+resource_name = "BEEM"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/SpikesR:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.174533, 0.349066, 0.349066, 0.174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash/Color/Sprite/SpikesL:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.174533, -0.349066, -0.349066, -0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_aco6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/SpikesL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash/Color/Sprite/SpikesR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_vsdqf"]
 resource_name = "base"
@@ -38,33 +96,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.174533, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_aco6f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Flash/Color/Sprite/SpikesL:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Flash/Color/Sprite/SpikesR:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_uclue"]
@@ -96,34 +127,6 @@ tracks/1/keys = {
 "values": [0.349066, 0.261799]
 }
 
-[sub_resource type="Animation" id="Animation_qh5bv"]
-resource_name = "BEEM"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Flash/Color/Sprite/SpikesR:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.174533, 0.349066, 0.349066, 0.174533]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Flash/Color/Sprite/SpikesL:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-0.174533, -0.349066, -0.349066, -0.174533]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fab83"]
 _data = {
 "BEEM": SubResource("Animation_qh5bv"),
@@ -133,8 +136,9 @@ _data = {
 }
 
 [node name="Destroyer" instance=ExtResource("1_dq2o5")]
+script = ExtResource("2_j4bl3")
 base_max_hp = 100000.0
-base_speed = 300.0
+base_speed = 200.0
 
 [node name="Chase" type="Node2D" parent="States" index="0"]
 script = ExtResource("2_qved4")
@@ -154,9 +158,12 @@ warning_width = 60.0
 width = 60.0
 
 [node name="Enrage" type="Node2D" parent="States" index="3"]
+script = ExtResource("6_f55ym")
+
+[node name="CircleBarrage" type="Node2D" parent="States" index="4"]
 script = ExtResource("2_hjgx8")
 
-[node name="Rush" type="Node2D" parent="States" index="4"]
+[node name="Rush" type="Node2D" parent="States" index="5"]
 script = ExtResource("2_hjgx8")
 
 [node name="SpikesL" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
@@ -193,7 +200,6 @@ position = Vector2(-20, -60)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("8_gdcyy")
-cooldown_time = 0.3
 metadata/_edit_group_ = true
 
 [node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep0" index="0"]
@@ -218,7 +224,6 @@ position = Vector2(20, -60)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("8_gdcyy")
-cooldown_time = 0.3
 metadata/_edit_group_ = true
 
 [node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep1" index="0"]
@@ -243,7 +248,6 @@ position = Vector2(0, -100)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("8_gdcyy")
-cooldown_time = 0.3
 metadata/_edit_group_ = true
 
 [node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep2" index="0"]
@@ -268,7 +272,6 @@ position = Vector2(-20, 60)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("8_gdcyy")
-cooldown_time = 0.3
 metadata/_edit_group_ = true
 
 [node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep3" index="0"]
@@ -293,7 +296,6 @@ position = Vector2(20, 60)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("8_gdcyy")
-cooldown_time = 0.3
 metadata/_edit_group_ = true
 
 [node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep4" index="0"]
@@ -318,7 +320,6 @@ position = Vector2(0, 100)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("8_gdcyy")
-cooldown_time = 0.3
 metadata/_edit_group_ = true
 
 [node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep5" index="0"]
@@ -337,10 +338,81 @@ position = Vector2(20, 0)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_p76rv")
 
-[node name="MainWep" type="Node2D" parent="Flash/Color/Sprite" index="9"]
+[node name="SubWep6" type="Node2D" parent="Flash/Color/Sprite" index="9"]
+unique_name_in_owner = true
+position = Vector2(-52, 25)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_vqoha")
+bullet_scene = ExtResource("8_gdcyy")
+metadata/_edit_group_ = true
+
+[node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep6" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_p76rv")
+
+[node name="MainEye" type="Sprite2D" parent="Flash/Color/Sprite/SubWep6/Pupil2" index="0"]
+position = Vector2(-3.46791e-06, 0)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("2_p76rv")
+
+[node name="Pupil" type="Sprite2D" parent="Flash/Color/Sprite/SubWep6/Pupil2/MainEye" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+position = Vector2(20, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_p76rv")
+
+[node name="SubWep7" type="Node2D" parent="Flash/Color/Sprite" index="10"]
+unique_name_in_owner = true
+position = Vector2(-52, -25)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_vqoha")
+bullet_scene = ExtResource("8_gdcyy")
+metadata/_edit_group_ = true
+
+[node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep7" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_p76rv")
+
+[node name="MainEye" type="Sprite2D" parent="Flash/Color/Sprite/SubWep7/Pupil2" index="0"]
+position = Vector2(-3.46791e-06, 0)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("2_p76rv")
+
+[node name="Pupil" type="Sprite2D" parent="Flash/Color/Sprite/SubWep7/Pupil2/MainEye" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+position = Vector2(20, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_p76rv")
+
+[node name="SubWep8" type="Node2D" parent="Flash/Color/Sprite" index="11"]
+unique_name_in_owner = true
+position = Vector2(-84, 0)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_vqoha")
+bullet_scene = ExtResource("8_gdcyy")
+metadata/_edit_group_ = true
+
+[node name="Pupil2" type="Sprite2D" parent="Flash/Color/Sprite/SubWep8" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_p76rv")
+
+[node name="MainEye" type="Sprite2D" parent="Flash/Color/Sprite/SubWep8/Pupil2" index="0"]
+position = Vector2(-3.46791e-06, 0)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("2_p76rv")
+
+[node name="Pupil" type="Sprite2D" parent="Flash/Color/Sprite/SubWep8/Pupil2/MainEye" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+position = Vector2(20, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_p76rv")
+
+[node name="MainWep" type="Node2D" parent="Flash/Color/Sprite" index="12"]
 unique_name_in_owner = true
 position = Vector2(1.90735e-06, 0)
-scale = Vector2(1, 1)
 script = ExtResource("3_vqoha")
 bullet_scene = ExtResource("10_wfbu5")
 
@@ -359,6 +431,12 @@ self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
 position = Vector2(20, 0)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_p76rv")
+
+[node name="SpreadWep" type="Node2D" parent="Flash/Color/Sprite" index="13"]
+unique_name_in_owner = true
+script = ExtResource("12_vsyto")
+bullet_scene = ExtResource("8_gdcyy")
+cooldown_time = 0.3
 
 [node name="SpriteAnim" type="AnimationPlayer" parent="." index="3"]
 unique_name_in_owner = true

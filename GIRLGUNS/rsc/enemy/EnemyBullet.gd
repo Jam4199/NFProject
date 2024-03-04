@@ -14,8 +14,11 @@ var dying : bool = false
 var total_time : float = 0
 var total_distance : float = 0
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
 	speed = base_speed
+
+func _physics_process(delta: float) -> void:
+	
 	if dying:
 		return
 	move(delta)

@@ -3,7 +3,7 @@ class_name EnemyState
 
 signal state_change(next_state : EnemyState)
 
-var unit : Area2D
+var unit : Enemy
 
 func state_allow()->bool:
 	return true

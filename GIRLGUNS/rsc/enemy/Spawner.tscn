@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b52sddtfxf2aj"]
+
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_lkic0"]
+[ext_resource type="Script" path="res://rsc/enemy/Spawner.gd" id="2_k72cr"]
+
+[node name="Spawner" instance=ExtResource("1_lkic0")]
+script = ExtResource("2_k72cr")
+lifetime = 3.0
+spawn_scene = null
+max_spawns = 1
+initial_delay = 1.0
+spawn_delay = 1.0
+spawn_rotation = 0

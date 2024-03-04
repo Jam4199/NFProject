@@ -2,13 +2,16 @@ extends EnemyState
 
 var turn_speed_degrees : float = 270
 
-var spread_degrees : float = 40
-var cooldown_mod_rng : float = 0.3
+var spread_degrees : float = 80
+var cooldown_mod_rng : float = 0.4
 var barrage_wait : float = 2
-var phase_time : float = 8
+var barrage_bullet_slowdown = 150
+var phase_time : float = 6
+var enraged : bool = false
 
 var subweps : Array[EnemyWeapon] = []
 var mainwep : EnemyWeapon
+var spreadwep : EnemyWeapon
 var anim : AnimationPlayer
 var phase_timer : float = 0
 
@@ -16,10 +19,11 @@ var phase_timer : float = 0
 
 func enemy_ready():
 	var wepname : String = "SubWep"
-	for n in range(0,6):
+	for n in range(0,9):
 		subweps.append(get_node("%" + wepname + str(n)))
 	mainwep = get_node("%MainWep")
 	anim = get_node("%SpriteAnim")
+	spreadwep = get_node("%SpreadWep")
 
 func state_enter():
 	phase_timer = phase_time
@@ -60,11 +64,14 @@ func barrage():
 		if subwep.cooldown_timer <= 0:
 			subwep.look_at(Globals.player.global_position)
 			subwep.global_rotation_degrees += Globals.rng.randf_range(-spread_degrees,spread_degrees)
-			subwep.shoot()
-			print("boop")
+			var new_bullet = subwep.shoot()
+			new_bullet.speed -= barrage_bullet_slowdown
 			subwep.cooldown_timer = Globals.rng.randf_range(0,cooldown_mod_rng)
-			
+	if spreadwep.cooldown_timer <= 0 and enraged:
+		spreadwep.shoot()
+		spreadwep.cooldown_timer = Globals.rng.randf_range(0,cooldown_mod_rng)
 
-
+func enrage():
+	enraged = true
 
 
