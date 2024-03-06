@@ -58,6 +58,9 @@ func blast():
 	anim.play("BEEM")
 	unit.take_knockback(Vector2.from_angle(global_rotation + PI),50,200,0)
 	await anim.animation_finished
+	if enraged:
+		emit_signal("state_change","CircleBarrage")
+		return
 	emit_signal("state_change","Chase")
 	return
 

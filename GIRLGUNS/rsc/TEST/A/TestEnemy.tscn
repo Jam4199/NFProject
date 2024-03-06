@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btgv0n20fbxpo" path="res://assets/basic_shapes/square_64.png" id="2_b7nlv"]
 
 [node name="TestEnemy" instance=ExtResource("1_74tt2")]
+collision_layer = 8
 script = ExtResource("1_uymy6")
 base_max_hp = 100000.0
 

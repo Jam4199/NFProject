@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5cfwybhxkx0m"]
+[gd_scene load_steps=8 format=3 uid="uid://b5cfwybhxkx0m"]
 
 [ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="1_ekkay"]
 [ext_resource type="Script" path="res://rsc/TEST/B/B_test.gd" id="2_2bc2y"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://yhks3k8s3ina" path="res://rsc/TEST/B/B_TestPlayer.tscn" id="3_j5jrn"]
 [ext_resource type="PackedScene" uid="uid://clqscnae4oub1" path="res://rsc/TEST/B/b_testeneny1/b_test_enemy.tscn" id="4_p8ijf"]
 [ext_resource type="PackedScene" uid="uid://b4als206inycd" path="res://rsc/UI/UI.tscn" id="5_wnfke"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ft03"]
 
 [node name="World" instance=ExtResource("1_ekkay")]
 script = ExtResource("2_2bc2y")
@@ -40,24 +38,6 @@ scale = Vector2(6, 3)
 texture = ExtResource("3_2t8hb")
 centered = false
 region_rect = Rect2(0, 0, 1200, 600)
-
-[node name="up" type="CollisionShape2D" parent="PlayerBorder" index="0"]
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_8ft03")
-
-[node name="down" type="CollisionShape2D" parent="PlayerBorder" index="1"]
-position = Vector2(0, 600)
-shape = SubResource("WorldBoundaryShape2D_8ft03")
-
-[node name="left" type="CollisionShape2D" parent="PlayerBorder" index="2"]
-position = Vector2(0, 600)
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_8ft03")
-
-[node name="Right" type="CollisionShape2D" parent="PlayerBorder" index="3"]
-position = Vector2(1200, 600)
-rotation = 4.71239
-shape = SubResource("WorldBoundaryShape2D_8ft03")
 
 [node name="Background" parent="." index="3"]
 color = Color(0, 0, 0, 0.286275)

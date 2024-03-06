@@ -1,14 +1,18 @@
 extends Area2D
 class_name Bullet
 
+
+
 @export var base_damage : float = 100
 @export var base_speed : float = 600 #distance per second
 @export var base_pierce : int = 1
-@export var base_aoe : bool = false
-@export var base_aoe_size : float = 20
 @export var max_distance : float = 2000
 @export var lifetime : float = 3
 
+@export_group("AoE")
+@export var base_aoe : bool = false
+@export var aoe_box : PackedScene
+@export var base_aoe_size : float = 20
 @export_group("Visuals")
 @export var nodes : Array[Node2D]
 @export var particles : Array[CPUParticles2D]
@@ -38,6 +42,9 @@ var pierced : Array = []
 
 func _ready() -> void:
 	monitoring = false
+	damage = base_damage
+	speed = base_speed
+	
 
 func _physics_process(delta: float) -> void:
 	if dying:
@@ -58,7 +65,6 @@ func move(delta : float):
 func hit(object : Node2D):
 	if object in pierced:
 		return
-	
 	emit_signal("bullet_hit",hit_count)
 	
 	
@@ -70,6 +76,13 @@ func hit(object : Node2D):
 	
 	hit_count += 1
 	pierce -= 1
+	
+	if aoe:
+		if aoe_box == null:
+			aoe_box = load("res://rsc/player/weapons/Aoe.tscn")
+		call_deferred("aoe_create",object)
+		
+	
 	if pierce <= 0:
 		bullet_end()
 	if hit_effect != null:
@@ -110,3 +123,26 @@ func create_effect(effect_scene : PackedScene, effect_position : Vector2 = self.
 	Globals.add_effect(new_effect)
 	new_effect.global_position = effect_position
 	new_effect.rotation = effect_rotation
+
+func aoe_create(object  : Node2D):
+	var new_aoe : Aoe = aoe_box.instantiate()
+	Globals.add_bullet(new_aoe)
+	new_aoe.global_position = global_position
+	new_aoe.global_rotation = global_rotation
+	new_aoe.set_radius(aoe_size)
+	new_aoe.pierced.append(object)
+	new_aoe.connect("pass_hit",Callable(self,"aoe_hit"))
+	return
+
+func aoe_hit(object : Node2D):
+	
+	if object.has_method("take_damage"):
+		hurt(object)
+	
+	if object.has_method("take_knockback") and kb_active:
+		knockback(object)
+
+
+
+
+

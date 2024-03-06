@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dptl1l5hgotjx"]
+
+[ext_resource type="PackedScene" uid="uid://b52sddtfxf2aj" path="res://rsc/enemy/Spawner.tscn" id="1_hvefs"]
+[ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="2_kv6b1"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="3_dpbqn"]
+
+[sub_resource type="Curve" id="Curve_8ycmr"]
+max_value = 10.0
+_data = [Vector2(0, 0.197802), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rxbxi"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DchaseSpawner" instance=ExtResource("1_hvefs")]
+lifetime = 3.1
+spawn_scene = ExtResource("2_kv6b1")
+max_spawns = 6
+spawn_delay = 0.5
+
+[node name="Sprite2D2" type="Sprite2D" parent="Flash/Color/Sprite" index="0"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_dpbqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Flash/Color/Sprite/Sprite2D2" index="0"]
+self_modulate = Color(0.686275, 0, 0.701961, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_dpbqn")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Flash/Color/Sprite" index="1"]
+amount = 3
+lifetime = 0.5
+local_coords = true
+texture = ExtResource("3_dpbqn")
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_8ycmr")
+color = Color(0.686275, 0, 0.701961, 0.254902)
+color_ramp = SubResource("Gradient_rxbxi")

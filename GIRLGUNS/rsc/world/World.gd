@@ -56,11 +56,10 @@ func add_enemy_bullet(new_bullet : EnemyBullet):
 	return
 
 func _physics_process(delta: float) -> void:
-
 	return
 
 func spawn_player():
 	player_layer.add_child(Globals.player)
 	Globals.player.global_position = player_spawn_point.global_position
-	
+
 

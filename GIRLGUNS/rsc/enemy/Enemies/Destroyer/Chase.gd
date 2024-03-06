@@ -1,13 +1,15 @@
 extends EnemyState
 
-var turn_speed_degrees : float = 180
+var turn_speed_degrees : float = 120
 var subwep_cd_range : float = 1
 var bullet_spread : float = 10
 var phase_time : float = 8 #8
 var phase_timer : float = 0
+var speed_mod : float = 1
 
-var enrage_phase_time : float = 6
-var enrage_speed_boost : float = 100
+var enrage_phase_time : float = 8
+var enrage_speed_multiplier : float = 2.5
+var enraged : bool = false
 
 enum {FORWARD,SPREAD,FOCUS}
 var current_pattern : int
@@ -37,16 +39,26 @@ func state_process(delta : float):
 	
 	var shot_fired : bool = false
 	for subwep in subweps:
+		if enraged:
+			break
 		if subwep.cooldown_timer <= 0:
 			shot_fired = true
+			var base_direction = 0
+			if enraged:
+				base_direction = global_position.angle_to_point(Globals.player.global_position)
 			match current_pattern:
 				FORWARD:
-					subwep.rotation = 0
+					subwep.global_rotation = base_direction
+					
 				SPREAD:
-					subwep.rotation_degrees = Globals.rng.randf_range(-20,20)
+					subwep.global_rotation_degrees = rad_to_deg(base_direction) + Globals.rng.randf_range(-20,20)
 				FOCUS:
 					subwep.look_at(Globals.player.global_position)
-			subwep.shoot()
+			var new_bullet : EnemyBullet = subwep.shoot()
+			if enraged:
+				new_bullet.speed += 300
+				new_bullet.min_speed = 200
+
 		
 	if shot_fired:
 		current_pattern += 1
@@ -57,8 +69,9 @@ func state_process(delta : float):
 	turn(delta,angle_diff)
 	
 	if unit.global_position.distance_to(Globals.player.global_position) > 20:
-		var direction = Vector2.from_angle(unit.global_position.angle_to_point(Globals.player.global_position))
-		unit.global_position += (direction * unit.speed * delta)
+		var direction = Vector2.from_angle(unit.global_rotation)
+		
+		unit.global_position += (direction * unit.speed * delta * speed_mod)
 	
 	if phase_timer <= 0:
 		emit_signal("state_change","Barrage")
@@ -75,6 +88,7 @@ func turn(delta : float, angle_diff : float):
 
 
 func enrage():
+	enraged = true
 	phase_time = enrage_phase_time
-	unit.speed += enrage_speed_boost
+	speed_mod = enrage_speed_multiplier
 

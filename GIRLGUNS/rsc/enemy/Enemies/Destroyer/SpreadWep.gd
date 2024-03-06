@@ -1,13 +1,13 @@
 extends EnemyWeapon
 
 var radius : float = 20
-var shots : int = 12
+var shots : int = 20
 
 func shoot(force : bool = false) -> EnemyBullet:
 	if cooldown_time <= 0 and force == false:
 		return
 	var spread : float = 360 / float(shots)
-	var current_angle : float = global_rotation
+	var current_angle : float = global_rotation_degrees
 	for n in shots:
 		
 		var new_bullet : EnemyBullet = bullet_scene.instantiate()

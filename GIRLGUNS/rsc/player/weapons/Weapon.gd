@@ -179,6 +179,8 @@ func modify_bullet(bullet : Bullet):
 		bullet.aoe = true
 	if aoe_override < 0:
 		bullet.aoe = false
+	if aoe_override == 0:
+		bullet.aoe = bullet.base_aoe
 	if bullet.aoe:
 		bullet.aoe_size = bullet.base_aoe_size + aoe_add 
 

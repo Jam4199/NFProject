@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://rsc/UI/UI.gd" id="1_32ly1"]
 [ext_resource type="Script" path="res://rsc/UI/WeaponPanel.gd" id="1_m83fv"]
-[ext_resource type="PackedScene" uid="uid://cej375spoxas4" path="res://rsc/UI/weaponpanel.tscn" id="3_dsr2q"]
+[ext_resource type="PackedScene" uid="uid://cej375spoxas4" path="res://weaponpanel.tscn" id="3_dsr2q"]
 [ext_resource type="StyleBox" uid="uid://dx3xi457o1lm" path="res://rsc/UI/weaponbox.tres" id="3_tmden"]
 [ext_resource type="Texture2D" uid="uid://drfvxuiayvccc" path="res://assets/ui/square_shadow.png" id="4_8suf4"]
 [ext_resource type="Script" path="res://rsc/UI/StatusBar.gd" id="4_x1hjr"]

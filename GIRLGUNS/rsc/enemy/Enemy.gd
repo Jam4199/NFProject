@@ -83,6 +83,7 @@ func spawn():
 	current_hp = max_hp
 	kb_resist = 0
 	monitoring = true
+	monitorable = true
 
 func update_stats():
 	max_hp = base_max_hp

@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://5wrh07poqui3"]
+[gd_scene load_steps=20 format=3 uid="uid://5wrh07poqui3"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_dq2o5"]
-[ext_resource type="Script" path="res://rsc/enemy/EnemyState.gd" id="2_hjgx8"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Destroyer.gd" id="2_j4bl3"]
 [ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_p76rv"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Chase.gd" id="2_qved4"]
@@ -10,7 +9,9 @@
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/BEEM.gd" id="4_b6xrm"]
 [ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="5_8strb"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Enrage.gd" id="6_f55ym"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/CircleBarrage.gd" id="8_dra8h"]
 [ext_resource type="PackedScene" uid="uid://putb5xp0edb7" path="res://rsc/enemy/Enemies/Destroyer/Destroyerball.tscn" id="8_gdcyy"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Rush.gd" id="9_tbd8a"]
 [ext_resource type="PackedScene" uid="uid://bx5f16kc7qy8w" path="res://rsc/enemy/Enemies/Destroyer/BEEM.tscn" id="10_wfbu5"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/SpreadWep.gd" id="12_vsyto"]
 
@@ -135,10 +136,11 @@ _data = {
 "charging": SubResource("Animation_uclue")
 }
 
-[node name="Destroyer" instance=ExtResource("1_dq2o5")]
+[node name="Destroyer" node_paths=PackedStringArray("starting_state") instance=ExtResource("1_dq2o5")]
 script = ExtResource("2_j4bl3")
 base_max_hp = 100000.0
 base_speed = 200.0
+starting_state = NodePath("States/Enrage")
 
 [node name="Chase" type="Node2D" parent="States" index="0"]
 script = ExtResource("2_qved4")
@@ -150,6 +152,7 @@ script = ExtResource("3_don0q")
 script = ExtResource("4_b6xrm")
 
 [node name="AttackWarning" parent="States/BEEM" index="0" instance=ExtResource("5_8strb")]
+visible = false
 warning_time = 3.0
 warning_length = 3000.0
 warning_width = 60.0
@@ -161,10 +164,16 @@ width = 60.0
 script = ExtResource("6_f55ym")
 
 [node name="CircleBarrage" type="Node2D" parent="States" index="4"]
-script = ExtResource("2_hjgx8")
+script = ExtResource("8_dra8h")
 
 [node name="Rush" type="Node2D" parent="States" index="5"]
-script = ExtResource("2_hjgx8")
+script = ExtResource("9_tbd8a")
+
+[node name="AttackWarning" parent="States/Rush" index="0" instance=ExtResource("5_8strb")]
+warning_width = 350.0
+
+[node name="Wide" parent="States/Rush/AttackWarning" index="0"]
+width = 350.0
 
 [node name="SpikesL" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
 scale = Vector2(1, -1)
@@ -450,3 +459,4 @@ visible = false
 polygon = PackedVector2Array(0, -163, 103, -29, 0, 0, 103, 29, 0, 163, -122, 0)
 
 [editable path="States/BEEM/AttackWarning"]
+[editable path="States/Rush/AttackWarning"]

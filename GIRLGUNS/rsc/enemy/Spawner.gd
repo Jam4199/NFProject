@@ -28,7 +28,8 @@ func _physics_process(delta: float) -> void:
 	delay_timer -= delta
 	if delay_timer <= 0:
 		spawn_enemy()
-	
+	if life_timer <= 0:
+		death()
 	
 
 func spawn_enemy():
@@ -45,4 +46,20 @@ func spawn_enemy():
 		2:
 			new_enemy.global_rotation = global_rotation
 	new_enemy.spawn()
+	spawn_count += 1
+	delay_timer = spawn_delay
+	if spawn_delay == 0:
+		while spawn_count < max_spawns:
+			new_enemy = spawn_scene.instantiate()
+			Globals.add_enemy(new_enemy)
+			new_enemy.global_position = global_position
+			match spawn_rotation:
+				0:
+					new_enemy.global_rotation_degrees = Globals.rng.randf_range(0,360)
+				1:
+					new_enemy.look_at(Globals.player.global_position)
+				2:
+					new_enemy.global_rotation = global_rotation
+			new_enemy.spawn()
+			spawn_count += 1
 	

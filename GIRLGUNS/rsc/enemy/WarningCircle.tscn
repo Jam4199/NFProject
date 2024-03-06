@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bobnxq8v3xc2d"]
+
+[ext_resource type="Script" path="res://rsc/enemy/WarningCircle.gd" id="1_e3evd"]
+[ext_resource type="Script" path="res://rsc/CircleThing.gd" id="2_lfp26"]
+
+[node name="WarningCircle" type="Node2D"]
+script = ExtResource("1_e3evd")
+warning_time = 3.0
+warning_radius = 1000.0
+
+[node name="Outer" type="Node2D" parent="."]
+script = ExtResource("2_lfp26")
+radius = 1000.0
+
+[node name="Inner" type="Node2D" parent="."]
+script = ExtResource("2_lfp26")
+color = Color(1, 1, 1, 1)

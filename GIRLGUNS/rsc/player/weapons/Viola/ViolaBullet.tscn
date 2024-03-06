@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Bullet.gd" id="1_ttfkv"]
 [ext_resource type="Texture2D" uid="uid://bvn5flxg7jgj2" path="res://assets/basic_shapes/dingbats-461.png" id="2_hf040"]
-[ext_resource type="PackedScene" uid="uid://rmvymcc3qjr3" path="res://rsc/player/weapons/Viola/ViolaHit.tscn" id="2_pr11w"]
+[ext_resource type="PackedScene" uid="uid://rmvymcc3qjr3" path="res://rsc/player/weapons/ViolaHit.tscn" id="2_pr11w"]
 [ext_resource type="Texture2D" uid="uid://btgv0n20fbxpo" path="res://assets/basic_shapes/square_64.png" id="2_rpclk"]
 [ext_resource type="Texture2D" uid="uid://4k6bied210xe" path="res://assets/basic_shapes/lightrays_7.png" id="4_e5cju"]
 
@@ -26,8 +26,10 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ttfkv")
 base_damage = 1000.0
-base_speed = 1800.0
+base_speed = 2200.0
 base_pierce = 5
+base_aoe = true
+base_aoe_size = 50.0
 nodes = [NodePath("Node2D"), NodePath("Point")]
 particles = [NodePath("Flakes")]
 hit_effect = ExtResource("2_pr11w")

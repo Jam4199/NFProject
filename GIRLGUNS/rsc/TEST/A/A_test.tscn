@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnp16pyk0fbu1"]
+[gd_scene load_steps=11 format=3 uid="uid://dnp16pyk0fbu1"]
 
 [ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="1_swd12"]
 [ext_resource type="Script" path="res://rsc/TEST/A/A_test.gd" id="2_58kku"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c4dtwpndyacfv" path="res://rsc/TEST/A/TestEnemy.tscn" id="6_kqyx8"]
 [ext_resource type="PackedScene" uid="uid://ckmu4we1kxexc" path="res://rsc/player/weapons/Ophelia/OpheliaWeapon.tscn" id="7_cmqpn"]
 [ext_resource type="PackedScene" uid="uid://deud6bnvr4ic5" path="res://rsc/player/weapons/Lyris/LyrisWeapon.tscn" id="8_ll85c"]
+[ext_resource type="PackedScene" uid="uid://bl07tsmyjf5iv" path="res://rsc/player/weapons/Ruby/RubyWeapon.tscn" id="9_4q4aw"]
 
 [node name="World" instance=ExtResource("1_swd12")]
 script = ExtResource("2_58kku")
@@ -51,6 +52,15 @@ test_weapon = NodePath("LyrisWeapon")
 [node name="LyrisWeapon" parent="PlayerLayer/TestShooter4" index="0" instance=ExtResource("8_ll85c")]
 
 [node name="Player" parent="PlayerLayer/TestShooter4" index="1" instance=ExtResource("5_x8ppp")]
+
+[node name="TestShooter5" type="Node2D" parent="PlayerLayer" index="4" node_paths=PackedStringArray("test_weapon")]
+position = Vector2(48, 326)
+script = ExtResource("2_tkw2x")
+test_weapon = NodePath("RubyWeapon")
+
+[node name="RubyWeapon" parent="PlayerLayer/TestShooter5" index="0" instance=ExtResource("9_4q4aw")]
+
+[node name="Player" parent="PlayerLayer/TestShooter5" index="1" instance=ExtResource("5_x8ppp")]
 
 [node name="TestEnemy2" parent="EnemyLayerMid" index="0" instance=ExtResource("6_kqyx8")]
 position = Vector2(298, 211)
