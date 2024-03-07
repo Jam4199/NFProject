@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4als206inycd"]
+[gd_scene load_steps=16 format=3 uid="uid://b4als206inycd"]
 
 [ext_resource type="Script" path="res://rsc/UI/UI.gd" id="1_32ly1"]
 [ext_resource type="Script" path="res://rsc/UI/WeaponPanel.gd" id="1_m83fv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://smjle6kq570h" path="res://assets/ui/squareWhite.png" id="8_tar7x"]
 [ext_resource type="StyleBox" uid="uid://bgkdjgyff20e1" path="res://rsc/UI/smth.tres" id="10_0v04b"]
 [ext_resource type="PackedScene" uid="uid://7yi7tcbx7byl" path="res://rsc/thebigwat.tscn" id="10_qcqd4"]
+[ext_resource type="Texture2D" uid="uid://ck13wvfkik6gh" path="res://assets/ui/arrowUp.png" id="11_jjdqo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0gl4"]
 bg_color = Color(0.392157, 0.627451, 0.972549, 1)
@@ -34,6 +35,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_32ly1")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="WeaponPanel" type="Control" parent="."]
 unique_name_in_owner = true
@@ -145,9 +148,39 @@ layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 260.0
-offset_bottom = 70.0
+offset_bottom = 91.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_b0gl4")
 script = ExtResource("4_x1hjr")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Level" type="RichTextLabel" parent="StatusPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 54.0
+offset_bottom = 79.0
+theme_override_font_sizes/normal_font_size = 14
+text = "LV. 55"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 1
+
+[node name="ExpBar" type="TextureProgressBar" parent="StatusPanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 54.0
+offset_right = 230.0
+offset_bottom = 74.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("4_8suf4")
+texture_progress = ExtResource("6_l2ph6")
 
 [node name="HealthBar" type="TextureProgressBar" parent="StatusPanel"]
 layout_mode = 0
@@ -171,6 +204,15 @@ offset_top = 5.0
 offset_right = 70.0
 offset_bottom = 25.0
 texture = ExtResource("6_lox2o")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="StatusPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 54.0
+offset_right = 70.0
+offset_bottom = 74.0
+texture = ExtResource("11_jjdqo")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="StatusPanel"]

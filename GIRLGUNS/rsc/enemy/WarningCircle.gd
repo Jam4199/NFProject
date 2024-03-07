@@ -12,7 +12,7 @@ var current_time : float = 0
 
 func _ready() -> void:
 	visible = false
-	start() #use for testing
+	#start() #use for testing
 	return
 
 func _physics_process(delta: float) -> void:
@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 		return
 	current_time += delta
 	inner.radius = floori((warning_radius/10.0) + (warning_radius * ((9.0/10.0)*(current_time/warning_time)) ))
-	print(str(inner.radius))
 	inner.queue_redraw()
 	if current_time >= warning_time:
 		end()

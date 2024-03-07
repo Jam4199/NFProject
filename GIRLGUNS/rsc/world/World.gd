@@ -1,7 +1,11 @@
 extends Node2D
 class_name World
 
+const EXP = preload("res://rsc/world/pickups/Exp.tscn")
+const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 
+
+@onready var pickup_layer : Node2D = get_node("%PickupLayer")
 @onready var player_layer : Node2D = get_node("%PlayerLayer")
 @onready var bullet_layer : Node2D = get_node("%BulletLayer")
 @onready var effect_layer : Node2D = get_node("%EffectLayer")
@@ -11,6 +15,8 @@ class_name World
 @onready var enemy_layer_mid : Node2D = get_node("%EnemyLayerMid")
 @onready var enemy_layer_small : Node2D = get_node("%EnemyLayerSmall")
 @onready var world_camera : Camera2D = get_node("WorldCamera")
+
+
 
 var player_control : bool = false
 
@@ -62,4 +68,17 @@ func spawn_player():
 	player_layer.add_child(Globals.player)
 	Globals.player.global_position = player_spawn_point.global_position
 
+func enemy_death(dead : Enemy):
+	for n in dead.exp:
+		var new_pickup : Pickup = EXP.instantiate()
+		pickup_layer.add_child(new_pickup)
+		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+	for n in dead.heal:
+		var new_pickup : Pickup = HEAL.instantiate()
+		pickup_layer.add_child(new_pickup)
+		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
 
+	return
+
+func level_up():
+	return

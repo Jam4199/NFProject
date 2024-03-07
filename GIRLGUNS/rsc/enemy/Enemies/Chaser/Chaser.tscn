@@ -86,6 +86,8 @@ _data = {
 base_speed = 350.0
 starting_state = NodePath("States/Straight")
 world_layer = 1
+exp = 5
+heal = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(-7, 0)

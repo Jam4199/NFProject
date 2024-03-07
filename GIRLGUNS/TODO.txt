@@ -3,8 +3,8 @@ todo
 crucial 
 world background scrolling
 character angle views
-sound effects and music
-pickups
+sound effects and music AAAAAAAAAAAAAAAAAAAA
+pickups okay?
 
 
 changes
@@ -13,10 +13,10 @@ multishot changes
 
 
 contents
-weapon types
-enemy types
+weapon types 5
+enemy types 4
 encounters
-bosses
+bosses 1
 
 
 
@@ -39,10 +39,30 @@ support attacks
 
 
 
+upgrade cards:
 
+player :
+	speed
+	stamina regen
+	dash i-frame
+	max hp
+	healing (when low hp)
 
+weapon :
+	damage
+	rof
+	energy generation
+	energy cost
 
+all weapon :
+	damage
 
+weapons/blessings:
+multiples of 4
+
+choices:
+	2 for weapon
+	2 for player(takes weapon slot when possible)
 
 
 

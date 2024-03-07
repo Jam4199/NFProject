@@ -24,6 +24,15 @@ window/size/viewport_width=1200
 window/size/viewport_height=600
 window/size/resizable=false
 
+[file_customization]
+
+folder_colors={
+"res://rsc/UI/": "green",
+"res://rsc/enemy/": "red",
+"res://rsc/player/": "yellow",
+"res://rsc/world/": "blue"
+}
+
 [input]
 
 player_left={

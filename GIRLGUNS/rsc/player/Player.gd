@@ -13,6 +13,9 @@ class_name Player
 
 @onready var weapon_manager : WeaponManager = get_node("WeaponManager")
 @onready var hitbox : Area2D = get_node("Hitbox")
+@onready var p_collector = get_node("PickupCollector")
+@onready var p_attractor = get_node("PickupAttractor")
+
 
 var movement_input : bool = false
 var attack_input : bool = false
@@ -26,8 +29,17 @@ var dash_invul_timer : float = 0
 
 var current_hp : float = max_hp
 
+var exp_requirement : float = 10
+var current_exp : float = 0
+var current_level : int = 1
+
+signal level_up
+
 func _ready() -> void:
+	connect("level_up", Callable(Globals,"level_up"))
 	hitbox.connect("area_entered",Callable(self,"recieve_bullet"))
+	p_attractor.connect("area_entered",Callable(self, "pickup_attract"))
+	p_collector.connect("area_entered", Callable(self, "pickup_collect"))
 	current_hp = max_hp
 
 func _physics_process(delta: float) -> void:
@@ -37,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	weapon_change()
 	aim()
 	attack()
+	
 
 
 func timers(delta : float):
@@ -127,6 +140,18 @@ func attack():
 func spawn():
 	current_hp = max_hp
 
+func heal(amount : float):
+	var heal_amount = max_hp * (amount/100)
+	current_hp += heal_amount
+	if current_hp > max_hp:
+		current_hp = max_hp
+
+func gain_exp(amount : float):
+	current_exp += amount
+	if current_exp > exp_requirement:
+		emit_signal("level_up")
+	return
+
 #taking hits
 func take_damage(damage : float):
 	current_hp -= damage
@@ -143,4 +168,18 @@ func recieve_bullet(hurtbox : HurtBox):
 	return
 
 func death():
+	print("dies lmao")
+	return
+
+#pickups
+func pickup_attract(pickup : Pickup):
+	pickup.attracted = true
+
+func pickup_collect(pickup : Pickup):
+	pickup.picked_up(self)
+	match pickup.type:
+		0:
+			heal(pickup.value)
+		1:
+			gain_exp(pickup.value)
 	return

@@ -13,8 +13,8 @@ func _ready() -> void:
 	
 
 func timer_end():
-	var new_enemy = DESTROYER.instantiate()
+	var new_enemy = CHASER.instantiate()
 	Globals.add_enemy(new_enemy)
 	new_enemy.global_position = spawn.global_position
 	new_enemy.spawn()
-	timer.stop()
+	#timer.stop() #activate to spawn only once

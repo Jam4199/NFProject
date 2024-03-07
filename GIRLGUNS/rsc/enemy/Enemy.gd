@@ -12,6 +12,10 @@ class_name Enemy
 @export_group("Stuff")
 @export var starting_state : EnemyState
 @export_enum("Large","Mid","Small") var world_layer : int = 0
+@export_group("Drops")
+@export var exp : int = 1
+@export var heal : int = 0
+
 
 var states : Dictionary = {}
 var current_state : EnemyState
@@ -29,7 +33,7 @@ var bullet_phase : bool = false
 var damage_immune : bool = false
 var knockback_immune : bool = false
 
-
+signal enemy_death(mostlikelyself : Enemy)
 
 func _ready():
 
@@ -93,7 +97,7 @@ func update_stats():
 	attack = base_attack
 	
 	knockback_return = base_knockback_return
-	
+
 
 func bullet_entered(bullet : Bullet):
 	if not bullet is Bullet:
@@ -150,4 +154,5 @@ func damaged_effect():
 	return
 
 func death():
+	call_deferred("emit_signal","enemy_death",self)
 	queue_free()

@@ -12,6 +12,13 @@ class_name Weapon
 @export var base_burst_shot : bool = false
 @export var base_burst_count : int = 3 #shots per burst
 @export var base_burst_gap : float = 1 #time between bursts
+@export_group("Uprade Pool")
+@export var upgrade_damage : int = 5
+@export var upgrade_reload : int = 5
+@export var upgrade_rof : int = 3
+@export var upgrade_magazine : int = 0
+@export var upgrade_pierce : int = 0
+@export var upgrade_aoe : int = 0
 
 #final stats
 
@@ -48,21 +55,29 @@ var burst_counter : int = 0
 var burst_timer : float = 0
 
 #modifier checks
+var magazine_adds : int = 0
+var rof_multiplier : float = 1
+var reload_time_multiplier : float = 1
+var spread_add_degrees : float = 0
+var shot_adds : int = 0
+var burst_shot_count_add = 0
+var burst_gap_multiplier = 1
 
+enum bless {ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
 #world events
 signal bullet_created(new_bullet : Bullet)
 signal shot_fired(bullet_shot : Bullet)
 signal last_shot_fired(bullet_shot : Bullet)
 
 func update_stats():
-	magazine_size = base_magazine_size
-	rof = base_rof
-	reload_time = base_reload_time
-	spread = base_spread
-	shots = base_shots
-	burst_shot = base_burst_shot
-	burst_count = base_burst_count
-	burst_gap = base_burst_gap
+	magazine_size = base_magazine_size + magazine_adds
+	rof = base_rof * rof_multiplier
+	reload_time = base_reload_time * reload_time_multiplier
+	spread = base_spread + spread_add_degrees
+	shots = base_shots + shot_adds
+	burst_shot = base_burst_shot 
+	burst_count = base_burst_count + burst_shot_count_add 
+	burst_gap = base_burst_gap * burst_gap_multiplier
 	return
 
 func reset(reload : bool = true):
@@ -187,7 +202,9 @@ func modify_bullet(bullet : Bullet):
 func bullet_hit(hit_count : int):
 	return
 
-
+func blessing(source : int):
+	
+	return
 
 
 

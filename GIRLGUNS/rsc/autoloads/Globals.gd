@@ -19,6 +19,7 @@ func add_enemy(new_enemy : Enemy):
 	if world == null:
 		return
 	world.add_enemy(new_enemy)
+	new_enemy.connect("enemy_death", Callable(world,"enemy_death"))
 
 func add_enemy_bullet(new_bullet : EnemyBullet):
 	if world == null:

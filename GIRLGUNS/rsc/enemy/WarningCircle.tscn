@@ -11,7 +11,8 @@ warning_radius = 1000.0
 [node name="Outer" type="Node2D" parent="."]
 script = ExtResource("2_lfp26")
 radius = 1000.0
+color = Color(1, 0, 0, 0.117647)
 
 [node name="Inner" type="Node2D" parent="."]
 script = ExtResource("2_lfp26")
-color = Color(1, 1, 1, 1)
+color = Color(1, 0, 0, 0.156863)

@@ -11,3 +11,4 @@ max_spawns = 1
 initial_delay = 1.0
 spawn_delay = 1.0
 spawn_rotation = 0
+exp = 0
