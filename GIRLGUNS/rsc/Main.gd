@@ -20,8 +20,9 @@ func create_new_player()-> Player:
 	return new_player
 
 func create_new_world(world_scene : PackedScene)-> World:
-	var new_world = world_scene.instantiate()
+	var new_world : World = world_scene.instantiate()
 	world_canvas.add_child(new_world)
+	new_world.initialize()
 	return new_world
 
 func player_to_world():

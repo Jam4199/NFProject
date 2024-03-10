@@ -4,6 +4,7 @@ var records : Records
 var world : World
 var player : Player
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var upgrademenu : Control
 
 func add_bullet(new_bullet : Bullet):
 	if world == null:

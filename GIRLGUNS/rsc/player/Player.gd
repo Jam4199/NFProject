@@ -4,12 +4,13 @@ class_name Player
 @export var max_hp : float = 1000
 @export var speed : float = 300
 @export var dash_max : int = 3
-@export var dash_time : float = 0.1
+@export var dash_time : float = 0.3
 @export var dash_speed_mult : float = 2.5
 @export var dash_invul : float = 0.5
 @export var dash_cooldown : float = 1
 
-
+@export var level_cooldown : float = 0.5
+var level_cooldown_timer = 0
 
 @onready var weapon_manager : WeaponManager = get_node("WeaponManager")
 @onready var hitbox : Area2D = get_node("Hitbox")
@@ -21,6 +22,7 @@ var movement_input : bool = false
 var attack_input : bool = false
 var attack_command : bool = false
 
+var dash_charge_multiplier : float = 1
 var dash_count : int = 0
 var dashing : bool = false
 var dash_timer : float = 0
@@ -33,10 +35,8 @@ var exp_requirement : float = 10
 var current_exp : float = 0
 var current_level : int = 1
 
-signal level_up
 
 func _ready() -> void:
-	connect("level_up", Callable(Globals,"level_up"))
 	hitbox.connect("area_entered",Callable(self,"recieve_bullet"))
 	p_attractor.connect("area_entered",Callable(self, "pickup_attract"))
 	p_collector.connect("area_entered", Callable(self, "pickup_collect"))
@@ -53,8 +53,10 @@ func _physics_process(delta: float) -> void:
 
 
 func timers(delta : float):
+	if level_cooldown_timer > 0:
+		level_cooldown_timer -= delta
 	if dash_timer > 0:
-		dash_timer -= delta
+		dash_timer -= delta * dash_charge_multiplier
 		if dash_timer <= 0:
 			dashing = false
 	if dash_invul_timer > 0:
@@ -148,9 +150,16 @@ func heal(amount : float):
 
 func gain_exp(amount : float):
 	current_exp += amount
-	if current_exp > exp_requirement:
-		emit_signal("level_up")
+	if current_exp >= exp_requirement and level_cooldown_timer <= 0:
+		level_cooldown_timer = level_cooldown
+		level_up()
 	return
+
+func level_up():
+	current_exp -= exp_requirement
+	current_level += 1
+	#exp_requirement += ceili(float(exp_requirement) * 1.1)
+	Globals.world.upgrades.level_up()
 
 #taking hits
 func take_damage(damage : float):

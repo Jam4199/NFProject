@@ -1,4 +1,5 @@
 extends Weapon
+class_name ViolaWeapon
 const VIOLABULLET = preload("res://rsc/player/weapons/Viola/ViolaBullet.tscn")
 
 

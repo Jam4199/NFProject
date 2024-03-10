@@ -1,4 +1,5 @@
 extends Weapon
+class_name AsterWeapon
 const ASTERBULLET = preload("res://rsc/player/weapons/Aster/AsterBullet.tscn")
 
 @onready var spawns : Array[Node2D] = [get_node("A"),get_node("B")]

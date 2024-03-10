@@ -1,5 +1,5 @@
 extends Weapon
-
+class_name RubyWeapon
 const RUBYBULLET = preload("res://rsc/player/weapons/Ruby/RubyBullet.tscn")
 
 @onready var spawners : Array[Node2D]

@@ -1,4 +1,5 @@
 extends Weapon
+class_name OpheliaWeapon
 const OPHELIABULLET : PackedScene = preload("res://rsc/player/weapons/Ophelia/OpheliaBullet.tscn")
 @onready var spawn : Node2D = get_node("Marker2D")
 

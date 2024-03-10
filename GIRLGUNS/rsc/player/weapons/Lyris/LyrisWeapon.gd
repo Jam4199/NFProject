@@ -1,4 +1,5 @@
 extends Weapon
+class_name LyrisWeapon
 const LYRISBULLET = preload("res://rsc/player/weapons/Lyris/LyrisBullet.tscn")
 
 @onready var spawnpoint : Node2D = get_node("Spawn")

@@ -55,6 +55,7 @@ var burst_counter : int = 0
 var burst_timer : float = 0
 
 #modifier checks
+var reload_speed_multiplier = 1
 var magazine_adds : int = 0
 var rof_multiplier : float = 1
 var reload_time_multiplier : float = 1
@@ -123,7 +124,7 @@ func _physics_process(delta : float):
 			if shot_counter > 1:
 				shot_counter = 1
 		if ammo < magazine_size:
-			reload_timer -= delta
+			reload_timer -= delta * reload_speed_multiplier
 			if reload_timer <= 0:
 				reload_complete()
 	

@@ -4,7 +4,7 @@
 
 [node name="ViolaWeapon" type="Node2D"]
 script = ExtResource("1_7feva")
-ui_name = "Glacier Spike"
+ui_name = "Viola's Icicle"
 base_magazine_size = 8
 base_rof = 1.2
 base_spread = 0.0

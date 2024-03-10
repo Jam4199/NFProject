@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://ivs5ra6fwtms"]
+
+[ext_resource type="Script" path="res://rsc/UI/UpgradeButton.gd" id="1_by02p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp5uv"]
+bg_color = Color(0.392157, 0.627451, 0.972549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nvrc"]
+bg_color = Color(0.392157, 0.627451, 0.972549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssws0"]
+bg_color = Color(0.392157, 0.627451, 0.972549, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="UpgradeButton" type="Button"]
+custom_minimum_size = Vector2(600, 80)
+theme_override_styles/normal = SubResource("StyleBoxFlat_xp5uv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0nvrc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ssws0")
+action_mode = 0
+script = ExtResource("1_by02p")
+
+[node name="UpgradeName" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 3.0
+offset_right = 115.0
+offset_bottom = 37.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Upgrade name here[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="UpgradeDescription" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -40.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Upgrade Description here longlong long long long long long long long long long long long man[/center]"
+fit_content = true
+scroll_active = false

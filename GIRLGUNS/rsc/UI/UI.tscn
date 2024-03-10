@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4als206inycd"]
+[gd_scene load_steps=18 format=3 uid="uid://b4als206inycd"]
 
 [ext_resource type="Script" path="res://rsc/UI/UI.gd" id="1_32ly1"]
 [ext_resource type="Script" path="res://rsc/UI/WeaponPanel.gd" id="1_m83fv"]
@@ -10,22 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bg7jgho0ega5l" path="res://assets/ui/squareYellow.png" id="6_l2ph6"]
 [ext_resource type="Texture2D" uid="uid://xqrdsfeekmwd" path="res://assets/ui/suit_hearts.png" id="6_lox2o"]
 [ext_resource type="Texture2D" uid="uid://dby6v2chpdue8" path="res://assets/ui/fastForward.png" id="7_q8xjb"]
+[ext_resource type="StyleBox" uid="uid://d4h8qf0yco7px" path="res://rsc/UI/panelthing.tres" id="8_ffsge"]
 [ext_resource type="Texture2D" uid="uid://smjle6kq570h" path="res://assets/ui/squareWhite.png" id="8_tar7x"]
 [ext_resource type="StyleBox" uid="uid://bgkdjgyff20e1" path="res://rsc/UI/smth.tres" id="10_0v04b"]
 [ext_resource type="PackedScene" uid="uid://7yi7tcbx7byl" path="res://rsc/thebigwat.tscn" id="10_qcqd4"]
 [ext_resource type="Texture2D" uid="uid://ck13wvfkik6gh" path="res://assets/ui/arrowUp.png" id="11_jjdqo"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0gl4"]
-bg_color = Color(0.392157, 0.627451, 0.972549, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[ext_resource type="PackedScene" uid="uid://ivs5ra6fwtms" path="res://rsc/UI/upgrade_button.tscn" id="16_51eim"]
+[ext_resource type="Script" path="res://rsc/UI/UpgradeMenu.gd" id="16_woofw"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -149,7 +140,7 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 260.0
 offset_bottom = 91.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0gl4")
+theme_override_styles/panel = ExtResource("8_ffsge")
 script = ExtResource("4_x1hjr")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -293,3 +284,70 @@ theme_override_styles/panel = ExtResource("10_0v04b")
 show_behind_parent = true
 position = Vector2(20, 37)
 scale = Vector2(2, 2)
+
+[node name="UpgradeMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -200.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_woofw")
+
+[node name="Delay" type="Timer" parent="UpgradeMenu"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Panel" type="Panel" parent="UpgradeMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("8_ffsge")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UpgradeMenu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.5
+offset_top = 17.0
+offset_right = 89.5
+offset_bottom = 57.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center]Select Upgrade[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 51.0
+offset_right = 300.0
+offset_bottom = 383.0
+grow_horizontal = 2
+
+[node name="UpgradeButton0" parent="UpgradeMenu/Panel/VBoxContainer" instance=ExtResource("16_51eim")]
+layout_mode = 2
+
+[node name="UpgradeButton1" parent="UpgradeMenu/Panel/VBoxContainer" instance=ExtResource("16_51eim")]
+layout_mode = 2
+
+[node name="UpgradeButton2" parent="UpgradeMenu/Panel/VBoxContainer" instance=ExtResource("16_51eim")]
+layout_mode = 2
+
+[node name="UpgradeButton3" parent="UpgradeMenu/Panel/VBoxContainer" instance=ExtResource("16_51eim")]
+layout_mode = 2

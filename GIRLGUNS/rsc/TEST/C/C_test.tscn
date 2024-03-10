@@ -15,7 +15,7 @@ script = ExtResource("4_006ya")
 
 [node name="Timer" type="Timer" parent="World/WorldC" index="0"]
 process_callback = 0
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="World/WorldC" index="1"]

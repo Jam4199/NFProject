@@ -1,3 +1,4 @@
+res://rsc/UI
 res://rsc/enemy/Enemies/Destroyer
 res://rsc/enemy
 res://rsc/enemy/Enemies/Shooter
@@ -7,7 +8,6 @@ res://rsc
 res://rsc/enemy/Enemies/Chaser
 res://rsc/shaders
 D:/GitHub/GD2/Projects/GIRLGUNS
-res://rsc/UI
 res://
 res://rsc/TEST/B
 res://rsc/player

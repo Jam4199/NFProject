@@ -54,7 +54,7 @@ func add_weapon(weapon_scene : PackedScene) -> Weapon:
 			break
 		new_slot += 1
 	if new_slot >= 3:
-		print("weapons full")
+		print("weapons full " + str(weapons))
 		return null
 	var new_weapon : Weapon = weapon_scene.instantiate()
 	add_child(new_weapon)

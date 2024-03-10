@@ -16,13 +16,16 @@ const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 @onready var enemy_layer_small : Node2D = get_node("%EnemyLayerSmall")
 @onready var world_camera : Camera2D = get_node("WorldCamera")
 
-
+@onready var upgrades : Node = get_node("Upgrades")
 
 var player_control : bool = false
 
 func _ready() -> void:
 	
 	return
+
+func initialize():
+	upgrades.initialize()
 
 func add_bullet(new_bullet : Bullet):
 	if bullet_layer == null:
@@ -78,6 +81,14 @@ func enemy_death(dead : Enemy):
 		pickup_layer.add_child(new_pickup)
 		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
 
+	return
+
+func pause():
+	process_mode = Node.PROCESS_MODE_DISABLED
+	return
+
+func unpause():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	return
 
 func level_up():
