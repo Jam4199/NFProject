@@ -53,7 +53,7 @@ _data = {
 radius = 8.0
 
 [node name="AsterBullet" type="Area2D" node_paths=PackedStringArray("nodes", "particles")]
-modulate = Color(0.929412, 0.690196, 0.847059, 1)
+modulate = Color(1, 0.784314, 0.380392, 1)
 collision_layer = 2
 collision_mask = 0
 monitoring = false

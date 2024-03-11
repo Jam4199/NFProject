@@ -16,7 +16,7 @@ var level_cooldown_timer = 0
 @onready var hitbox : Area2D = get_node("Hitbox")
 @onready var p_collector = get_node("PickupCollector")
 @onready var p_attractor = get_node("PickupAttractor")
-
+@onready var spritestuff : SpriteStuff = get_node("SpriteStuff")
 
 var movement_input : bool = false
 var attack_input : bool = false
@@ -75,9 +75,20 @@ func timers(delta : float):
 #movement and attacking
 func movement():
 	
+	var direction : Vector2 = Vector2(0,0)
 	if movement_input:
-		var direction :=  Vector2(Input.get_axis("player_left", "player_right"),(Input.get_axis("player_up", "player_down")) )
+		direction =  Vector2(Input.get_axis("player_left", "player_right"),(Input.get_axis("player_up", "player_down")) )
 		velocity = direction * speed
+		if direction.x != 0:
+			if direction.x > 0:
+				spritestuff.face(SpriteStuff.RIGHT)
+			if direction.x < 0:
+				spritestuff.face(SpriteStuff.LEFT)
+		else:
+			if direction.y < 0:
+				spritestuff.face(SpriteStuff.BACK)
+			else:
+				spritestuff.face(SpriteStuff.FRONT)
 	
 	if Input.is_action_just_pressed("dash"):
 		dash_input()
@@ -158,7 +169,7 @@ func gain_exp(amount : float):
 func level_up():
 	current_exp -= exp_requirement
 	current_level += 1
-	#exp_requirement += ceili(float(exp_requirement) * 1.1)
+	exp_requirement += ceili(float(exp_requirement) * 0.1)
 	Globals.world.upgrades.level_up()
 
 #taking hits

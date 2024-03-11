@@ -166,8 +166,8 @@ width = 1.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Stick" type="Node2D" parent="."]
-position = Vector2(4, -4)
-rotation = 0.501751
+position = Vector2(-20, 4)
+rotation = -0.488148
 
 [node name="Sample2" type="Line2D" parent="Stick"]
 points = PackedVector2Array(9, -1, 9, 11)

@@ -1,3 +1,7 @@
+AnimationPlayer
+Line2D
+Polygon2D
+Node2D
 Timer
 RichTextLabel
 Button
@@ -5,11 +9,7 @@ VBoxContainer
 Panel
 Control
 Node
-Node2D
 TextureProgressBar
 CollisionShape2D
 Area2D
 CPUParticles2D
-AnimationPlayer
-Sprite2D
-Pickup

@@ -4,7 +4,6 @@ crucial
 world background scrolling
 character angle views
 sound effects and music AAAAAAAAAAAAAAAAAAAA
-pickups okay?
 
 
 changes
