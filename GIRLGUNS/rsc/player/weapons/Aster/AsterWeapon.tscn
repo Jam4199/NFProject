@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://gii0ualdo55s"]
+[gd_scene load_steps=3 format=3 uid="uid://gii0ualdo55s"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Aster/AsterWeapon.gd" id="1_o3sur"]
+[ext_resource type="Texture2D" uid="uid://dpiwrfiy8d1tj" path="res://assets/basic_shapes/dingbats-479.png" id="2_000ee"]
 
 [node name="AsterWeapon" type="Node2D"]
+modulate = Color(1, 0.643137, 0.188235, 1)
 script = ExtResource("1_o3sur")
 ui_name = "Aster Lights"
 base_magazine_size = 12
@@ -12,7 +14,17 @@ base_spread = 3.0
 base_shots = 2
 
 [node name="A" type="Marker2D" parent="."]
-position = Vector2(14, 8)
+position = Vector2(16, 16)
+
+[node name="CircleA" type="Sprite2D" parent="A"]
+unique_name_in_owner = true
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_000ee")
 
 [node name="B" type="Marker2D" parent="."]
-position = Vector2(14, -8)
+position = Vector2(16, -16)
+
+[node name="CircleB" type="Sprite2D" parent="B"]
+unique_name_in_owner = true
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_000ee")

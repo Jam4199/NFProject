@@ -3,6 +3,16 @@ class_name ViolaWeapon
 const VIOLABULLET = preload("res://rsc/player/weapons/Viola/ViolaBullet.tscn")
 
 @onready var center : Node2D = get_node("Center")
+@onready var circle : Sprite2D = get_node("Circle")
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	circle.rotation_degrees += 360 * delta
+	if ammo > 0:
+		circle.modulate = Color(1,1,1)
+	else:
+		circle.modulate = Color(10,10,10)
+
 
 func shoot()->Bullet:
 	var new_bullet = create_bullet(VIOLABULLET,center.global_position,global_rotation_degrees)

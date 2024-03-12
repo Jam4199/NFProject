@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhls42sx0oc8n"]
+[gd_scene load_steps=4 format=3 uid="uid://bhls42sx0oc8n"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Viola/ViolaWeapon.gd" id="1_7feva"]
+[ext_resource type="Texture2D" uid="uid://bvn5flxg7jgj2" path="res://assets/basic_shapes/dingbats-461.png" id="2_kemvq"]
+[ext_resource type="Texture2D" uid="uid://bh1rtj2vwoswq" path="res://assets/basic_shapes/dingbats-454.png" id="3_iqdjk"]
 
 [node name="ViolaWeapon" type="Node2D"]
+modulate = Color(0.415686, 0.32549, 1, 1)
 script = ExtResource("1_7feva")
 ui_name = "Viola's Icicle"
 base_magazine_size = 8
@@ -12,3 +15,13 @@ base_spread = 90.0
 
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(30, 0)
+
+[node name="Circle" type="Sprite2D" parent="."]
+position = Vector2(30, 0)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_kemvq")
+
+[node name="Dingbats-454" type="Sprite2D" parent="Circle"]
+position = Vector2(18, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_iqdjk")

@@ -1,7 +1,19 @@
 extends Weapon
 class_name OpheliaWeapon
 const OPHELIABULLET : PackedScene = preload("res://rsc/player/weapons/Ophelia/OpheliaBullet.tscn")
-@onready var spawn : Node2D = get_node("Marker2D")
+
+@onready var circle : Node2D = get_node("Circle")
+@onready var beeg : Node2D = get_node("Beeg")
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	circle.rotation_degrees += 360 * delta
+	if ammo > 0:
+		circle.modulate = Color(1,1,1)
+		beeg.modulate = Color(1,1,1)
+	else:
+		circle.modulate = Color(10,10,10)
+		beeg.modulate = Color(10,10,10)
 
 var spread_shots : int = 16
 

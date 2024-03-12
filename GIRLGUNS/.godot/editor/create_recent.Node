@@ -1,7 +1,10 @@
-Marker2D
-Node2D
 AnimationPlayer
+Sprite2D
+Node2D
+RemoteTransform2D
+PointLight2D
 Line2D
+Marker2D
 Polygon2D
 Timer
 RichTextLabel
@@ -9,7 +12,3 @@ Button
 VBoxContainer
 Panel
 Control
-Node
-TextureProgressBar
-CollisionShape2D
-Area2D

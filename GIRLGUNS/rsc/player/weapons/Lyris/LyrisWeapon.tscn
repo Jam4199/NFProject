@@ -1,8 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://deud6bnvr4ic5"]
+[gd_scene load_steps=12 format=3 uid="uid://deud6bnvr4ic5"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Lyris/LyrisWeapon.gd" id="1_8kmax"]
+[ext_resource type="Texture2D" uid="uid://cjj2o728231x6" path="res://assets/basic_shapes/dingbats-465.png" id="2_84ebo"]
+[ext_resource type="Texture2D" uid="uid://dpv0t5mfk6par" path="res://assets/basic_shapes/target_6.png" id="2_vkrpe"]
+[ext_resource type="Texture2D" uid="uid://dblqvql6m2gj3" path="res://assets/basic_shapes/target_19.png" id="3_qlmsg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1o77w"]
+
+[sub_resource type="Curve" id="Curve_w5hcs"]
+_data = [Vector2(0, 0.868132), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_kbuc1"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xiyhn"]
+gradient = SubResource("Gradient_kbuc1")
+width = 80
+height = 80
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_cicl8"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thic/thin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w687w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thic/thin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8d2oy"]
+_data = {
+"RESET": SubResource("Animation_w687w"),
+"pulse": SubResource("Animation_cicl8")
+}
 
 [node name="LyrisWeapon" type="Node2D"]
+modulate = Color(1, 1, 0, 1)
 script = ExtResource("1_8kmax")
 ui_name = "Lyris' Wrath"
 base_magazine_size = 1
@@ -12,3 +69,40 @@ base_spread = 0.0
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(30, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1500, 40, 1500, -40, 0, -40, 0, 40)
+
+[node name="Echo" type="Line2D" parent="CollisionPolygon2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+material = SubResource("CanvasItemMaterial_1o77w")
+points = PackedVector2Array(34, 0, 200, 0, 1500, 0)
+width = 80.0
+width_curve = SubResource("Curve_w5hcs")
+default_color = Color(1, 1, 0, 1)
+texture = SubResource("GradientTexture2D_xiyhn")
+texture_mode = 2
+begin_cap_mode = 2
+round_precision = 30
+antialiased = true
+
+[node name="Circle" type="Sprite2D" parent="."]
+position = Vector2(61, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_84ebo")
+
+[node name="Thic" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_vkrpe")
+
+[node name="thin" type="Sprite2D" parent="Thic"]
+texture = ExtResource("3_qlmsg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8d2oy")
+}
+autoplay = "pulse"

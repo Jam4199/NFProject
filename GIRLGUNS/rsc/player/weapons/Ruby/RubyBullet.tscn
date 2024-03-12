@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b4di1ailccl1p" path="res://assets/basic_shapes/circle_05.png" id="4_6ijhc"]
 
 [sub_resource type="Curve" id="Curve_63vgr"]
-_data = [Vector2(0, 0.7814), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.7814), 0.0, 0.0, 0, 0, Vector2(0.542986, 0.527472), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_k3of8"]
@@ -53,6 +53,11 @@ scale_amount_curve = SubResource("Curve_63vgr")
 color = Color(1, 0.00392157, 0.00392157, 1)
 color_ramp = SubResource("Gradient_k3of8")
 
+[node name="Circle" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.00392157, 0.00392157, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_6ijhc")
+
 [node name="Pulse" type="CPUParticles2D" parent="."]
 amount = 2
 lifetime = 0.2
@@ -64,11 +69,6 @@ scale_amount_min = 0.1
 scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_imbih")
 color_ramp = SubResource("Gradient_jmvb0")
-
-[node name="Circle" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.00392157, 0.00392157, 1)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_6ijhc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

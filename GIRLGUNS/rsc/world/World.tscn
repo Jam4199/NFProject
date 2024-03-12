@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dswbavpmrkvrd"]
+[gd_scene load_steps=10 format=3 uid="uid://dswbavpmrkvrd"]
 
 [ext_resource type="Script" path="res://rsc/world/World.gd" id="1_fatut"]
 [ext_resource type="Script" path="res://rsc/world/WorldCamera.gd" id="2_3ynwg"]
@@ -6,6 +6,28 @@
 [ext_resource type="Texture2D" uid="uid://bim6aciemoa54" path="res://assets/otherthings/bg16.png" id="3_iwsaj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mi653"]
+
+[sub_resource type="Gradient" id="Gradient_am1t6"]
+offsets = PackedFloat32Array(0, 0.446701, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q5csl"]
+gradient = SubResource("Gradient_am1t6")
+width = 300
+height = 300
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_oek3u"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xnnuj"]
+gradient = SubResource("Gradient_oek3u")
+width = 80
+height = 80
+fill_to = Vector2(0, 1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_fatut")
@@ -45,6 +67,7 @@ rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_mi653")
 
 [node name="Background" type="Polygon2D" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-1200, -600, 1200, -600, 1200, 600, -1200, 600)
 
@@ -74,3 +97,19 @@ unique_name_in_owner = true
 
 [node name="EffectLayer" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="BorderShowizer" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(748, 659)
+texture = SubResource("GradientTexture2D_q5csl")
+
+[node name="BorderLine" type="Line2D" parent="BorderShowizer"]
+position = Vector2(-742, -657)
+points = PackedVector2Array(1200, 600, 1200, -600, -1200, -600, -1200, 600)
+closed = true
+width = 80.0
+default_color = Color(1, 0, 0, 1)
+texture = SubResource("GradientTexture2D_xnnuj")
+texture_mode = 2
+round_precision = 30
+antialiased = true

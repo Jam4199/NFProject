@@ -15,6 +15,8 @@ const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 @onready var enemy_layer_mid : Node2D = get_node("%EnemyLayerMid")
 @onready var enemy_layer_small : Node2D = get_node("%EnemyLayerSmall")
 @onready var world_camera : Camera2D = get_node("WorldCamera")
+@onready var bordershow : Sprite2D = get_node("BorderShowizer")
+@onready var borderline : Line2D = get_node("BorderShowizer/BorderLine")
 
 @onready var upgrades : Node = get_node("Upgrades")
 
@@ -65,6 +67,9 @@ func add_enemy_bullet(new_bullet : EnemyBullet):
 	return
 
 func _physics_process(delta: float) -> void:
+	if Globals.player != null:
+		bordershow.global_position = Globals.player.global_position
+	borderline.global_position = global_position
 	return
 
 func spawn_player():

@@ -31,7 +31,9 @@ func change_weapon(slot : int):
 		return
 	if weapons[slot] == null:
 		return
+	weapons[equipped_slot].visible = false
 	equipped_slot = slot
+	weapons[equipped_slot].visible = true
 
 func weapon_left():
 	var new_slot : int = equipped_slot - 1
@@ -60,6 +62,7 @@ func add_weapon(weapon_scene : PackedScene) -> Weapon:
 	add_child(new_weapon)
 	weapons[new_slot] = new_weapon
 	change_weapon(new_slot)
+	weapons[new_slot].visible = true
 	return new_weapon
 
 func weapon_right():
