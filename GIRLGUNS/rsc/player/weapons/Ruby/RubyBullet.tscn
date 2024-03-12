@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b4di1ailccl1p" path="res://assets/basic_shapes/circle_05.png" id="4_6ijhc"]
 
 [sub_resource type="Curve" id="Curve_63vgr"]
-_data = [Vector2(0, 0.197802), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.7814), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_k3of8"]
-offsets = PackedFloat32Array(0, 0.458333, 1)
+offsets = PackedFloat32Array(0, 0.684946, 0.975135)
 colors = PackedColorArray(1, 0.00392157, 0.00392157, 1, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="Curve" id="Curve_imbih"]

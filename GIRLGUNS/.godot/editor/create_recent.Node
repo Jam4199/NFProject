@@ -1,7 +1,8 @@
+Marker2D
+Node2D
 AnimationPlayer
 Line2D
 Polygon2D
-Node2D
 Timer
 RichTextLabel
 Button
@@ -12,4 +13,3 @@ Node
 TextureProgressBar
 CollisionShape2D
 Area2D
-CPUParticles2D

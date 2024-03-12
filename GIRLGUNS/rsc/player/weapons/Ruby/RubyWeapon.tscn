@@ -5,6 +5,10 @@
 [node name="RubyWeapon" type="Node2D"]
 script = ExtResource("1_0km2m")
 ui_name = "Ruby Flames"
+base_magazine_size = 8
+base_rof = 4.0
+base_reload_time = 2.0
+base_spread = 40.0
 
 [node name="FL" type="Marker2D" parent="."]
 position = Vector2(20, -10)

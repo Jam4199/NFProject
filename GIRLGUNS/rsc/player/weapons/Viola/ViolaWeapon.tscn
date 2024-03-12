@@ -6,5 +6,9 @@
 script = ExtResource("1_7feva")
 ui_name = "Viola's Icicle"
 base_magazine_size = 8
-base_rof = 1.2
-base_spread = 0.0
+base_rof = 4.0
+base_reload_time = 2.0
+base_spread = 90.0
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(30, 0)

@@ -8,11 +8,12 @@ var weapon2_pool : Array[Upgrade] = []
 var weapon_pools : Array[Array] = [weapon0_pool,weapon1_pool,weapon2_pool]
 var weapon_count : int = 0
 var bless_pool : Array[int] = [0,1,2,3,4]
+var bless_offered : int = 0
 
 enum bless{ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
 
 @export_group("Player_Pool")
-@export var level_per_bless : int = 4
+@export var level_per_bless : Array[int] = [3,8,15,25,40]
 @export var health_upgrades : int = 5
 @export var speed_upgrades : int = 3
 @export var iframe_upgrades : int = 2
@@ -142,8 +143,11 @@ func level_up():
 	var selected_upgrade : Upgrade = await Globals.upgrademenu.upgrade_selected
 	apply_upgrade(selected_upgrade)
 	Globals.world.call_deferred("unpause")
+	
 
 func check_upgrades():
+	if Globals.player.current_level in level_per_bless:
+		bless_offered += 1
 	
 	var weapons_array : Array[Weapon] = Globals.player.weapon_manager.weapons
 	for n in range(0,weapons_array.size()):
@@ -191,9 +195,8 @@ func create_selections() -> Array[Upgrade]:
 			upgrade_selection[3] = this_pool[0]
 	
 	#bless/equip_pool
-	var upgrade_count = floori(floor(Globals.player.current_level) / float(level_per_bless))
 	var new_upgrade : Upgrade
-	if bless_pool.size() > 0 and bless_pool.size() >= 5 - upgrade_count:
+	if bless_pool.size() > 0 and bless_pool.size() >= 5 - bless_offered:
 		print("new bless/wep")
 		new_upgrade = Upgrade.new()
 		new_upgrade.blessing = bless_pool.pick_random()
@@ -238,7 +241,7 @@ func create_selections() -> Array[Upgrade]:
 					new_upgrade.ui_name = "Ophelia's Blessing"
 					new_upgrade.ui_description = "A blessing of Sharpness"
 		if new_upgrade != null:
-			upgrade_selection[3] = new_upgrade
+			upgrade_selection[0] = new_upgrade
 	
 	
 	#filler_pool
