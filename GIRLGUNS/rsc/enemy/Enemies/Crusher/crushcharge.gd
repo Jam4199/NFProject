@@ -2,6 +2,7 @@ extends EnemyState
 @onready var warning : AttackWarning = get_node("AttackWarning")
 
 @export var charge_time : float = 1
+@export var allowance : float = 0.2
 var current_timer : float = 0
 
 @export var cooldown : float = 2
@@ -22,7 +23,7 @@ func state_allow()->bool:
 
 func state_process(delta : float):
 	current_timer -= delta
-	if current_timer >= charge_time * 0.2:
+	if current_timer >= charge_time * allowance:
 		unit.look_at(Globals.player.global_position)
 	if current_timer <= 0:
 		cooldown_timer = cooldown

@@ -3,6 +3,7 @@ class_name RunProgression
 
 @export var progs : Array[Progression] = []
 @export var distance_from_player : float = 2000
+@export var heal_drop_rate : float = 0.5 # /100
 @export_group("scaling")
 @export var scale_delay : float = 10
 @export var hp_scale : float = 0.1
@@ -78,6 +79,8 @@ func prog_end(force : bool = false):
 func modify_enemy(enemy : Enemy):
 	enemy.base_max_hp *= hp_mult
 	enemy.base_speed *= speed_mult
+	if Globals.rng.randi_range(0,200) == 1:
+		enemy.heal += 1
 	return
 
 func scale_start():

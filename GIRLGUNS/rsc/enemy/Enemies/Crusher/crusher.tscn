@@ -72,12 +72,14 @@ _data = {
 "RESET": SubResource("Animation_oef8x")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_636bp"]
-radius = 31.0
-height = 84.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qjcn"]
+radius = 29.0
+height = 88.0
 
 [node name="Crusher" instance=ExtResource("1_jsxyx")]
+collision_layer = 8
 base_speed = 250.0
+exp = 12
 metadata/_edit_vertical_guides_ = [-374.0]
 
 [node name="crushchase" type="Node2D" parent="States" index="0"]
@@ -142,14 +144,12 @@ libraries = {
 autoplay = "Base"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
-visible = false
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_636bp")
+shape = SubResource("CapsuleShape2D_5qjcn")
 
 [node name="Hurtbox2" parent="." index="5" instance=ExtResource("6_l6pen")]
 constant_hit = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2" index="0"]
-visible = false
 position = Vector2(12, 0)
 shape = SubResource("CircleShape2D_e4ppr")

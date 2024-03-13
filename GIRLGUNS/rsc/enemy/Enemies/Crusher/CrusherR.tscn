@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfnj8c3bam6kj"]
+
+[ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="1_kefn6"]
+
+[node name="CrusherR" instance=ExtResource("1_kefn6")]
+base_max_hp = 5000.0
+base_speed = 350.0
+base_knockback_return = 20.0
+
+[node name="crushchase" parent="States" index="0"]
+charge_target = 680.0
+
+[node name="crushcharge" parent="States" index="1"]
+cooldown = 1.0
+
+[node name="AttackWarning" parent="States/crushcharge" index="0"]
+visible = true
+warning_length = 850.0
+
+[node name="Wide" parent="States/crushcharge/AttackWarning" index="0"]
+width = 40.0
+
+[node name="crushrush" parent="States" index="2"]
+attack_distance = 800.0
+
+[node name="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+visible = true
+
+[node name="UpperJaw" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="LowerJaw" parent="Flash/Color/Sprite" index="2"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="tail" parent="Flash/Color/Sprite" index="3"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[editable path="States/crushcharge/AttackWarning"]

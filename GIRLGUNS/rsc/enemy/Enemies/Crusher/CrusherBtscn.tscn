@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckubdbn3s5s57"]
+
+[ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="1_qxn75"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g80po"]
+radius = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c67gn"]
+radius = 36.0
+height = 116.0
+
+[node name="CrusherB" instance=ExtResource("1_qxn75")]
+base_max_hp = 2000.0
+base_speed = 300.0
+exp = 20
+
+[node name="crushchase" parent="States" index="0"]
+charge_target = 480.0
+
+[node name="AttackWarning" parent="States/crushcharge" index="0"]
+warning_length = 600.0
+warning_width = 90.0
+
+[node name="Wide" parent="States/crushcharge/AttackWarning" index="0"]
+width = 80.0
+
+[node name="Narrow" parent="States/crushcharge/AttackWarning" index="1"]
+width = 10.0
+
+[node name="crushrush" parent="States" index="2"]
+attack_distance = 600.0
+
+[node name="CollisionShape2D" parent="States/crushrush/Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_g80po")
+
+[node name="Sprite" parent="Flash/Color" index="0"]
+scale = Vector2(1.4, 1.4)
+
+[node name="UpperJaw" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="LowerJaw" parent="Flash/Color/Sprite" index="2"]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="tail" parent="Flash/Color/Sprite" index="3"]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CapsuleShape2D_c67gn")
+
+[editable path="States/crushcharge/AttackWarning"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvubl4x02bs3a"]
+
+[ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="1_gnsof"]
+
+[node name="CrusherG" instance=ExtResource("1_gnsof")]
+base_max_hp = 600.0
+base_speed = 150.0
+exp = 6
+
+[node name="crushchase" parent="States" index="0"]
+charge_target = 400.0
+
+[node name="crushcharge" parent="States" index="1"]
+charge_time = 2.0
+allowance = 0.4
+
+[node name="AttackWarning" parent="States/crushcharge" index="0"]
+warning_time = 1.5
+warning_length = 600.0
+
+[node name="crushrush" parent="States" index="2"]
+attack_distance = 600.0
+
+[node name="UpperJaw" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.364706, 0.709804, 0.388235, 1)
+
+[node name="LowerJaw" parent="Flash/Color/Sprite" index="2"]
+color = Color(0.364706, 0.709804, 0.388235, 1)
+
+[node name="tail" parent="Flash/Color/Sprite" index="3"]
+color = Color(0.364706, 0.709804, 0.388235, 1)

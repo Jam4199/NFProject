@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bibrxtqhcm72b"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Bullet.gd" id="1_ttfkv"]
+[ext_resource type="PackedScene" uid="uid://rmvymcc3qjr3" path="res://rsc/player/weapons/Viola/ViolaHit.tscn" id="2_au1ii"]
 [ext_resource type="Texture2D" uid="uid://bvn5flxg7jgj2" path="res://assets/basic_shapes/dingbats-461.png" id="2_hf040"]
-[ext_resource type="PackedScene" uid="uid://rmvymcc3qjr3" path="res://rsc/player/weapons/ViolaHit.tscn" id="2_pr11w"]
 [ext_resource type="Texture2D" uid="uid://btgv0n20fbxpo" path="res://assets/basic_shapes/square_64.png" id="2_rpclk"]
 [ext_resource type="Texture2D" uid="uid://4k6bied210xe" path="res://assets/basic_shapes/lightrays_7.png" id="4_e5cju"]
 
@@ -32,7 +32,7 @@ base_aoe = true
 base_aoe_size = 50.0
 nodes = [NodePath("Node2D"), NodePath("Point")]
 particles = [NodePath("Flakes")]
-hit_effect = ExtResource("2_pr11w")
+hit_effect = ExtResource("2_au1ii")
 kb_active = true
 kb_distance = 50.0
 kb_buildup = 20.0

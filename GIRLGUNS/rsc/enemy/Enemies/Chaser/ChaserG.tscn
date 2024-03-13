@@ -9,6 +9,7 @@ colors = PackedColorArray(0.364706, 0.709804, 0.388235, 1, 0.364706, 0.709804, 0
 [node name="ChaserG" instance=ExtResource("1_mhdf0")]
 base_max_hp = 200.0
 base_speed = 200.0
+exp = 2
 
 [node name="Head" parent="Flash/Color/Sprite" index="0"]
 color = Color(0.364706, 0.709804, 0.388235, 1)

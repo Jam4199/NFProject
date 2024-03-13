@@ -84,12 +84,11 @@ _data = {
 
 [node name="Chaser" node_paths=PackedStringArray("starting_state") instance=ExtResource("1_i5xr8")]
 collision_layer = 8
-base_max_hp = 200.0
+base_max_hp = 400.0
 base_speed = 350.0
 starting_state = NodePath("States/Straight")
 world_layer = 1
-exp = 10
-heal = 1
+exp = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(-7, 0)

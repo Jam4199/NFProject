@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcyiujx3t5kix"]
+
+[ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="1_gbown"]
+
+[sub_resource type="Gradient" id="Gradient_y3cpj"]
+offsets = PackedFloat32Array(0.249012, 0.86166, 1)
+colors = PackedColorArray(0.972549, 0.0784314, 0.0392157, 1, 0.972549, 0.0784314, 0.0392157, 0.494118, 0.972549, 0.0784314, 0.0392157, 0)
+
+[node name="Chaser" instance=ExtResource("1_gbown")]
+base_max_hp = 800.0
+base_speed = 450.0
+
+[node name="Head" parent="Flash/Color/Sprite" index="0"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="Tail" parent="Flash/Color/Sprite" index="1"]
+gradient = SubResource("Gradient_y3cpj")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbttqogg4l4hv"]
+
+[ext_resource type="PackedScene" uid="uid://b7ylfabu3ikhb" path="res://rsc/enemy/Enemies/Shooter/Shooter.tscn" id="1_kcea8"]
+
+[node name="ShooterG" instance=ExtResource("1_kcea8")]
+base_max_hp = 300.0
+base_speed = 250.0
+
+[node name="shootnhover" parent="States" index="1"]
+drift_spread = 40.0
+
+[node name="Spikes" parent="Flash/Color/Sprite" index="0"]
+color = Color(0.364706, 0.709804, 0.388235, 1)
+
+[node name="Polygon2D" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.364706, 0.709804, 0.388235, 1)
+
+[node name="Polygon2D" parent="Flash/Color/Sprite/Polygon2D" index="0"]
+color = Color(0.364706, 0.709804, 0.388235, 1)
