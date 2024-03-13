@@ -39,7 +39,7 @@ var pierce_add : int = 0
 var aoe_override : int = 0 #-1 to disable, +1 to enable
 var aoe_add : float
 var hit_scan_override : int = 0 #-1 to disable, +1 to enable
-
+var kb_add : float = 0
 
 #variables
 var ammo : int = 0
@@ -64,7 +64,7 @@ var shot_adds : int = 0
 var burst_shot_count_add = 0
 var burst_gap_multiplier = 1
 
-enum bless {ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
+enum bless{ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
 #world events
 signal bullet_created(new_bullet : Bullet)
 signal shot_fired(bullet_shot : Bullet)
@@ -75,10 +75,13 @@ func update_stats():
 	rof = base_rof * rof_multiplier
 	reload_time = base_reload_time * reload_time_multiplier
 	spread = base_spread + spread_add_degrees
+	if spread < 0:
+		spread = 0
 	shots = base_shots + shot_adds
 	burst_shot = base_burst_shot 
 	burst_count = base_burst_count + burst_shot_count_add 
 	burst_gap = base_burst_gap * burst_gap_multiplier
+	print(self.name + "upgraded")
 	return
 
 func reset(reload : bool = true):
@@ -191,6 +194,7 @@ func modify_bullet(bullet : Bullet):
 	bullet.damage += damage_add
 	bullet.speed = bullet.base_speed + speed_multiplier
 	bullet.pierce = bullet.base_pierce + pierce_add
+	bullet.kb_distance += kb_add
 	if aoe_override > 0:
 		bullet.aoe = true
 	if aoe_override < 0:
@@ -204,7 +208,17 @@ func bullet_hit(hit_count : int):
 	return
 
 func blessing(source : int):
-	
+	match source:
+		bless.ASTER:
+			return
+		bless.LYRIS:
+			return
+		bless.OPHELIA:
+			return
+		bless.RUBY:
+			return
+		bless.VIOLA:
+			return
 	return
 
 

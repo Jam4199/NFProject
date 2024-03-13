@@ -84,6 +84,7 @@ _data = {
 
 [node name="Chaser" node_paths=PackedStringArray("starting_state") instance=ExtResource("1_i5xr8")]
 collision_layer = 8
+base_max_hp = 200.0
 base_speed = 350.0
 starting_state = NodePath("States/Straight")
 world_layer = 1

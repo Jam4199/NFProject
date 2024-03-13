@@ -19,6 +19,7 @@ const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 @onready var borderline : Line2D = get_node("BorderShowizer/BorderLine")
 
 @onready var upgrades : Node = get_node("Upgrades")
+@onready var runprogress : RunProgression = get_node("%RunProgression")
 
 var player_control : bool = false
 
@@ -94,7 +95,4 @@ func pause():
 
 func unpause():
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	return
-
-func level_up():
 	return

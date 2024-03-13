@@ -1,8 +1,8 @@
 extends EnemyState
 
 var wep : EnemyWeapon
-var target_distance : float = 400
-var move_speed_mod : float = 2
+@export var target_distance : float = 400
+@export var move_speed_mod : float = 2
 
 func enemy_ready():
 	wep = get_node("%ShooterWep")

@@ -3,7 +3,7 @@ extends EnemyState
 var moving : bool = false
 
 var max_turn_angle : float = 2
-var move_time : float = 0.4
+var move_time : float = 0.8
 var random_angle_mod : float = 10
 
 var move_timer : float = 0

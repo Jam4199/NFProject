@@ -1,0 +1,69 @@
+Aster: Doubleshot
+
+12 shots/mag
+12 /sec
+0.5sec reload
+
+12/sec
+1/sec /mag
+1.5/sec / mag w/reload
+8shot /sec w/ reload
+
+
+Lyris: Big Beam
+1 shot
+4sec / shot
+4sec / reload
+
+0.25 shots/sec w/reload
+
+
+
+Ophelia : Wave
+
+4 shot/mag
+0.8 x 8shots/sec	0.8shot/sec
+2sec reload
+
+4 shots/mag
+3.2 sec/mag
+5.2 sec/mag+reload
+5.92 /sec/reload	0.74shot/sec
+
+
+Ruby : homing aoe
+
+8/shot/mag
+4.0 * 4/sec
+2sec reload
+
+8 shots/mag
+2 sec /mag
+4 sec /mag+reload
+8shots/sec(always hit)	2 shots/sec
+
+Viola : piercer
+
+8 / mag
+4 / sec
+2 sec
+
+4/sec
+2/sec /mag
+4 sec/mag/reload
+2  shots/sec  mag+reload(can hit multiple enemies)
+
+
+
+
+final:
+
+aster 8			(constant)	x1		25
+lyris 0.25		(instant)	x32		500
+ophelia 0.74 -5.5(3.12)	(shotgun)	x10 - x1.5	80
+ruby 8			(homing aoe)	x1		20
+viola 2			(piercing	x4		120
+
+
+ttk 0.5 sec
+4 aster shots = 100 damage

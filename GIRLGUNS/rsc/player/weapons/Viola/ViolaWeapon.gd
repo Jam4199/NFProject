@@ -20,3 +20,29 @@ func shoot()->Bullet:
 	var offset : Vector2 = Vector2.from_angle(Globals.rng.randf_range(0,2 * PI)) * Globals.rng.randf_range(0, max_radius)
 	new_bullet.global_position += offset
 	return new_bullet
+
+
+func blessing(source : int):
+	match source:
+		Weapon.bless.ASTER:
+			magazine_adds += 6
+			reload_speed_multiplier += 0.2
+			return
+		Weapon.bless.LYRIS:
+			damage_multiplier += 0.6
+
+			return
+		Weapon.bless.OPHELIA:
+			damage_multiplier += 0.2
+			kb_add += 30
+			spread_add_degrees += 10
+			return
+		Weapon.bless.RUBY:
+			aoe_override += 1
+			aoe_add += 40
+			damage_multiplier += 0.2
+			return
+		Weapon.bless.VIOLA:
+
+			return
+	return

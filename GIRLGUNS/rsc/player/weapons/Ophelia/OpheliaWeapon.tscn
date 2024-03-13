@@ -10,7 +10,11 @@ script = ExtResource("1_e7qgi")
 ui_name = "Ophelia's Wave"
 base_magazine_size = 4
 base_rof = 0.8
-base_spread = 1.0
+base_reload_time = 2.0
+base_spread = 4.0
+upgrade_damage = 4
+upgrade_reload = 2
+upgrade_magazine = 3
 
 [node name="Circle" type="Sprite2D" parent="."]
 position = Vector2(21, 0)

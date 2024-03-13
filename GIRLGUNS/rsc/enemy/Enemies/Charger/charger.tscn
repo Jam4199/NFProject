@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://juarjrgb5mth"]
-
-[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_dpv56"]
-
-[node name="Charger" instance=ExtResource("1_dpv56")]

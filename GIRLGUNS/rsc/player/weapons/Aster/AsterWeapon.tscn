@@ -12,6 +12,15 @@ base_rof = 6.0
 base_reload_time = 0.5
 base_spread = 3.0
 base_shots = 2
+base_burst_shot = null
+base_burst_count = null
+base_burst_gap = null
+upgrade_damage = 6
+upgrade_reload = 2
+upgrade_rof = 1
+upgrade_magazine = 2
+upgrade_pierce = 1
+upgrade_aoe = null
 
 [node name="A" type="Marker2D" parent="."]
 position = Vector2(16, 16)

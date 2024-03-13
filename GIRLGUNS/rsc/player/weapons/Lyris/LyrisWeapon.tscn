@@ -21,6 +21,21 @@ width = 80
 height = 80
 fill_to = Vector2(0, 1)
 
+[sub_resource type="Animation" id="Animation_w687w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thic/thin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_cicl8"]
 resource_name = "pulse"
 loop_mode = 1
@@ -37,21 +52,6 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_w687w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Thic/thin:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8d2oy"]
 _data = {
 "RESET": SubResource("Animation_w687w"),
@@ -66,6 +66,9 @@ base_magazine_size = 1
 base_rof = 1.0
 base_reload_time = 4.0
 base_spread = 0.0
+upgrade_damage = 8
+upgrade_reload = 4
+upgrade_rof = 0
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(30, 0)

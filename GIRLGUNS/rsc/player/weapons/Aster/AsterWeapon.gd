@@ -24,3 +24,31 @@ func shoot()->Bullet:
 	new_bullet.global_rotation_degrees += (Globals.rng.randf_range(-spread,spread))
 	current_spawn = not current_spawn
 	return new_bullet
+
+func blessing(source : int):
+	match source:
+		Weapon.bless.ASTER:
+			return
+		Weapon.bless.LYRIS:
+			damage_multiplier += 0.6
+			return
+		Weapon.bless.OPHELIA:
+			kb_add += 30
+			damage_multiplier += 0.6
+			spread_add_degrees += 20
+			return
+		Weapon.bless.RUBY:
+			aoe_override += 1
+			aoe_add += 20
+			damage_multiplier += 0.2
+			rof_multiplier += 0.2
+			magazine_adds += 4
+			return
+		Weapon.bless.VIOLA:
+			pierce_add += 3
+			damage_multiplier += 0.1
+			rof_multiplier += 0.1
+			reload_speed_multiplier += 0.3
+			spread_add_degrees += -10
+			return
+	return

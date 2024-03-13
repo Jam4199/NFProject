@@ -1,8 +1,8 @@
 extends EnemyState
 
 
-var attack_time : float = 0.3
-var attack_distance : float = 400
+@export var attack_time : float = 0.3
+@export var attack_distance : float = 400
 
 
 var attack_timer : float = 0

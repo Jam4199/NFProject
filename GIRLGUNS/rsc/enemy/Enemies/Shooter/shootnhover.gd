@@ -1,13 +1,13 @@
 extends EnemyState
 
-var max_distance : float = 500
-var min_distance : float = 200
+@export var max_distance : float = 500
+@export var min_distance : float = 200
 
-var drift_speed_mod : float = 0.5
-var drift_spread : float = 20
-var drift_time : float = 2
-var drift_time_spread : float = 0.8
-var drift_direction : float
+@export var drift_speed_mod : float = 0.5
+@export var drift_spread : float = 20
+@export var drift_time : float = 2
+@export var drift_time_spread : float = 0.8
+@export var drift_direction : float
 var drift_timer : float
 
 var wep : EnemyWeapon

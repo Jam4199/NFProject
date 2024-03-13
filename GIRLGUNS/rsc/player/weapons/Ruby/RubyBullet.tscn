@@ -31,6 +31,7 @@ collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_0vd32")
+base_damage = 20.0
 base_speed = 400.0
 max_distance = 3000.0
 lifetime = 8.0
@@ -38,6 +39,9 @@ base_aoe = true
 base_aoe_size = 30.0
 nodes = [NodePath("Pulse"), NodePath("Circle")]
 particles = [NodePath("Smoke")]
+kb_active = true
+kb_distance = 20.0
+kb_threshold = 40.0
 metadata/_edit_group_ = true
 
 [node name="Smoke" type="CPUParticles2D" parent="."]

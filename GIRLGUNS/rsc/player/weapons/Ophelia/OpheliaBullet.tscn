@@ -19,6 +19,7 @@ collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_ajm55")
+base_damage = 80.0
 base_speed = 1200.0
 nodes = [NodePath("Sprite2D")]
 particles = [NodePath("trails")]

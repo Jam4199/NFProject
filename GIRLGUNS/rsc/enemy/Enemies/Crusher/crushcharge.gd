@@ -1,13 +1,14 @@
 extends EnemyState
 @onready var warning : AttackWarning = get_node("AttackWarning")
 
-var charge_time : float = 1
+@export var charge_time : float = 1
 var current_timer : float = 0
 
-var cooldown : float = 2
+@export var cooldown : float = 2
 var cooldown_timer : float = 0
 
 func state_enter():
+	warning.warning_time = charge_time
 	warning.start()
 	current_timer = charge_time
 

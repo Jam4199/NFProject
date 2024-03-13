@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dswbavpmrkvrd"]
+[gd_scene load_steps=11 format=3 uid="uid://dswbavpmrkvrd"]
 
 [ext_resource type="Script" path="res://rsc/world/World.gd" id="1_fatut"]
 [ext_resource type="Script" path="res://rsc/world/WorldCamera.gd" id="2_3ynwg"]
 [ext_resource type="Script" path="res://rsc/world/Upgrades.gd" id="2_mtacj"]
 [ext_resource type="Texture2D" uid="uid://bim6aciemoa54" path="res://assets/otherthings/bg16.png" id="3_iwsaj"]
+[ext_resource type="Script" path="res://rsc/world/RunProgression.gd" id="5_jcyvr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mi653"]
 
@@ -71,6 +72,22 @@ visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-1200, -600, 1200, -600, 1200, 600, -1200, 600)
 
+[node name="BorderShowizer" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(748, 659)
+texture = SubResource("GradientTexture2D_q5csl")
+
+[node name="BorderLine" type="Line2D" parent="BorderShowizer"]
+position = Vector2(-742, -657)
+points = PackedVector2Array(1200, 600, 1200, -600, -1200, -600, -1200, 600)
+closed = true
+width = 80.0
+default_color = Color(1, 0, 0, 1)
+texture = SubResource("GradientTexture2D_xnnuj")
+texture_mode = 2
+round_precision = 30
+antialiased = true
+
 [node name="BackEffectLayer" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -98,18 +115,6 @@ unique_name_in_owner = true
 [node name="EffectLayer" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="BorderShowizer" type="Sprite2D" parent="."]
-clip_children = 1
-position = Vector2(748, 659)
-texture = SubResource("GradientTexture2D_q5csl")
-
-[node name="BorderLine" type="Line2D" parent="BorderShowizer"]
-position = Vector2(-742, -657)
-points = PackedVector2Array(1200, 600, 1200, -600, -1200, -600, -1200, 600)
-closed = true
-width = 80.0
-default_color = Color(1, 0, 0, 1)
-texture = SubResource("GradientTexture2D_xnnuj")
-texture_mode = 2
-round_precision = 30
-antialiased = true
+[node name="RunProgression" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_jcyvr")

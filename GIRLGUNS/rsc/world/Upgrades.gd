@@ -220,8 +220,8 @@ func create_selections() -> Array[Upgrade]:
 					new_upgrade.ui_name = "Ruby Flames"
 					new_upgrade.ui_description = "Summons fireballs that chases enemies"
 				Upgrade.bless.VIOLA:
-					new_upgrade.ui_name = "Ophelia's Icicle"
-					new_upgrade.ui_description = "Shoots a fast icicle that pierces through enemies"
+					new_upgrade.ui_name = "Viola's Icicle"
+					new_upgrade.ui_description = "Shoots fast icicles that pierces through enemies"
 		else:
 			new_upgrade.type = Upgrade.upgrade_type.BLESS
 			match new_upgrade.blessing:
@@ -269,6 +269,8 @@ func create_selections() -> Array[Upgrade]:
 		if Globals.rng.randf_range(0,1) > 0.5:
 			upgrade_selection[1] = filler_pool[0]
 			filler_pool.erase(upgrade_selection[1])
+	if upgrade_selection[0].type == upgrade_selection[1].type and upgrade_selection[0].player_upgrade == upgrade_selection[1].player_upgrade:
+		upgrade_selection[1] = null
 	for n in range(0,upgrade_selection.size()):
 		if upgrade_selection[n] == null and filler_pool.size() > 0:
 			upgrade_selection[n] = filler_pool.pick_random()
@@ -307,7 +309,7 @@ func player_upgrade(new_upgrade : Upgrade):
 	player_pool.erase(new_upgrade)
 
 func weapon_upgrade(new_upgrade : Upgrade):
-	match new_upgrade.weapon_stats:
+	match new_upgrade.weapon_upgrade:
 		Upgrade.weapon_stats.DAMAGE:
 			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].damage_multiplier += 0.2
 		Upgrade.weapon_stats.RELOAD:
@@ -315,7 +317,7 @@ func weapon_upgrade(new_upgrade : Upgrade):
 		Upgrade.weapon_stats.ROF:
 			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].rof_multiplier += 0.2
 		Upgrade.weapon_stats.MAGAZINE:
-			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].magazine_adds += ceili(float(Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].magazine_adds) * 0.2)
+			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].magazine_adds += ceili(float(Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].base_magazine_size) * 0.2) + 1
 		Upgrade.weapon_stats.PIERCE:
 			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].pierce_add += 3
 		Upgrade.weapon_stats.AOE:
@@ -358,6 +360,8 @@ func filler_upgrade(new_upgrade : Upgrade):
 			Globals.player.heal(50)
 		Upgrade.fillers.DAMAGE:
 			for weapon in Globals.player.weapon_manager.weapons:
+				if weapon == null:
+					continue
 				weapon.damage_multiplier += 0.1
 				weapon.update_stats()
 		Upgrade.fillers.RECHARGE:

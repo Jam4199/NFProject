@@ -5,6 +5,8 @@ extends Bullet
 
 var homing_target : Enemy
 var turn_speed_degrees = 120
+var turn_speed_accel = 40
+var speed_accel = 40
 
 func move(delta : float):
 	if homing_target != null:
@@ -35,6 +37,8 @@ func check_targets(targets):
 
 func turn(delta : float):
 	var angle_diff : float = angle_difference(global_rotation,global_position.angle_to_point(homing_target.global_position))
+	turn_speed_degrees += turn_speed_accel * delta
+	speed += speed_accel * delta
 	if abs(angle_diff) < deg_to_rad(turn_speed_degrees) * delta:
 		look_at(homing_target.global_position)
 		return

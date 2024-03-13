@@ -4,18 +4,16 @@ const OPHELIABULLET : PackedScene = preload("res://rsc/player/weapons/Ophelia/Op
 
 @onready var circle : Node2D = get_node("Circle")
 @onready var beeg : Node2D = get_node("Beeg")
+var spread_shots : int = 8
 
 func _physics_process(delta: float) -> void:
 	super(delta)
 	circle.rotation_degrees += 360 * delta
 	if ammo > 0:
-		circle.modulate = Color(1,1,1)
-		beeg.modulate = Color(1,1,1)
+		modulate = Color(0.078, 0.482, 1)
 	else:
-		circle.modulate = Color(10,10,10)
-		beeg.modulate = Color(10,10,10)
+		modulate = Color(255,255,255)
 
-var spread_shots : int = 16
 
 func shoot():
 	var spread_start : float = (spread/2) * spread_shots
@@ -25,3 +23,29 @@ func shoot():
 		if roundi(float(spread_shots)/2.0) == shot_count:
 			returned_bullet = new_bullet
 	return returned_bullet
+
+func blessing(source : int):
+	match source:
+		Weapon.bless.ASTER:
+			magazine_adds += 2
+			reload_speed_multiplier += 0.4
+			return
+		Weapon.bless.LYRIS:
+			damage_multiplier += 0.6
+			return
+		Weapon.bless.OPHELIA:
+			return
+		Weapon.bless.RUBY:
+			aoe_override += 1
+			aoe_add += 20
+			damage_multiplier += 0.2
+			rof_multiplier += 0.2
+			spread_add_degrees += 10
+			return
+		Weapon.bless.VIOLA:
+			pierce_add += 1
+			rof_multiplier += 0.1
+			reload_speed_multiplier += 0.4
+			spread_add_degrees += -15
+			return
+	return

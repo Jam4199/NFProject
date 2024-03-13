@@ -1,7 +1,7 @@
 extends EnemyState
 
 var wep : EnemyWeapon
-var target_distance : float = 300
+@export var target_distance : float = 300
 
 
 func enemy_ready():
