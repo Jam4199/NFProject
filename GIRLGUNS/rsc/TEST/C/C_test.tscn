@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs87rpkhykduk"]
+[gd_scene load_steps=21 format=3 uid="uid://bs87rpkhykduk"]
 
 [ext_resource type="PackedScene" uid="uid://boanex4ohgerd" path="res://rsc/Main.tscn" id="1_f8poq"]
 [ext_resource type="PackedScene" uid="uid://dswbavpmrkvrd" path="res://rsc/world/World.tscn" id="2_he7aj"]
@@ -6,6 +6,76 @@
 [ext_resource type="Texture2D" uid="uid://bim6aciemoa54" path="res://assets/otherthings/bg16.png" id="4_2iai0"]
 [ext_resource type="Script" path="res://rsc/TEST/C/C_World.gd" id="4_006ya"]
 [ext_resource type="Texture2D" uid="uid://musubu0qj086" path="res://assets/otherthings/bg260.png" id="5_afom2"]
+[ext_resource type="PackedScene" uid="uid://dw8go5eo0d7wv" path="res://rsc/enemy/Enemies/Chaser/ChaserG.tscn" id="7_ntjpt"]
+[ext_resource type="Script" path="res://rsc/world/progressions/Progression.gd" id="8_twjc6"]
+[ext_resource type="PackedScene" uid="uid://bvubl4x02bs3a" path="res://rsc/enemy/Enemies/Crusher/CrusherG.tscn" id="9_kdvp8"]
+[ext_resource type="PackedScene" uid="uid://cbttqogg4l4hv" path="res://rsc/enemy/Enemies/Shooter/ShooterG.tscn" id="10_pdgkf"]
+[ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="11_5mjnt"]
+[ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="12_bshps"]
+
+[sub_resource type="Resource" id="Resource_mkbrv"]
+script = ExtResource("8_twjc6")
+text = "starting 10"
+delay = 1.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([ExtResource("7_ntjpt")])
+spawn_count = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_x4l0q"]
+script = ExtResource("8_twjc6")
+text = "rest 10"
+delay = 5.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([])
+spawn_count = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_2qr3n"]
+script = ExtResource("8_twjc6")
+text = "20 bois 20"
+delay = 1.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("7_ntjpt")])
+spawn_count = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_khj08"]
+script = ExtResource("8_twjc6")
+text = "big guy and his bois 20"
+delay = 5.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("9_kdvp8"), ExtResource("7_ntjpt")])
+spawn_count = Array[int]([1, 5])
+
+[sub_resource type="Resource" id="Resource_ug61i"]
+script = ExtResource("8_twjc6")
+text = "shoot and chase 20"
+delay = 4.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("7_ntjpt"), ExtResource("10_pdgkf")])
+spawn_count = Array[int]([4, 2])
+
+[sub_resource type="Resource" id="Resource_e7dxd"]
+script = ExtResource("8_twjc6")
+text = "jump scare 10"
+delay = 3.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([ExtResource("11_5mjnt"), ExtResource("12_bshps")])
+spawn_count = Array[int]([2, 3])
+
+[sub_resource type="Resource" id="Resource_rq51q"]
+script = ExtResource("8_twjc6")
+text = "all three 20"
+delay = 2.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("7_ntjpt"), ExtResource("9_kdvp8"), ExtResource("10_pdgkf")])
+spawn_count = Array[int]([2, 1, 1])
+
+[sub_resource type="Resource" id="Resource_gt6jl"]
+script = ExtResource("8_twjc6")
+text = "more of three 20"
+delay = 4.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("7_ntjpt"), ExtResource("9_kdvp8"), ExtResource("10_pdgkf")])
+spawn_count = Array[int]([5, 3, 3])
 
 [node name="C_test" instance=ExtResource("1_f8poq")]
 script = ExtResource("2_naqxq")
@@ -52,6 +122,9 @@ color = Color(0, 0, 0, 0.509804)
 [node name="Spawn" type="Marker2D" parent="World/WorldC/EnemyLayerMid" index="0"]
 unique_name_in_owner = true
 position = Vector2(543, 297)
+
+[node name="RunProgression" parent="World/WorldC" index="15"]
+progs = Array[ExtResource("8_twjc6")]([SubResource("Resource_mkbrv"), SubResource("Resource_x4l0q"), SubResource("Resource_2qr3n"), SubResource("Resource_khj08"), SubResource("Resource_ug61i"), SubResource("Resource_e7dxd"), SubResource("Resource_rq51q"), SubResource("Resource_gt6jl")])
 
 [node name="TitleScreen" parent="." index="3"]
 visible = false

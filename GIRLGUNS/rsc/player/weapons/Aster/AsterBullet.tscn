@@ -59,6 +59,7 @@ collision_mask = 0
 monitoring = false
 script = ExtResource("1_2q2tn")
 base_damage = 25.0
+base_pierce = 3
 nodes = [NodePath("Sprite2D")]
 particles = [NodePath("CPUParticles2D")]
 hit_effect = ExtResource("2_4ntxg")

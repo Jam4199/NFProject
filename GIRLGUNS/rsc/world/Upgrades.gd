@@ -95,7 +95,7 @@ func create_player_pool():
 	for n in speed_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name = "Speed Up"
-		new_upgrade.ui_description = "Increase Speed by 10% of base amount"
+		new_upgrade.ui_description = "Increase Speed by 20% of base amount"
 		new_upgrade.player_upgrade = 1
 		player_pool.append(new_upgrade)
 	for n in iframe_upgrades:
@@ -135,7 +135,6 @@ func initialize():
 
 
 func level_up():
-	print("level" + str(Globals.player.current_level))
 	Globals.world.call_deferred("pause")
 	check_upgrades()
 	var upgrade_selections = create_selections()
@@ -197,7 +196,6 @@ func create_selections() -> Array[Upgrade]:
 	#bless/equip_pool
 	var new_upgrade : Upgrade
 	if bless_pool.size() > 0 and bless_pool.size() >= 5 - bless_offered:
-		print("new bless/wep")
 		new_upgrade = Upgrade.new()
 		new_upgrade.blessing = bless_pool.pick_random()
 		var aaaaaa : int = 0
@@ -281,7 +279,6 @@ func create_selections() -> Array[Upgrade]:
 
 
 func apply_upgrade(new_upgrade : Upgrade):
-	print("upgrade_type " + str(new_upgrade.type) )
 	match new_upgrade.type:
 		Upgrade.upgrade_type.PLAYER:
 			player_upgrade(new_upgrade)
@@ -301,7 +298,7 @@ func player_upgrade(new_upgrade : Upgrade):
 			Globals.player.max_hp += 200
 			Globals.player.current_hp += 200
 		Upgrade.player_stats.SPEED:
-			Globals.player.speed += 30
+			Globals.player.speed += 40
 		Upgrade.player_stats.IFRAME:
 			Globals.player.dash_invul += 0.1
 		Upgrade.player_stats.STAMINA:
@@ -324,7 +321,7 @@ func weapon_upgrade(new_upgrade : Upgrade):
 			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].aoe_add += 10
 	Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].update_stats()
 	weapon_pools[new_upgrade.weapon_slot].erase(new_upgrade)
-	print("weapon slot is " + str(new_upgrade.weapon_slot))
+
 
 func add_weapon(new_upgrade : Upgrade):
 	var weapon_scene : PackedScene

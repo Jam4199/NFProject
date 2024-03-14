@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bexyngt6rwilp"]
+
+[ext_resource type="PackedScene" uid="uid://b7ylfabu3ikhb" path="res://rsc/enemy/Enemies/Shooter/Shooter.tscn" id="1_8a2st"]
+
+[node name="ShooterR" instance=ExtResource("1_8a2st")]
+base_max_hp = 1000.0
+exp = 22
+
+[node name="ShooterWep" parent="." index="0"]
+cooldown_time = 0.5
+bullet_speed_mult = 1.5
+
+[node name="Spikes" parent="Flash/Color/Sprite" index="0"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="Polygon2D" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="Polygon2D" parent="Flash/Color/Sprite/Polygon2D" index="0"]
+color = Color(0.972549, 0.0784314, 0.0392157, 1)

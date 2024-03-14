@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://18ngup4mw0kv"]
+
+[ext_resource type="PackedScene" uid="uid://b7ylfabu3ikhb" path="res://rsc/enemy/Enemies/Shooter/Shooter.tscn" id="1_hjwgb"]
+
+[node name="ShooterB" instance=ExtResource("1_hjwgb")]
+base_max_hp = 1000.0
+base_speed = 400.0
+exp = 14
+
+[node name="ShooterWep" parent="." index="0"]
+cooldown_time = 2.0
+bullet_damage_mult = 2.0
+
+[node name="Spikes" parent="Flash/Color/Sprite" index="0"]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="Polygon2D" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="Polygon2D" parent="Flash/Color/Sprite/Polygon2D" index="0"]
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)

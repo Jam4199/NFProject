@@ -9,7 +9,7 @@ class_name Pickup
 
 
 var attracted : bool = false
-var current_speed : float = 0
+var current_speed : float = 80
 
 func _physics_process(delta):
 	if attracted and Globals.player != null:
@@ -18,7 +18,8 @@ func _physics_process(delta):
 		
 		global_position += velocity
 	else:
-		current_speed = 0
+		var velocity : Vector2 = Vector2.from_angle(global_position.angle_to_point(Globals.player.global_position)) * current_speed
+		global_position += velocity
 		return
 	
 	return

@@ -1,10 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dswbavpmrkvrd"]
+[gd_scene load_steps=25 format=3 uid="uid://dswbavpmrkvrd"]
 
 [ext_resource type="Script" path="res://rsc/world/World.gd" id="1_fatut"]
 [ext_resource type="Script" path="res://rsc/world/WorldCamera.gd" id="2_3ynwg"]
 [ext_resource type="Script" path="res://rsc/world/Upgrades.gd" id="2_mtacj"]
 [ext_resource type="Texture2D" uid="uid://bim6aciemoa54" path="res://assets/otherthings/bg16.png" id="3_iwsaj"]
 [ext_resource type="Script" path="res://rsc/world/RunProgression.gd" id="5_jcyvr"]
+[ext_resource type="PackedScene" uid="uid://dw8go5eo0d7wv" path="res://rsc/enemy/Enemies/Chaser/ChaserG.tscn" id="6_lffo0"]
+[ext_resource type="Script" path="res://rsc/world/progressions/Progression.gd" id="7_6bp55"]
+[ext_resource type="PackedScene" uid="uid://bvubl4x02bs3a" path="res://rsc/enemy/Enemies/Crusher/CrusherG.tscn" id="8_7lnsy"]
+[ext_resource type="PackedScene" uid="uid://cbttqogg4l4hv" path="res://rsc/enemy/Enemies/Shooter/ShooterG.tscn" id="9_e0v4c"]
+[ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="10_implm"]
+[ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="11_odv0q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mi653"]
 
@@ -29,6 +35,70 @@ gradient = SubResource("Gradient_oek3u")
 width = 80
 height = 80
 fill_to = Vector2(0, 1)
+
+[sub_resource type="Resource" id="Resource_el2bn"]
+script = ExtResource("7_6bp55")
+text = ""
+delay = 1.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([ExtResource("6_lffo0")])
+spawn_count = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_x4l0q"]
+script = ExtResource("7_6bp55")
+text = "rest 10"
+delay = 5.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([])
+spawn_count = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_2qr3n"]
+script = ExtResource("7_6bp55")
+text = "20 bois 20"
+delay = 1.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0")])
+spawn_count = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_khj08"]
+script = ExtResource("7_6bp55")
+text = "big guy and his bois 20"
+delay = 10.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("8_7lnsy"), ExtResource("6_lffo0")])
+spawn_count = Array[int]([1, 10])
+
+[sub_resource type="Resource" id="Resource_ug61i"]
+script = ExtResource("7_6bp55")
+text = "shoot and chase 20"
+delay = 10.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("9_e0v4c")])
+spawn_count = Array[int]([10, 1])
+
+[sub_resource type="Resource" id="Resource_e7dxd"]
+script = ExtResource("7_6bp55")
+text = "jump scare 10"
+delay = 10.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([ExtResource("10_implm"), ExtResource("11_odv0q")])
+spawn_count = Array[int]([2, 1])
+
+[sub_resource type="Resource" id="Resource_rq51q"]
+script = ExtResource("7_6bp55")
+text = "all three 20"
+delay = 10.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("8_7lnsy"), ExtResource("9_e0v4c")])
+spawn_count = Array[int]([10, 1, 1])
+
+[sub_resource type="Resource" id="Resource_gt6jl"]
+script = ExtResource("7_6bp55")
+text = "more of three 20"
+delay = 10.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("8_7lnsy"), ExtResource("9_e0v4c")])
+spawn_count = Array[int]([10, 1, 2])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_fatut")
@@ -118,3 +188,5 @@ unique_name_in_owner = true
 [node name="RunProgression" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_jcyvr")
+progs = Array[ExtResource("7_6bp55")]([SubResource("Resource_el2bn"), SubResource("Resource_x4l0q"), SubResource("Resource_2qr3n"), SubResource("Resource_khj08"), SubResource("Resource_ug61i"), SubResource("Resource_e7dxd"), SubResource("Resource_rq51q"), SubResource("Resource_gt6jl")])
+total_time = 130.0

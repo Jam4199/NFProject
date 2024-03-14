@@ -5,8 +5,8 @@ extends Bullet
 
 var homing_target : Enemy
 var turn_speed_degrees = 120
-var turn_speed_accel = 40
-var speed_accel = 40
+var turn_speed_accel = 120
+var speed_accel = 120
 
 func move(delta : float):
 	if homing_target != null:

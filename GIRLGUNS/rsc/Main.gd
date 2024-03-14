@@ -1,7 +1,8 @@
 extends Node
+class_name Main
 
 const PLAYERSCENE : PackedScene = preload("res://rsc/player/Player.tscn")
-
+const WORLDSCENE : PackedScene = preload("res://rsc/world/World.tscn")
 
 @onready var world_canvas : CanvasLayer = get_node("World")
 @onready var ui_canvas : CanvasLayer = get_node("UI")
@@ -23,6 +24,7 @@ func create_new_world(world_scene : PackedScene)-> World:
 	var new_world : World = world_scene.instantiate()
 	world_canvas.add_child(new_world)
 	new_world.initialize()
+	Globals.world = new_world
 	return new_world
 
 func player_to_world():

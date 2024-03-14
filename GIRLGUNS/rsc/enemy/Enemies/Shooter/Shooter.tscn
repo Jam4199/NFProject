@@ -48,8 +48,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_1r63j"]
 
 [node name="Shooter" instance=ExtResource("1_laxtt")]
+collision_layer = 8
 base_max_hp = 500.0
 base_speed = 300.0
+exp = 8
 
 [node name="ShooterWep" type="Node2D" parent="." index="0"]
 unique_name_in_owner = true

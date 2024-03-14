@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gnndnxqt2xj"]
+
+[ext_resource type="PackedScene" uid="uid://boanex4ohgerd" path="res://rsc/Main.tscn" id="1_xqgxa"]
+[ext_resource type="Script" path="res://rsc/TEST/D/TestD.gd" id="2_qcqd8"]
+
+[node name="TestD" instance=ExtResource("1_xqgxa")]
+script = ExtResource("2_qcqd8")
+
+[node name="TitleScreen" parent="." index="3"]
+visible = false

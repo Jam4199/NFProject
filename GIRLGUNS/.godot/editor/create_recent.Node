@@ -1,3 +1,5 @@
+Panel
+Label
 Node2D
 AnimationPlayer
 Sprite2D
@@ -10,5 +12,3 @@ Timer
 RichTextLabel
 Button
 VBoxContainer
-Panel
-Control
