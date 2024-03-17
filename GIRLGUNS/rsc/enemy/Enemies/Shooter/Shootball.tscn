@@ -10,9 +10,9 @@ radius = 6.0
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_nsju8")
-base_speed = 200.0
-max_distance = 3000.0
-lifetime = 100.0
+base_speed = 400.0
+max_distance = 1000.0
+lifetime = 4.0
 world_layer = 2
 nodes = [NodePath("Border")]
 

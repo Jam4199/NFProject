@@ -279,6 +279,7 @@ func create_selections() -> Array[Upgrade]:
 
 
 func apply_upgrade(new_upgrade : Upgrade):
+	print("upgrade type is" + str(new_upgrade.type))
 	match new_upgrade.type:
 		Upgrade.upgrade_type.PLAYER:
 			player_upgrade(new_upgrade)
@@ -293,10 +294,12 @@ func apply_upgrade(new_upgrade : Upgrade):
 	return
 
 func player_upgrade(new_upgrade : Upgrade):
-	match new_upgrade.player_stats:
+	print(str(new_upgrade.player_upgrade))
+	match new_upgrade.player_upgrade:
 		Upgrade.player_stats.HEALTH:
 			Globals.player.max_hp += 200
 			Globals.player.current_hp += 200
+			Globals.player.heal(10)
 		Upgrade.player_stats.SPEED:
 			Globals.player.speed += 40
 		Upgrade.player_stats.IFRAME:

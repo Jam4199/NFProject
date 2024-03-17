@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dswbavpmrkvrd"]
+[gd_scene load_steps=41 format=3 uid="uid://dswbavpmrkvrd"]
 
 [ext_resource type="Script" path="res://rsc/world/World.gd" id="1_fatut"]
 [ext_resource type="Script" path="res://rsc/world/WorldCamera.gd" id="2_3ynwg"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cbttqogg4l4hv" path="res://rsc/enemy/Enemies/Shooter/ShooterG.tscn" id="9_e0v4c"]
 [ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="10_implm"]
 [ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="11_odv0q"]
+[ext_resource type="PackedScene" uid="uid://b7ylfabu3ikhb" path="res://rsc/enemy/Enemies/Shooter/Shooter.tscn" id="12_acpdg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mi653"]
 
@@ -100,6 +101,126 @@ duration = Vector2i(0, 20)
 enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("8_7lnsy"), ExtResource("9_e0v4c")])
 spawn_count = Array[int]([10, 1, 2])
 
+[sub_resource type="Resource" id="Resource_clxcw"]
+script = ExtResource("7_6bp55")
+text = "shooties 20"
+delay = 5.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("9_e0v4c")])
+spawn_count = Array[int]([3])
+
+[sub_resource type="Resource" id="Resource_qdhyy"]
+script = ExtResource("7_6bp55")
+text = "charge em 30"
+delay = 6.0
+duration = Vector2i(0, 30)
+enemies = Array[PackedScene]([ExtResource("8_7lnsy"), ExtResource("10_implm")])
+spawn_count = Array[int]([1, 5])
+
+[sub_resource type="Resource" id="Resource_trivj"]
+script = ExtResource("7_6bp55")
+text = "peek 20"
+delay = 5.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("10_implm"), ExtResource("6_lffo0")])
+spawn_count = Array[int]([1, 4])
+
+[sub_resource type="Resource" id="Resource_ym8b6"]
+script = ExtResource("7_6bp55")
+text = "variety 20"
+delay = 4.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("10_implm"), ExtResource("8_7lnsy"), ExtResource("9_e0v4c")])
+spawn_count = Array[int]([4, 1, 1, 1])
+
+[sub_resource type="Resource" id="Resource_grunl"]
+script = ExtResource("7_6bp55")
+text = "rest 20"
+delay = 5.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([])
+spawn_count = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_ssj5b"]
+script = ExtResource("7_6bp55")
+text = "reheat 20"
+delay = 5.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("10_implm")])
+spawn_count = Array[int]([3, 1])
+
+[sub_resource type="Resource" id="Resource_x44xn"]
+script = ExtResource("7_6bp55")
+text = "purple 10"
+delay = 5.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([ExtResource("10_implm"), ExtResource("8_7lnsy")])
+spawn_count = Array[int]([2, 1])
+
+[sub_resource type="Resource" id="Resource_dnyrh"]
+script = ExtResource("7_6bp55")
+text = "purpletime 20"
+delay = 4.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("10_implm")])
+spawn_count = Array[int]([3])
+
+[sub_resource type="Resource" id="Resource_1pmbe"]
+script = ExtResource("7_6bp55")
+text = "mixing"
+delay = 4.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("10_implm"), ExtResource("11_odv0q")])
+spawn_count = Array[int]([2, 2, 1])
+
+[sub_resource type="Resource" id="Resource_gnwml"]
+script = ExtResource("7_6bp55")
+text = "Crushrush 30"
+delay = 10.0
+duration = Vector2i(0, 30)
+enemies = Array[PackedScene]([ExtResource("11_odv0q"), ExtResource("8_7lnsy")])
+spawn_count = Array[int]([1, 2])
+
+[sub_resource type="Resource" id="Resource_idm5f"]
+script = ExtResource("7_6bp55")
+text = "longlong 40"
+delay = 10.0
+duration = Vector2i(0, 40)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("10_implm"), ExtResource("8_7lnsy"), ExtResource("11_odv0q")])
+spawn_count = Array[int]([2, 6, 1, 1])
+
+[sub_resource type="Resource" id="Resource_wqnfg"]
+script = ExtResource("7_6bp55")
+text = "rest 20"
+delay = 10.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([])
+spawn_count = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_fkl4q"]
+script = ExtResource("7_6bp55")
+text = "shooting 20"
+delay = 5.0
+duration = Vector2i(0, 20)
+enemies = Array[PackedScene]([ExtResource("12_acpdg"), ExtResource("9_e0v4c")])
+spawn_count = Array[int]([1, 2])
+
+[sub_resource type="Resource" id="Resource_j01cb"]
+script = ExtResource("7_6bp55")
+text = "rest 10"
+delay = 5.0
+duration = Vector2i(0, 10)
+enemies = Array[PackedScene]([])
+spawn_count = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_w3gke"]
+script = ExtResource("7_6bp55")
+text = "calm 30"
+delay = 10.0
+duration = Vector2i(0, 30)
+enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("10_implm"), ExtResource("11_odv0q"), ExtResource("12_acpdg")])
+spawn_count = Array[int]([6, 4, 1, 1])
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_fatut")
 
@@ -173,10 +294,10 @@ unique_name_in_owner = true
 [node name="PlayerSpawnPoint" type="Marker2D" parent="PlayerLayer"]
 unique_name_in_owner = true
 
-[node name="EnemyLayerMid" type="Node2D" parent="."]
+[node name="BulletLayer" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="BulletLayer" type="Node2D" parent="."]
+[node name="EnemyLayerMid" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="EnemyLayerSmall" type="Node2D" parent="."]
@@ -188,5 +309,5 @@ unique_name_in_owner = true
 [node name="RunProgression" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_jcyvr")
-progs = Array[ExtResource("7_6bp55")]([SubResource("Resource_el2bn"), SubResource("Resource_x4l0q"), SubResource("Resource_2qr3n"), SubResource("Resource_khj08"), SubResource("Resource_ug61i"), SubResource("Resource_e7dxd"), SubResource("Resource_rq51q"), SubResource("Resource_gt6jl")])
-total_time = 130.0
+progs = Array[ExtResource("7_6bp55")]([SubResource("Resource_el2bn"), SubResource("Resource_x4l0q"), SubResource("Resource_2qr3n"), SubResource("Resource_khj08"), SubResource("Resource_ug61i"), SubResource("Resource_e7dxd"), SubResource("Resource_rq51q"), SubResource("Resource_gt6jl"), SubResource("Resource_clxcw"), SubResource("Resource_qdhyy"), SubResource("Resource_trivj"), SubResource("Resource_ym8b6"), SubResource("Resource_grunl"), SubResource("Resource_ssj5b"), SubResource("Resource_x44xn"), SubResource("Resource_dnyrh"), SubResource("Resource_1pmbe"), SubResource("Resource_gnwml"), SubResource("Resource_idm5f"), SubResource("Resource_wqnfg"), SubResource("Resource_fkl4q"), SubResource("Resource_j01cb"), SubResource("Resource_w3gke")])
+total_time = 460.0

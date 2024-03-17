@@ -46,6 +46,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1r63j"]
+radius = 20.0
 
 [node name="Shooter" instance=ExtResource("1_laxtt")]
 collision_layer = 8
@@ -57,6 +58,7 @@ exp = 8
 unique_name_in_owner = true
 script = ExtResource("2_04xwg")
 bullet_scene = ExtResource("3_gw7vo")
+cooldown_time = 3.0
 
 [node name="shootnchase" type="Node2D" parent="States" index="0"]
 script = ExtResource("4_opq4m")
@@ -66,9 +68,6 @@ script = ExtResource("5_wund6")
 
 [node name="shootnflee" type="Node2D" parent="States" index="2"]
 script = ExtResource("6_0fp81")
-
-[node name="Sprite" parent="Flash/Color" index="0"]
-scale = Vector2(0.6, 0.6)
 
 [node name="Spikes" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
 color = Color(0.686275, 0, 0.701961, 1)

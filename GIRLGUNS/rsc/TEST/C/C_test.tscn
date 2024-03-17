@@ -125,8 +125,9 @@ position = Vector2(543, 297)
 
 [node name="RunProgression" parent="World/WorldC" index="15"]
 progs = Array[ExtResource("8_twjc6")]([SubResource("Resource_mkbrv"), SubResource("Resource_x4l0q"), SubResource("Resource_2qr3n"), SubResource("Resource_khj08"), SubResource("Resource_ug61i"), SubResource("Resource_e7dxd"), SubResource("Resource_rq51q"), SubResource("Resource_gt6jl")])
+total_time = 130.0
 
-[node name="TitleScreen" parent="." index="3"]
+[node name="TitleScreen" parent="." index="4"]
 visible = false
 
 [editable path="World/WorldC"]

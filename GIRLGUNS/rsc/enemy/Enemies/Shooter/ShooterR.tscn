@@ -7,7 +7,7 @@ base_max_hp = 1000.0
 exp = 22
 
 [node name="ShooterWep" parent="." index="0"]
-cooldown_time = 0.5
+cooldown_time = 2.0
 bullet_speed_mult = 1.5
 
 [node name="Spikes" parent="Flash/Color/Sprite" index="0"]

@@ -15,7 +15,7 @@ class_name Enemy
 @export_group("Drops")
 @export var exp : int = 1
 @export var heal : int = 0
-
+@export var kill_counted : bool = true
 
 var states : Dictionary = {}
 var current_state : EnemyState
@@ -34,6 +34,7 @@ var damage_immune : bool = false
 var knockback_immune : bool = false
 
 signal enemy_death(mostlikelyself : Enemy)
+
 
 func _ready():
 

@@ -9,7 +9,9 @@ const WORLDSCENE : PackedScene = preload("res://rsc/world/World.tscn")
 @onready var title_screen : CanvasLayer = get_node("TitleScreen")
 
 func _ready() -> void:
+	Globals.main = self
 	Globals.records = get_node("Records")
+	title_screen.connect("game_start", Callable(self,"new_game_start"))
 	open_title()
 
 func open_title():
@@ -33,8 +35,19 @@ func player_to_world():
 	Globals.world.spawn_player()
 
 func new_game_start():
-	var placeholder_scene = null #placeholder
 	create_new_player()
-	create_new_world(placeholder_scene)
+	create_new_world(WORLDSCENE)
 	player_to_world()
+	var weapon : Weapon = Globals.player.weapon_manager.add_weapon(load("res://rsc/player/weapons/Aster/AsterWeapon.tscn"))
+	weapon.update_stats()
+	Globals.player.movement_input = true
+	Globals.player.attack_input = true
+	Globals.world.world_camera.follow_point = Globals.player
+	Globals.world.runprogress.start()
+	ui_canvas.visible = true
 
+
+func game_reset():
+	Globals.world.queue_free()
+	title_screen.visible = true
+	ui_canvas.visible = false

@@ -12,11 +12,17 @@ class_name Player
 @export var level_cooldown : float = 0.5
 var level_cooldown_timer = 0
 
+@export_group("stuff")
+@export var hp_gradient : GradientTexture1D = GradientTexture1D.new()
+
 @onready var weapon_manager : WeaponManager = get_node("WeaponManager")
 @onready var hitbox : Area2D = get_node("Hitbox")
 @onready var p_collector = get_node("PickupCollector")
 @onready var p_attractor = get_node("PickupAttractor")
 @onready var spritestuff : SpriteStuff = get_node("SpriteStuff")
+@onready var hp_line : Line2D = get_node("HPLine")
+@onready var current_hp_line : Line2D = get_node("HPLine/CurrentHPLine")
+
 
 var movement_input : bool = false
 var attack_input : bool = false
@@ -158,6 +164,8 @@ func heal(amount : float):
 	current_hp += heal_amount
 	if current_hp > max_hp:
 		current_hp = max_hp
+		hp_line.visible = false
+	update_hp_line()
 
 func gain_exp(amount : float):
 	current_exp += amount
@@ -172,12 +180,18 @@ func level_up():
 	exp_requirement += ceili(float(exp_requirement) * 0.1)
 	Globals.world.upgrades.level_up()
 
+func update_hp_line():
+	current_hp_line.default_color = hp_gradient.gradient.sample(1.0 - (current_hp)/(max_hp))
+	if current_hp > 0:
+		current_hp_line.points[1].x = (current_hp/max_hp) * 20
+
 #taking hits
 func take_damage(damage : float):
 	current_hp -= damage
-
+	hp_line.visible = true
+	update_hp_line()
 	if current_hp <= 0:
-		death()
+		call_deferred("death")
 	return
 
 func recieve_bullet(hurtbox : HurtBox):
@@ -189,6 +203,7 @@ func recieve_bullet(hurtbox : HurtBox):
 
 func death():
 	print("dies lmao")
+	Globals.player_death()
 	return
 
 #pickups
@@ -203,3 +218,4 @@ func pickup_collect(pickup : Pickup):
 		1:
 			gain_exp(pickup.value)
 	return
+

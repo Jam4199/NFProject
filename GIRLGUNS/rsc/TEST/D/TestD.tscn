@@ -6,5 +6,5 @@
 [node name="TestD" instance=ExtResource("1_xqgxa")]
 script = ExtResource("2_qcqd8")
 
-[node name="TitleScreen" parent="." index="3"]
+[node name="TitleScreen" parent="." index="4"]
 visible = false

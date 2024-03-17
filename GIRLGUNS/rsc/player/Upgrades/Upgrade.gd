@@ -3,7 +3,7 @@ class_name Upgrade
 
 @export var ui_name : String
 @export var ui_description : String
-@export var type : upgrade_type = 0
+@export var type : upgrade_type = upgrade_type.PLAYER
 @export var player_upgrade : player_stats
 @export var weapon_upgrade : weapon_stats
 @export var filler_upgrade : fillers

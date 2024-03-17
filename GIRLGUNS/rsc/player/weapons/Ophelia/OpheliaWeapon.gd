@@ -40,12 +40,12 @@ func blessing(source : int):
 			aoe_add += 20
 			damage_multiplier += 0.2
 			rof_multiplier += 0.2
-			spread_add_degrees += 10
+			spread_add_degrees += 3
 			return
 		Weapon.bless.VIOLA:
 			pierce_add += 1
 			rof_multiplier += 0.1
 			reload_speed_multiplier += 0.4
-			spread_add_degrees += -15
+			spread_add_degrees += -1
 			return
 	return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4als206inycd"]
+[gd_scene load_steps=19 format=3 uid="uid://b4als206inycd"]
 
 [ext_resource type="Script" path="res://rsc/UI/UI.gd" id="1_32ly1"]
 [ext_resource type="Script" path="res://rsc/UI/WeaponPanel.gd" id="1_m83fv"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ck13wvfkik6gh" path="res://assets/ui/arrowUp.png" id="11_jjdqo"]
 [ext_resource type="PackedScene" uid="uid://ivs5ra6fwtms" path="res://rsc/UI/upgrade_button.tscn" id="16_51eim"]
 [ext_resource type="Script" path="res://rsc/UI/UpgradeMenu.gd" id="16_woofw"]
+[ext_resource type="Script" path="res://rsc/UI/GameOver.gd" id="18_bupg7"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -286,6 +287,7 @@ position = Vector2(20, 37)
 scale = Vector2(2, 2)
 
 [node name="UpgradeMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -352,25 +354,97 @@ layout_mode = 2
 [node name="UpgradeButton3" parent="UpgradeMenu/Panel/VBoxContainer" instance=ExtResource("16_51eim")]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -45.0
-offset_right = 45.0
-offset_bottom = 44.0
-grow_horizontal = 2
-theme_override_styles/panel = ExtResource("8_ffsge")
-
-[node name="Timer" type="RichTextLabel" parent="Panel"]
+[node name="GameOver" type="Control" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_bupg7")
+
+[node name="Delay" type="Timer" parent="GameOver"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Panel" type="Panel" parent="GameOver"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("8_ffsge")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.5
+offset_top = 17.0
+offset_right = 89.5
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]The fight is far from over[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Return" type="Button" parent="GameOver"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 42.0
+offset_right = 100.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return"
+
+[node name="Time" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 10.0
+offset_right = 45.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("8_ffsge")
+
+[node name="Timer" type="RichTextLabel" parent="Time"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
 text = "aaaaaaaa"
 scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Time"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 40.0

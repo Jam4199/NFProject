@@ -7,6 +7,9 @@ base_max_hp = 300.0
 base_speed = 250.0
 exp = 3
 
+[node name="ShooterWep" parent="." index="0"]
+cooldown_time = 4.0
+
 [node name="shootnhover" parent="States" index="1"]
 drift_spread = 40.0
 

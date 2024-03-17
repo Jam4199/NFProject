@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dghnadkcpohv5"]
+[gd_scene load_steps=20 format=3 uid="uid://dghnadkcpohv5"]
 
 [ext_resource type="Script" path="res://rsc/player/WeaponManager.gd" id="1_3alu6"]
 [ext_resource type="Script" path="res://rsc/player/Player.gd" id="1_o8ieq"]
@@ -8,6 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bi1dwxdx6aulq" path="res://rsc/watbigthe.tscn" id="3_05f6f"]
 [ext_resource type="PackedScene" uid="uid://d24ucxulkldr3" path="res://rsc/rayto.tscn" id="4_dtak4"]
 [ext_resource type="PackedScene" uid="uid://c1q6riv58hqqw" path="res://rsc/lefto.tscn" id="5_321od"]
+
+[sub_resource type="Gradient" id="Gradient_f5xt7"]
+offsets = PackedFloat32Array(0.25, 0.5, 0.75)
+colors = PackedColorArray(0.0779385, 0.675205, 0, 1, 0.63477, 0.6368, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5qlqn"]
+gradient = SubResource("Gradient_f5xt7")
+width = 100
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stnnb"]
 
@@ -71,6 +79,7 @@ script = ExtResource("1_o8ieq")
 speed = 200.0
 dash_time = 0.2
 dash_cooldown = 2.0
+hp_gradient = SubResource("GradientTexture1D_5qlqn")
 metadata/_edit_lock_ = true
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -152,3 +161,17 @@ libraries = {
 "": SubResource("AnimationLibrary_xhwe4")
 }
 autoplay = "float"
+
+[node name="HPLine" type="Line2D" parent="."]
+position = Vector2(-10, 18)
+points = PackedVector2Array(0, 0, 20, 0)
+width = 4.0
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="CurrentHPLine" type="Line2D" parent="HPLine"]
+points = PackedVector2Array(0, 0, 20, 0)
+width = 4.0
+default_color = Color(0.298039, 0.494118, 1, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

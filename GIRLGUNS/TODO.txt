@@ -64,8 +64,26 @@ choices:
 	2 for player(takes weapon slot when possible)
 
 
-
-
+POSTRELEASE
+GAME OVER SCREEN(made)
+	kill counter
+	death sequence
+UI 
+	TIME to min/sec(done)
+	spell icons
+WORLD
+	ENEMYHITBOX and PICKUP change collision
+	BACKGROUND change to something easier to see where am i on the map
+ENEMY
+	AAAAAAAAAAAAAAAAAAAA
+	shooter
+		too small
+		too fast
+		too many shots
+EFFECTS
+	GET HIT
+	STAR BARRIER
+	DEATH
 
 
 

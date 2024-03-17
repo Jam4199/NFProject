@@ -21,7 +21,10 @@ const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 @onready var upgrades : Node = get_node("Upgrades")
 @onready var runprogress : RunProgression = get_node("%RunProgression")
 
+
 var player_control : bool = false
+var kill_count : int = 0
+
 
 func _ready() -> void:
 	
@@ -78,6 +81,8 @@ func spawn_player():
 	Globals.player.global_position = player_spawn_point.global_position
 
 func enemy_death(dead : Enemy):
+	if dead.kill_counted:
+		kill_count += 1
 	for n in dead.exp:
 		var new_pickup : Pickup = EXP.instantiate()
 		pickup_layer.add_child(new_pickup)

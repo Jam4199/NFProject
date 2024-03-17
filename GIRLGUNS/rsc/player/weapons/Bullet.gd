@@ -51,6 +51,8 @@ func _physics_process(delta: float) -> void:
 		return
 	call_deferred("move", delta)
 	total_time += delta
+	if total_time > lifetime:
+		bullet_end()
 	return
 
 func move(delta : float):
