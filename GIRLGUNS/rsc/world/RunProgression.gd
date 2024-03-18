@@ -97,7 +97,7 @@ func progress_spawn(prog : Progression):
 	
 func prog_end(force : bool = false):
 	current_round += 1
-	if not force and progs.size() >= current_round:
+	if not force and progs.size() <= current_round:
 		current_round = progs.size() - 1
 	next_spawn = next_prog + progs[current_round].delay
 	next_prog += convert_to_raw(progs[current_round].duration)

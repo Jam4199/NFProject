@@ -11,8 +11,15 @@ var attracted : bool = false
 var current_speed : float = 200
 
 func _physics_process(delta):
-	if attracted and Globals.player != null:
+	
+	if Globals.player == null:
+		return
+	
+	if attracted:
 		current_speed += attract_accel * delta
+	else:
+		current_speed += attract_accel * delta  * 0.4
+		
 	
 	var velocity : Vector2 = Vector2.from_angle(global_position.angle_to_point(Globals.player.global_position)) * current_speed * delta
 	global_position += velocity
