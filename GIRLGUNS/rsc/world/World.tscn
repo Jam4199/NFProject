@@ -178,8 +178,8 @@ script = ExtResource("7_6bp55")
 text = "Crushrush 30"
 delay = 10.0
 duration = Vector2i(0, 30)
-enemies = Array[PackedScene]([ExtResource("11_odv0q"), ExtResource("8_7lnsy")])
-spawn_count = Array[int]([1, 2])
+enemies = Array[PackedScene]([ExtResource("11_odv0q"), ExtResource("8_7lnsy"), ExtResource("9_e0v4c")])
+spawn_count = Array[int]([1, 2, 1])
 
 [sub_resource type="Resource" id="Resource_idm5f"]
 script = ExtResource("7_6bp55")
@@ -215,7 +215,7 @@ spawn_count = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_w3gke"]
 script = ExtResource("7_6bp55")
-text = "calm 30"
+text = "not calm 30"
 delay = 10.0
 duration = Vector2i(0, 30)
 enemies = Array[PackedScene]([ExtResource("6_lffo0"), ExtResource("10_implm"), ExtResource("11_odv0q"), ExtResource("12_acpdg")])
@@ -311,3 +311,4 @@ unique_name_in_owner = true
 script = ExtResource("5_jcyvr")
 progs = Array[ExtResource("7_6bp55")]([SubResource("Resource_el2bn"), SubResource("Resource_x4l0q"), SubResource("Resource_2qr3n"), SubResource("Resource_khj08"), SubResource("Resource_ug61i"), SubResource("Resource_e7dxd"), SubResource("Resource_rq51q"), SubResource("Resource_gt6jl"), SubResource("Resource_clxcw"), SubResource("Resource_qdhyy"), SubResource("Resource_trivj"), SubResource("Resource_ym8b6"), SubResource("Resource_grunl"), SubResource("Resource_ssj5b"), SubResource("Resource_x44xn"), SubResource("Resource_dnyrh"), SubResource("Resource_1pmbe"), SubResource("Resource_gnwml"), SubResource("Resource_idm5f"), SubResource("Resource_wqnfg"), SubResource("Resource_fkl4q"), SubResource("Resource_j01cb"), SubResource("Resource_w3gke")])
 total_time = 460.0
+hp_scale = 0.1

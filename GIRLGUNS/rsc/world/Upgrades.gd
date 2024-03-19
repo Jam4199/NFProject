@@ -100,14 +100,14 @@ func create_player_pool():
 		player_pool.append(new_upgrade)
 	for n in iframe_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
-		new_upgrade.ui_name = "Invulnerability Up"
-		new_upgrade.ui_description = "Increase Invulnerable Time after dashing"
+		new_upgrade.ui_name = "Star Barrier duration up"
+		new_upgrade.ui_description = "Increase invulnerability duration of star barrier"
 		new_upgrade.player_upgrade = 2
 		player_pool.append(new_upgrade)
 	for n in stamina_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
-		new_upgrade.ui_name = "Stamina Regen Up"
-		new_upgrade.ui_description = "Increase Stamina Regeneration Speed"
+		new_upgrade.ui_name = "Star Barrier Recharge Up"
+		new_upgrade.ui_description = "Increase Star Barrier Recharge Speed"
 		new_upgrade.player_upgrade = 3
 		player_pool.append(new_upgrade)
 
@@ -206,38 +206,38 @@ func create_selections() -> Array[Upgrade]:
 			new_upgrade.type = Upgrade.upgrade_type.EQUIP
 			match new_upgrade.blessing:
 				Upgrade.bless.ASTER:
-					new_upgrade.ui_name = "Aster Lights"
+					new_upgrade.ui_name = "New SpellAster Lights"
 					new_upgrade.ui_description = "Fires quick bursts of starlight"
 				Upgrade.bless.LYRIS:
-					new_upgrade.ui_name = "Lyris' Wrath"
+					new_upgrade.ui_name = "New Spell: Lyris' Magicannon"
 					new_upgrade.ui_description = "A powerful burst of pure magic"
 				Upgrade.bless.OPHELIA:
-					new_upgrade.ui_name = "Ophelia's Wave"
+					new_upgrade.ui_name = "New Spell: Ophelia's Waves"
 					new_upgrade.ui_description = "Calls upon powerful wave that pushes enemies away"
 				Upgrade.bless.RUBY:
-					new_upgrade.ui_name = "Ruby Flames"
+					new_upgrade.ui_name = "New Spell: Ruby's Seeker Flames"
 					new_upgrade.ui_description = "Summons fireballs that chases enemies"
 				Upgrade.bless.VIOLA:
-					new_upgrade.ui_name = "Viola's Icicle"
+					new_upgrade.ui_name = "New Spell: Viola's Icishards"
 					new_upgrade.ui_description = "Shoots fast icicles that pierces through enemies"
 		else:
 			new_upgrade.type = Upgrade.upgrade_type.BLESS
 			match new_upgrade.blessing:
 				Upgrade.bless.ASTER:
-					new_upgrade.ui_name = "Aster's Blessing"
-					new_upgrade.ui_description = "A blessing of Swiftness"
+					new_upgrade.ui_name = "Special Upgrade: Aster's Blessing"
+					new_upgrade.ui_description = "Infuses your spells with the power of endless stars, increasing spell count and recharge"
 				Upgrade.bless.LYRIS:
-					new_upgrade.ui_name = "Lyris' Blessing"
-					new_upgrade.ui_description = "A blessing of Might"
+					new_upgrade.ui_name = "Special Upgrade: Lyris' Blessing"
+					new_upgrade.ui_description = "Infuses your spells with the power overwhelming might, greatly increasing damage"
 				Upgrade.bless.OPHELIA:
-					new_upgrade.ui_name = "Ophelia's Blessing"
-					new_upgrade.ui_description = "A blessing of Force"
+					new_upgrade.ui_name = "Special Upgrade: Ophelia's Blessing"
+					new_upgrade.ui_description = "Infuses your spells with the power of raging tides, increasing damage and knockback"
 				Upgrade.bless.RUBY:
-					new_upgrade.ui_name = "Ruby's Blessing"
-					new_upgrade.ui_description = "A blessing of Devestation"
+					new_upgrade.ui_name = "Special Upgrade: Ruby's Blessing"
+					new_upgrade.ui_description = "Infuses your spells with the power of a wildfire, increasing damage,spell count and spread"
 				Upgrade.bless.VIOLA:
-					new_upgrade.ui_name = "Ophelia's Blessing"
-					new_upgrade.ui_description = "A blessing of Sharpness"
+					new_upgrade.ui_name = "Special Upgrade: Viola's Blessing"
+					new_upgrade.ui_description = "Infuses your spells with power of sharp blades, increasing their pierce,speed and damage"
 		if new_upgrade != null:
 			upgrade_selection[0] = new_upgrade
 	
@@ -303,7 +303,7 @@ func player_upgrade(new_upgrade : Upgrade):
 		Upgrade.player_stats.SPEED:
 			Globals.player.speed += 40
 		Upgrade.player_stats.IFRAME:
-			Globals.player.dash_invul += 0.1
+			Globals.player.dash_invul += 0.15
 		Upgrade.player_stats.STAMINA:
 			Globals.player.dash_charge_multiplier += 0.2
 	player_pool.erase(new_upgrade)

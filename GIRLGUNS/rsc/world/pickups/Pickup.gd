@@ -3,6 +3,7 @@ class_name Pickup
 
 @export_enum("Heal","Exp","Energy") var type : int = 0
 @export var value : float
+@export var idle_attract : bool = true
 @export var attract_accel : float = 800
 @export var pick_effect : PackedScene
 
@@ -17,12 +18,12 @@ func _physics_process(delta):
 	
 	if attracted:
 		current_speed += attract_accel * delta
-	else:
+	elif idle_attract:
 		current_speed += attract_accel * delta  * 0.4
-		
 	
-	var velocity : Vector2 = Vector2.from_angle(global_position.angle_to_point(Globals.player.global_position)) * current_speed * delta
-	global_position += velocity
+	if attracted or idle_attract:
+		var velocity : Vector2 = Vector2.from_angle(global_position.angle_to_point(Globals.player.global_position)) * current_speed * delta
+		global_position += velocity
 	
 	return
 

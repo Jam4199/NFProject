@@ -61,6 +61,7 @@ shape = SubResource("CircleShape2D_l0apy")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 scale = Vector2(0.05, 0.05)
+amount = 3
 texture = ExtResource("2_iwi08")
 spread = 180.0
 gravity = Vector2(0, 0)

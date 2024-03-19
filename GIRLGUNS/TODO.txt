@@ -66,14 +66,14 @@ choices:
 
 POSTRELEASE
 GAME OVER SCREEN(made)
-	kill counter
-	death sequence
+	kill counter (its there but not shown)
+	death sequence done
 UI 
 	TIME to min/sec(done)
-	spell icons
+	spell icons later
 WORLD
-	ENEMYHITBOX and PICKUP change collision
-	BACKGROUND change to something easier to see where am i on the map
+	ENEMYHITBOX and PICKUP change collision (when needed)
+	BACKGROUND change to something easier to see where am i on the map (kinda)
 ENEMY
 	AAAAAAAAAAAAAAAAAAAA
 	shooter
@@ -81,11 +81,12 @@ ENEMY
 		too fast
 		too many shots
 EFFECTS
-	GET HIT
-	STAR BARRIER
-	DEATH
+	GET HIT later
+	STAR BARRIER done
+	DEATH done
 
-
+SOUND AND MUSIC
+	SOMEDAY
 
 
 

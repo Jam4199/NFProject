@@ -13,10 +13,11 @@ func add_bullet(new_bullet : Bullet):
 		return
 	world.add_bullet(new_bullet)
 
-func add_effect(new_effect : Node2D,front : bool = true):
+func add_effect(new_effect : Node2D,front : bool = true) -> Effect:
 	if world == null:
-		return
+		return null
 	world.add_effect(new_effect , front)
+	return new_effect
 
 func add_enemy(new_enemy : Enemy):
 	if world == null:
@@ -31,8 +32,8 @@ func add_enemy_bullet(new_bullet : EnemyBullet):
 	world.add_enemy_bullet(new_bullet)
 
 func player_death():
-	world.pause()
 	await get_tree().create_timer(2).timeout
+	world.call_deferred("pause")
 	gameover.visible = true
 
 func return2title():

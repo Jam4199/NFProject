@@ -363,6 +363,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_bupg7")
@@ -376,11 +380,32 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = 181.0
+offset_right = -94.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("8_ffsge")
 
+[node name="Return" type="Button" parent="GameOver/Panel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return"
+
 [node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -396,22 +421,6 @@ text = "[center]The fight is far from over[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
-
-[node name="Return" type="Button" parent="GameOver"]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 42.0
-offset_right = 100.0
-offset_bottom = 142.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Return"
 
 [node name="Time" type="Panel" parent="."]
 layout_mode = 1

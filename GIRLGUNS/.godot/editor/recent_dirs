@@ -1,3 +1,6 @@
+res://rsc/player
+res://rsc/player/weapons
+res://rsc/UI
 D:/GitHub/GD2/asterexe
 D:/GitHub/GD2/Asterhtml
 D:/GitHub/GD2/Projects/GIRLGUNS/AsterFolder
@@ -7,18 +10,13 @@ res://rsc
 res://rsc/enemy/Enemies/Shooter
 res://rsc/enemy/Enemies/Crusher
 res://rsc/enemy/Enemies/Chaser
-res://rsc/UI
 res://rsc/enemy/Enemies/Destroyer
 res://rsc/enemy
 res://rsc/TEST/C
 res://rsc/shaders
 D:/GitHub/GD2/Projects/GIRLGUNS
 res://rsc/TEST/B
-res://rsc/player
 res://rsc/world
 D:/GitHub/GD2/Projects/GIRLGUNS/rsc/TEST/B
 D:/GitHub/GD2/Projects/GIRLGUNS/rsc/TEST/A
 res://rsc/TEST/A
-res://rsc/player/weapons/Aster
-res://rsc/player/weapons
-res://rsc/autoloads

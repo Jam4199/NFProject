@@ -1,7 +1,7 @@
 extends Control
 class_name GameOver
 
-@onready var retry_button = get_node("Return")
+@onready var retry_button = get_node("Panel/Return")
 
 
 func _ready() -> void:

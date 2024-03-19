@@ -8,7 +8,7 @@ class_name RunProgression
 @export var heal_drop_rate : float = 0.5 # /100
 @export_group("scaling")
 @export var scale_delay : float = 10
-@export var hp_scale : float = 0.1
+@export var hp_scale : float = 0.05
 @export var speed_scale : float = 0.1
 
 func set_prog(new_prog):
@@ -99,6 +99,7 @@ func prog_end(force : bool = false):
 	current_round += 1
 	if not force and progs.size() <= current_round:
 		current_round = progs.size() - 1
+		scale_active = true
 	next_spawn = next_prog + progs[current_round].delay
 	next_prog += convert_to_raw(progs[current_round].duration)
 	print(progs[current_round].text)

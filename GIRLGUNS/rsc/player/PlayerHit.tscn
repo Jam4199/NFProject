@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://xwbbkd4gt6i0"]
+
+[ext_resource type="PackedScene" uid="uid://bepoqssn7w0so" path="res://rsc/player/weapons/Effect.tscn" id="1_8pdum"]
+
+[sub_resource type="Gradient" id="Gradient_3ychx"]
+offsets = PackedFloat32Array(0, 0.466165, 0.654135, 0.766917, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0.768627, 0.768627, 0.768627, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bj4vt"]
+gradient = SubResource("Gradient_3ychx")
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ijvj5"]
+offsets = PackedFloat32Array(0, 0.624114, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="PlayerHit" instance=ExtResource("1_8pdum")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="1"]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_bj4vt")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 180.0
+color_ramp = SubResource("Gradient_ijvj5")

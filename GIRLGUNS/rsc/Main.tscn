@@ -1,12 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://boanex4ohgerd"]
+[gd_scene load_steps=18 format=3 uid="uid://boanex4ohgerd"]
 
 [ext_resource type="Script" path="res://rsc/Main.gd" id="1_flmsl"]
 [ext_resource type="Script" path="res://rsc/Records.gd" id="2_ro86v"]
 [ext_resource type="Texture2D" uid="uid://bim6aciemoa54" path="res://assets/otherthings/bg16.png" id="3_fmp5i"]
+[ext_resource type="Texture2D" uid="uid://cv4m8p04qt1ja" path="res://assets/otherthings/Green_Nebula_06-1024x1024.png" id="3_ttpp8"]
 [ext_resource type="PackedScene" uid="uid://b4als206inycd" path="res://rsc/UI/UI.tscn" id="3_ve3c2"]
 [ext_resource type="Script" path="res://rsc/TitleScreen.gd" id="4_11v2j"]
 [ext_resource type="Texture2D" uid="uid://musubu0qj086" path="res://assets/otherthings/bg260.png" id="4_c44yr"]
 [ext_resource type="Script" path="res://rsc/ParallaxLayer2.gd" id="4_n8hie"]
+[ext_resource type="StyleBox" uid="uid://rhowj8fvl5dc" path="res://rsc/UI/titlepanel.tres" id="8_aybvd"]
+[ext_resource type="Texture2D" uid="uid://ddop6r2dlx4xq" path="res://assets/ui/buttons/keyboard_w.png" id="9_6gqbb"]
+[ext_resource type="Texture2D" uid="uid://bnx3dq6nr5xd3" path="res://assets/ui/buttons/keyboard_a.png" id="10_vafh4"]
+[ext_resource type="Texture2D" uid="uid://deyt2l0ndfxom" path="res://assets/ui/buttons/keyboard_s.png" id="11_bs3qg"]
+[ext_resource type="Texture2D" uid="uid://dd7pimypso3wv" path="res://assets/ui/buttons/keyboard_d.png" id="12_v6dm2"]
+[ext_resource type="Texture2D" uid="uid://ks3hpjivecdg" path="res://assets/ui/buttons/keyboard_space.png" id="13_qbq3b"]
+[ext_resource type="Texture2D" uid="uid://dlwdltst4mygl" path="res://assets/ui/buttons/mouse_left.png" id="14_7pqs1"]
+[ext_resource type="Texture2D" uid="uid://dpiko4sv3itc0" path="res://assets/ui/buttons/keyboard_q.png" id="15_w7hyi"]
+[ext_resource type="Texture2D" uid="uid://dqpx4i4bx8f57" path="res://assets/ui/buttons/keyboard_e.png" id="16_p7i5n"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_flmsl")
@@ -16,11 +26,19 @@ script = ExtResource("2_ro86v")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="BG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ttpp8")
+
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.05, 0.05)
+motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1200, 600)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+self_modulate = Color(1, 1, 1, 0.701961)
 texture_filter = 3
 texture_repeat = 2
 scale = Vector2(6, 3)
@@ -97,3 +115,236 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press to start game"
+
+[node name="Instructions" type="Control" parent="TitleScreen"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -91.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TitleScreen/Instructions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("8_aybvd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 12.0
+offset_right = 20.0
+offset_bottom = 52.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Controls[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Moveme" type="HBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_6gqbb")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_vafh4")
+
+[node name="TextureRect3" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_bs3qg")
+
+[node name="TextureRect4" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_v6dm2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme"]
+layout_mode = 2
+alignment = 1
+
+[node name="M" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer/Moveme/VBoxContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Movement[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Barr" type="HBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr/Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_qbq3b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="M" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Star Barrier[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="M2" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr/VBoxContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center] Gives a short burstof speed and potects from damage[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+
+[node name="Barr2" type="HBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr2"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr2/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr2/Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_7pqs1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="M" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr2/VBoxContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Cast Spells[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Barr3" type="HBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3"]
+custom_minimum_size = Vector2(80, 60)
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3/Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_w7hyi")
+
+[node name="TextureRect2" type="TextureRect" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3/Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("16_p7i5n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="M" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3/VBoxContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Swap between
+obtained spells[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="M3" type="RichTextLabel" parent="TitleScreen/Instructions/Panel/VBoxContainer/Barr3/VBoxContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center] Can obtain only up to 3 spells[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2

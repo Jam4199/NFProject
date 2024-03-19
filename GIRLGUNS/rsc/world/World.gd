@@ -2,6 +2,7 @@ extends Node2D
 class_name World
 
 const EXP = preload("res://rsc/world/pickups/Exp.tscn")
+const EXP5 = preload("res://rsc/world/pickups/5Exp.tscn")
 const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 
 
@@ -83,7 +84,13 @@ func spawn_player():
 func enemy_death(dead : Enemy):
 	if dead.kill_counted:
 		kill_count += 1
-	for n in dead.exp:
+	var exp5s : int = floori(float(dead.exp)/5.0)
+	var exp1s : int = dead.exp % 5
+	for n in exp5s:
+		var new_pickup : Pickup = EXP.instantiate()
+		pickup_layer.add_child(new_pickup)
+		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+	for n in exp1s:
 		var new_pickup : Pickup = EXP.instantiate()
 		pickup_layer.add_child(new_pickup)
 		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))

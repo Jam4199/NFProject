@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+const PLAYERHIT : PackedScene = preload("res://rsc/player/PlayerHit.tscn")
+
 @export var max_hp : float = 1000
 @export var speed : float = 300
 @export var dash_max : int = 3
@@ -22,7 +24,8 @@ var level_cooldown_timer = 0
 @onready var spritestuff : SpriteStuff = get_node("SpriteStuff")
 @onready var hp_line : Line2D = get_node("HPLine")
 @onready var current_hp_line : Line2D = get_node("HPLine/CurrentHPLine")
-
+@onready var anim : AnimationPlayer = get_node("AnimationPlayer")
+@onready var starbarr : Sprite2D = get_node("StarBarr")
 
 var movement_input : bool = false
 var attack_input : bool = false
@@ -41,12 +44,14 @@ var exp_requirement : float = 10
 var current_exp : float = 0
 var current_level : int = 1
 
+var dead : bool = false
 
 func _ready() -> void:
 	hitbox.connect("area_entered",Callable(self,"recieve_bullet"))
 	p_attractor.connect("area_entered",Callable(self, "pickup_attract"))
 	p_collector.connect("area_entered", Callable(self, "pickup_collect"))
 	current_hp = max_hp
+	anim.play("float")
 
 func _physics_process(delta: float) -> void:
 	
@@ -68,6 +73,12 @@ func timers(delta : float):
 	if dash_invul_timer > 0:
 		dash_invul_timer -= delta
 	
+	if dash_invul_timer > 0.2:
+		starbarr.modulate.a = 1
+	elif dash_invul_timer > 0.05:
+		starbarr.modulate.a = ((dash_invul_timer - 0.05)/0.15)
+	elif dash_invul_timer <= 0.0:
+		starbarr.modulate.a = 0
 	if dash_count < dash_max:
 		dash_cooldown_timer += delta
 		if dash_cooldown_timer >= dash_cooldown:
@@ -187,6 +198,8 @@ func update_hp_line():
 
 #taking hits
 func take_damage(damage : float):
+	var new_effect : Effect = Globals.add_effect(PLAYERHIT.instantiate())
+	new_effect.global_position = global_position
 	current_hp -= damage
 	hp_line.visible = true
 	update_hp_line()
@@ -195,6 +208,8 @@ func take_damage(damage : float):
 	return
 
 func recieve_bullet(hurtbox : HurtBox):
+	if dead:
+		return
 	if dash_invul_timer > 0:
 		print("dodged")
 		return
@@ -202,7 +217,10 @@ func recieve_bullet(hurtbox : HurtBox):
 	return
 
 func death():
-	print("dies lmao")
+	dead = true
+	movement_input = false
+	attack_input = false
+	anim.play("death")
 	Globals.player_death()
 	return
 
