@@ -31,14 +31,14 @@ func blessing(source : int):
 			return
 		Weapon.bless.OPHELIA:
 			kb_add += 200
-			spread_add_degrees += 10
+			spread_add_degrees += 5
 			damage_multiplier += 0.4
 			return
 		Weapon.bless.RUBY:
 			magazine_adds += 1
 			damage_multiplier += 0.2
 			rof_multiplier += 0.2
-			spread_add_degrees += 20
+			spread_add_degrees += 10
 			return
 		Weapon.bless.VIOLA:
 			reload_speed_multiplier += 0.4

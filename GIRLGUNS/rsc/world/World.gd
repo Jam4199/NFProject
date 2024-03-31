@@ -26,6 +26,8 @@ const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 var player_control : bool = false
 var kill_count : int = 0
 
+var pqueue : Array = []
+var max_p_per_frame : int = 10
 
 func _ready() -> void:
 	
@@ -75,6 +77,8 @@ func _physics_process(delta: float) -> void:
 	if Globals.player != null:
 		bordershow.global_position = Globals.player.global_position
 	borderline.global_position = global_position
+	if pqueue.size() > 0:
+		pqueue_create()
 	return
 
 func spawn_player():
@@ -84,21 +88,46 @@ func spawn_player():
 func enemy_death(dead : Enemy):
 	if dead.kill_counted:
 		kill_count += 1
-	var exp5s : int = floori(float(dead.exp)/5.0)
-	var exp1s : int = dead.exp % 5
-	for n in exp5s:
-		var new_pickup : Pickup = EXP.instantiate()
-		pickup_layer.add_child(new_pickup)
-		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
-	for n in exp1s:
-		var new_pickup : Pickup = EXP.instantiate()
-		pickup_layer.add_child(new_pickup)
-		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+	pqueue_add(dead.global_position,dead.exp)
 	for n in dead.heal:
 		var new_pickup : Pickup = HEAL.instantiate()
 		pickup_layer.add_child(new_pickup)
 		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+	return
 
+func pqueue_add(p_position : Vector2 , p_value : int):
+	var new_p : Array = [p_position,p_value]
+	pqueue.append(new_p)
+	return
+
+func pqueue_create():
+	var cap : int = max_p_per_frame
+	var current : int = 0
+	var exp5s : int
+	var exp1s : int
+	for p in pqueue:
+		exp5s = floori(float(p[1]) / 5.0)
+		exp1s = p[1] % 5
+		for n in exp5s:
+			var new_pickup : Pickup = EXP5.instantiate()
+			pickup_layer.add_child(new_pickup)
+			new_pickup.global_position = p[0] + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+			current += 1
+			if current >= cap:
+				new_pickup.value += ((exp5s - n - 1) * 5) + exp1s
+				break
+		if current >= cap:
+			continue
+		for n in exp1s:
+			var new_pickup : Pickup = EXP.instantiate()
+			pickup_layer.add_child(new_pickup)
+			new_pickup.global_position = p[0] + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+			current += 1
+			if current >= cap:
+				new_pickup.value += (exp1s - n - 1)
+				break
+		
+	pqueue = []
 	return
 
 func pause():

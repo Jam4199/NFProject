@@ -81,7 +81,7 @@ ENEMY
 		too fast
 		too many shots
 EFFECTS
-	GET HIT later
+	GET HIT done
 	STAR BARRIER done
 	DEATH done
 
