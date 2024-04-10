@@ -5,4 +5,4 @@ class_name CircleThing
 @export var color : Color
 
 func _draw() -> void:
-	draw_circle(global_position,radius,color)
+	draw_circle(position,radius,color)

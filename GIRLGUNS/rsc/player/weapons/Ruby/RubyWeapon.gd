@@ -34,11 +34,11 @@ func blessing(source : int):
 			reload_speed_multiplier += 0.4
 			return
 		Weapon.bless.LYRIS:
-			damage_multiplier += 0.4
+			damage_multiplier += 1
 			aoe_add += 40
 			return
 		Weapon.bless.OPHELIA:
-			damage_multiplier += 0.2
+			damage_multiplier += 0.8
 			kb_add += 30
 			spread_add_degrees += 10
 			return
@@ -46,7 +46,8 @@ func blessing(source : int):
 			return
 		Weapon.bless.VIOLA:
 			pierce_add += 1
-			reload_speed_multiplier += 0.4
+			damage_multiplier += 0.4
+			reload_speed_multiplier += 0.6
 			spread_add_degrees += -15
 			return
 	return

@@ -7,7 +7,7 @@ offsets = PackedFloat32Array(0.249012, 0.855172, 1)
 colors = PackedColorArray(0.364706, 0.709804, 0.388235, 1, 0.364706, 0.709804, 0.388235, 0.494118, 0.364706, 0.709804, 0.388235, 0)
 
 [node name="ChaserG" instance=ExtResource("1_mhdf0")]
-base_max_hp = 200.0
+base_max_hp = 500.0
 base_speed = 200.0
 exp = 2
 

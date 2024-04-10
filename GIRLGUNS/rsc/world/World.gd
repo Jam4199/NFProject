@@ -25,6 +25,7 @@ const HEAL = preload("res://rsc/world/pickups/Heal.tscn")
 
 var player_control : bool = false
 var kill_count : int = 0
+var boss_count : int = 0
 
 var pqueue : Array = []
 var max_p_per_frame : int = 10
@@ -54,6 +55,8 @@ func add_effect(new_effect : Node2D,front : bool = true):
 		return
 
 func add_enemy(new_enemy : Enemy):
+	if new_enemy.boss:
+		boss_count += 1
 	match new_enemy.world_layer:
 		0:
 			enemy_layer_large.add_child(new_enemy)
@@ -79,6 +82,8 @@ func _physics_process(delta: float) -> void:
 	borderline.global_position = global_position
 	if pqueue.size() > 0:
 		pqueue_create()
+	if Input.is_action_just_pressed("pause_game") and Globals.player.attack_input:
+		call_deferred("player_pause")
 	return
 
 func spawn_player():
@@ -86,8 +91,11 @@ func spawn_player():
 	Globals.player.global_position = player_spawn_point.global_position
 
 func enemy_death(dead : Enemy):
+	
 	if dead.kill_counted:
 		kill_count += 1
+	if dead.boss:
+		boss_count -= 1
 	pqueue_add(dead.global_position,dead.exp)
 	for n in dead.heal:
 		var new_pickup : Pickup = HEAL.instantiate()
@@ -129,6 +137,12 @@ func pqueue_create():
 		
 	pqueue = []
 	return
+
+func player_pause():
+	if process_mode == Node.PROCESS_MODE_DISABLED:
+		return
+	pause()
+	Globals.player_pause()
 
 func pause():
 	process_mode = Node.PROCESS_MODE_DISABLED

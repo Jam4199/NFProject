@@ -10,6 +10,7 @@ class_name Enemy
 @export var base_knockback_return : float = 40
 
 @export_group("Stuff")
+@export var boss : bool = false
 @export var starting_state : EnemyState
 @export_enum("Large","Mid","Small") var world_layer : int = 0
 @export_group("Drops")

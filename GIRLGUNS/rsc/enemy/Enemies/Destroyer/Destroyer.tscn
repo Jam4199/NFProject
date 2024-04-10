@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5wrh07poqui3"]
+[gd_scene load_steps=21 format=3 uid="uid://5wrh07poqui3"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_dq2o5"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Destroyer.gd" id="2_j4bl3"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/Rush.gd" id="9_tbd8a"]
 [ext_resource type="PackedScene" uid="uid://bx5f16kc7qy8w" path="res://rsc/enemy/Enemies/Destroyer/BEEM.tscn" id="10_wfbu5"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Destroyer/SpreadWep.gd" id="12_vsyto"]
+[ext_resource type="PackedScene" uid="uid://brcbd7207vxwk" path="res://rsc/enemy/Hurtbox.tscn" id="15_gdd3o"]
 
 [sub_resource type="Animation" id="Animation_qh5bv"]
 resource_name = "BEEM"
@@ -137,10 +138,15 @@ _data = {
 }
 
 [node name="Destroyer" node_paths=PackedStringArray("starting_state") instance=ExtResource("1_dq2o5")]
+collision_layer = 8
 script = ExtResource("2_j4bl3")
-base_max_hp = 100000.0
-base_speed = 200.0
-starting_state = NodePath("States/Enrage")
+base_max_hp = 30000.0
+base_speed = 210.0
+base_knockback_return = 20.0
+boss = true
+starting_state = NodePath("States/Chase")
+exp = 200
+heal = 10
 
 [node name="Chase" type="Node2D" parent="States" index="0"]
 script = ExtResource("2_qved4")
@@ -455,6 +461,13 @@ libraries = {
 autoplay = "base"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="4"]
+visible = false
+polygon = PackedVector2Array(0, -163, 103, -29, 0, 0, 103, 29, 0, 163, -122, 0)
+
+[node name="Hurtbox2" parent="." index="5" instance=ExtResource("15_gdd3o")]
+constant_hit = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Hurtbox2" index="0"]
 visible = false
 polygon = PackedVector2Array(0, -163, 103, -29, 0, 0, 103, 29, 0, 163, -122, 0)
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmhp8n1qkg3o8"]
+
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Shooter/Shootball2.gd" id="1_5qctp"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_1adkq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2abge"]
+radius = 6.0
+
+[node name="Shootball2" type="Area2D" node_paths=PackedStringArray("nodes")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_5qctp")
+base_speed = 350.0
+max_distance = 1000.0
+lifetime = 4.0
+world_layer = 2
+nodes = [NodePath("Border")]
+
+[node name="Border" type="Sprite2D" parent="."]
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("2_1adkq")
+
+[node name="Center" type="Sprite2D" parent="Border"]
+self_modulate = Color(0.972549, 0.0784314, 0.0392157, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_1adkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2abge")

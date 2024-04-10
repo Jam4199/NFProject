@@ -7,6 +7,7 @@ const WORLDSCENE : PackedScene = preload("res://rsc/world/World.tscn")
 @onready var world_canvas : CanvasLayer = get_node("World")
 @onready var ui_canvas : CanvasLayer = get_node("UI")
 @onready var title_screen : CanvasLayer = get_node("TitleScreen")
+@onready var centerifier : Camera2D = get_node("World/Centerifier")
 
 func _ready() -> void:
 	Globals.main = self
@@ -35,6 +36,7 @@ func player_to_world():
 	Globals.world.spawn_player()
 
 func new_game_start():
+	centerifier.enabled = false
 	create_new_player()
 	create_new_world(WORLDSCENE)
 	player_to_world()
@@ -49,5 +51,6 @@ func new_game_start():
 
 func game_reset():
 	Globals.world.queue_free()
+	centerifier.enabled = true
 	title_screen.visible = true
 	ui_canvas.visible = false

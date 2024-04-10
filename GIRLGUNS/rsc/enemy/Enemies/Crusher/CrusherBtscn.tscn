@@ -10,9 +10,9 @@ radius = 36.0
 height = 116.0
 
 [node name="CrusherB" instance=ExtResource("1_qxn75")]
-base_max_hp = 2000.0
-base_speed = 300.0
-exp = 20
+base_max_hp = 7000.0
+base_speed = 280.0
+exp = 42
 
 [node name="crushchase" parent="States" index="0"]
 charge_target = 480.0

@@ -1,3 +1,5 @@
+res://rsc/enemy/Enemies/Chaser
+D:/GitHub/GD2/Asterhtml3
 D:/GitHub/GD2/Asterhtml2
 res://rsc/player
 res://rsc/player/weapons
@@ -10,7 +12,6 @@ res://rsc/TEST/D
 res://rsc
 res://rsc/enemy/Enemies/Shooter
 res://rsc/enemy/Enemies/Crusher
-res://rsc/enemy/Enemies/Chaser
 res://rsc/enemy/Enemies/Destroyer
 res://rsc/enemy
 res://rsc/TEST/C
@@ -19,5 +20,3 @@ D:/GitHub/GD2/Projects/GIRLGUNS
 res://rsc/TEST/B
 res://rsc/world
 D:/GitHub/GD2/Projects/GIRLGUNS/rsc/TEST/B
-D:/GitHub/GD2/Projects/GIRLGUNS/rsc/TEST/A
-res://rsc/TEST/A

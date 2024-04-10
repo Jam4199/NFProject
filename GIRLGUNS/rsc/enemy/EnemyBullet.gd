@@ -15,6 +15,7 @@ var total_time : float = 0
 var total_distance : float = 0
 
 func _ready() -> void:
+	monitoring = false
 	speed = base_speed
 
 func _physics_process(delta: float) -> void:

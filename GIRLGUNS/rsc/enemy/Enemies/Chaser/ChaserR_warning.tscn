@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://brwt3ujj0xu8q"]
+
+[ext_resource type="PackedScene" uid="uid://bepoqssn7w0so" path="res://rsc/player/weapons/Effect.tscn" id="1_hd037"]
+[ext_resource type="PackedScene" uid="uid://bobnxq8v3xc2d" path="res://rsc/enemy/WarningCircle.tscn" id="2_cdlo6"]
+
+[node name="Effect" instance=ExtResource("1_hd037")]
+
+[node name="WarningCircle" parent="." index="0" instance=ExtResource("2_cdlo6")]
+warning_time = 1.0
+warning_radius = 40.0
+auto_start = true
+
+[node name="Timer" parent="." index="1"]
+wait_time = 2.0

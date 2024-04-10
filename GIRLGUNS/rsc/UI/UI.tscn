@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4als206inycd"]
+[gd_scene load_steps=20 format=3 uid="uid://b4als206inycd"]
 
 [ext_resource type="Script" path="res://rsc/UI/UI.gd" id="1_32ly1"]
-[ext_resource type="Script" path="res://rsc/UI/WeaponPanel.gd" id="1_m83fv"]
-[ext_resource type="PackedScene" uid="uid://cej375spoxas4" path="res://weaponpanel.tscn" id="3_dsr2q"]
+[ext_resource type="PackedScene" uid="uid://cej375spoxas4" path="res://rsc/UI/weaponpanel.tscn" id="2_w73e5"]
 [ext_resource type="StyleBox" uid="uid://dx3xi457o1lm" path="res://rsc/UI/weaponbox.tres" id="3_tmden"]
 [ext_resource type="Texture2D" uid="uid://drfvxuiayvccc" path="res://assets/ui/square_shadow.png" id="4_8suf4"]
 [ext_resource type="Script" path="res://rsc/UI/StatusBar.gd" id="4_x1hjr"]
@@ -18,6 +17,46 @@
 [ext_resource type="PackedScene" uid="uid://ivs5ra6fwtms" path="res://rsc/UI/upgrade_button.tscn" id="16_51eim"]
 [ext_resource type="Script" path="res://rsc/UI/UpgradeMenu.gd" id="16_woofw"]
 [ext_resource type="Script" path="res://rsc/UI/GameOver.gd" id="18_bupg7"]
+[ext_resource type="Script" path="res://rsc/UI/PauseMenu.gd" id="18_fkgry"]
+
+[sub_resource type="GDScript" id="GDScript_u1eh3"]
+script/source = "extends Control
+
+@onready var wep0 : WeaponPanel = get_node(\"%Weapon0\")
+@onready var wep1 : WeaponPanel = get_node(\"%Weapon1\")
+@onready var wep2 : WeaponPanel = get_node(\"%Weapon2\")
+@onready var ammo : TextureProgressBar = get_node(\"%Ammo\")
+@onready var reload : TextureProgressBar = get_node(\"%Reload\")
+
+
+var weaponpanels : Array[WeaponPanel] = [wep0,wep1,wep2]
+
+func _ready() -> void:
+	weaponpanels = [wep0,wep1,wep2]
+
+
+func update():
+	var weapons : Array[Weapon] = Globals.player.weapon_manager.weapons
+	var slot : int = Globals.player.weapon_manager.equipped_slot
+	
+	for n in range(0,weapons.size()):
+		weaponpanels[n].visible = weapons[n] != null
+		if n == slot:
+			weaponpanels[n].equip_change(true)
+		else:
+			weaponpanels[n].equip_change(false)
+		weaponpanels[n].update(weapons[n])
+	
+	ammo.max_value = weapons[slot].magazine_size
+	ammo.value = weapons[slot].ammo
+	reload.max_value = weapons[slot].reload_time
+	if ammo.value < ammo.max_value:
+		reload.value = weapons[slot].reload_time - weapons[slot].reload_timer
+	else:
+		reload.value = 0
+	
+	
+"
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -27,8 +66,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_32ly1")
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="WeaponPanel" type="Control" parent="."]
 unique_name_in_owner = true
@@ -44,7 +81,7 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-script = ExtResource("1_m83fv")
+script = SubResource("GDScript_u1eh3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WeaponPanel"]
 layout_mode = 1
@@ -62,7 +99,7 @@ alignment = 1
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
-[node name="Weapon2" parent="WeaponPanel/VBoxContainer/Control" instance=ExtResource("3_dsr2q")]
+[node name="Weapon2" parent="WeaponPanel/VBoxContainer/Control" instance=ExtResource("2_w73e5")]
 unique_name_in_owner = true
 layout_mode = 0
 
@@ -70,7 +107,7 @@ layout_mode = 0
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
-[node name="Weapon1" parent="WeaponPanel/VBoxContainer/Control2" instance=ExtResource("3_dsr2q")]
+[node name="Weapon1" parent="WeaponPanel/VBoxContainer/Control2" instance=ExtResource("2_w73e5")]
 unique_name_in_owner = true
 layout_mode = 0
 
@@ -78,7 +115,7 @@ layout_mode = 0
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
-[node name="Weapon0" parent="WeaponPanel/VBoxContainer/Control3" instance=ExtResource("3_dsr2q")]
+[node name="Weapon0" parent="WeaponPanel/VBoxContainer/Control3" instance=ExtResource("2_w73e5")]
 unique_name_in_owner = true
 layout_mode = 0
 
@@ -457,3 +494,85 @@ scroll_active = false
 layout_mode = 0
 offset_right = 84.0
 offset_bottom = 40.0
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_fkgry")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.403922)
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("8_ffsge")
+
+[node name="Return" type="Button" parent="PauseMenu/Panel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -62.0
+offset_right = 100.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to Title Screen"
+
+[node name="Unpause" type="Button" parent="PauseMenu/Panel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 47.0
+offset_right = 100.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unpause"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -211.5
+offset_right = 211.5
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]Game Paused[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

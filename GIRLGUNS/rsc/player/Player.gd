@@ -113,8 +113,6 @@ func movement():
 		velocity *= dash_speed_mult
 	
 	move_and_slide()
-	if not dashing:
-		velocity = Vector2(0,0)
 	return
 
 
@@ -194,7 +192,7 @@ func level_up():
 func update_hp_line():
 	current_hp_line.default_color = hp_gradient.gradient.sample(1.0 - (current_hp)/(max_hp))
 	if current_hp > 0:
-		current_hp_line.points[1].x = (current_hp/max_hp) * 20
+		current_hp_line.points[1].x = (current_hp/max_hp) * 40
 
 #taking hits
 func take_damage(damage : float):

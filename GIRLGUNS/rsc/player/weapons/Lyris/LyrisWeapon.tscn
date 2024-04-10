@@ -61,13 +61,13 @@ _data = {
 [node name="LyrisWeapon" type="Node2D"]
 modulate = Color(1, 1, 0, 1)
 script = ExtResource("1_8kmax")
-ui_name = "Lyris' Wrath"
+ui_name = "Lyris' Magicannon"
 base_magazine_size = 1
 base_rof = 1.0
 base_reload_time = 4.0
 base_spread = 0.0
-upgrade_damage = 8
-upgrade_reload = 4
+upgrade_damage = 6
+upgrade_reload = 3
 upgrade_rof = 0
 
 [node name="Spawn" type="Marker2D" parent="."]

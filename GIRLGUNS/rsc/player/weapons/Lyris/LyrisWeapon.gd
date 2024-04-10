@@ -32,16 +32,16 @@ func blessing(source : int):
 		Weapon.bless.OPHELIA:
 			kb_add += 200
 			spread_add_degrees += 5
-			damage_multiplier += 0.4
+			damage_multiplier += 1
 			return
 		Weapon.bless.RUBY:
 			magazine_adds += 1
-			damage_multiplier += 0.2
+			damage_multiplier += 0.8
 			rof_multiplier += 0.2
 			spread_add_degrees += 10
 			return
 		Weapon.bless.VIOLA:
-			reload_speed_multiplier += 0.4
-			damage_multiplier += 0.2
+			reload_speed_multiplier += 0.6
+			damage_multiplier += 0.6
 			return
 	return

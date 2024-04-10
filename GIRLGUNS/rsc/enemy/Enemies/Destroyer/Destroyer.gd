@@ -14,13 +14,17 @@ func take_damage(damage : float):
 		enrage()
 	if current_hp <= 0:
 		death()
+	print(str(current_hp))
 	return
 
 func enrage():
+	print("ENRAGE START")
 	enraged = true
 	for state in states:
-		if state.has_method("enrage"):
-			state.enrage()
+		if states[state].has_method("enrage"):
+			states[state].enrage()
+	var eye : Node2D = get_node("Flash/Color/Sprite/MainWep/Pupil2/MainEye")
+	eye.self_modulate = Color(0.97,0.07,0.03,1.00)
 	change_state("Enrage")
 	return
 

@@ -23,3 +23,5 @@ func camera_follow(delta : float):
 	global_position = follow_point.global_position
 	
 	return
+
+

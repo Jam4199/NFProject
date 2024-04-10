@@ -78,8 +78,9 @@ height = 88.0
 
 [node name="Crusher" instance=ExtResource("1_jsxyx")]
 collision_layer = 8
-base_speed = 250.0
-exp = 12
+base_max_hp = 3000.0
+base_speed = 240.0
+exp = 16
 metadata/_edit_vertical_guides_ = [-374.0]
 
 [node name="crushchase" type="Node2D" parent="States" index="0"]

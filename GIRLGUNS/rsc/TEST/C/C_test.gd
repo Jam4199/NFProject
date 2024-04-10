@@ -9,6 +9,6 @@ func _ready() -> void:
 	weapon.update_stats()
 	Globals.player.movement_input = true
 	Globals.player.attack_input = true
-	Globals.world.world_camera.follow_point = Globals.player
+	#Globals.world.world_camera.follow_point = Globals.player
 	return
 

@@ -12,10 +12,10 @@ base_magazine_size = 8
 base_rof = 4.0
 base_reload_time = 2.0
 base_spread = 90.0
-upgrade_damage = 4
-upgrade_reload = 4
+upgrade_damage = 3
+upgrade_reload = 1
 upgrade_rof = 2
-upgrade_magazine = 4
+upgrade_magazine = 2
 upgrade_pierce = 1
 
 [node name="Center" type="Marker2D" parent="."]

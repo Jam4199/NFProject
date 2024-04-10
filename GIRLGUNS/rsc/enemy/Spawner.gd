@@ -37,6 +37,7 @@ func spawn_enemy():
 		return
 	var new_enemy : Enemy = spawn_scene.instantiate()
 	Globals.add_enemy(new_enemy)
+	Globals.world.runprogress.modify_enemy(new_enemy)
 	new_enemy.global_position = global_position
 	match spawn_rotation:
 		0:

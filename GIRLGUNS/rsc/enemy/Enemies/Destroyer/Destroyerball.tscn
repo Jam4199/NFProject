@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_hnve1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2abge"]
-radius = 8.0
+radius = 6.0
 
 [node name="Destroyerball" type="Area2D" node_paths=PackedStringArray("nodes")]
+scale = Vector2(0.6, 0.6)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_cwdot")
@@ -15,9 +16,10 @@ max_distance = 3000.0
 lifetime = 100.0
 world_layer = 2
 nodes = [NodePath("Border")]
+damage = 50.0
 
 [node name="Border" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.246875, 0.246875)
 texture = ExtResource("2_hnve1")
 
 [node name="Center" type="Sprite2D" parent="Border"]

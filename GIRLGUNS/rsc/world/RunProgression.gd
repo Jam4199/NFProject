@@ -5,11 +5,15 @@ class_name RunProgression
 @export var progs : Array[Progression] = [] : set = set_prog
 @export var total_time : float = 0
 @export var distance_from_player : float = 2000
-@export var heal_drop_rate : float = 0.5 # /100
+@export var heal_drop_rate : float = 1 # /100
+@export var heal_pity_threshold : float = 0.3
 @export_group("scaling")
 @export var scale_delay : float = 10
-@export var hp_scale : float = 0.05
-@export var speed_scale : float = 0.1
+@export var hp_scale : float = 0.040
+@export var speed_scale : float = 0.005
+
+var heal_pity : float = 0
+var heal_pity_increase : float = 0.5
 
 func set_prog(new_prog):
 	progs = new_prog
@@ -65,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		print(str(next_prog))
 		print("delay to " +  str(next_spawn))
 	
-	if raw_time > next_scale:
+	if raw_time > next_scale and scale_active:
 		scale_up()
 
 func convert_to_raw(vec : Vector2i) -> float:
@@ -93,31 +97,41 @@ func progress_spawn(prog : Progression):
 			new_enemy.look_at(Globals.player.global_position)
 			modify_enemy(new_enemy)
 			new_enemy.spawn()
-			print("spawned smth")
 	
 func prog_end(force : bool = false):
 	current_round += 1
 	if not force and progs.size() <= current_round:
 		current_round = progs.size() - 1
 		scale_active = true
+		print("end now")
 	next_spawn = next_prog + progs[current_round].delay
 	next_prog += convert_to_raw(progs[current_round].duration)
 	print(progs[current_round].text)
 
 func modify_enemy(enemy : Enemy):
 	enemy.base_max_hp *= hp_mult
-	enemy.base_speed *= speed_mult
-	if Globals.rng.randi_range(0,100) == 1:
+	enemy.speed *= speed_mult
+	if Globals.rng.randf_range(0,100) <= heal_drop_rate + heal_pity:
 		enemy.heal += 1
+		heal_pity = 0
+	else:
+		heal_pity += heal_pity_increase
+		if Globals.player.current_hp / Globals.player.max_hp <= heal_pity_threshold:
+			heal_pity += (4 * heal_pity_increase)
 	return
 
 func scale_start():
 	scale_active = true
 	next_scale = raw_time + scale_delay
+	hp_scale = 0.1
+	speed_scale = 0.3
+	heal_pity_threshold = 0.0
+	heal_pity_increase = 0
 
 func scale_up():
 	hp_mult *= (1 + hp_scale)
-	speed_scale *= (1 + speed_scale)
+	speed_mult *= (1 + speed_scale)
 	next_scale += scale_delay
+	print("scale_up,time = " + str(raw_time)+ ", hp = " + str(hp_mult) + ", speed = " + str(speed_mult))
 	
 

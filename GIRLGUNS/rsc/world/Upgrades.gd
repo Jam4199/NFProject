@@ -13,7 +13,7 @@ var bless_offered : int = 0
 enum bless{ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
 
 @export_group("Player_Pool")
-@export var level_per_bless : Array[int] = [3,8,15,25,40]
+@export var level_per_bless : Array[int] = [3,8,23,30,40]
 @export var health_upgrades : int = 5
 @export var speed_upgrades : int = 3
 @export var iframe_upgrades : int = 2
@@ -38,7 +38,7 @@ func create_weapon_pool(new_weapon,slot):
 	for n in new_weapon.upgrade_damage:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name = new_weapon.ui_name + " Attack"
-		new_upgrade.ui_description = "Increase damage by 20%"
+		new_upgrade.ui_description = "Increase damage by 40%"
 		new_upgrade.weapon_slot = slot
 		new_upgrade.type = Upgrade.upgrade_type.WEAPON
 		new_upgrade.weapon_upgrade = Upgrade.weapon_stats.DAMAGE
@@ -252,7 +252,7 @@ func create_selections() -> Array[Upgrade]:
 	filler_pool.append(new_upgrade)
 	new_upgrade = Upgrade.new()
 	new_upgrade.ui_name = "All Spells Damage"
-	new_upgrade.ui_description = "Increase damage by 10%"
+	new_upgrade.ui_description = "Increase damage by 30%"
 	new_upgrade.type = Upgrade.upgrade_type.FILLER
 	new_upgrade.filler_upgrade = new_upgrade.fillers.DAMAGE
 	filler_pool.append(new_upgrade)
@@ -311,7 +311,7 @@ func player_upgrade(new_upgrade : Upgrade):
 func weapon_upgrade(new_upgrade : Upgrade):
 	match new_upgrade.weapon_upgrade:
 		Upgrade.weapon_stats.DAMAGE:
-			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].damage_multiplier += 0.2
+			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].damage_multiplier += 0.4
 		Upgrade.weapon_stats.RELOAD:
 			Globals.player.weapon_manager.weapons[new_upgrade.weapon_slot].reload_speed_multiplier += 0.2
 		Upgrade.weapon_stats.ROF:
@@ -362,7 +362,7 @@ func filler_upgrade(new_upgrade : Upgrade):
 			for weapon in Globals.player.weapon_manager.weapons:
 				if weapon == null:
 					continue
-				weapon.damage_multiplier += 0.1
+				weapon.damage_multiplier += 0.3
 				weapon.update_stats()
 		Upgrade.fillers.RECHARGE:
 			for weapon in Globals.player.weapon_manager.weapons:

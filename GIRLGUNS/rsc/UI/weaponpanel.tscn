@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cej375spoxas4"]
 
 [ext_resource type="StyleBox" uid="uid://dx3xi457o1lm" path="res://rsc/UI/weaponbox.tres" id="1_2bg62"]
-[ext_resource type="Script" path="res://rsc/UI/weaponpanels.gd" id="2_bm6uu"]
+[ext_resource type="Script" path="res://rsc/UI/weaponpanel.gd" id="2_335o2"]
 [ext_resource type="StyleBox" uid="uid://bgkdjgyff20e1" path="res://rsc/UI/smth.tres" id="3_ot2lu"]
 [ext_resource type="Texture2D" uid="uid://dgaqjhve3tfmp" path="res://assets/basic_shapes/Srar.png" id="4_veqoq"]
 
@@ -10,7 +10,7 @@ custom_minimum_size = Vector2(150, 50)
 offset_right = 150.0
 offset_bottom = 50.0
 theme_override_styles/panel = ExtResource("1_2bg62")
-script = ExtResource("2_bm6uu")
+script = ExtResource("2_335o2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -34,7 +34,7 @@ texture = ExtResource("4_veqoq")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 
 [node name="WeaponName" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
@@ -44,6 +44,7 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[center]Weapon[/center]"
+scroll_active = false
 
 [node name="Ammo" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

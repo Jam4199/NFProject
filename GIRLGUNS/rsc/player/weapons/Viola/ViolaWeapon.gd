@@ -29,18 +29,18 @@ func blessing(source : int):
 			reload_speed_multiplier += 0.2
 			return
 		Weapon.bless.LYRIS:
-			damage_multiplier += 0.6
+			damage_multiplier += 1.2
 
 			return
 		Weapon.bless.OPHELIA:
-			damage_multiplier += 0.2
+			damage_multiplier += 1
 			kb_add += 30
 			spread_add_degrees += 10
 			return
 		Weapon.bless.RUBY:
 			aoe_override += 1
 			aoe_add += 40
-			damage_multiplier += 0.2
+			damage_multiplier += 1
 			return
 		Weapon.bless.VIOLA:
 

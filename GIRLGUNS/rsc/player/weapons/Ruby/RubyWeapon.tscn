@@ -12,7 +12,8 @@ base_rof = 4.0
 base_reload_time = 2.0
 base_spread = 40.0
 upgrade_damage = 3
-upgrade_reload = 6
+upgrade_reload = 4
+upgrade_rof = 2
 upgrade_magazine = 2
 upgrade_aoe = 1
 

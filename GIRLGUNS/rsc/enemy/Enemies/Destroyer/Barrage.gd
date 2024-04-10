@@ -66,10 +66,10 @@ func barrage():
 			subwep.global_rotation_degrees += Globals.rng.randf_range(-spread_degrees,spread_degrees)
 			var new_bullet = subwep.shoot()
 			new_bullet.speed -= barrage_bullet_slowdown
-			subwep.cooldown_timer = Globals.rng.randf_range(0,cooldown_mod_rng)
+			subwep.cooldown_timer = Globals.rng.randf_range(cooldown_mod_rng,spreadwep.cooldown_time)
 	if spreadwep.cooldown_timer <= 0 and enraged:
 		spreadwep.shoot()
-		spreadwep.cooldown_timer = Globals.rng.randf_range(0,cooldown_mod_rng)
+		spreadwep.cooldown_timer = Globals.rng.randf_range(cooldown_mod_rng,spreadwep.cooldown_time)
 
 func enrage():
 	enraged = true

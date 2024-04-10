@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c68r2fe1r4px7" path="res://rsc/enemy/Enemies/Crusher/Crusher.tscn" id="1_gnsof"]
 
 [node name="CrusherG" instance=ExtResource("1_gnsof")]
-base_max_hp = 600.0
+base_max_hp = 2000.0
 base_speed = 150.0
 exp = 6
 

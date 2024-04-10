@@ -40,6 +40,9 @@ signal bullet_hit(hit_count : int)
 var hit_count : int = 0
 var pierced : Array = []
 
+var hit_effect_cd : float = 0.1
+var hit_effect_timer : float = 0
+
 func _ready() -> void:
 	monitoring = false
 	damage = base_damage
@@ -51,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		return
 	call_deferred("move", delta)
 	total_time += delta
+	hit_effect_timer -= delta
 	if total_time > lifetime:
 		bullet_end()
 	return
@@ -87,8 +91,9 @@ func hit(object : Node2D):
 	
 	if pierce <= 0:
 		bullet_end()
-	if hit_effect != null:
+	if hit_effect != null and hit_effect_timer <= 0:
 		create_effect(hit_effect)
+		hit_effect_timer = hit_effect_cd
 	pierced.append(object)
 	return
 

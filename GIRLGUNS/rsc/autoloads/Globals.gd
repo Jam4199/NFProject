@@ -6,6 +6,7 @@ var world : World
 var player : Player
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var upgrademenu : Control
+var pausemenu : Control
 var gameover : GameOver
 
 func add_bullet(new_bullet : Bullet):
@@ -40,3 +41,6 @@ func return2title():
 	main.game_reset()
 	gameover.visible = false
 	return
+
+func player_pause():
+	pausemenu.visible = true
