@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl07tsmyjf5iv"]
+[gd_scene load_steps=4 format=3 uid="uid://bl07tsmyjf5iv"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Ruby/RubyWeapon.gd" id="1_0km2m"]
+[ext_resource type="Texture2D" uid="uid://e3ng4km4hb3l" path="res://assets/spel/blaze.png" id="2_2g7og"]
 [ext_resource type="Texture2D" uid="uid://dfydri6tp67su" path="res://assets/basic_shapes/dingbats-448.png" id="2_ucmhv"]
 
 [node name="RubyWeapon" type="Node2D"]
 modulate = Color(1, 0.00392157, 0.00392157, 1)
 script = ExtResource("1_0km2m")
 ui_name = "Ruby Flames"
+icon = ExtResource("2_2g7og")
 base_magazine_size = 8
 base_rof = 4.0
 base_reload_time = 2.0

@@ -17,7 +17,7 @@ base_max_hp = 1500.0
 base_speed = 300.0
 base_knockback_return = 80.0
 starting_state = NodePath("States/nothingpersonal")
-exp = 35
+exp = 80
 
 [node name="nothingpersonal" type="Node2D" parent="States" index="0"]
 script = ExtResource("2_e1x7d")

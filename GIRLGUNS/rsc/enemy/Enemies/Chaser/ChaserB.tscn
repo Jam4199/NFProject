@@ -10,7 +10,7 @@ colors = PackedColorArray(0.00392157, 0.00392157, 0.00392157, 1, 0.00392157, 0.0
 base_max_hp = 1500.0
 base_speed = 300.0
 base_knockback_return = 20.0
-exp = 18
+exp = 40
 
 [node name="Head" parent="Flash/Color/Sprite" index="0"]
 color = Color(0.00392157, 0.00392157, 0.00392157, 1)

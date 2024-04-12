@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ivs5ra6fwtms"]
+[gd_scene load_steps=8 format=3 uid="uid://ivs5ra6fwtms"]
 
 [ext_resource type="Script" path="res://rsc/UI/UpgradeButton.gd" id="1_by02p"]
+[ext_resource type="StyleBox" uid="uid://bgkdjgyff20e1" path="res://rsc/UI/smth.tres" id="2_p4o63"]
+[ext_resource type="Texture2D" uid="uid://23ef8ealxu0i" path="res://assets/spel/star.png" id="3_f41bu"]
+[ext_resource type="Texture2D" uid="uid://dgaqjhve3tfmp" path="res://assets/basic_shapes/Srar.png" id="3_r17oh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp5uv"]
 bg_color = Color(0.392157, 0.627451, 0.972549, 1)
@@ -46,16 +49,72 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ssws0")
 action_mode = 0
 script = ExtResource("1_by02p")
 
-[node name="UpgradeName" type="RichTextLabel" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -115.0
-offset_top = 3.0
-offset_right = 115.0
-offset_bottom = 37.0
+offset_left = -272.0
+offset_right = 272.0
+offset_bottom = 78.0
 grow_horizontal = 2
+
+[node name="Icon" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+
+[node name="Portrait" type="Panel" parent="HBoxContainer/Icon"]
+custom_minimum_size = Vector2(40, 40)
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 43.0
+offset_bottom = 65.0
+theme_override_styles/panel = ExtResource("2_p4o63")
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Icon/Portrait"]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_f41bu")
+expand_mode = 1
+
+[node name="SubIcon" type="TextureRect" parent="HBoxContainer/Icon"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 28.0
+offset_top = 43.0
+offset_right = 58.0
+offset_bottom = 73.0
+texture = ExtResource("3_r17oh")
+expand_mode = 1
+
+[node name="Recommended" type="RichTextLabel" parent="HBoxContainer/Icon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.5
+offset_right = 72.5
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[center][b]RECOMMENDED[/b][/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+
+[node name="UpgradeName" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
@@ -64,18 +123,9 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="UpgradeDescription" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -40.0
-offset_right = 250.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="UpgradeDescription" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true

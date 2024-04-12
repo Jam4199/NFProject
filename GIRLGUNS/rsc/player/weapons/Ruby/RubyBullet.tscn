@@ -11,15 +11,15 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_k3of8"]
 offsets = PackedFloat32Array(0, 0.684946, 0.975135)
-colors = PackedColorArray(1, 0.00392157, 0.00392157, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 0.00392157, 0.00392157, 0.627451, 0, 0, 0, 0.627451, 0, 0, 0, 0)
 
 [sub_resource type="Curve" id="Curve_imbih"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_jmvb0"]
-offsets = PackedFloat32Array(0, 0.739583, 1)
-colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 1, 0.00392157, 0.00392157, 0)
+offsets = PackedFloat32Array(0, 0.918033, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 0.627451, 1, 0.00392157, 0.00392157, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kv5jq"]
 
@@ -54,11 +54,11 @@ angle_max = 380.0
 scale_amount_min = 0.1
 scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_63vgr")
-color = Color(1, 0.00392157, 0.00392157, 1)
+color = Color(1, 0.00392157, 0.00392157, 0.627451)
 color_ramp = SubResource("Gradient_k3of8")
 
 [node name="Circle" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.00392157, 0.00392157, 1)
+self_modulate = Color(1, 0.00392157, 0.00392157, 0.313726)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_6ijhc")
 

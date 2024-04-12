@@ -11,7 +11,8 @@ func equip_change(setting : bool):
 func update(weapon : Weapon):
 	if weapon == null:
 		return
-	#icon.texture = weapon.icon
+	if weapon.icon != null:
+		icon.texture = weapon.icon
 	weapon_name.text = "[center]" + weapon.ui_name + "[/center]"
 	if weapon.ammo > 0:
 		ammo.text = "[center]" + str(weapon.ammo) + " / " + str(weapon.magazine_size) + "[/center]"

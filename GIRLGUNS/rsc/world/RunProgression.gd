@@ -120,6 +120,7 @@ func modify_enemy(enemy : Enemy):
 			heal_pity += (4 * heal_pity_increase)
 	return
 
+
 func scale_start():
 	scale_active = true
 	next_scale = raw_time + scale_delay

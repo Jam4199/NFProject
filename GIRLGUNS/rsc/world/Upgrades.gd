@@ -10,6 +10,9 @@ var weapon_count : int = 0
 var bless_pool : Array[int] = [0,1,2,3,4]
 var bless_offered : int = 0
 
+var levels_per_speed : int = 10
+var total_speed_ups : int = 0
+
 enum bless{ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
 
 @export_group("Player_Pool")
@@ -89,13 +92,13 @@ func create_player_pool():
 	for n in health_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name = "Max Health Up"
-		new_upgrade.ui_description = "Increase Max Health by 20% of base amount"
+		new_upgrade.ui_description = "Increase Max Health by 40% of base amount(heal for the same amount)"
 		new_upgrade.player_upgrade = Upgrade.player_stats.HEALTH
 		player_pool.append(new_upgrade)
 	for n in speed_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name = "Speed Up"
-		new_upgrade.ui_description = "Increase Speed by 20% of base amount"
+		new_upgrade.ui_description = "Increase Speed by 30% of base amount"
 		new_upgrade.player_upgrade = 1
 		player_pool.append(new_upgrade)
 	for n in iframe_upgrades:
@@ -204,6 +207,7 @@ func create_selections() -> Array[Upgrade]:
 				aaaaaa += 1
 		if aaaaaa < 3:
 			new_upgrade.type = Upgrade.upgrade_type.EQUIP
+			new_upgrade.recommended = true
 			match new_upgrade.blessing:
 				Upgrade.bless.ASTER:
 					new_upgrade.ui_name = "New SpellAster Lights"
@@ -273,8 +277,23 @@ func create_selections() -> Array[Upgrade]:
 		if upgrade_selection[n] == null and filler_pool.size() > 0:
 			upgrade_selection[n] = filler_pool.pick_random()
 			filler_pool.erase(upgrade_selection[n])
-	
-
+	if floori(float(Globals.player.current_level) / levels_per_speed) > speed_upgrades:
+		if upgrade_selection[0].type == Upgrade.upgrade_type.PLAYER and upgrade_selection[0].player_upgrade == Upgrade.player_stats.SPEED:
+			upgrade_selection[0].recommended = true
+		elif upgrade_selection[1].type == Upgrade.upgrade_type.PLAYER and upgrade_selection[1].player_upgrade == Upgrade.player_stats.SPEED:
+			upgrade_selection[1].recommended = true
+		else:
+			new_upgrade = Upgrade.new()
+			new_upgrade.ui_name = "Speed Up"
+			new_upgrade.ui_description = "Increase Speed by 30% of base amount"
+			new_upgrade.player_upgrade = Upgrade.player_stats.SPEED
+			new_upgrade.recommended = true
+			upgrade_selection[1] = new_upgrade
+	else:
+		for n in range(0,4):
+			if upgrade_selection[n].type == Upgrade.upgrade_type.PLAYER and upgrade_selection[n].player_upgrade == Upgrade.player_stats.SPEED:
+				upgrade_selection[n].recommended = false
+				break
 	return upgrade_selection
 
 
@@ -297,11 +316,12 @@ func player_upgrade(new_upgrade : Upgrade):
 	print(str(new_upgrade.player_upgrade))
 	match new_upgrade.player_upgrade:
 		Upgrade.player_stats.HEALTH:
-			Globals.player.max_hp += 200
-			Globals.player.current_hp += 200
+			Globals.player.max_hp += 400
+			Globals.player.current_hp += 400
 			Globals.player.heal(10)
 		Upgrade.player_stats.SPEED:
-			Globals.player.speed += 40
+			Globals.player.speed += 60
+			speed_upgrades += 1
 		Upgrade.player_stats.IFRAME:
 			Globals.player.dash_invul += 0.15
 		Upgrade.player_stats.STAMINA:

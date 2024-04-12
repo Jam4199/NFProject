@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://deud6bnvr4ic5"]
+[gd_scene load_steps=13 format=3 uid="uid://deud6bnvr4ic5"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Lyris/LyrisWeapon.gd" id="1_8kmax"]
 [ext_resource type="Texture2D" uid="uid://cjj2o728231x6" path="res://assets/basic_shapes/dingbats-465.png" id="2_84ebo"]
+[ext_resource type="Texture2D" uid="uid://cw4s7pbvo8j3u" path="res://assets/spel/Beam.png" id="2_hqc0u"]
 [ext_resource type="Texture2D" uid="uid://dpv0t5mfk6par" path="res://assets/basic_shapes/target_6.png" id="2_vkrpe"]
 [ext_resource type="Texture2D" uid="uid://dblqvql6m2gj3" path="res://assets/basic_shapes/target_19.png" id="3_qlmsg"]
 
@@ -62,6 +63,7 @@ _data = {
 modulate = Color(1, 1, 0, 1)
 script = ExtResource("1_8kmax")
 ui_name = "Lyris' Magicannon"
+icon = ExtResource("2_hqc0u")
 base_magazine_size = 1
 base_rof = 1.0
 base_reload_time = 4.0

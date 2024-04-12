@@ -1,3 +1,8 @@
+RichTextLabel
+Control
+Panel
+HBoxContainer
+VBoxContainer
 AudioStreamPlayer
 Node
 Sprite2D
@@ -5,10 +10,5 @@ CPUParticles2D
 WarningCircle
 EnemyState
 ColorRect
-RichTextLabel
-Panel
-Control
 Camera2D
 ParallaxLayer
-HBoxContainer
-BoxContainer

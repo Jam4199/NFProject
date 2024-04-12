@@ -10,7 +10,7 @@ class_name Upgrade
 @export var blessing : bless
 
 var weapon_slot : int = 0
-
+var recommended : bool = false
 
 enum upgrade_type{PLAYER,WEAPON,EQUIP,BLESS,FILLER}
 enum player_stats{HEALTH,SPEED,IFRAME,STAMINA}

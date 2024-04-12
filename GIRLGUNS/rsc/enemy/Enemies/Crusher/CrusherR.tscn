@@ -6,12 +6,13 @@
 [node name="CrusherR" instance=ExtResource("1_kefn6")]
 base_max_hp = 10000.0
 base_knockback_return = 0.0
-exp = 80
+exp = 140
 
 [node name="crushchase" parent="States" index="0"]
 charge_target = 700.0
 
 [node name="crushcharge" parent="States" index="1"]
+unique_name_in_owner = true
 charge_time = 0.8
 
 [node name="AttackWarning" parent="States/crushcharge" index="0"]

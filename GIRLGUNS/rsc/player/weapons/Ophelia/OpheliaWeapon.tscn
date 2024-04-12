@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckmu4we1kxexc"]
+[gd_scene load_steps=5 format=3 uid="uid://ckmu4we1kxexc"]
 
 [ext_resource type="Script" path="res://rsc/player/weapons/Ophelia/OpheliaWeapon.gd" id="1_e7qgi"]
+[ext_resource type="Texture2D" uid="uid://0hiv015uwxhw" path="res://assets/spel/Wave.png" id="2_7crpw"]
 [ext_resource type="Texture2D" uid="uid://c4jy41ka4dbe6" path="res://assets/basic_shapes/dingbats-26.png" id="2_j273y"]
 [ext_resource type="Texture2D" uid="uid://dbbly8l8o4llw" path="res://assets/basic_shapes/dingbats-8.png" id="3_ocbgj"]
 
@@ -8,6 +9,7 @@
 modulate = Color(0.0784314, 0.482353, 1, 1)
 script = ExtResource("1_e7qgi")
 ui_name = "Ophelia's Wave"
+icon = ExtResource("2_7crpw")
 base_magazine_size = 4
 base_rof = 0.8
 base_reload_time = 2.0

@@ -56,6 +56,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	timers(delta)
+	if dead:
+		return
 	movement()
 	weapon_change()
 	aim()
@@ -91,6 +93,9 @@ func timers(delta : float):
 
 #movement and attacking
 func movement():
+	if dead:
+		velocity = Vector2(0,0)
+		return
 	
 	var direction : Vector2 = Vector2(0,0)
 	if movement_input:
@@ -219,6 +224,7 @@ func death():
 	movement_input = false
 	attack_input = false
 	anim.play("death")
+	velocity = Vector2(0,0)
 	Globals.player_death()
 	return
 

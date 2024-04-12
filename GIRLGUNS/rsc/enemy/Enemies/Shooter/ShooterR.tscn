@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cmhp8n1qkg3o8" path="res://rsc/enemy/Enemies/Shooter/Shootball2.tscn" id="2_8ul6k"]
 
 [node name="ShooterR" instance=ExtResource("1_8a2st")]
-exp = 40
+exp = 60
 
 [node name="ShooterWep" parent="." index="0"]
 bullet_scene = ExtResource("2_8ul6k")
