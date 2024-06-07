@@ -25,6 +25,14 @@ func _physics_process(delta):
 		var velocity : Vector2 = Vector2.from_angle(global_position.angle_to_point(Globals.player.global_position)) * current_speed * delta
 		global_position += velocity
 	
+	if global_position.y < -600:
+		global_position.y += current_speed * delta
+	if global_position.y > 600:
+		global_position.y -= current_speed * delta
+	if global_position.x < -1200:
+		global_position.x += current_speed * delta
+	if global_position.x > 1200:
+		global_position.x -= current_speed * delta
 	return
 
 func picked_up(body:Node2D):

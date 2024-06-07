@@ -27,6 +27,9 @@ var level_cooldown_timer = 0
 @onready var anim : AnimationPlayer = get_node("AnimationPlayer")
 @onready var starbarr : Sprite2D = get_node("StarBarr")
 
+var player_damage : float = 0
+var player_reload : float = 0
+
 var movement_input : bool = false
 var attack_input : bool = false
 var attack_command : bool = false

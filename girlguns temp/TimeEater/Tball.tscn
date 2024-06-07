@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://3486kimojjgd"]
+
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/Tball.gd" id="1_5ra3h"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_prmeq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2abge"]
+radius = 6.0
+
+[node name="Tball" type="Area2D" node_paths=PackedStringArray("nodes")]
+scale = Vector2(0.6, 0.6)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_5ra3h")
+base_speed = 200.0
+lifetime = 10.0
+nodes = [NodePath("Border")]
+
+[node name="Border" type="Sprite2D" parent="."]
+scale = Vector2(0.246875, 0.246875)
+texture = ExtResource("2_prmeq")
+
+[node name="Center" type="Sprite2D" parent="Border"]
+self_modulate = Color(0.686275, 0, 0.701961, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_prmeq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2abge")

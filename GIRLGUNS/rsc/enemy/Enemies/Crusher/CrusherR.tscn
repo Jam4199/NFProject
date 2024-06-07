@@ -5,6 +5,8 @@
 
 [node name="CrusherR" instance=ExtResource("1_kefn6")]
 base_max_hp = 10000.0
+base_speed = 400.0
+base_attack = 150.0
 base_knockback_return = 0.0
 exp = 140
 
@@ -14,6 +16,7 @@ charge_target = 700.0
 [node name="crushcharge" parent="States" index="1"]
 unique_name_in_owner = true
 charge_time = 0.8
+cooldown = 1.0
 
 [node name="AttackWarning" parent="States/crushcharge" index="0"]
 visible = true
@@ -38,5 +41,8 @@ color = Color(0.972549, 0.0784314, 0.0392157, 1)
 
 [node name="tail" parent="Flash/Color/Sprite" index="3"]
 color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="Hurtbox2" parent="." index="5"]
+damage = 300.0
 
 [editable path="States/crushcharge/AttackWarning"]

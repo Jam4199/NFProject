@@ -96,15 +96,16 @@ func enemy_death(dead : Enemy):
 		kill_count += 1
 	if dead.boss:
 		boss_count -= 1
-	pqueue_add(dead.global_position,dead.exp)
+	pqueue_add(dead.global_position,dead.exp,dead.world_layer)
+	var drop_distance : float = (dead.world_layer + 1) * 15
 	for n in dead.heal:
 		var new_pickup : Pickup = HEAL.instantiate()
 		pickup_layer.add_child(new_pickup)
-		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+		new_pickup.global_position = dead.global_position + ((Vector2.from_angle(Globals.rng.randf_range(0,2 * PI)) * Globals.rng.randf_range(0,drop_distance)))
 	return
 
-func pqueue_add(p_position : Vector2 , p_value : int):
-	var new_p : Array = [p_position,p_value]
+func pqueue_add(p_position : Vector2 , p_value : int, size : int):
+	var new_p : Array = [p_position,p_value, size]
 	pqueue.append(new_p)
 	return
 
@@ -118,8 +119,9 @@ func pqueue_create():
 		exp1s = p[1] % 5
 		for n in exp5s:
 			var new_pickup : Pickup = EXP5.instantiate()
+			var drop_distance : float = (p[2] + 1) * 15
 			pickup_layer.add_child(new_pickup)
-			new_pickup.global_position = p[0] + ((Vector2.from_angle(Globals.rng.randf_range(0,PI)) * Globals.rng.randf_range(-20,20)))
+			new_pickup.global_position = p[0] + ((Vector2.from_angle(Globals.rng.randf_range(0,2 * PI)) * Globals.rng.randf_range(0,drop_distance)))
 			current += 1
 			if current >= cap:
 				new_pickup.value += ((exp5s - n - 1) * 5) + exp1s

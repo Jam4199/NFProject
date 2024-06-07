@@ -106,6 +106,10 @@ func is_shooting()->bool:
 
 
 func _physics_process(delta : float):
+	var player_reload : float = 0
+	if Globals.player != null:
+		player_reload = Globals.player.player_reload
+	
 	if burst_shot:
 		if burst_timer > 0:
 			burst_timer -= 0
@@ -127,7 +131,7 @@ func _physics_process(delta : float):
 			if shot_counter > 1:
 				shot_counter = 1
 		if ammo < magazine_size:
-			reload_timer -= delta * reload_speed_multiplier
+			reload_timer -= delta * (reload_speed_multiplier + player_reload)
 			if reload_timer <= 0:
 				reload_complete()
 	
@@ -190,7 +194,10 @@ func create_bullet(bullet_scene : PackedScene, new_position : Vector2, new_rotat
 	return new_bullet
 
 func modify_bullet(bullet : Bullet):
-	bullet.damage = bullet.base_damage * damage_multiplier
+	var player_damage_boost : float = 0
+	if Globals.player != null:
+		player_damage_boost = Globals.player.player_damage
+	bullet.damage = bullet.base_damage * (damage_multiplier + player_damage_boost)
 	bullet.damage += damage_add
 	bullet.speed = bullet.base_speed + speed_multiplier
 	bullet.pierce = bullet.base_pierce + pierce_add

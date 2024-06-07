@@ -121,6 +121,7 @@ func modify_enemy(enemy : Enemy):
 	return
 
 
+
 func scale_start():
 	scale_active = true
 	next_scale = raw_time + scale_delay

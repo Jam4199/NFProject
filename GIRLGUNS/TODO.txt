@@ -88,5 +88,18 @@ EFFECTS
 SOUND AND MUSIC
 	SOMEDAY
 
-
-
+BOSS ATTACKS:
+	SPREAD LASER:
+		fires in a fan toward the player
+	layer circle:
+		double layered diamond 4eye in 45degrees shooting circle
+		?layers alternate fire
+	focused trilaser:
+		sends eyes toward the player to shoot them
+	beam + barrage:
+		targeted projectiles + flanking beams
+		circle shots every gap
+	screencorner barrage
+		eyes at every corner of the screen firing spreads toward player
+	lock and fat beam:
+		round shots that slices areas of the fight then fires a stacked beam

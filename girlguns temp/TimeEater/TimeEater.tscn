@@ -1,0 +1,247 @@
+[gd_scene load_steps=24 format=3 uid="uid://bjfu803i5qj1e"]
+
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_r517c"]
+[ext_resource type="PackedScene" uid="uid://dlojjl8ok8j2g" path="res://rsc/enemy/Enemies/TimeEater/Subwep.tscn" id="2_o8w1x"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/TimeEater.gd" id="2_qeyob"]
+[ext_resource type="Texture2D" uid="uid://b4di1ailccl1p" path="res://assets/basic_shapes/circle_05.png" id="3_7ybfw"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/Entrance.gd" id="3_rq6yj"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/light_shower.gd" id="4_7budq"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/forward_beem.gd" id="4_vepyx"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="4_ysu1e"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/concentrated_fire.gd" id="6_i7sd7"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/launch_and_call.gd" id="7_ctmf6"]
+[ext_resource type="PackedScene" uid="uid://b7ylfabu3ikhb" path="res://rsc/enemy/Enemies/Shooter/Shooter.tscn" id="8_hrlij"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/round_sweep.gd" id="8_lowdd"]
+[ext_resource type="Script" path="res://rsc/world/progressions/Progression.gd" id="8_nocqs"]
+[ext_resource type="PackedScene" uid="uid://dw8go5eo0d7wv" path="res://rsc/enemy/Enemies/Chaser/ChaserG.tscn" id="9_r387k"]
+[ext_resource type="PackedScene" uid="uid://btbb61bumnwdg" path="res://rsc/enemy/Enemies/TimeEater/Mouths.tscn" id="10_bix0o"]
+[ext_resource type="PackedScene" uid="uid://ckubdbn3s5s57" path="res://rsc/enemy/Enemies/Crusher/CrusherBtscn.tscn" id="10_te6cd"]
+[ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="12_ehqik"]
+[ext_resource type="PackedScene" uid="uid://d3f3jtnpf0sw6" path="res://rsc/enemy/Enemies/Chaser/ChaserB.tscn" id="13_h3iq7"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/return_and_beem.gd" id="15_c35xo"]
+
+[sub_resource type="Resource" id="Resource_sulp6"]
+script = ExtResource("8_nocqs")
+text = ""
+delay = 5.0
+duration = Vector2i(0, 30)
+enemies = Array[PackedScene]([ExtResource("8_hrlij"), ExtResource("9_r387k"), ExtResource("10_te6cd")])
+spawn_count = Array[int]([4, 5, 1])
+
+[sub_resource type="Resource" id="Resource_e8wng"]
+script = ExtResource("8_nocqs")
+text = ""
+delay = 5.0
+duration = Vector2i(0, 30)
+enemies = Array[PackedScene]([ExtResource("12_ehqik"), ExtResource("8_hrlij")])
+spawn_count = Array[int]([8, 4])
+
+[sub_resource type="Resource" id="Resource_t6md7"]
+script = ExtResource("8_nocqs")
+text = ""
+delay = 5.0
+duration = Vector2i(0, 30)
+enemies = Array[PackedScene]([ExtResource("13_h3iq7"), ExtResource("8_hrlij")])
+spawn_count = Array[int]([3, 7])
+
+[sub_resource type="Gradient" id="Gradient_bdvdv"]
+offsets = PackedFloat32Array(0, 0.355556, 1)
+colors = PackedColorArray(0.686275, 0, 0.701961, 1, 0.686275, 0, 0.701961, 0.916667, 0.686275, 0, 0.701961, 0)
+
+[node name="TimeEater" node_paths=PackedStringArray("starting_state") instance=ExtResource("1_r517c")]
+script = ExtResource("2_qeyob")
+base_max_hp = 10000.0
+base_speed = 200.0
+boss = true
+starting_state = NodePath("States/Entrance")
+
+[node name="Entrance" type="Node2D" parent="States" index="0"]
+script = ExtResource("3_rq6yj")
+
+[node name="light_shower" type="Node2D" parent="States" index="1"]
+script = ExtResource("4_7budq")
+
+[node name="forward_beem" type="Node2D" parent="States" index="2"]
+script = ExtResource("4_vepyx")
+
+[node name="concentrated_fire" type="Node2D" parent="States" index="3"]
+script = ExtResource("6_i7sd7")
+
+[node name="launch_and_call" type="Node2D" parent="States" index="4"]
+script = ExtResource("7_ctmf6")
+summons = Array[ExtResource("8_nocqs")]([SubResource("Resource_sulp6"), SubResource("Resource_e8wng"), SubResource("Resource_t6md7")])
+
+[node name="round_sweep" type="Node2D" parent="States" index="5"]
+script = ExtResource("8_lowdd")
+
+[node name="return_and_beem" type="Node2D" parent="States" index="6"]
+script = ExtResource("15_c35xo")
+
+[node name="Glowies" type="CPUParticles2D" parent="." index="1"]
+amount = 16
+lifetime = 1.5
+explosiveness = 0.2
+texture = ExtResource("3_7ybfw")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+scale_amount_min = 0.6
+color = Color(0.686275, 0, 0.701961, 1)
+color_ramp = SubResource("Gradient_bdvdv")
+
+[node name="Glow" type="Sprite2D" parent="." index="2"]
+self_modulate = Color(0.686275, 0, 0.701961, 1)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_7ybfw")
+
+[node name="Round" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, -200, 100, -173, 173, -100, 200, 0, 173, 100, 100, 173, 0, 200, -100, 173, -173, 100, -200, 0, -173, -100, -100, -173)
+
+[node name="Line2D" type="Line2D" parent="Flash/Color/Sprite/Round" index="0"]
+points = PackedVector2Array(0, -200, 100, -173, 173, -100, 200, 0, 173, 100, 100, 173, 0, 200, -100, 173, -173, 100, -200, 0, -173, -100, -100, -173)
+closed = true
+width = 5.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="eyes" type="Node2D" parent="Flash/Color/Sprite/Round" index="1"]
+
+[node name="eyecenter" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="0"]
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter" index="0"]
+
+[node name="Subwep0" parent="Flash/Color/Sprite/Round/eyes/eyecenter/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter2" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="1"]
+rotation = 0.523599
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter2" index="0"]
+
+[node name="Subwep1" parent="Flash/Color/Sprite/Round/eyes/eyecenter2/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter3" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="2"]
+rotation = 1.0472
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter3" index="0"]
+
+[node name="Subwep2" parent="Flash/Color/Sprite/Round/eyes/eyecenter3/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter4" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="3"]
+rotation = 1.5708
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter4" index="0"]
+
+[node name="Subwep3" parent="Flash/Color/Sprite/Round/eyes/eyecenter4/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter5" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="4"]
+rotation = 2.0944
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter5" index="0"]
+
+[node name="Subwep4" parent="Flash/Color/Sprite/Round/eyes/eyecenter5/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter6" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="5"]
+rotation = 2.61799
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter6" index="0"]
+
+[node name="Subwep5" parent="Flash/Color/Sprite/Round/eyes/eyecenter6/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter7" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="6"]
+rotation = -3.14159
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter7" index="0"]
+
+[node name="Subwep6" parent="Flash/Color/Sprite/Round/eyes/eyecenter7/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter8" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="7"]
+rotation = -2.61799
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter8" index="0"]
+
+[node name="Subwep7" parent="Flash/Color/Sprite/Round/eyes/eyecenter8/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter9" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="8"]
+rotation = -2.09439
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter9" index="0"]
+
+[node name="Subwep8" parent="Flash/Color/Sprite/Round/eyes/eyecenter9/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter10" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="9"]
+rotation = -1.5708
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter10" index="0"]
+
+[node name="Subwep9" parent="Flash/Color/Sprite/Round/eyes/eyecenter10/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter11" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="10"]
+rotation = -1.0472
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter11" index="0"]
+
+[node name="Subwep10" parent="Flash/Color/Sprite/Round/eyes/eyecenter11/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="eyecenter12" type="Node2D" parent="Flash/Color/Sprite/Round/eyes" index="11"]
+rotation = -0.523599
+
+[node name="axis" type="Node2D" parent="Flash/Color/Sprite/Round/eyes/eyecenter12" index="0"]
+
+[node name="Subwep11" parent="Flash/Color/Sprite/Round/eyes/eyecenter12/axis" index="0" instance=ExtResource("2_o8w1x")]
+unique_name_in_owner = true
+position = Vector2(150, 0)
+
+[node name="Eye" type="Sprite2D" parent="Flash/Color/Sprite/Round" index="2"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ysu1e")
+
+[node name="MainEye" type="Sprite2D" parent="Flash/Color/Sprite/Round/Eye" index="0"]
+position = Vector2(-3.46791e-06, 0)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("4_ysu1e")
+
+[node name="Pupil" type="Sprite2D" parent="Flash/Color/Sprite/Round/Eye/MainEye" index="0"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+position = Vector2(20, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_ysu1e")
+
+[node name="LPoint" type="Marker2D" parent="." index="5"]
+unique_name_in_owner = true
+position = Vector2(0, -300)
+
+[node name="LMouths" parent="LPoint" index="0" instance=ExtResource("10_bix0o")]
+unique_name_in_owner = true
+
+[node name="RPoint" type="Marker2D" parent="." index="6"]
+unique_name_in_owner = true
+position = Vector2(0, 300)
+
+[node name="RMouths" parent="RPoint" index="0" instance=ExtResource("10_bix0o")]
+unique_name_in_owner = true

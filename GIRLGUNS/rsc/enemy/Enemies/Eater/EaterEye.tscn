@@ -1,0 +1,203 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7vo8e74bai75"]
+
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/EaterEye.gd" id="1_hnvby"]
+[ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="2_f2f1y"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_mq240"]
+[ext_resource type="Texture2D" uid="uid://b4di1ailccl1p" path="res://assets/basic_shapes/circle_05.png" id="3_r1npn"]
+[ext_resource type="Texture2D" uid="uid://dtb330q2bdgyl" path="res://assets/basic_shapes/circle_outline_eighth_64.png" id="5_cx2p6"]
+
+[sub_resource type="Curve" id="Curve_cpgi8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dcdap"]
+offsets = PackedFloat32Array(0, 0.205128, 1)
+colors = PackedColorArray(0.686275, 0, 0.701961, 1, 0.686275, 0, 0.701961, 0.91453, 0.686275, 0, 0.701961, 0)
+
+[sub_resource type="Animation" id="Animation_6dcn6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wcupy"]
+resource_name = "default"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3umd2"]
+resource_name = "despawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_01s2a"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jdc7l"]
+_data = {
+"RESET": SubResource("Animation_6dcn6"),
+"default": SubResource("Animation_wcupy"),
+"despawn": SubResource("Animation_3umd2"),
+"spawn": SubResource("Animation_01s2a")
+}
+
+[node name="EaterEye" type="Node2D"]
+script = ExtResource("1_hnvby")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+texture = ExtResource("2_mq240")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_mq240")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite/Sprite2D2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(15, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mq240")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite"]
+show_behind_parent = true
+lifetime = 0.5
+draw_order = 1
+texture = ExtResource("3_r1npn")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_cpgi8")
+color = Color(0.686275, 0, 0.701961, 1)
+color_ramp = SubResource("Gradient_dcdap")
+
+[node name="AttackWarning" parent="." instance=ExtResource("2_f2f1y")]
+warning_length = 3000.0
+warning_width = 60.0
+
+[node name="Wide" parent="AttackWarning" index="0"]
+width = 10.0
+
+[node name="Narrow" parent="AttackWarning" index="1"]
+width = 40.0
+
+[node name="Wave" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+draw_order = 1
+texture = ExtResource("5_cx2p6")
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 1.5
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_cpgi8")
+color = Color(0.686275, 0, 0.701961, 1)
+color_ramp = SubResource("Gradient_dcdap")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jdc7l")
+}
+autoplay = "default"
+
+[editable path="AttackWarning"]

@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://btbb61bumnwdg"]
+
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_aytf1"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/Mouths.gd" id="2_b8yo5"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/mouth_idle.gd" id="3_611lt"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/mouth_launch.gd" id="4_rjw3y"]
+[ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="5_x2366"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/mouth_chase.gd" id="6_qhf0e"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/mouth_beam.gd" id="7_d6g6j"]
+[ext_resource type="PackedScene" uid="uid://dlojjl8ok8j2g" path="res://rsc/enemy/Enemies/TimeEater/Subwep.tscn" id="7_id1a3"]
+
+[sub_resource type="Animation" id="Animation_womoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/Left:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash/Color/Sprite/Right:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p1c8s"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash/Color/Sprite/Left:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash/Color/Sprite/Right:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4lpip"]
+_data = {
+"RESET": SubResource("Animation_womoe"),
+"idle": SubResource("Animation_p1c8s")
+}
+
+[node name="Mouths" instance=ExtResource("1_aytf1")]
+script = ExtResource("2_b8yo5")
+base_speed = 300.0
+
+[node name="mouth_idle" type="Node2D" parent="States" index="0"]
+script = ExtResource("3_611lt")
+
+[node name="mouth_launch" type="Node2D" parent="States" index="1"]
+script = ExtResource("4_rjw3y")
+
+[node name="AttackWarning" parent="States/mouth_launch" index="0" instance=ExtResource("5_x2366")]
+warning_time = 2.0
+warning_length = 2000.0
+warning_width = 140.0
+
+[node name="Wide" parent="States/mouth_launch/AttackWarning" index="0"]
+width = 140.0
+
+[node name="mouth_chase" type="Node2D" parent="States" index="2"]
+script = ExtResource("6_qhf0e")
+
+[node name="mouth_beem" type="Node2D" parent="States" index="3"]
+script = ExtResource("7_d6g6j")
+
+[node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+visible = false
+polygon = PackedVector2Array(0, 0, 72, -32, 40, -53, 0, -58, -123, 0)
+
+[node name="Body" type="Polygon2D" parent="Flash/Color/Sprite" index="1"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, -55, 0, 55, -50, 30, -80, 0, -50, -30)
+
+[node name="Left" type="Polygon2D" parent="Flash/Color/Sprite" index="2"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, 0, 72, -32, 40, -53, 0, -59, -46, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite/Left" index="0"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, 0, 16, -7, 20, 0, 24, -11, 30, -2, 36, -16, 42, -4, 48, -21, 54, -6, 60, -26, 66, -9, 72, -32, 65, -35)
+
+[node name="Line2D" type="Line2D" parent="Flash/Color/Sprite/Left/Polygon2D" index="0"]
+points = PackedVector2Array(0, 0, 16, -7, 20, 0, 24, -11, 30, -2, 36, -16, 42, -4, 48, -21, 54, -6, 60, -26, 66, -9, 72, -32)
+width = 1.0
+joint_mode = 2
+
+[node name="Line2D" type="Line2D" parent="Flash/Color/Sprite/Left" index="1"]
+points = PackedVector2Array(0, 0, 72, -32, 40, -53, 0, -59)
+width = 2.0
+
+[node name="Right" type="Polygon2D" parent="Flash/Color/Sprite" index="3"]
+scale = Vector2(1, -1)
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, 0, 72, -32, 40, -53, 0, -59, -46, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite/Right" index="0"]
+color = Color(0.686275, 0, 0.701961, 1)
+polygon = PackedVector2Array(0, 0, 16, -7, 20, 0, 24, -11, 30, -2, 36, -16, 42, -4, 48, -21, 54, -6, 60, -26, 66, -9, 72, -32, 65, -35)
+
+[node name="Line2D" type="Line2D" parent="Flash/Color/Sprite/Right/Polygon2D" index="0"]
+points = PackedVector2Array(0, 0, 16, -7, 20, 0, 24, -11, 30, -2, 36, -16, 42, -4, 48, -21, 54, -6, 60, -26, 66, -9, 72, -32)
+width = 1.0
+joint_mode = 2
+
+[node name="Line2D" type="Line2D" parent="Flash/Color/Sprite/Right" index="1"]
+points = PackedVector2Array(0, 0, 72, -32, 40, -53, 0, -59)
+width = 2.0
+
+[node name="Subwep" parent="Flash/Color/Sprite" index="4" instance=ExtResource("7_id1a3")]
+unique_name_in_owner = true
+
+[node name="Eye" parent="Flash/Color/Sprite/Subwep" index="0"]
+visible = false
+
+[node name="sprite_anim" type="AnimationPlayer" parent="." index="3"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_4lpip")
+}
+autoplay = "idle"
+
+[editable path="States/mouth_launch/AttackWarning"]
+[editable path="Flash/Color/Sprite/Subwep"]
+[editable path="Flash/Color/Sprite/Subwep/Beemwa"]

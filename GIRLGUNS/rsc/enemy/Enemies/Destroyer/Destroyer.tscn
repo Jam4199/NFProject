@@ -145,7 +145,7 @@ base_speed = 210.0
 base_knockback_return = 20.0
 boss = true
 starting_state = NodePath("States/Chase")
-exp = 500
+exp = 1000
 heal = 10
 
 [node name="Chase" type="Node2D" parent="States" index="0"]

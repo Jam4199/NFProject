@@ -5,6 +5,7 @@ enum {MOVING,WARPING}
 const WARNING = preload("res://rsc/enemy/Enemies/Chaser/ChaserR_warning.tscn")
 
 @onready var charging : CPUParticles2D = get_node("charging")
+@onready var pulse : CPUParticles2D = get_node("pulse")
 
 var state : int = 0
 
@@ -16,7 +17,7 @@ var move_timer : float = 0
 
 var warp_time : float = 1
 var warp_timer : float = 0
-var warp_max_radius : float = 20
+var warp_max_radius : float = 40
 
 var warp_location := Vector2(0,0)
 
@@ -67,8 +68,8 @@ func warp_start():
 	warp_timer = 0
 	state = WARPING
 	warp_location = Globals.player.global_position
-	warp_location += (Globals.player.velocity)
-	warp_location += Vector2.from_angle(Globals.rng.randf_range(0,2 * PI)) * Globals.rng.randf_range(0,Globals.rng.randf_range(0,warp_max_radius))
+	warp_location += (Globals.player.velocity * 0.7)
+	warp_location += Vector2.from_angle(Globals.rng.randf_range(0,2 * PI)) * Globals.rng.randf_range(0,Globals.player.velocity.length() * 0.3)
 
 	var new_warning = Globals.add_effect(WARNING.instantiate())
 	new_warning.global_position = warp_location
@@ -84,6 +85,7 @@ func warp_finish():
 	unit.global_position = warp_location
 	unit.look_at(Globals.player.global_position)
 	charging.emitting = false
+	pulse.emitting = true
 	
 	var distancing : float = unit.global_position.distance_to(Globals.player.global_position)
 	if distancing >= unit.speed:

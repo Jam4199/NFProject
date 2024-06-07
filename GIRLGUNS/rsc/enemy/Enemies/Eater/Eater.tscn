@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://660dr2owp1tf"]
+
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_s7yh1"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/entrance.gd" id="2_i6dbv"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/Eater.gd" id="2_my7it"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/spread_beam.gd" id="4_vohmt"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/focused_tri_laser.gd" id="5_kfw5p"]
+[ext_resource type="PackedScene" uid="uid://qejyu3lvy1ig" path="res://rsc/enemy/Enemies/Eater/InnerEye.tscn" id="5_l4ayp"]
+
+[node name="Eater" instance=ExtResource("1_s7yh1")]
+script = ExtResource("2_my7it")
+base_max_hp = 1e+07
+base_speed = 400.0
+
+[node name="entrance" type="Node2D" parent="States" index="0"]
+script = ExtResource("2_i6dbv")
+
+[node name="spread_beam" type="Node2D" parent="States" index="1"]
+visible = false
+script = ExtResource("4_vohmt")
+
+[node name="0" type="Marker2D" parent="States/spread_beam" index="0"]
+position = Vector2(180, 45)
+rotation = 0.0349066
+
+[node name="1" type="Marker2D" parent="States/spread_beam" index="1"]
+position = Vector2(115, 121)
+rotation = 0.122173
+
+[node name="2" type="Marker2D" parent="States/spread_beam" index="2"]
+position = Vector2(45, 176)
+rotation = 0.244346
+
+[node name="3" type="Marker2D" parent="States/spread_beam" index="3"]
+position = Vector2(-11, 225)
+rotation = 0.349066
+
+[node name="4" type="Marker2D" parent="States/spread_beam" index="4"]
+position = Vector2(180, -45)
+rotation = -0.0349066
+
+[node name="5" type="Marker2D" parent="States/spread_beam" index="5"]
+position = Vector2(115, -121)
+rotation = -0.122173
+
+[node name="6" type="Marker2D" parent="States/spread_beam" index="6"]
+position = Vector2(45, -176)
+rotation = -0.244346
+
+[node name="7" type="Marker2D" parent="States/spread_beam" index="7"]
+position = Vector2(-11, -226)
+rotation = -0.349066
+
+[node name="focused_tri_laser" type="Node2D" parent="States" index="2"]
+visible = false
+script = ExtResource("5_kfw5p")
+
+[node name="a" type="Node2D" parent="States/focused_tri_laser" index="0"]
+
+[node name="0" type="Marker2D" parent="States/focused_tri_laser/a" index="0"]
+position = Vector2(250, 0)
+rotation = 3.14159
+
+[node name="E8" parent="States/focused_tri_laser/a/0" index="0" instance=ExtResource("5_l4ayp")]
+
+[node name="1" type="Marker2D" parent="States/focused_tri_laser/a" index="1"]
+position = Vector2(-200, -200)
+rotation = 0.785398
+
+[node name="E9" parent="States/focused_tri_laser/a/1" index="0" instance=ExtResource("5_l4ayp")]
+
+[node name="2" type="Marker2D" parent="States/focused_tri_laser/a" index="2"]
+position = Vector2(-200, 200)
+rotation = -0.785398
+
+[node name="E10" parent="States/focused_tri_laser/a/2" index="0" instance=ExtResource("5_l4ayp")]
+
+[node name="b" type="Node2D" parent="States/focused_tri_laser" index="1"]
+rotation = 3.14159
+
+[node name="0" type="Marker2D" parent="States/focused_tri_laser/b" index="0"]
+position = Vector2(250, 0)
+rotation = 3.14159
+
+[node name="E8" parent="States/focused_tri_laser/b/0" index="0" instance=ExtResource("5_l4ayp")]
+
+[node name="1" type="Marker2D" parent="States/focused_tri_laser/b" index="1"]
+position = Vector2(-200, -200)
+rotation = 0.785398
+
+[node name="E9" parent="States/focused_tri_laser/b/1" index="0" instance=ExtResource("5_l4ayp")]
+
+[node name="2" type="Marker2D" parent="States/focused_tri_laser/b" index="2"]
+position = Vector2(-200, 200)
+rotation = -0.785398
+
+[node name="E10" parent="States/focused_tri_laser/b/2" index="0" instance=ExtResource("5_l4ayp")]
+
+[node name="Polygon2D" type="Polygon2D" parent="Flash/Color/Sprite" index="0"]
+visible = false
+polygon = PackedVector2Array(-56, -54, -67, 51, 63, 96, 45, -81)
+
+[node name="Eyes" type="Node2D" parent="." index="3"]
+
+[node name="E0" parent="Eyes" index="0" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E1" parent="Eyes" index="1" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E2" parent="Eyes" index="2" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E3" parent="Eyes" index="3" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E4" parent="Eyes" index="4" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E5" parent="Eyes" index="5" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E6" parent="Eyes" index="6" instance=ExtResource("5_l4ayp")]
+visible = true
+
+[node name="E7" parent="Eyes" index="7" instance=ExtResource("5_l4ayp")]
+visible = true

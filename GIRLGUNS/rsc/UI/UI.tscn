@@ -1,9 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4als206inycd"]
+[gd_scene load_steps=23 format=3 uid="uid://b4als206inycd"]
 
 [ext_resource type="Script" path="res://rsc/UI/UI.gd" id="1_32ly1"]
 [ext_resource type="PackedScene" uid="uid://cej375spoxas4" path="res://rsc/UI/weaponpanel.tscn" id="2_w73e5"]
+[ext_resource type="Texture2D" uid="uid://db73su57ayrij" path="res://assets/ui/icons/tag_1.png" id="3_cu2s6"]
+[ext_resource type="Texture2D" uid="uid://0vdl5b5p7rsy" path="res://assets/ui/icons/tag_3.png" id="3_rlh7u"]
 [ext_resource type="StyleBox" uid="uid://dx3xi457o1lm" path="res://rsc/UI/weaponbox.tres" id="3_tmden"]
 [ext_resource type="Texture2D" uid="uid://drfvxuiayvccc" path="res://assets/ui/square_shadow.png" id="4_8suf4"]
+[ext_resource type="Texture2D" uid="uid://ce8472w2fdwfs" path="res://assets/ui/icons/tag_2.png" id="4_lsnix"]
 [ext_resource type="Script" path="res://rsc/UI/StatusBar.gd" id="4_x1hjr"]
 [ext_resource type="Texture2D" uid="uid://dyiobcs0nh60u" path="res://assets/ui/squareRed.png" id="5_wd58u"]
 [ext_resource type="Texture2D" uid="uid://bg7jgho0ega5l" path="res://assets/ui/squareYellow.png" id="6_l2ph6"]
@@ -103,6 +106,15 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 0
 
+[node name="TextureRect3" type="TextureRect" parent="WeaponPanel/VBoxContainer/Control/Weapon2"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -27.0
+offset_right = 16.0
+offset_bottom = 22.0
+texture = ExtResource("3_rlh7u")
+expand_mode = 1
+
 [node name="Control2" type="Control" parent="WeaponPanel/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
@@ -111,6 +123,15 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 0
 
+[node name="TextureRect2" type="TextureRect" parent="WeaponPanel/VBoxContainer/Control2/Weapon1"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -27.0
+offset_right = 16.0
+offset_bottom = 22.0
+texture = ExtResource("4_lsnix")
+expand_mode = 1
+
 [node name="Control3" type="Control" parent="WeaponPanel/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
@@ -118,6 +139,15 @@ layout_mode = 2
 [node name="Weapon0" parent="WeaponPanel/VBoxContainer/Control3" instance=ExtResource("2_w73e5")]
 unique_name_in_owner = true
 layout_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="WeaponPanel/VBoxContainer/Control3/Weapon0"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -27.0
+offset_right = 16.0
+offset_bottom = 22.0
+texture = ExtResource("3_cu2s6")
+expand_mode = 1
 
 [node name="AmmoBar" type="Panel" parent="WeaponPanel"]
 custom_minimum_size = Vector2(0, 150)

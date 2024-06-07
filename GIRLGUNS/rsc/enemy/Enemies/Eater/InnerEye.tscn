@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://qejyu3lvy1ig"]
+
+[ext_resource type="PackedScene" uid="uid://c7vo8e74bai75" path="res://rsc/enemy/Enemies/Eater/EaterEye.tscn" id="1_5xlfi"]
+[ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_dro4l"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/InnerEye.gd" id="2_o808h"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/eyefloat.gd" id="3_7aqme"]
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/eyecontrol.gd" id="4_v0j7m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i88p6"]
+radius = 30.0
+
+[node name="InnerEye" instance=ExtResource("1_dro4l")]
+visible = false
+script = ExtResource("2_o808h")
+base_speed = 1000.0
+kill_counted = false
+
+[node name="eyefloat" type="Node2D" parent="States" index="0"]
+script = ExtResource("3_7aqme")
+
+[node name="eyecontrol" type="Node2D" parent="States" index="1"]
+script = ExtResource("4_v0j7m")
+
+[node name="EaterEye" parent="Flash/Color/Sprite" index="0" instance=ExtResource("1_5xlfi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+visible = false
+shape = SubResource("CircleShape2D_i88p6")

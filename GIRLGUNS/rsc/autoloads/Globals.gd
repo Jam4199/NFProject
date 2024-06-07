@@ -24,7 +24,8 @@ func add_enemy(new_enemy : Enemy):
 	if world == null:
 		return
 	world.add_enemy(new_enemy)
-	new_enemy.connect("enemy_death", Callable(world,"enemy_death"))
+	if not new_enemy.enemy_death.is_connected(Callable(world,"enemy_death")):
+		new_enemy.connect("enemy_death", Callable(world,"enemy_death"))
 	return new_enemy
 
 func add_enemy_bullet(new_bullet : EnemyBullet):

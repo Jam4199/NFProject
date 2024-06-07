@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlojjl8ok8j2g"]
+
+[ext_resource type="Script" path="res://rsc/enemy/Enemies/TimeEater/Subwep.gd" id="1_afevn"]
+[ext_resource type="Texture2D" uid="uid://cgra7vnb7g0r0" path="res://assets/basic_shapes/circle_64.png" id="2_22631"]
+[ext_resource type="PackedScene" uid="uid://bdtweiqlvy2hc" path="res://rsc/enemy/AttackWarning.tscn" id="3_mfeut"]
+
+[node name="Subwep" type="Node2D"]
+script = ExtResource("1_afevn")
+
+[node name="Eye" type="Sprite2D" parent="."]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+texture = ExtResource("2_22631")
+
+[node name="MainEye" type="Sprite2D" parent="Eye"]
+position = Vector2(-3.46791e-06, 0)
+scale = Vector2(0.909091, 0.909091)
+texture = ExtResource("2_22631")
+
+[node name="Pupil" type="Sprite2D" parent="Eye/MainEye"]
+self_modulate = Color(0.00392157, 0.00392157, 0.00392157, 1)
+position = Vector2(20, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_22631")
+
+[node name="Beemwa" parent="." instance=ExtResource("3_mfeut")]
+warning_time = 3.0
+warning_length = 3000.0
+warning_width = 20.0
+
+[node name="Wide" parent="Beemwa" index="0"]
+points = PackedVector2Array(0, 0, 3000, 0)
+width = 10.0
+
+[node name="Narrow" parent="Beemwa" index="1"]
+points = PackedVector2Array(0, 0, 3000, 0)
+width = 20.0
+
+[editable path="Beemwa"]

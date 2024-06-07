@@ -71,7 +71,7 @@ func change_state(next_state : String):
 		current_state.state_enter()
 		current_state.connect("state_change",Callable(self,"change_state"))
 	else:
-		print("next state not found")
+		print("next state not found : " + next_state)
 
 func _physics_process(delta):
 	if kb_queue!= []:

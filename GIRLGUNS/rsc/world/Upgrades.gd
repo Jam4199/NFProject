@@ -22,6 +22,11 @@ enum bless{ASTER,LYRIS,OPHELIA,RUBY,VIOLA}
 @export var iframe_upgrades : int = 2
 @export var stamina_upgrades : int = 3
 
+@export_group("Every_Level")
+@export var dmg_per_level : float = 0.02
+@export var spd_per_level : float = 10
+@export var hp_per_level : float = 20
+
 signal upgrade_prepared
 
 
@@ -40,7 +45,7 @@ func create_weapon_pool(new_weapon,slot):
 	
 	for n in new_weapon.upgrade_damage:
 		var new_upgrade : Upgrade = Upgrade.new()
-		new_upgrade.ui_name = new_weapon.ui_name + " Attack"
+		new_upgrade.ui_name = new_weapon.ui_name + " Damage Up"
 		new_upgrade.ui_description = "Increase damage by 40%"
 		new_upgrade.weapon_slot = slot
 		new_upgrade.type = Upgrade.upgrade_type.WEAPON
@@ -98,7 +103,7 @@ func create_player_pool():
 	for n in speed_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name = "Speed Up"
-		new_upgrade.ui_description = "Increase Speed by 30% of base amount"
+		new_upgrade.ui_description = "Increase Speed by 20% of base amount"
 		new_upgrade.player_upgrade = 1
 		player_pool.append(new_upgrade)
 	for n in iframe_upgrades:
@@ -120,13 +125,13 @@ func refill_player_pool():
 	for n in health_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name = "Max Health Up"
-		new_upgrade.ui_description = "Increase Max Health by 20%"
+		new_upgrade.ui_description = "Increase Max Health by 40%"
 		new_upgrade.player_upgrade = 0
 		player_pool.append(new_upgrade)
 	for n in speed_upgrades:
 		var new_upgrade : Upgrade = Upgrade.new()
 		new_upgrade.ui_name ="Speed Up"
-		new_upgrade.ui_description = "Increase Speed by 10%"
+		new_upgrade.ui_description = "Increase Speed by 30%"
 		new_upgrade.player_upgrade = 1
 		player_pool.append(new_upgrade)
 
@@ -147,6 +152,12 @@ func level_up():
 	Globals.world.call_deferred("unpause")
 	
 
+func every_level_boost():
+	Globals.player.player_damage += dmg_per_level
+	Globals.player.speed += spd_per_level
+	Globals.player.max_hp += hp_per_level
+	Globals.player.current_hp += hp_per_level
+
 func check_upgrades():
 	if Globals.player.current_level in level_per_bless:
 		bless_offered += 1
@@ -163,7 +174,7 @@ func check_upgrades():
 				weapon_count = 3
 	
 	if player_pool.size() < 2:
-		refill_player_pool()
+		create_player_pool()
 
 func create_selections() -> Array[Upgrade]:
 	var upgrade_selection : Array[Upgrade] = []
@@ -264,7 +275,7 @@ func create_selections() -> Array[Upgrade]:
 	new_upgrade.ui_name = "All Spells Recharge"
 	new_upgrade.ui_description = "Increase recharge speed by 10%"
 	new_upgrade.type = Upgrade.upgrade_type.FILLER
-	new_upgrade.filler_upgrade = new_upgrade.fillers.DAMAGE
+	new_upgrade.filler_upgrade = new_upgrade.fillers.RECHARGE
 	filler_pool.append(new_upgrade)
 	
 	if Globals.player.current_hp < Globals.player.max_hp * 0.4:
@@ -320,7 +331,7 @@ func player_upgrade(new_upgrade : Upgrade):
 			Globals.player.current_hp += 400
 			Globals.player.heal(10)
 		Upgrade.player_stats.SPEED:
-			Globals.player.speed += 60
+			Globals.player.speed += 40
 			speed_upgrades += 1
 		Upgrade.player_stats.IFRAME:
 			Globals.player.dash_invul += 0.15
@@ -379,15 +390,9 @@ func filler_upgrade(new_upgrade : Upgrade):
 		Upgrade.fillers.HEAL:
 			Globals.player.heal(50)
 		Upgrade.fillers.DAMAGE:
-			for weapon in Globals.player.weapon_manager.weapons:
-				if weapon == null:
-					continue
-				weapon.damage_multiplier += 0.3
-				weapon.update_stats()
+			Globals.player.player_damage += 0.3
 		Upgrade.fillers.RECHARGE:
-			for weapon in Globals.player.weapon_manager.weapons:
-				weapon.reload_speed_multiplier += 0.1
-				weapon.update_stats()
+			Globals.player.player_reload += 0.1
 			
 
 

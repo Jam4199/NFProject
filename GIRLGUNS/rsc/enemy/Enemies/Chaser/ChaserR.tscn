@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcyiujx3t5kix"]
+[gd_scene load_steps=9 format=3 uid="uid://bcyiujx3t5kix"]
 
 [ext_resource type="PackedScene" uid="uid://ctpwmlwenqec8" path="res://rsc/enemy/Enemies/Chaser/Chaser.tscn" id="1_gbown"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Chaser/nothingpersonal.gd" id="2_e1x7d"]
+[ext_resource type="Texture2D" uid="uid://dtb330q2bdgyl" path="res://assets/basic_shapes/circle_outline_eighth_64.png" id="4_7upvb"]
 [ext_resource type="Texture2D" uid="uid://b4di1ailccl1p" path="res://assets/basic_shapes/circle_05.png" id="4_e46mb"]
 
 [sub_resource type="Curve" id="Curve_sw57g"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_cmwa8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_25mpg"]
+offsets = PackedFloat32Array(0, 0.637143, 1)
+colors = PackedColorArray(0.972549, 0.0784314, 0.0392157, 1, 0.972549, 0.0784314, 0.0392157, 0.977143, 0.972549, 0.0784314, 0.0392157, 0)
 
 [sub_resource type="Gradient" id="Gradient_y3cpj"]
 offsets = PackedFloat32Array(0.249012, 0.86166, 1)
@@ -15,9 +24,13 @@ colors = PackedColorArray(0.972549, 0.0784314, 0.0392157, 1, 0.972549, 0.0784314
 [node name="ChaserR" node_paths=PackedStringArray("starting_state") instance=ExtResource("1_gbown")]
 base_max_hp = 1500.0
 base_speed = 300.0
+base_attack = 150.0
 base_knockback_return = 80.0
 starting_state = NodePath("States/nothingpersonal")
 exp = 80
+
+[node name="HurtBox" parent="." index="1"]
+damage = 150.0
 
 [node name="nothingpersonal" type="Node2D" parent="States" index="0"]
 script = ExtResource("2_e1x7d")
@@ -27,6 +40,7 @@ emitting = false
 amount = 4
 lifetime = 0.2
 preprocess = 1.0
+local_coords = true
 draw_order = 1
 texture = ExtResource("4_e46mb")
 gravity = Vector2(0, 0)
@@ -34,6 +48,19 @@ scale_amount_min = 0.2
 scale_amount_max = 0.2
 scale_amount_curve = SubResource("Curve_sw57g")
 color = Color(0.972549, 0.0784314, 0.0392157, 1)
+
+[node name="pulse" type="CPUParticles2D" parent="States/nothingpersonal" index="1"]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("4_7upvb")
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_cmwa8")
+color = Color(0.972549, 0.0784314, 0.0392157, 1)
+color_ramp = SubResource("Gradient_25mpg")
 
 [node name="Head" parent="Flash/Color/Sprite" index="0"]
 color = Color(0.972549, 0.0784314, 0.0392157, 1)

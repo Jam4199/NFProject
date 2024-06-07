@@ -28,10 +28,10 @@ func state_process(delta : float):
 	unit.global_position += (Vector2.from_angle(unit.global_rotation)) * (attack_distance * (1.0/attack_time) * delta)
 	attack_timer += delta
 	if attack_timer >= attack_time:
-		dash_counter -= 1
 		if dash_counter <= 0:
-			get_node("%crushcharge").cooldown_timer = 0
+			dash_counter = dash_count
 			emit_signal("state_change","crushchase")
 		else:
-			dash_counter = dash_count
+			dash_counter -= 1
+			get_node("%crushcharge").cooldown_timer = 0
 			emit_signal("state_change","crushcharge")

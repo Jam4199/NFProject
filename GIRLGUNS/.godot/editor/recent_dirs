@@ -1,3 +1,6 @@
+res://rsc/enemy/Enemies/Eater
+res://rsc/enemy
+res://script_templates
 res://rsc/enemy/Enemies/Chaser
 D:/GitHub/GD2/Asterhtml3
 D:/GitHub/GD2/Asterhtml2
@@ -13,10 +16,8 @@ res://rsc
 res://rsc/enemy/Enemies/Shooter
 res://rsc/enemy/Enemies/Crusher
 res://rsc/enemy/Enemies/Destroyer
-res://rsc/enemy
 res://rsc/TEST/C
 res://rsc/shaders
 D:/GitHub/GD2/Projects/GIRLGUNS
 res://rsc/TEST/B
-res://rsc/world
 D:/GitHub/GD2/Projects/GIRLGUNS/rsc/TEST/B

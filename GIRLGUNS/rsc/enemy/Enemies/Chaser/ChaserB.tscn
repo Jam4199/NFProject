@@ -12,6 +12,9 @@ base_speed = 300.0
 base_knockback_return = 20.0
 exp = 40
 
+[node name="HurtBox" parent="." index="1"]
+damage = 150.0
+
 [node name="Head" parent="Flash/Color/Sprite" index="0"]
 color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 
