@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df0yjhmnsmg6f"]
+
+[ext_resource type="Script" path="res://Combat/Board.gd" id="1_kp8cn"]
+
+[node name="Board" type="Node"]
+script = ExtResource("1_kp8cn")
+
+[node name="PlayerTeams" type="Node" parent="."]
+
+[node name="EnemyTeams" type="Node" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://660dr2owp1tf"]
+[gd_scene load_steps=8 format=3 uid="uid://660dr2owp1tf"]
 
 [ext_resource type="PackedScene" uid="uid://cainwt6r0d5jf" path="res://rsc/enemy/Enemy.tscn" id="1_s7yh1"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/entrance.gd" id="2_i6dbv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/spread_beam.gd" id="4_vohmt"]
 [ext_resource type="Script" path="res://rsc/enemy/Enemies/Eater/focused_tri_laser.gd" id="5_kfw5p"]
 [ext_resource type="PackedScene" uid="uid://qejyu3lvy1ig" path="res://rsc/enemy/Enemies/Eater/InnerEye.tscn" id="5_l4ayp"]
+[ext_resource type="Script" path="res://rsc/enemy/EnemyState.gd" id="5_pisoj"]
 
 [node name="Eater" instance=ExtResource("1_s7yh1")]
 script = ExtResource("2_my7it")
@@ -51,7 +52,10 @@ rotation = -0.244346
 position = Vector2(-11, -226)
 rotation = -0.349066
 
-[node name="focused_tri_laser" type="Node2D" parent="States" index="2"]
+[node name="layer_circle" type="Node2D" parent="States" index="2"]
+script = ExtResource("5_pisoj")
+
+[node name="focused_tri_laser" type="Node2D" parent="States" index="3"]
 visible = false
 script = ExtResource("5_kfw5p")
 

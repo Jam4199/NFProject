@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://kvxomq5vty18"]
+
+[ext_resource type="Script" path="res://Characters/Team.gd" id="1_12p7f"]
+[ext_resource type="Script" path="res://Characters/TeamEffects.gd" id="2_djdqs"]
+
+[node name="Team" type="Node"]
+process_mode = 4
+script = ExtResource("1_12p7f")
+
+[node name="Leader" type="Node" parent="."]
+
+[node name="TeamEffects" type="Node" parent="."]
+script = ExtResource("2_djdqs")

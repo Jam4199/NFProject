@@ -3,16 +3,5 @@ res://rsc/UI/smth.tres
 res://rsc/UI/panelthing.tres
 res://rsc/shaders/Linematerial.gdshader
 res://rsc/shaders/redblink.gdshader
-res://rsc/enemy/Enemies/Eater/focused_tri_laser.gd
-res://rsc/enemy/Enemies/Eater/entrance.gd
-res://rsc/Main.tscn
-res://rsc/player/Player.tscn
-res://rsc/world/World.tscn
-res://rsc/TEST/C/C_test.tscn
-res://rsc/enemy/Enemies/Eater/InnerEye.tscn
 res://rsc/enemy/Enemies/Eater/EaterEye.tscn
-res://rsc/enemy/Enemies/Eater/InnerEye.gd
-res://rsc/enemy/Enemies/Eater/eyecontrol.gd
-res://rsc/enemy/Enemies/Eater/spread_beam.gd
-res://rsc/enemy/Enemies/Eater/eyefloat.gd
-res://TODO.txt
+res://rsc/enemy/Enemies/Eater/EaterEye.gd

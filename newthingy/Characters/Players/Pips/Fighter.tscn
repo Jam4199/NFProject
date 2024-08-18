@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmc8hmt7a8x3r"]
+
+[ext_resource type="PackedScene" uid="uid://bm06lfr6pie77" path="res://Characters/Character.tscn" id="1_jp7lr"]
+[ext_resource type="Shader" path="res://Characters/hurt_flash.gdshader" id="2_h6t5k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmwdh"]
+resource_local_to_scene = true
+shader = ExtResource("2_h6t5k")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[node name="Fighter" instance=ExtResource("1_jp7lr")]
+
+[node name="Controller" parent="." index="0"]
+def_behavior = 1
+
+[node name="Sprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_pmwdh")

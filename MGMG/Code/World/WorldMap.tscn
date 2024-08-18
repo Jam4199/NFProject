@@ -1,0 +1,342 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkjatykekf8d6"]
+
+[ext_resource type="Script" path="res://Code/World/WorldMap.gd" id="1_cx327"]
+[ext_resource type="PackedScene" uid="uid://db75c7ea8co50" path="res://Code/World/WorldBlock.tscn" id="1_kharc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6pxl"]
+size = Vector2(1535, 1372)
+
+[node name="WorldMap" type="Node2D"]
+script = ExtResource("1_cx327")
+
+[node name="Border" type="Polygon2D" parent="."]
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-50, -50, 1416, -50, 1416, 1250, -50, 1250)
+
+[node name="Grid" type="Polygon2D" parent="."]
+position = Vector2(83, 0)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 0, 0, 1200, 1200, 1200, 1200, 0)
+metadata/_edit_group_ = true
+
+[node name="00" parent="Grid" instance=ExtResource("1_kharc")]
+
+[node name="01" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 0)
+
+[node name="02" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 0)
+
+[node name="03" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 0)
+
+[node name="04" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 0)
+
+[node name="05" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 0)
+
+[node name="06" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 0)
+
+[node name="07" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 0)
+
+[node name="08" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 0)
+
+[node name="09" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 0)
+
+[node name="10" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 120)
+
+[node name="11" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 120)
+
+[node name="12" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 120)
+
+[node name="13" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 120)
+
+[node name="14" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 120)
+
+[node name="15" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 120)
+
+[node name="16" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 120)
+
+[node name="17" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 120)
+
+[node name="18" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 120)
+
+[node name="19" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 120)
+
+[node name="20" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 240)
+
+[node name="21" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 240)
+
+[node name="22" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 240)
+
+[node name="23" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 240)
+
+[node name="24" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 240)
+
+[node name="25" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 240)
+
+[node name="26" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 240)
+
+[node name="27" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 240)
+
+[node name="28" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 240)
+
+[node name="29" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 240)
+
+[node name="30" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 360)
+
+[node name="31" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 360)
+
+[node name="32" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 360)
+
+[node name="33" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 360)
+
+[node name="34" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 360)
+
+[node name="35" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 360)
+
+[node name="36" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 360)
+
+[node name="37" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 360)
+
+[node name="38" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 360)
+
+[node name="39" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 360)
+
+[node name="40" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 480)
+
+[node name="41" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 480)
+
+[node name="42" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 480)
+
+[node name="43" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 480)
+
+[node name="44" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 480)
+
+[node name="45" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 480)
+
+[node name="46" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 480)
+
+[node name="47" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 480)
+
+[node name="48" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 480)
+
+[node name="49" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 480)
+
+[node name="50" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 600)
+
+[node name="51" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 600)
+
+[node name="52" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 600)
+
+[node name="53" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 600)
+
+[node name="54" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 600)
+
+[node name="55" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 600)
+
+[node name="56" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 600)
+
+[node name="57" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 600)
+
+[node name="58" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 600)
+
+[node name="59" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 600)
+
+[node name="60" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 720)
+
+[node name="61" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 720)
+
+[node name="62" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 720)
+
+[node name="63" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 720)
+
+[node name="64" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 720)
+
+[node name="65" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 720)
+
+[node name="66" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 720)
+
+[node name="67" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 720)
+
+[node name="68" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 720)
+
+[node name="69" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 720)
+
+[node name="70" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 840)
+
+[node name="71" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 840)
+
+[node name="72" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 840)
+
+[node name="73" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 840)
+
+[node name="74" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 840)
+
+[node name="75" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 840)
+
+[node name="76" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 840)
+
+[node name="77" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 840)
+
+[node name="78" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 840)
+
+[node name="79" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 840)
+
+[node name="80" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 960)
+
+[node name="81" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 960)
+
+[node name="82" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 960)
+
+[node name="83" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 960)
+
+[node name="84" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 960)
+
+[node name="85" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 960)
+
+[node name="86" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 960)
+
+[node name="87" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 960)
+
+[node name="88" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 960)
+
+[node name="89" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 960)
+
+[node name="90" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(0, 1080)
+
+[node name="91" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(120, 1080)
+
+[node name="92" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(240, 1080)
+
+[node name="93" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(360, 1080)
+
+[node name="94" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(480, 1080)
+
+[node name="95" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(600, 1080)
+
+[node name="96" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(720, 1080)
+
+[node name="97" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(840, 1080)
+
+[node name="98" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(960, 1080)
+
+[node name="99" parent="Grid" instance=ExtResource("1_kharc")]
+position = Vector2(1080, 1080)
+
+[node name="UnitLayer" type="Node2D" parent="."]
+position = Vector2(83, 0)
+
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(704, 406)
+limit_left = -50
+limit_top = -50
+limit_right = 1416
+limit_bottom = 1250
+
+[node name="MapMouseDetect" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapMouseDetect"]
+visible = false
+position = Vector2(691.5, 553)
+shape = SubResource("RectangleShape2D_p6pxl")
+
+[connection signal="mouse_entered" from="MapMouseDetect" to="." method="_on_map_mouse_detect_mouse_entered"]
+[connection signal="mouse_exited" from="MapMouseDetect" to="." method="_on_map_mouse_detect_mouse_exited"]

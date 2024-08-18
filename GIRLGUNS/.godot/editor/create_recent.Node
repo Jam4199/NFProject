@@ -1,7 +1,7 @@
+EnemyState
 Marker2D
 Polygon2D
 Node2D
-EnemyState
 CollisionShape2D
 AnimationPlayer
 CPUParticles2D

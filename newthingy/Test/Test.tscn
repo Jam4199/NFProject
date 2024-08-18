@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bthmumkagqnjb"]
+
+[ext_resource type="Script" path="res://Test/TestA.gd" id="1_h33vv"]
+[ext_resource type="PackedScene" uid="uid://kvxomq5vty18" path="res://Characters/Team.tscn" id="1_lirdn"]
+[ext_resource type="PackedScene" uid="uid://fn1egkdk6k5n" path="res://Characters/Players/TestMelee/TestMelee.tscn" id="2_qhlk1"]
+[ext_resource type="PackedScene" uid="uid://dteeporluscj5" path="res://Combat/Combat.tscn" id="3_6cayj"]
+
+[node name="TestA" type="Node"]
+script = ExtResource("1_h33vv")
+
+[node name="Team" parent="." instance=ExtResource("1_lirdn")]
+form = 2
+
+[node name="TestMelee" parent="Team/Leader" index="0" instance=ExtResource("2_qhlk1")]
+hitbox_radius = 80.0
+
+[node name="TestMelee2" parent="Team" instance=ExtResource("2_qhlk1")]
+hitbox_radius = 80.0
+
+[node name="TestMelee3" parent="Team" instance=ExtResource("2_qhlk1")]
+hitbox_radius = 80.0
+
+[node name="TestMelee4" parent="Team" instance=ExtResource("2_qhlk1")]
+hitbox_radius = 80.0
+
+[node name="Team2" parent="." instance=ExtResource("1_lirdn")]
+faction = 1
+form = 2
+
+[node name="TestMelee" parent="Team2/Leader" index="0" instance=ExtResource("2_qhlk1")]
+
+[node name="TestMelee2" parent="Team2" instance=ExtResource("2_qhlk1")]
+
+[node name="TestMelee3" parent="Team2" instance=ExtResource("2_qhlk1")]
+
+[node name="TestMelee4" parent="Team2" instance=ExtResource("2_qhlk1")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Combat" parent="CanvasLayer" instance=ExtResource("3_6cayj")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/Combat"]
+
+[editable path="Team"]
+[editable path="Team2"]

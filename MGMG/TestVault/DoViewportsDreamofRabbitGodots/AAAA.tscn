@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://0fxbb5qeffd6"]
+
+[ext_resource type="Texture2D" uid="uid://m4k407iyy4qe" path="res://icon.svg" id="1_a32r7"]
+[ext_resource type="Script" path="res://TestVault/DoViewportsDreamofRabbitGodots/aaaa.gd" id="2_k28ky"]
+
+[node name="Aaaa" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(1366, 768)
+render_target_update_mode = 4
+
+[node name="Control2" type="Control" parent="Control/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control/SubViewportContainer/SubViewport/Control2"]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 136.0
+icon = ExtResource("1_a32r7")
+script = ExtResource("2_k28ky")

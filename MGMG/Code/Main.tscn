@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://drpk7tactkaod"]
+
+[ext_resource type="Script" path="res://Code/Main.gd" id="1_3quwx"]
+[ext_resource type="PackedScene" uid="uid://dkjatykekf8d6" path="res://Code/World/WorldMap.tscn" id="1_88q6u"]
+[ext_resource type="Script" path="res://Code/Time.gd" id="2_3586t"]
+[ext_resource type="Script" path="res://Code/CityData.gd" id="3_gmf76"]
+[ext_resource type="Script" path="res://Code/Girls/MGProgress.gd" id="5_451rs"]
+[ext_resource type="Script" path="res://Code/Girls/MGInfo.gd" id="6_cg1ci"]
+[ext_resource type="Script" path="res://Code/Girls/MGData.gd" id="7_e702o"]
+
+[sub_resource type="Resource" id="Resource_ga73u"]
+script = ExtResource("7_e702o")
+level = 1
+experience = 0
+max_hp = 100.0
+current_hp = 100.0
+max_energy = 100.0
+current_energy = 100.0
+power = 100.0
+hope = 50
+total_hope = 0
+socials = 50
+total_socials = 0
+studies = 50
+total_studies = 0
+solidarity = 50
+total_solidarity = 0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3quwx")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="WorldBox" type="Control" parent="UI/UI"]
+anchors_preset = 0
+offset_left = 226.0
+offset_top = 118.0
+offset_right = 1047.0
+offset_bottom = 618.0
+mouse_filter = 1
+
+[node name="WorldContainer" type="SubViewportContainer" parent="UI/UI/WorldBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -177.0
+offset_right = 408.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="World" type="SubViewport" parent="UI/UI/WorldBox/WorldContainer"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(800, 400)
+render_target_update_mode = 4
+
+[node name="WorldMap" parent="UI/UI/WorldBox/WorldContainer/World" instance=ExtResource("1_88q6u")]
+unique_name_in_owner = true
+
+[node name="Data" type="Node" parent="."]
+
+[node name="TimeProgress" type="Node" parent="Data"]
+unique_name_in_owner = true
+script = ExtResource("2_3586t")
+
+[node name="CityData" type="Node" parent="Data"]
+unique_name_in_owner = true
+script = ExtResource("3_gmf76")
+
+[node name="MGProgress" type="Node" parent="Data"]
+unique_name_in_owner = true
+script = ExtResource("5_451rs")
+
+[node name="Pink" type="Node" parent="Data/MGProgress"]
+script = ExtResource("6_cg1ci")
+base_data = SubResource("Resource_ga73u")
+
+[node name="Behavior" type="Node" parent="Data/MGProgress/Pink"]
+
+[node name="Blue" type="Node" parent="Data/MGProgress"]
+script = ExtResource("6_cg1ci")
+
+[node name="Yellow" type="Node" parent="Data/MGProgress"]
+script = ExtResource("6_cg1ci")
+
+[node name="White" type="Node" parent="Data/MGProgress"]
+script = ExtResource("6_cg1ci")
+
+[node name="Familiars" type="Node" parent="Data"]
+unique_name_in_owner = true
+
+[node name="Saves" type="Node" parent="Data"]
+unique_name_in_owner = true

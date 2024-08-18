@@ -3,6 +3,7 @@ class_name EaterEye
 
 const EBEEM = preload("res://rsc/enemy/Enemies/Eater/EBEEM.tscn")
 
+
 @onready var warning : AttackWarning = get_node("AttackWarning")
 @onready var sprite : Sprite2D = get_node("Sprite")
 @onready var anim : AnimationPlayer = get_node("AnimationPlayer")
@@ -59,4 +60,9 @@ func charge_beem(charge_time : float = 2, allowance : float = 0.2, beem : Packed
 	warning.start()
 	current_beem = beem
 
-
+func spread_shot(shots_fired : int = 3, total_spread : float = 60):
+	var total_shots : Array[EnemyBullet] = []
+	var starting_angle : float = -(total_spread/2.0)
+	var spread  : float = total_spread / float(shots_fired)
+	for n in range(0, shots_fired):
+		var new_bullet = shoot(true,)

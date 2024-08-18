@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4a445li11ovw"]
+
+[ext_resource type="PackedScene" uid="uid://bm06lfr6pie77" path="res://Characters/Character.tscn" id="1_1pe5b"]
+[ext_resource type="Shader" path="res://Characters/hurt_flash.gdshader" id="2_nq22b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmwdh"]
+resource_local_to_scene = true
+shader = ExtResource("2_nq22b")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[node name="Assasin" instance=ExtResource("1_1pe5b")]
+
+[node name="Controller" parent="." index="0"]
+def_behavior = 1
+
+[node name="Sprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_pmwdh")

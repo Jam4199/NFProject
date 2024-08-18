@@ -1,0 +1,197 @@
+[gd_scene load_steps=13 format=3 uid="uid://fn1egkdk6k5n"]
+
+[ext_resource type="PackedScene" uid="uid://bm06lfr6pie77" path="res://Characters/Character.tscn" id="1_y053l"]
+[ext_resource type="Script" path="res://Characters/Players/TestMelee/Strike.gd" id="2_wmlit"]
+[ext_resource type="Script" path="res://Combat/Damage.gd" id="3_rj7wb"]
+[ext_resource type="Shader" path="res://Characters/hurt_flash.gdshader" id="4_w1t7m"]
+
+[sub_resource type="Resource" id="Resource_3kxq0"]
+script = ExtResource("3_rj7wb")
+value = 10.0
+pen = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_088pg"]
+resource_local_to_scene = true
+shader = ExtResource("4_w1t7m")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Gradient" id="Gradient_af5o3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8kwon"]
+gradient = SubResource("Gradient_af5o3")
+
+[sub_resource type="Animation" id="Animation_ly8k5"]
+resource_name = "default_attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -8), Vector2(-7, -10), Vector2(22, -8), Vector2(-1, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.08468, -1.92138, 0.0144131, -1.08468]
+}
+
+[sub_resource type="Animation" id="Animation_4ie3t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.08468]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gnnyx"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-9.75, -12), Vector2(-20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.872665, -1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, -8), Vector2(-25, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.08468, -3.06209]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_33nxm"]
+_data = {
+"RESET": SubResource("Animation_4ie3t"),
+"death": SubResource("Animation_gnnyx"),
+"default_attack": SubResource("Animation_ly8k5")
+}
+
+[node name="TestMelee" instance=ExtResource("1_y053l")]
+
+[node name="Controller" parent="." index="0" node_paths=PackedStringArray("agg_action")]
+move_proximity = 70.0
+agg_action = NodePath("Strike")
+
+[node name="Strike" type="Node" parent="Controller" index="0"]
+script = ExtResource("2_wmlit")
+damage = SubResource("Resource_3kxq0")
+action_cooldown = 1.0
+action_range = 60.0
+
+[node name="Sprite" parent="." index="1" node_paths=PackedStringArray("anim_player")]
+material = SubResource("ShaderMaterial_088pg")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="Polygon2D" parent="Sprite" index="0"]
+metadata/_edit_group_ = true
+
+[node name="Hand" type="Node2D" parent="Sprite" index="5"]
+use_parent_material = true
+position = Vector2(-1, -8)
+rotation = -1.08468
+metadata/_edit_group_ = true
+
+[node name="Stick" type="Polygon2D" parent="Sprite/Hand" index="0"]
+use_parent_material = true
+texture = SubResource("GradientTexture1D_8kwon")
+polygon = PackedVector2Array(100, -5, 100, 5, 0, 5, 0, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_33nxm")
+}

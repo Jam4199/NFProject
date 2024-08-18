@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dteeporluscj5"]
+
+[ext_resource type="Script" path="res://Combat/Combat.gd" id="1_6wooi"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7mmfb"]
+normal = Vector2(0, 1)
+distance = -100.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y3ibv"]
+normal = Vector2(1, 0)
+distance = -550.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bfymo"]
+distance = -100.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_et3bs"]
+normal = Vector2(-1, 0)
+distance = -550.0
+
+[node name="Combat" type="Node2D"]
+script = ExtResource("1_6wooi")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Background"]
+color = Color(0.145098, 0.47451, 0.34902, 1)
+polygon = PackedVector2Array(-550, -100, -550, 100, 550, 100, 550, -100)
+
+[node name="CombatLayer" type="Node2D" parent="."]
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_7mmfb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_y3ibv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_bfymo")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_et3bs")

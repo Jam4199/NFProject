@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0k0yt0f6eiu1"]
+
+[ext_resource type="Script" path="res://code/Character/character.gd" id="1_g2lks"]
+[ext_resource type="Script" path="res://code/Character/action_slot.gd" id="1_n3myk"]
+[ext_resource type="Script" path="res://code/Cards/combat_card.gd" id="3_b3kpo"]
+
+[node name="Character" type="Node"]
+script = ExtResource("1_g2lks")
+
+[node name="CombatDeck" type="Node" parent="."]
+
+[node name="CombatHand" type="Node" parent="."]
+
+[node name="ActionSlot0" type="Node" parent="."]
+script = ExtResource("1_n3myk")
+
+[node name="ActionSlot1" type="Node" parent="."]
+script = ExtResource("1_n3myk")
+
+[node name="ActionSlot2" type="Node" parent="."]
+script = ExtResource("1_n3myk")
+
+[node name="DefenseSlot" type="Node" parent="."]
+script = ExtResource("1_n3myk")
+
+[node name="CombatCard" type="Node" parent="DefenseSlot"]
+script = ExtResource("3_b3kpo")

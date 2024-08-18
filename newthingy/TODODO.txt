@@ -1,0 +1,31 @@
+
+
+heavy
+medium
+light
+
+fire
+ice
+earth
+
+greatsword
+spear
+protector
+
+fighter
+assasin
+archer
+
+pyro
+cryo
+shield
+
+heroes
+
+base 
+ff berserker Front
+fi Arcmage Back
+fe Sniper Back
+ii General Mid
+ie Cleric Mid
+ee greatshield Front
